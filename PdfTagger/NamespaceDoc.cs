@@ -26,3 +26,18 @@ namespace PdfTagger.Pdf
     }
 
 }
+
+namespace PdfTagger.Xml
+{
+
+    /// <summary>
+	/// <para>El espacio de nombres Pdf contiene los
+    /// elementos necesarios para trabajar con la
+    /// serialización xml.</para> 
+	/// </summary>
+	[System.Runtime.CompilerServices.CompilerGenerated]
+    public class NamespaceDoc
+    {
+    }
+
+}
