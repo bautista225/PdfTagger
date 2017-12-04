@@ -13,7 +13,7 @@ namespace PdfTaggerTest
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new formTest002());
+            Application.Run(new formTest001());
         }
     }
 }

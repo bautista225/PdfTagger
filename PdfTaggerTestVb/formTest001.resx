@@ -117,10 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lbInfo.Text" xml:space="preserve">
-    <value>En esta demo se leen todos los archivos pdf del directorio seleccionado y se guardan en el directorio de destino los xml con los datos extraídos mediante iText. También genera un pdf de muestra con los rectangulos que representan los grupos de palabras detectados en rojo; Y otro con pdf con los rectángulos que representan las líneas del documento en azul.</value>
-  </data>
-  <metadata name="fdBrw.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
 </root>

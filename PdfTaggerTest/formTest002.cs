@@ -44,7 +44,7 @@ namespace PdfTaggerTest
                     
                 }
 
-                Util.PrintRectangles(dlgOpen.FileName, rectPath, pdf);
+                Util.PrintRectangles(dlgOpen.FileName, rectPath, pdf, BaseColor.RED);
 
             }
         }

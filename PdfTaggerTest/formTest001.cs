@@ -6,6 +6,7 @@ using System;
 using System.IO;
 using System.Windows.Forms;
 using System.Threading;
+using iTextSharp.text;
 
 namespace PdfTaggerTest
 {
@@ -35,13 +36,21 @@ namespace PdfTaggerTest
                 string rectPath = $"{dirResult}{System.IO.Path.DirectorySeparatorChar}" +
                   $"{System.IO.Path.GetFileNameWithoutExtension(pdfPath)}.pdf";
 
+                string rectPathLines = $"{dirResult}{System.IO.Path.DirectorySeparatorChar}" +
+                 $"{System.IO.Path.GetFileNameWithoutExtension(pdfPath)}_lines.pdf";
+
                 progress(count, pdfPaths.Length);
 
                 try
                 {
+                    // Creamos un PdfUnstructuredDoc para extracción de datos
                     PdfUnstructuredDoc pdf = new PdfUnstructuredDoc(pdfPath);
+
+                    //  Almacenamos los datos extraidos en un archivo xml
                     XmlParser.SaveAsXml(pdf, xmlPath);
-                    Util.PrintRectangles(pdfPath, rectPath, pdf);
+
+                    Util.PrintRectangles(pdfPath, rectPath, pdf, BaseColor.RED);
+                    Util.PrintRectangles(pdfPath, rectPathLines, pdf, BaseColor.BLUE, true);
                 }
                 catch
                 {

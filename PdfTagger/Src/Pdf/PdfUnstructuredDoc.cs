@@ -86,7 +86,21 @@ namespace PdfTagger.Pdf
 
         /// <summary>
         /// Construye una nueva instancia de PdfUnstructuredDoc
-        /// a partir del pdf cuya ruta se facilita como 
+        /// a partir del pdf cuya ruta se facilita como parámetro.
+        /// <code lang="C#">
+        /// // Creamos un PdfUnstructuredDoc para extracción de datos
+        /// PdfUnstructuredDoc pdf = new PdfUnstructuredDoc(pdfPath);
+        /// 
+        /// // Almacenamos los datos extraidos en un archivo xml
+        /// XmlParser.SaveAsXml(pdf, xmlPath);
+        /// </code> 
+        /// <code lang="VB">
+        /// ' Creamos un PdfUnstructuredDoc para extracción de datos
+        /// Dim pdf As PdfUnstructuredDoc = New PdfUnstructuredDoc("C:\test.pdf")
+        /// 
+        /// ' Almacenamos los datos extraidos en un archivo xml
+        /// XmlParser.SaveAsXml(pdf, "C:\test.xml")
+        /// </code> 
         /// </summary>
         public PdfUnstructuredDoc()
         {

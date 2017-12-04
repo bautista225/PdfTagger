@@ -1,6 +1,7 @@
 ﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
 using PdfTagger.Pdf;
+using System.Collections.Generic;
 using System.IO;
 
 namespace PdfTaggerTest
@@ -12,7 +13,9 @@ namespace PdfTaggerTest
         /// Dibuja los rectángulos configurados en un pdf.
         /// </summary>
         /// <param name="pathTarget">Pdf destino.</param>
-        public static void PrintRectangles(string pathSource, string pathTarget, PdfUnstructuredDoc pdf)
+        /// <param name="baseColor">Color de los rectangulos.</param>
+        public static void PrintRectangles(string pathSource, string pathTarget, 
+            PdfUnstructuredDoc pdf, BaseColor baseColor, bool lines = false)
         {
             try
             {
@@ -28,9 +31,12 @@ namespace PdfTaggerTest
                 {
                     p++;
                     PdfContentByte cb = pdfStamper.GetOverContent(p);
-                    foreach (var reg in page.WordGroups)
+
+                    List<PdfTextRectangle> rectangles = (lines) ? page.Lines : page.WordGroups;
+
+                    foreach (var reg in rectangles)
                     {
-                        cb.SetColorStroke(BaseColor.RED);
+                        cb.SetColorStroke(baseColor);
 
                         iTextSharp.text.Rectangle rect = new iTextSharp.text.Rectangle(
                             reg.Llx, reg.Lly, reg.Urx, reg.Ury);

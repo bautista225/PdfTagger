@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formTest001));
             this.lbInfo = new System.Windows.Forms.Label();
             this.fdBrw = new System.Windows.Forms.FolderBrowserDialog();
             this.txDirSource = new System.Windows.Forms.TextBox();
@@ -43,17 +44,16 @@
             // 
             // lbInfo
             // 
-            this.lbInfo.Location = new System.Drawing.Point(12, 9);
+            this.lbInfo.Location = new System.Drawing.Point(7, 2);
             this.lbInfo.Name = "lbInfo";
-            this.lbInfo.Size = new System.Drawing.Size(307, 57);
+            this.lbInfo.Size = new System.Drawing.Size(418, 67);
             this.lbInfo.TabIndex = 0;
-            this.lbInfo.Text = "En esta demo se leen todos los archivos pdf del directorio seleccionado y se guar" +
-    "dan en el directorio de destino los xml con los datos extraídos mediante iText.";
+            this.lbInfo.Text = resources.GetString("lbInfo.Text");
             // 
             // txDirSource
             // 
             this.txDirSource.Enabled = false;
-            this.txDirSource.Location = new System.Drawing.Point(171, 69);
+            this.txDirSource.Location = new System.Drawing.Point(171, 76);
             this.txDirSource.Name = "txDirSource";
             this.txDirSource.Size = new System.Drawing.Size(225, 20);
             this.txDirSource.TabIndex = 1;
@@ -62,7 +62,7 @@
             // 
             this.lbDirSource.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.lbDirSource.AutoSize = true;
-            this.lbDirSource.Location = new System.Drawing.Point(12, 72);
+            this.lbDirSource.Location = new System.Drawing.Point(12, 79);
             this.lbDirSource.Name = "lbDirSource";
             this.lbDirSource.Size = new System.Drawing.Size(153, 13);
             this.lbDirSource.TabIndex = 2;
@@ -70,7 +70,7 @@
             // 
             // btDirSource
             // 
-            this.btDirSource.Location = new System.Drawing.Point(400, 69);
+            this.btDirSource.Location = new System.Drawing.Point(400, 76);
             this.btDirSource.Name = "btDirSource";
             this.btDirSource.Size = new System.Drawing.Size(30, 20);
             this.btDirSource.TabIndex = 3;
@@ -80,7 +80,7 @@
             // 
             // btDirResult
             // 
-            this.btDirResult.Location = new System.Drawing.Point(400, 104);
+            this.btDirResult.Location = new System.Drawing.Point(400, 111);
             this.btDirResult.Name = "btDirResult";
             this.btDirResult.Size = new System.Drawing.Size(30, 20);
             this.btDirResult.TabIndex = 6;
@@ -92,7 +92,7 @@
             // 
             this.lbDirResult.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.lbDirResult.AutoSize = true;
-            this.lbDirResult.Location = new System.Drawing.Point(12, 107);
+            this.lbDirResult.Location = new System.Drawing.Point(12, 114);
             this.lbDirResult.Name = "lbDirResult";
             this.lbDirResult.Size = new System.Drawing.Size(158, 13);
             this.lbDirResult.TabIndex = 5;
@@ -101,7 +101,7 @@
             // txDirResult
             // 
             this.txDirResult.Enabled = false;
-            this.txDirResult.Location = new System.Drawing.Point(171, 104);
+            this.txDirResult.Location = new System.Drawing.Point(171, 111);
             this.txDirResult.Name = "txDirResult";
             this.txDirResult.Size = new System.Drawing.Size(225, 20);
             this.txDirResult.TabIndex = 4;
@@ -126,7 +126,7 @@
             // 
             // btExecute
             // 
-            this.btExecute.Location = new System.Drawing.Point(347, 143);
+            this.btExecute.Location = new System.Drawing.Point(347, 150);
             this.btExecute.Name = "btExecute";
             this.btExecute.Size = new System.Drawing.Size(83, 23);
             this.btExecute.TabIndex = 9;
