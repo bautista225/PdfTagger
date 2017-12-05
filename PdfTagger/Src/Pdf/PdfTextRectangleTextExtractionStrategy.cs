@@ -138,7 +138,10 @@ namespace PdfTagger.Pdf
 
             LineSegment segment = renderInfo.GetBaseline();
             if (renderInfo.GetRise() != 0)
-            { // remove the rise from the baseline - we do this because the text from a super/subscript render operations should probably be considered as part of the baseline of the text the super/sub is relative to 
+            { 
+                // remove the rise from the baseline - we do this because the text from a
+                //super /subscript render operations should probably be considered as part
+                //of the baseline of the text the super/sub is relative to 
                 Matrix riseOffsetTransform = new Matrix(0, -renderInfo.GetRise());
                 segment = segment.TransformBy(riseOffsetTransform);
             }
