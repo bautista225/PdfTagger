@@ -58,16 +58,16 @@ namespace PdfTagger.Pdf
         /// <param name="pdfReader"></param>
         private void GetPdfData(PdfReader pdfReader)
         {
-            for (int p = 1; p <= pdfReader.NumberOfPages; p++)
+            for (int page = 1; page <= pdfReader.NumberOfPages; page++)
             {
 
                 PdfTextRectangleTextExtractionStrategy rectangleStrategy =
                     new PdfTextRectangleTextExtractionStrategy();
 
-                string pdfText = PdfTextExtractor.GetTextFromPage(pdfReader, p,
+                string pdfText = PdfTextExtractor.GetTextFromPage(pdfReader, page,
                   rectangleStrategy);
 
-                var rectSize = pdfReader.GetPageSize(p);
+                var rectSize = pdfReader.GetPageSize(page);
 
                 PdfUnstructuredPages.Add(new PdfUnstructuredPage(rectangleStrategy.GetWordGroups(),
                     rectangleStrategy.GetWordGroups(true), pdfText)

@@ -89,7 +89,8 @@ namespace PdfTagger.Pdf
         /// <returns>Representación textual de la instancia.</returns>
         public override string ToString()
         {
-            return $"{Ll[Vector.I1]}, {Ll[Vector.I1]}, {Ll[Vector.I1]}, {Ll[Vector.I1]}: {Text}";
+            return $"{Ll[Vector.I1]}, {Ll[Vector.I2]}, " +
+                $"{Ur[Vector.I1]}, {Ur[Vector.I2]}: {Text}";
         }
 
         #endregion
