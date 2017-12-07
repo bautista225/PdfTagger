@@ -43,32 +43,32 @@ namespace PdfTagger.Pdf
     /// Rectangulo en una pagina de documento
     /// pdf con información en forma de texto.
     /// </summary>
-    public class PdfTextRectangle
+    public class PdfTextRectangle : PdfTextBaseRectangle
     {
 
         #region Private Properties
 
-        /// <summary>
-        /// Rectangulo en una pagina de documento
-        /// pdf.
-        /// </summary>
-        private iTextSharp.text.Rectangle iTextRectangle;
+        ///// <summary>
+        ///// Rectangulo en una pagina de documento
+        ///// pdf.
+        ///// </summary>
+        //private iTextSharp.text.Rectangle iTextRectangle;
 
         #endregion
 
         #region Private Methods
 
-        /// <summary>
-        /// Carga las coordenadas del rectangulo de itext
-        /// en las coordenadas de la intancia actual de PdfTextRectangle.
-        /// </summary>
-        private void SetPointsFromRectangle()
-        {
-            Llx = iTextRectangle.Left;
-            Lly = iTextRectangle.Bottom;
-            Urx = iTextRectangle.Right;
-            Ury = iTextRectangle.Top;
-        }
+        ///// <summary>
+        ///// Carga las coordenadas del rectangulo de itext
+        ///// en las coordenadas de la intancia actual de PdfTextRectangle.
+        ///// </summary>
+        //private void SetPointsFromRectangle()
+        //{
+        //    Llx = iTextRectangle.Left;
+        //    Lly = iTextRectangle.Bottom;
+        //    Urx = iTextRectangle.Right;
+        //    Ury = iTextRectangle.Top;
+        //}
 
         #endregion
 
@@ -77,7 +77,7 @@ namespace PdfTagger.Pdf
         /// <summary>
         /// Construye una instancia de la clase PdfTextRectangle.
         /// </summary>
-        public PdfTextRectangle()
+        public PdfTextRectangle() :base()
         {
         }
 
@@ -86,10 +86,8 @@ namespace PdfTagger.Pdf
         /// a partir de un rectangulo de itext.
         /// </summary>
         /// <param name="itextRectangle"></param>
-        public PdfTextRectangle(iTextSharp.text.Rectangle itextRectangle)
+        public PdfTextRectangle(iTextSharp.text.Rectangle itextRectangle) : base(itextRectangle)
         {
-            iTextRectangle = itextRectangle;
-            SetPointsFromRectangle();
         }
 
         #endregion
@@ -97,31 +95,14 @@ namespace PdfTagger.Pdf
         #region Public Properties
 
         /// <summary>
-        /// Lower left point x.
-        /// </summary>
-        public float Llx { get; set; }
-
-        /// <summary>
-        /// Lower left point y.
-        /// </summary>
-        public float Lly { get; set; }
-
-        /// <summary>
-        /// Upper right point x.
-        /// </summary>
-        public float Urx { get; set; }
-
-        /// <summary>
-        /// Upper right point y.
-        /// </summary>
-        public float Ury { get; set; }
-
-        /// <summary>
         /// Texto dentro de el rectángulo.
         /// </summary>
         public string Text { get; set; }
 
         #endregion
+
+
+        //= '{Text}'
 
         #region Public Methods
 
@@ -131,7 +112,7 @@ namespace PdfTagger.Pdf
         /// <returns>Representación textual de la instancia.</returns>
         public override string ToString()
         {
-            return $"({Llx}, {Lly}, {Urx}, {Ury}, )= '{Text}'";
+            return base.ToString() + $"= '{Text}'";
         }
 
         #endregion

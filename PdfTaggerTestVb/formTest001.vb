@@ -1,4 +1,5 @@
-﻿Imports PdfTagger.Pdf
+﻿Imports System
+Imports PdfTagger.Pdf
 Imports PdfTagger.Xml
 
 Public Class formTest001
@@ -6,7 +7,11 @@ Public Class formTest001
         ' Creamos un PdfUnstructuredDoc para extracción de datos
         Dim pdf As PdfUnstructuredDoc = New PdfUnstructuredDoc("C:\test.pdf")
 
-        ' Almacenamos los datos extraidos en un archivo xml
+        '' Almacenamos los datos extraidos en un archivo xml
         XmlParser.SaveAsXml(pdf, "C:\test.xml")
+
+
+
+
     End Sub
 End Class
