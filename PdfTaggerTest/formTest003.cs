@@ -27,18 +27,18 @@ namespace PdfTaggerTest
 
 
             // Partiendo de una entrada de datos no estructurados de pdf 
-            PdfUnstructuredDoc pdf = new PdfUnstructuredDoc(@"C:\ProgramData\PdfTagger\Inbox\0000021101.pdf");
+            PdfUnstructuredDoc pdf = new PdfUnstructuredDoc(@"C:\Users\Txema\Desktop\Inbox\0000014798.pdf");
 
             // y de un conjunto de datos estructurados
             InvoiceMetadata metadata = new InvoiceMetadata();
 
-            metadata.InvoiceNumber = "1 / 33050";
+            metadata.InvoiceNumber = "REX1700028";
             metadata.BuyerPartyID = "ES - A12070330";
-            metadata.IssueDate = new DateTime(2017, 11, 30);
-            metadata.GrossAmount = 3646.50m;
-            metadata.TaxesOutputsBase01 = 3013.64m;
+            metadata.IssueDate = new DateTime(2017, 11, 7);
+            metadata.GrossAmount = -406.56m;
+            metadata.TaxesOutputsBase01 = -336m;
             metadata.TaxesOutputsRate01 = 21m;
-            metadata.TaxesOutputsAmount01 = 632.86m;
+            metadata.TaxesOutputsAmount01 = -70.56m;
 
             PdfCompareResult compareResult = PdfCompare.Compare(new BusinessHierarchySet(), pdf, metadata);
           
