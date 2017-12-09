@@ -38,6 +38,8 @@
  */
 using PdfTagger.Dat.Txt;
 using PdfTagger.Pdf;
+using System;
+using System.Collections.Generic;
 using System.Reflection;
 
 namespace PdfTagger.Dat
@@ -139,14 +141,21 @@ namespace PdfTagger.Dat
                     foreach (var page in pdf.PdfUnstructuredPages)
                     {
                         foreach (var wordGroup in page.WordGroups)
-                            foreach (var match in parserHierarchy.GetMatches(pValue,
-                                wordGroup.Text))
+                            foreach (var match in parserHierarchy.GetMatches(pValue, wordGroup.Text))
                                 compareResult.WordGroupsInfos.Add(new PdfCompareInfo(pdf, page, wordGroup, match, pInf));
 
                         foreach (var line in page.Lines)
-                            foreach (var match in parserHierarchy.GetMatches(pValue,
-                                line.Text))
+                            foreach (var match in parserHierarchy.GetMatches(pValue,line.Text))
                                 compareResult.LinesInfos.Add(new PdfCompareInfo(pdf, page, line, match, pInf));
+
+
+                        foreach (var match in parserHierarchy.GetMatches(pValue, page.PdfText))
+                        {
+                           
+                            Type txtBoundMatchGenType = typeof(TextBoundMatch<>).MakeGenericType(pInf.PropertyType);
+                            ITextMatch txtBoundMatch = (ITextMatch)Activator.CreateInstance(txtBoundMatchGenType, match);
+                            compareResult.PdfTextInfos.Add(new PdfCompareInfo(pdf, page, null, txtBoundMatch, pInf));
+                        }
 
                     }
                 }

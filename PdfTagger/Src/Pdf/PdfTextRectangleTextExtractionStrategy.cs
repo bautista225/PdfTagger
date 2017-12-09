@@ -101,6 +101,28 @@ namespace PdfTagger.Pdf
             return _PdfTextChunks.IndexOf(chunk) == (_PdfTextChunks.Count - 1);
         }
 
+        /// <summary>
+        /// Devuelve true si la cadena empieza con espacio.
+        /// </summary>
+        /// <param name="str">Cadena a analizar.</param>
+        /// <returns>True si empieza por espacio false si no.</returns>
+        private bool StartsWithSpace(string str)
+        {
+            if (str.Length == 0) return false;
+            return str[0] == ' ';
+        }
+
+        /// <summary>
+        /// Devuelve true si la cadena termina con espacio.
+        /// </summary>
+        /// <param name="str">Cadena a analizar.</param>
+        /// <returns>True si termina por espacio false si no.</returns>
+        private bool EndsWithSpace(string str)
+        {
+            if (str.Length == 0) return false;
+            return str[str.Length - 1] == ' ';
+        }
+
         #endregion
 
         #region Constructors
@@ -220,6 +242,9 @@ namespace PdfTagger.Pdf
                         rec = Merge(rec, new Rectangle(chunk.Ll[Vector.I1], chunk.Ll[Vector.I2],
                             chunk.Ur[Vector.I1], chunk.Ur[Vector.I2]));
                     }
+
+                    if (IsChunkAtWordBoundary(chunk, lastChunk) && !StartsWithSpace(chunk.Text) && !EndsWithSpace(lastChunk.Text))
+                        sb.Append(' ');
 
                     sb.Append(chunk.Text);
 

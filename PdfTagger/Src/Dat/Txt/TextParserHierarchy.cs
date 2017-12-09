@@ -93,9 +93,9 @@ namespace PdfTagger.Dat.Txt
         /// <param name="input">Input utilizado para comparar.</param>
         /// <param name="text">Texto a analizar en la comparación.</param>
         /// <returns></returns>
-        public List<ITextParserMatch> GetMatches(object input, string text)
+        public List<ITextMatch> GetMatches(object input, string text)
         {
-            List<ITextParserMatch> matches = new List<ITextParserMatch>();
+            List<ITextMatch> matches = new List<ITextMatch>();
 
             foreach (var match in GetMatches(text))
                 if(match.Value.Equals(input))

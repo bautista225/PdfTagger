@@ -55,7 +55,7 @@ namespace PdfTagger.Dat
         PdfUnstructuredDoc _Pdf;
         PdfUnstructuredPage _PdfPage;
         PdfTextRectangle _PdfTextRectangle;
-        ITextParserMatch _TextParserMatch;
+        ITextMatch _TextParserMatch;
         PropertyInfo _PropertyInfo;
 
         #endregion
@@ -81,7 +81,7 @@ namespace PdfTagger.Dat
         public PdfCompareInfo(PdfUnstructuredDoc pdf,
             PdfUnstructuredPage pdfPage,
             PdfTextRectangle pdfTextRectangle,
-            ITextParserMatch textParserMatch,
+            ITextMatch textParserMatch,
             PropertyInfo propertyInfo)
         {
             _Pdf = pdf;
@@ -123,6 +123,39 @@ namespace PdfTagger.Dat
             }
         }
 
+        /// <summary>
+        /// Valor obtenido.
+        /// </summary>
+        public string TextValue
+        {
+            get
+            {
+                return _TextParserMatch.TextValue;
+            }
+        }
+
+        /// <summary>
+        /// Valor obtenido.
+        /// </summary>
+        public string TextContext
+        {
+            get
+            {
+                return _TextParserMatch.TextContext;
+            }
+        }
+
+        /// <summary>
+        /// Indice resultado.
+        /// </summary>
+        public int MatchIndex
+        {
+            get
+            {
+                return _TextParserMatch.MatchIndex;
+            }
+        }  
+
         #endregion
 
         #region Public Methods
@@ -135,7 +168,7 @@ namespace PdfTagger.Dat
         /// de la intancia actual</returns>
         public override string ToString()
         {
-            return $"({PdfPageN}) {_PropertyInfo.Name}: [{_TextParserMatch}]";
+            return $"({PdfPageN}-{_TextParserMatch.MatchIndex}) {_PropertyInfo.Name}: [{_TextParserMatch}]";
         }
 
         #endregion

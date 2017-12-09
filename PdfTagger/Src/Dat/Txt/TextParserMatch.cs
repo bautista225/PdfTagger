@@ -36,6 +36,7 @@
     For more information, please contact Irene Solutions SL. at this
     address: info@irenesolutions.com
  */
+using System;
 using System.Text.RegularExpressions;
 
 namespace PdfTagger.Dat.Txt
@@ -45,7 +46,7 @@ namespace PdfTagger.Dat.Txt
     /// Representa un resultado del conjunto de resultados 
     /// obtenidos de la ejecución de un TextParser. 
     /// </summary>
-    public class TextParserMatch<T> : ITextParserMatch
+    public class TextParserMatch<T> : ITextMatch
     {
 
         #region Private Member Variables
@@ -72,14 +73,14 @@ namespace PdfTagger.Dat.Txt
         public string TextContext { get; private set; }
 
         /// <summary>
-        /// Resultados.
+        /// Indice resultado.
         /// </summary>
         public int MatchIndex
         {
             get
             {
                 if (_TextMatch == null)
-                    return 0;
+                    return -1;
 
                 return _TextMatch.Index;
             }
@@ -118,7 +119,18 @@ namespace PdfTagger.Dat.Txt
 
         #endregion
 
-        #region Public Methods
+        #region Public Methods    
+
+        /// <summary>
+        /// Devuelve la coincidencia obtenida
+        /// mediante Regex sobre la que se ha
+        /// creado la presente instancia.
+        /// </summary>
+        /// <returns></returns>
+        public Match GetRegexMatch()
+        {
+            return _TextMatch;
+        }
 
         /// <summary>
         /// Devuelve una representación textual

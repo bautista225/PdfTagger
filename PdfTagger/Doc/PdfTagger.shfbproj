@@ -26,11 +26,12 @@
     <PresentationStyle>VS2013</PresentationStyle>
     <Preliminary>False</Preliminary>
     <NamingMethod>Guid</NamingMethod>
-    <HelpTitle>Documentaci&amp;#243%3bn de la la librear&amp;#237%3ba: PdfTagger</HelpTitle>
+    <HelpTitle>Documentaci&amp;#243%3bn de la la librer&amp;#237%3ba: PdfTagger</HelpTitle>
     <ContentPlacement>AboveNamespaces</ContentPlacement>
     <DocumentationSources>
       <DocumentationSource sourceFile="..\bin\Debug\PdfTagger.dll" />
-<DocumentationSource sourceFile="..\bin\Debug\PdfTagger.xml" /></DocumentationSources>
+      <DocumentationSource sourceFile="..\bin\Debug\PdfTagger.xml" />
+    </DocumentationSources>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
 			 the build.  The others are optional common platform types that may appear. -->

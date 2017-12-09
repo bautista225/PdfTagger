@@ -58,7 +58,7 @@ namespace PdfTagger.Dat.Txt
         /// <param name="text">texto a analizar.</param>
         /// <returns>Conjunto de resultados que satisfacen
         /// la igualdad.</returns>
-        List<ITextParserMatch> GetMatches(object input, string text);
+        List<ITextMatch> GetMatches(object input, string text);
 
         #endregion  
 

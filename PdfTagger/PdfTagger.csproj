@@ -60,10 +60,12 @@
     <Compile Include="Src\Dat\Txt\HierarchySet.cs" />
     <Compile Include="Src\Dat\Txt\IConverter.cs" />
     <Compile Include="Src\Dat\Txt\ITextParserHierarchy.cs" />
-    <Compile Include="Src\Dat\Txt\ITextParserMatch.cs" />
+    <Compile Include="Src\Dat\Txt\ITextMatch.cs" />
+    <Compile Include="Src\Dat\Txt\TextBoundMatch.cs" />
     <Compile Include="Src\Dat\Txt\TextParser.cs" />
     <Compile Include="Src\Dat\Txt\TextParserHierarchy.cs" />
     <Compile Include="Src\Dat\Txt\TextParserMatch.cs" />
+    <Compile Include="Src\Dat\Txt\TxtRegex.cs" />
     <Compile Include="Src\Pdf\PdfTextChunk.cs" />
     <Compile Include="Src\Pdf\PdfTextBaseRectangle.cs" />
     <Compile Include="Src\Pdf\PdfTextRectangle.cs" />
