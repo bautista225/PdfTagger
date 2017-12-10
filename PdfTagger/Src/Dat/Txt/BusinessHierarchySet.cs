@@ -57,7 +57,7 @@ namespace PdfTagger.Dat.Txt
         /// </summary>
         public BusinessHierarchySet() : base()
         {
-            HierarchyByType.Add(typeof(DateTime), GetDateParser());
+            HierarchyByType.Add(typeof(DateTime?), GetDateParser());
             HierarchyByType.Add(typeof(decimal), GetAmountParser());
             HierarchyByType.Add(typeof(string), GetTextParser());
         }
@@ -70,17 +70,17 @@ namespace PdfTagger.Dat.Txt
         /// Devuelve la jerarquía estandard para fechas.
         /// </summary>
         /// <returns></returns>
-        public static TextParserHierarchy<DateTime> GetDateParser()
+        private static TextParserHierarchy<DateTime?> GetDateParser()
         {
-            TextParserHierarchy<DateTime> hierarchyDate = new TextParserHierarchy<DateTime>()
+            TextParserHierarchy<DateTime?> hierarchyDate = new TextParserHierarchy<DateTime?>()
             {
-                Parsers = new List<TextParser<DateTime>>() {
-                    new TextParser<DateTime>(@"\d{2}\/\d{2}\/\d{4}", new DefaultDateConverter()),
-                    new TextParser<DateTime>(@"\d{2}\.\d{2}\.\d{4}", new DefaultDateConverter()),
-                    new TextParser<DateTime>(@"\d{2}-\d{2}-\d{4}", new DefaultDateConverter()),
-                    new TextParser<DateTime>(@"\d{2}\/\d{2}\/\d{2}", new DefaultDateConverter()),
-                    new TextParser<DateTime>(@"\d{2}\.\d{2}\.\d{2}", new DefaultDateConverter()),
-                    new TextParser<DateTime>(@"\d{2}-\d{2}-\d{2}", new DefaultDateConverter())
+                Parsers = new List<TextParser<DateTime?>>() {
+                    new TextParser<DateTime?>(@"\d{2}\/\d{2}\/\d{4}", new DefaultDateConverter()),
+                    new TextParser<DateTime?>(@"\d{2}\.\d{2}\.\d{4}", new DefaultDateConverter()),
+                    new TextParser<DateTime?>(@"\d{2}-\d{2}-\d{4}", new DefaultDateConverter()),
+                    new TextParser<DateTime?>(@"\d{2}\/\d{2}\/\d{2}", new DefaultDateConverter()),
+                    new TextParser<DateTime?>(@"\d{2}\.\d{2}\.\d{2}", new DefaultDateConverter()),
+                    new TextParser<DateTime?>(@"\d{2}-\d{2}-\d{2}", new DefaultDateConverter())
                 }
             };
 
@@ -93,7 +93,7 @@ namespace PdfTagger.Dat.Txt
         /// Devuelve la jerarquía estandar para importes.
         /// </summary>
         /// <returns>Jerarquía estandar para importes.</returns>
-        public static TextParserHierarchy<decimal> GetAmountParser()
+        private static TextParserHierarchy<decimal> GetAmountParser()
         {
             TextParserHierarchy<decimal> hierarchyAmount = new TextParserHierarchy<decimal>()
             {
@@ -119,13 +119,13 @@ namespace PdfTagger.Dat.Txt
         /// Devuelve la jerarquía estandard para textos.
         /// </summary>
         /// <returns>Jerarquía estandard para textos.</returns>
-        public static TextParserHierarchy<string> GetTextParser()
+        private static TextParserHierarchy<string> GetTextParser()
         {
             TextParserHierarchy<string> hierarchyAmount = new TextParserHierarchy<string>()
             {
                 Parsers = new List<TextParser<string>>()
                 {
-                    new TextParser<string>( null, new DefaultTextConverter())
+                    new TextParser<string>(null, new DefaultTextConverter())
                 }
             };
 

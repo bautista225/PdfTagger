@@ -98,8 +98,8 @@ namespace PdfTagger
 
                 _Current = new Settings();
 
-                _Current.InboxPath = Path + $"Inbox{_PathSep}";
-                _Current.OutboxPath = Path + $"Outbox{_PathSep}"; 
+                _Current.PatternsPath = Path + $"Patterns{_PathSep}";
+                _Current.MaxPatternCount = 200; 
 
             }
 
@@ -116,11 +116,9 @@ namespace PdfTagger
             if (!Directory.Exists(Path))
                 Directory.CreateDirectory(Path);
 
-            if (!Directory.Exists(_Current.InboxPath))
-                Directory.CreateDirectory(_Current.InboxPath);
+            if (!Directory.Exists(_Current.PatternsPath))
+                Directory.CreateDirectory(_Current.PatternsPath);
 
-            if (!Directory.Exists(_Current.OutboxPath))
-                Directory.CreateDirectory(_Current.OutboxPath);
         }
 
         #endregion
@@ -156,17 +154,17 @@ namespace PdfTagger
 
         /// <summary>
         /// Ruta al directorio donde se encuentran
-        /// los pdf de entrada analizados.
+        /// los patrones de búsqueda.
         /// </summary>
-        [XmlElement("InboxPath")]
-        public string InboxPath { get; set; }
+        [XmlElement("PatternsPath")]
+        public string PatternsPath { get; set; }
 
         /// <summary>
-        /// Ruta al directorio donde se encuentran
-        /// los datos de salida.
+        /// Número de patrones a almacenar como
+        /// máximo.
         /// </summary>
-        [XmlElement("OutboxPath")]
-        public string OutboxPath { get; set; }
+        [XmlElement("MaxPatternCount")]
+        public int MaxPatternCount { get; set; }
 
         #endregion
 

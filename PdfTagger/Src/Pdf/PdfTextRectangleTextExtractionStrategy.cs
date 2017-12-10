@@ -220,7 +220,7 @@ namespace PdfTagger.Pdf
 
                             rectangles.Add(new PdfTextRectangle(rec)
                             {
-                                Text = sb.ToString()
+                                Text = sb.ToString().Trim()
                             });
 
                         }
@@ -228,7 +228,7 @@ namespace PdfTagger.Pdf
                         {
                             rectangles.Add(new PdfTextRectangle(rec)
                             {
-                                Text = sb.ToString()
+                                Text = sb.ToString().Trim()
                             });
 
                             // reset sb + rec
@@ -243,12 +243,15 @@ namespace PdfTagger.Pdf
                             chunk.Ur[Vector.I1], chunk.Ur[Vector.I2]));
                     }
 
-                    if (IsChunkAtWordBoundary(chunk, lastChunk) && !StartsWithSpace(chunk.Text) && !EndsWithSpace(lastChunk.Text))
+                    if (IsChunkAtWordBoundary(chunk, lastChunk) && 
+                        !StartsWithSpace(chunk.Text) && 
+                        !EndsWithSpace(lastChunk.Text))
                         sb.Append(' ');
 
                     sb.Append(chunk.Text);
 
                 }
+
                 lastChunk = chunk;
             }
 

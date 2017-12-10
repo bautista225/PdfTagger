@@ -36,6 +36,8 @@
     For more information, please contact Irene Solutions SL. at this
     address: info@irenesolutions.com
  */
+using System;
+
 namespace PdfTagger.Pdf
 {
 
@@ -114,11 +116,47 @@ namespace PdfTagger.Pdf
         /// <summary>
         /// Upper right point y.
         /// </summary>
-        public float Ury { get; set; }  
+        public float Ury { get; set; }
 
         #endregion
 
         #region Public Methods
+
+        /// <summary>
+        /// Determina si el objeto especificado es igual al objeto actual.
+        /// </summary>
+        /// <param name="obj">Objeto que se va a comparar con el objeto actual.</param>
+        /// <returns>Es true si el objeto especificado es igual al objeto actual; 
+        /// en caso contrario, es false.</returns>
+        public override bool Equals(object obj)
+        {
+            PdfTextBaseRectangle input = (obj as PdfTextBaseRectangle);
+
+            if (input == null)
+                throw new ArgumentException("Parámetro de tipo incorrecto.");
+
+            return (Llx == input.Llx &&
+                    Lly == input.Lly &&
+                    Urx == input.Urx &&
+                    Ury == input.Ury);
+        }
+
+        /// <summary>
+        /// Sirve como la función hash predeterminada.
+        /// </summary>
+        /// <returns>Código hash para el objeto actual.</returns>
+        public override int GetHashCode()
+        {
+            int hash = 17;  // Un número primo
+            int prime = 31; // Otro número primo.
+
+            hash = hash * prime + Llx.GetHashCode();
+            hash = hash * prime + Lly.GetHashCode();
+            hash = hash * prime + Urx.GetHashCode();
+            hash = hash * prime + Ury.GetHashCode();
+
+            return hash;
+        }
 
         /// <summary>
         /// Representación textual de la instancia.

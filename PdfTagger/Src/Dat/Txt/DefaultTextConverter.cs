@@ -44,5 +44,21 @@ namespace PdfTagger.Dat.Txt
     /// </summary>
     public class DefaultTextConverter : Converter<string>
     {
+
+        #region Public Methods
+
+        /// <summary>
+        /// Valor del tipo T obtenido mediante
+        /// el conversor.
+        /// </summary>
+        /// <param name="text">Texto a convertir.</param>
+        /// <returns>Valor T representado por el texto.</returns>
+        public override string Convert(string text)
+        {
+            return text.Trim();
+        }
+
+        #endregion
+
     }
 }

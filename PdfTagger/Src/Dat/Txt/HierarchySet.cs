@@ -46,7 +46,7 @@ namespace PdfTagger.Dat.Txt
     /// Catálogo de jerarquías por tipo a aplicar en una operación
     /// de comparación determinada.
     /// </summary>
-    public class HierarchySet
+    public class HierarchySet : IHierarchySet
     {
 
         #region Constructors
@@ -68,7 +68,7 @@ namespace PdfTagger.Dat.Txt
         /// Diccionario de Jararquías según el tipo
         /// de datos.
         /// </summary>
-        public Dictionary<Type, ITextParserHierarchy> HierarchyByType;
+        protected Dictionary<Type, ITextParserHierarchy> HierarchyByType;
 
         #endregion    
 

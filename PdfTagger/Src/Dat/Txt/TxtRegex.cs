@@ -127,6 +127,20 @@ namespace PdfTagger.Dat.Txt
 
         }
 
+        /// <summary>
+        /// Devuelve una cadena basada en el texto de entrada, dónde
+        /// se sustituyen los grupos de dígitos por \d{length} y 
+        /// los grupos de caracteres A-Z o a-z por 
+        /// [A-Z]{length} o [a-z]{length}.
+        /// </summary>
+        /// <param name="text">Texto en el que sustituir los dígitos.</param>
+        /// <returns>Cadena con dígitos sustituidos por \d{length}.</returns>
+        public static string Replace(string text)
+        {
+            string result = ReplaceLetters(text);
+            return ReplaceDigits(result);
+        }
+
         #endregion
 
     }

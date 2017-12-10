@@ -47,6 +47,16 @@ namespace PdfTagger.Dat.Txt
     public interface ITextParserHierarchy
     {
 
+        #region Public Properties
+
+        /// <summary>
+        /// Numero de de parsers asociados
+        /// a la jerarquía.
+        /// </summary>
+        int ParserCount { get; }
+
+        #endregion
+
         #region Public Methods
 
         /// <summary>
@@ -59,6 +69,22 @@ namespace PdfTagger.Dat.Txt
         /// <returns>Conjunto de resultados que satisfacen
         /// la igualdad.</returns>
         List<ITextMatch> GetMatches(object input, string text);
+
+        /// <summary>
+        /// Establece el regex pattern para el parser
+        /// seleccionado.
+        /// </summary>
+        /// <param name="parserIndex">Indice de pattern a actualizar.</param>
+        /// <param name="pattern">Patrón regex.</param>
+        void SetParserRegexPattern(int parserIndex, string pattern);
+
+        /// <summary>
+        /// Devuelve el regex pattern para el parser
+        /// seleccionado.
+        /// </summary>
+        /// <param name="parserIndex">Indice de pattern a actualizar.</param>
+        /// <returns>Devuelve el regex pattern para el parser.</returns>
+        string GetParserRegexPattern(int parserIndex);
 
         #endregion  
 

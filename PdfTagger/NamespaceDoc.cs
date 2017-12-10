@@ -64,6 +64,21 @@ namespace PdfTagger.Dat.Met.Bus
 
 }
 
+namespace PdfTagger.Pat
+{
+
+    /// <summary>
+	/// <para>El espacio de nombres Pat contiene los
+    /// elementos necesarios para trabajar con los
+    /// patrones de búsqueda aprendidos.</para> 
+	/// </summary>
+	[System.Runtime.CompilerServices.CompilerGenerated]
+    public class NamespaceDoc
+    {
+    }
+
+}
+
 namespace PdfTagger.Dat.Txt
 {
 

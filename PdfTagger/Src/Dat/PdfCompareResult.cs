@@ -36,6 +36,8 @@
     For more information, please contact Irene Solutions SL. at this
     address: info@irenesolutions.com
  */
+using PdfTagger.Dat.Txt;
+using PdfTagger.Pdf;
 using System.Collections.Generic;
 
 namespace PdfTagger.Dat
@@ -47,7 +49,52 @@ namespace PdfTagger.Dat
     public class PdfCompareResult
     {
 
+        #region Private Mambers Variables
+
+        PdfUnstructuredDoc _Pdf;
+        IMetadata _Metadata;
+        IHierarchySet _HierarchySet;
+
+        #endregion
+
         #region Public Properties
+
+        /// <summary>
+        /// Categoría de documento a la que pertenece el pdf.
+        /// </summary>
+        public string DocCategory
+        {
+            get
+            {
+                return _Pdf.DocCategory;
+            }
+        }
+
+        /// <summary>
+        /// ID del documento pdf.
+        /// </summary>
+        public string DocID
+        {
+            get
+            {
+                return _Pdf.DocID;
+            }
+        }
+
+        /// <summary>
+        /// Nombre del catálogo de jerarquías
+        /// utilizado.
+        /// </summary>
+        public string HierarchySetName
+        {
+            get
+            {
+                if (_HierarchySet == null)
+                    return null;
+
+                return _HierarchySet.GetType().FullName;
+            }
+        }
 
         /// <summary>
         /// Información de coincidencias encontradas en los 
@@ -83,6 +130,20 @@ namespace PdfTagger.Dat
             WordGroupsInfos = new List<PdfCompareInfo>();
             LinesInfos = new List<PdfCompareInfo>();
             PdfTextInfos = new List<PdfCompareInfo>();
+        }
+
+        /// <summary>
+        /// Construye una nueva instancia de PdfCompareResult.
+        /// </summary>
+        /// <param name="pdf">PdfUnstructuredDoc a partir del cual se ha obtenido.</param>
+        /// <param name="metadata">IMetadata a partir del cual se ha obtenido.</param>
+        /// <param name="hierarchySet">Catálogo de jerarquías por tipo.</param>
+        public PdfCompareResult(PdfUnstructuredDoc pdf, IMetadata metadata, 
+            IHierarchySet hierarchySet) : this()
+        {
+            _Pdf = pdf;
+            _Metadata = metadata;
+            _HierarchySet = hierarchySet;
         }
 
         #endregion

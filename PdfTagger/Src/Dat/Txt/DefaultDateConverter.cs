@@ -44,7 +44,7 @@ namespace PdfTagger.Dat.Txt
     /// <summary>
     /// Conversor por defecto de fecha.
     /// </summary>
-    public class DefaultDateConverter : Converter<DateTime>
+    public class DefaultDateConverter : Converter<DateTime?>
     {
     }
 }

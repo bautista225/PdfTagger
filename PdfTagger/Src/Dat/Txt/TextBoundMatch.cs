@@ -48,11 +48,11 @@ namespace PdfTagger.Dat.Txt
     {
 
         #region Private Members Variables
+
         Match _MatchLowerSecond;
         Match _MatchLowerFirst;
         Match _MatchToken;
         Match _MatchUpper;
-
         ITextMatch _ParserMatch;
 
         #endregion
@@ -176,7 +176,13 @@ namespace PdfTagger.Dat.Txt
         /// <summary>
         /// Texto del que se ha obtenido el valor.
         /// </summary>
-        public string TextValue { get; private set; }
+        public string TextValue
+        {
+            get
+            {
+                return _MatchToken.Value;
+            }
+        }
 
         /// <summary>
         /// Contexto del que se ha obtenido el texto.
@@ -194,6 +200,38 @@ namespace PdfTagger.Dat.Txt
                     return -1;
 
                 return _MatchToken.Index;
+            }
+        }
+
+        /// <summary>
+        /// Patrón regex utilizado.
+        /// </summary>
+        public string Pattern
+        {
+            get
+            {
+                if(_MatchLowerFirst==null || 
+                    _MatchUpper == null)
+                    return null;
+
+                string patternLower = (_MatchLowerSecond == null) ? "" :
+                    _MatchLowerSecond.Value + _MatchLowerFirst.Value;
+
+                patternLower = TxtRegex.ReplaceDigits(patternLower);
+                patternLower = TxtRegex.EscapeReserved(patternLower);
+
+                patternLower = $"(?<={patternLower})";
+
+                string patternUpper = _MatchUpper.Value;
+
+                patternUpper = TxtRegex.ReplaceDigits(patternUpper);
+                patternUpper = TxtRegex.EscapeReserved(patternUpper);
+
+                patternUpper = $"(?={patternUpper})";
+
+                return $"{patternLower}{_ParserMatch.Pattern}{patternUpper}";
+              
+
             }
         }
 

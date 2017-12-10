@@ -36,6 +36,7 @@
     For more information, please contact Irene Solutions SL. at this
     address: info@irenesolutions.com
  */
+using PdfTagger.Pat;
 using System;
 using System.Text.RegularExpressions;
 
@@ -141,7 +142,7 @@ namespace PdfTagger.Dat.Txt
         public override string ToString()
         {
             
-            return $"{((_TextMatch == null) ? "" : $"{_TextMatch.Index}")}{TextContext}: {{{Value}}}";
+            return $"{((_TextMatch == null) ? "" : $"{_TextMatch.Index}")}{TextValue}: {{{Value}}}";
         }
 
         #endregion

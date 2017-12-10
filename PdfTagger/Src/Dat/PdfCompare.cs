@@ -39,7 +39,6 @@
 using PdfTagger.Dat.Txt;
 using PdfTagger.Pdf;
 using System;
-using System.Collections.Generic;
 using System.Reflection;
 
 namespace PdfTagger.Dat
@@ -111,7 +110,7 @@ namespace PdfTagger.Dat
         ///        Dim compareResult As PdfCompareResult = PdfCompare.Compare(New BusinessHierarchySet(), pdf, metadata)
         /// </code>  
         /// </summary>
-        /// <param name="businessHierarchySet">Catalogo de jerarquías de analizadores
+        /// <param name="hierarchySet">Catalogo de jerarquías de analizadores
         /// por tipo. La operación utilizara para comparar cada tipo de variable
         /// el parser obtenido del catálogo. La comparación se irá ejecutando
         /// por cada uno de los parsers según su orden en la jerarquía, hasta
@@ -123,18 +122,21 @@ namespace PdfTagger.Dat
         /// datos no estructurados obtenidos del pdf.</param>
         /// <returns>Instancia de la clase PdfCompareResult con
         /// los resultados obtenidos de la comparación.</returns>
-        public static PdfCompareResult Compare(BusinessHierarchySet businessHierarchySet, 
+        public static PdfCompareResult Compare(IHierarchySet hierarchySet, 
             PdfUnstructuredDoc pdf, IMetadata metadata)
         {
-            PdfCompareResult compareResult = new PdfCompareResult();
+            PdfCompareResult compareResult = new PdfCompareResult(pdf, metadata, hierarchySet);
 
             foreach (PropertyInfo pInf in metadata.GetType().GetProperties())
             {
                 object pValue = pInf.GetValue(metadata);
 
                 // Obtengo la jerarquía de analizadores
-                ITextParserHierarchy parserHierarchy = businessHierarchySet.GetParserHierarchy(pInf.PropertyType);
-                
+                ITextParserHierarchy parserHierarchy = hierarchySet.GetParserHierarchy(pInf.PropertyType);
+
+                if (pInf.PropertyType == typeof(string)) 
+                    parserHierarchy.SetParserRegexPattern(0, TxtRegex.Replace($"{pValue}"));
+
                 // Recorro todos los datos del pdf que quiero comparar
                 if (parserHierarchy != null && pValue != null && !IsZeroNumeric(pValue))
                 {
@@ -145,16 +147,18 @@ namespace PdfTagger.Dat
                                 compareResult.WordGroupsInfos.Add(new PdfCompareInfo(pdf, page, wordGroup, match, pInf));
 
                         foreach (var line in page.Lines)
-                            foreach (var match in parserHierarchy.GetMatches(pValue,line.Text))
+                            foreach (var match in parserHierarchy.GetMatches(pValue, line.Text))
                                 compareResult.LinesInfos.Add(new PdfCompareInfo(pdf, page, line, match, pInf));
-
 
                         foreach (var match in parserHierarchy.GetMatches(pValue, page.PdfText))
                         {
-                           
+
                             Type txtBoundMatchGenType = typeof(TextBoundMatch<>).MakeGenericType(pInf.PropertyType);
                             ITextMatch txtBoundMatch = (ITextMatch)Activator.CreateInstance(txtBoundMatchGenType, match);
-                            compareResult.PdfTextInfos.Add(new PdfCompareInfo(pdf, page, null, txtBoundMatch, pInf));
+
+                            if (txtBoundMatch.Pattern!=null)
+                                compareResult.PdfTextInfos.Add(new PdfCompareInfo(pdf, page, null, txtBoundMatch, pInf));
+
                         }
 
                     }

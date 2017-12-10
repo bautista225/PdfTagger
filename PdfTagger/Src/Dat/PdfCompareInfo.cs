@@ -38,6 +38,7 @@
  */
 
 using PdfTagger.Dat.Txt;
+using PdfTagger.Pat;
 using PdfTagger.Pdf;
 using System.Reflection;
 
@@ -55,7 +56,7 @@ namespace PdfTagger.Dat
         PdfUnstructuredDoc _Pdf;
         PdfUnstructuredPage _PdfPage;
         PdfTextRectangle _PdfTextRectangle;
-        ITextMatch _TextParserMatch;
+        ITextMatch _TextMatch;
         PropertyInfo _PropertyInfo;
 
         #endregion
@@ -79,15 +80,15 @@ namespace PdfTagger.Dat
         /// de los metadatos de la cual se a comparado el valor y se
         /// ha obtenido la coincidencia que ha generado el info.</param>
         public PdfCompareInfo(PdfUnstructuredDoc pdf,
-            PdfUnstructuredPage pdfPage,
+            PdfUnstructuredPage pdfPage,            
             PdfTextRectangle pdfTextRectangle,
             ITextMatch textParserMatch,
             PropertyInfo propertyInfo)
         {
             _Pdf = pdf;
-            _PdfPage = pdfPage;
+            _PdfPage = pdfPage;            
             _PdfTextRectangle = pdfTextRectangle;
-            _TextParserMatch = textParserMatch;
+            _TextMatch = textParserMatch;
             _PropertyInfo = propertyInfo;
         }
 
@@ -104,7 +105,7 @@ namespace PdfTagger.Dat
         {
             get
             {
-                return _Pdf.PdfUnstructuredPages.IndexOf(_PdfPage);
+                return _Pdf.PdfUnstructuredPages.IndexOf(_PdfPage) + 1;
             }
 
         }
@@ -130,7 +131,7 @@ namespace PdfTagger.Dat
         {
             get
             {
-                return _TextParserMatch.TextValue;
+                return _TextMatch.TextValue;
             }
         }
 
@@ -141,7 +142,7 @@ namespace PdfTagger.Dat
         {
             get
             {
-                return _TextParserMatch.TextContext;
+                return _TextMatch.TextContext;
             }
         }
 
@@ -152,13 +153,45 @@ namespace PdfTagger.Dat
         {
             get
             {
-                return _TextParserMatch.MatchIndex;
+                return _TextMatch.MatchIndex;
             }
-        }  
+        }
 
         #endregion
 
         #region Public Methods
+
+        /// <summary>
+        /// Devuelve un patrón de búsqueda a partir de la 
+        /// instancia de coicidencia.
+        /// </summary>
+        /// <returns>Patrón de búsqueda.</returns>
+        public PdfTagPattern GetPdfTagPattern()
+        {
+
+            PdfTextBaseRectangle rectangle = null;
+
+            if (_PdfTextRectangle != null)
+                rectangle = new PdfTextBaseRectangle()
+                {
+                    Llx = _PdfTextRectangle.Llx,
+                    Lly = _PdfTextRectangle.Lly,
+                    Urx = _PdfTextRectangle.Urx,
+                    Ury = _PdfTextRectangle.Ury
+                };
+
+            string regexPattern = _TextMatch.Pattern ?? 
+                TxtRegex.ReplaceDigits(TxtRegex.ReplaceLetters(_TextMatch.TextValue));
+
+            return new PdfTagPattern()
+            {
+                RegexPattern = regexPattern,
+                IsLastPage = (PdfPageN == _Pdf.PdfUnstructuredPages.Count),
+                PdfPageN = PdfPageN,
+                PdfRectangle = rectangle,
+                MetadataItemName = MetadataItemName
+            };
+        }
 
         /// <summary>
         /// Devuelve una representación textual
@@ -168,7 +201,8 @@ namespace PdfTagger.Dat
         /// de la intancia actual</returns>
         public override string ToString()
         {
-            return $"({PdfPageN}-{_TextParserMatch.MatchIndex}) {_PropertyInfo.Name}: [{_TextParserMatch}]";
+            return $"({PdfPageN}-{_TextMatch.MatchIndex})" + 
+                $" {_PropertyInfo.Name}: [{_TextMatch}]";
         }
 
         #endregion

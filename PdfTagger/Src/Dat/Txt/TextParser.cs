@@ -70,7 +70,7 @@ namespace PdfTagger.Dat.Txt
         /// <summary>
         /// Patrón de expresión regular asociado.
         /// </summary>
-        public string Pattern { get; private set; }
+        public string Pattern { get; set; }
 
         /// <summary>
         /// Conversor asociado.

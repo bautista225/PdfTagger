@@ -101,9 +101,6 @@ namespace PdfTagger.Pdf
 
         #endregion
 
-
-        //= '{Text}'
-
         #region Public Methods
 
         /// <summary>

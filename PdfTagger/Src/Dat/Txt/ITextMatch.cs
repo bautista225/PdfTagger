@@ -36,6 +36,8 @@
     For more information, please contact Irene Solutions SL. at this
     address: info@irenesolutions.com
  */
+using iTextSharp.text.pdf;
+using PdfTagger.Pat;
 using System;
 using System.Text.RegularExpressions;
 
@@ -65,6 +67,12 @@ namespace PdfTagger.Dat.Txt
         /// Indice resultado.
         /// </summary>
         int MatchIndex { get; }
+
+
+        /// <summary>
+        /// Patrón regex utilizado.
+        /// </summary>
+        string Pattern { get; }
 
         #endregion
 

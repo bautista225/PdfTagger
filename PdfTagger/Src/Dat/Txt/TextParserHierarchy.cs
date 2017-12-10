@@ -62,7 +62,7 @@ namespace PdfTagger.Dat.Txt
         private List<TextParserMatch<T>> GetMatches(string text)
         {
 
-            Dictionary<int, TextParserMatch<T>> matches = new Dictionary<int, Txt.TextParserMatch<T>>();
+            Dictionary<int, TextParserMatch<T>> matches = new Dictionary<int, TextParserMatch<T>>();
 
             foreach (var parser in Parsers)
                 foreach (var match in parser.GetMatches(text))
@@ -82,9 +82,43 @@ namespace PdfTagger.Dat.Txt
         /// </summary>
         public List<TextParser<T>> Parsers { get; set; }
 
-        #endregion      
+        /// <summary>
+        /// Numero de de parsers asociados
+        /// a la jerarquía.
+        /// </summary>
+        public int ParserCount
+        {
+            get
+            {
+                return Parsers.Count;
+            }
+        }
+
+        #endregion
 
         #region Public Methods
+
+        /// <summary>
+        /// Establece el regex pattern para el parser
+        /// seleccionado.
+        /// </summary>
+        /// <param name="parserIndex">Indice de pattern a actualizar.</param>
+        /// <param name="pattern">Patrón regex.</param>
+        public void SetParserRegexPattern(int parserIndex, string pattern)
+        {
+            Parsers[parserIndex].Pattern = pattern;
+        }
+
+        /// <summary>
+        /// Devuelve el regex pattern para el parser
+        /// seleccionado.
+        /// </summary>
+        /// <param name="parserIndex">Indice de pattern a actualizar.</param>
+        /// <returns>Devuelve el regex pattern para el parser.</returns>
+        public string GetParserRegexPattern(int parserIndex)
+        {
+            return Parsers[parserIndex].Pattern;
+        }
 
         /// <summary>
         /// Resultados unívocos obtenidos mediante 
