@@ -36,8 +36,6 @@
     For more information, please contact Irene Solutions SL. at this
     address: info@irenesolutions.com
  */
-using PdfTagger.Pat;
-using System;
 using System.Text.RegularExpressions;
 
 namespace PdfTagger.Dat.Txt

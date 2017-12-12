@@ -1,5 +1,8 @@
 ﻿using PdfTagger.Dat;
+using PdfTagger.Pdf;
 using PdfTagger.Xml;
+using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace PdfTagger.Pat
@@ -62,13 +65,31 @@ namespace PdfTagger.Pat
         private static void Create(PdfCompareResult compareResult, string path)
         {
 
-            PdfTagPatternStore store = new PdfTagPatternStore();
+            PdfTagPatternStore store = GetStore(compareResult);
+            XmlParser.SaveAsXml(store, path);
+
+        }
+
+        /// <summary>
+        /// Obtiene un almacén de patrones a partir de unos
+        /// resultados de comparación.
+        /// </summary>
+        /// <param name="compareResult">Resultados de comparación.</param>
+        /// <returns>Almacén de patrones.</returns>
+        private static PdfTagPatternStore GetStore(PdfCompareResult compareResult)
+        {
+            PdfTagPatternStore store = new PdfTagPatternStore
+            {
+                DocCategory = compareResult.DocCategory,
+                DocID = compareResult.DocID,
+                HierarchySetName = compareResult.HierarchySetName,
+                MetadataName = compareResult.MetadataName
+            };
 
             foreach (var info in compareResult.WordGroupsInfos)
             {
                 PdfTagPattern pattern = info.GetPdfTagPattern();
                 pattern.SourceTypeName = "WordGroupsInfos";
-                FillPdfTagPattern(compareResult, pattern);
                 store.PdfPatterns.Add(pattern);
             }
 
@@ -76,7 +97,6 @@ namespace PdfTagger.Pat
             {
                 PdfTagPattern pattern = info.GetPdfTagPattern();
                 pattern.SourceTypeName = "LinesInfos";
-                FillPdfTagPattern(compareResult, pattern);
                 store.PdfPatterns.Add(pattern);
             }
 
@@ -84,24 +104,64 @@ namespace PdfTagger.Pat
             {
                 PdfTagPattern pattern = info.GetPdfTagPattern();
                 pattern.SourceTypeName = "PdfTextInfos";
-                FillPdfTagPattern(compareResult, pattern);
                 store.PdfPatterns.Add(pattern);
             }
 
-            XmlParser.SaveAsXml(store, path);
+            return store;
 
         }
 
         /// <summary>
-        /// Devuelve un patrón de búsqueda a partir de la 
-        /// instancia de coicidencia.
+        /// Recupera un archivo de almacén de patrones.
         /// </summary>
-        /// <returns>Patrón de búsqueda.</returns>
-        private static void FillPdfTagPattern(PdfCompareResult compareResult, PdfTagPattern pattern)
+        /// <param name="path">Ruta al archivo.</param>
+        /// <returns>Almacén de patrones.</returns>
+        private static PdfTagPatternStore GetStore(string path)
         {
-            pattern.DocCategory = compareResult.DocCategory;
-            pattern.DocID = compareResult.DocID;
-            pattern.HierarchySetName = compareResult.HierarchySetName;
+            return XmlParser.FromXml<PdfTagPatternStore>(path);
+        }
+  
+        /// <summary>
+        /// Actualiza un almacén de patrones.
+        /// </summary>
+        /// <param name="compareResult">Resultado de una comparación.</param>
+        /// <param name="path">Ruta del store.</param>
+        private static void Update(PdfCompareResult compareResult, string path)
+        {
+
+            // Si el archivo de patrones existe, lo actualizo con los nuevos
+            // resultados (inserto nuevos, elimina sobrantes poco efectivos, y
+            // actualizo matchCount.
+
+
+            PdfTagPatternStore originalStore = GetStore(path);
+            PdfTagPatternStore currentStore = GetStore(compareResult);
+
+            List<PdfTagPattern> newPdfPatterns = new List<PdfTagPattern>();
+
+            foreach (var tagPattern in currentStore.PdfPatterns)
+            {
+                int indexOriginal = originalStore.PdfPatterns.IndexOf(tagPattern);
+
+                if (indexOriginal == -1)
+                    newPdfPatterns.Add(tagPattern); 
+                else
+                    originalStore.PdfPatterns[indexOriginal].MatchesCount++;
+            }
+
+            int originalCount = originalStore.PdfPatterns.Count;
+            int available = Settings.Current.MaxPatternCount -
+                originalCount - newPdfPatterns.Count;
+
+            if (available < 0)
+                for (int i = originalCount - 1; i > (originalCount + available); i--)
+                    originalStore.PdfPatterns.RemoveAt(i);
+
+            originalStore.PdfPatterns.AddRange(newPdfPatterns);
+
+            originalStore.PdfPatterns.Sort();
+            XmlParser.SaveAsXml(originalStore, path);
+
         }
 
         #endregion
@@ -122,16 +182,28 @@ namespace PdfTagger.Pat
 
             if (!File.Exists(file))
                 Create(compareResult, file);
+            else
+                Update(compareResult, file);
 
-            // Si el archivo de patrones existe, lo actualizo con los nuevos
-            // resultados (inserto nuevos, elimina sobrantes poco efectivos, y
-            // actualizo matchCount.
+        } 
+
+        /// <summary>
+        /// Recupera un archivo de almacén de patrones.
+        /// </summary>
+        /// <param name="pdf">Documento.</param>
+        /// <returns>Almacén de patrones.</returns>
+        public static PdfTagPatternStore GetStore(PdfUnstructuredDoc pdf)
+        {
+
+            string path = $"{GetDirectory(pdf.DocCategory)}" +
+                $"{GetFileName(pdf.DocID)}";
+
+            return XmlParser.FromXml<PdfTagPatternStore>(path);
 
         }
-
         #endregion
 
-   
+
 
     }
 }

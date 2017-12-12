@@ -133,7 +133,7 @@ namespace PdfTagger.Pdf
             PdfTextBaseRectangle input = (obj as PdfTextBaseRectangle);
 
             if (input == null)
-                throw new ArgumentException("Parámetro de tipo incorrecto.");
+                return false;
 
             return (Llx == input.Llx &&
                     Lly == input.Lly &&
@@ -165,6 +165,53 @@ namespace PdfTagger.Pdf
         public override string ToString()
         {
             return $"({Llx}, {Lly}, {Urx}, {Ury},)";
+        }
+
+        /// <summary>
+        /// Devuelve el rectangulo instersección de dos rectangulos
+        /// facilitados como parámetros.
+        /// </summary>
+        /// <param name="first">Rectangulo 1.</param>
+        /// <param name="second">Rectangulo 2.</param>
+        /// <returns>Rectangulo interseccion.</returns>
+        public static iTextSharp.text.Rectangle Intersect(iTextSharp.text.Rectangle first, 
+            iTextSharp.text.Rectangle second)
+        {
+            // lx = max : Left x es el valor máximo de los dos rectangulos.
+
+            float lx = (first.Left > second.Left) ? first.Left : second.Left;
+
+            // rx = min : Right x es el valor mínimo de los dos rectángulos.
+
+            float rx = (first.Right < second.Right) ? first.Right : second.Right;
+
+            if (lx > rx)
+                return null;
+
+            // uy = min : Upper y es el valor mínimo de los dos rectangulos.
+
+            float uy = (first.Top < second.Top) ? first.Top : second.Top;
+
+            // ly = max : Lower y es el valor máximo de los dos rectángulos.
+
+            float ly = (first.Bottom > second.Bottom) ? first.Bottom : second.Bottom;
+
+            if (uy < ly)
+                return null;
+
+            // Con esto datos compongo el rectangulo intersección.
+
+            return new iTextSharp.text.Rectangle(lx, ly, rx, uy);
+        }
+
+        /// <summary>
+        /// Devuelve el área de un rectángulo.
+        /// </summary>
+        /// <param name="rectangle">Área de un rectángulo.</param>
+        /// <returns>Área de un rectángulo.</returns>
+        public static float GetArea(iTextSharp.text.Rectangle rectangle)
+        {
+            return rectangle.Height * rectangle.Width;
         }
 
         #endregion

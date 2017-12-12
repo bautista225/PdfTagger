@@ -223,52 +223,52 @@ namespace PdfTagger.Dat.Met.Bus
         /// <summary>
         /// importe línea factura 1.
         /// </summary>
-        public decimal InvoiceLineNetamount01 { get; set; }
+        public decimal InvoiceLineNetAmount01 { get; set; }
 
         /// <summary>
         /// importe línea factura 2.
         /// </summary>
-        public decimal InvoiceLineNetamount02 { get; set; }
+        public decimal InvoiceLineNetAmount02 { get; set; }
 
         /// <summary>
         /// importe línea factura 3.
         /// </summary>
-        public decimal InvoiceLineNetamount03 { get; set; }
+        public decimal InvoiceLineNetAmount03 { get; set; }
 
         /// <summary>
         /// importe línea factura 4.
         /// </summary>
-        public decimal InvoiceLineNetamount04 { get; set; }
+        public decimal InvoiceLineNetAmount04 { get; set; }
 
         /// <summary>
         /// importe línea factura 5.
         /// </summary>
-        public decimal InvoiceLineNetamount05 { get; set; }
+        public decimal InvoiceLineNetAmount05 { get; set; }
 
         /// <summary>
         /// importe línea factura 6.
         /// </summary>
-        public decimal InvoiceLineNetamount06 { get; set; }
+        public decimal InvoiceLineNetAmount06 { get; set; }
 
         /// <summary>
         /// importe línea factura 7.
         /// </summary>
-        public decimal InvoiceLineNetamount07 { get; set; }
+        public decimal InvoiceLineNetAmount07 { get; set; }
 
         /// <summary>
         /// importe línea factura 8.
         /// </summary>
-        public decimal InvoiceLineNetamount08 { get; set; }
+        public decimal InvoiceLineNetAmount08 { get; set; }
 
         /// <summary>
         /// importe línea factura 9.
         /// </summary>
-        public decimal InvoiceLineNetamount09 { get; set; }
+        public decimal InvoiceLineNetAmount09 { get; set; }
 
         /// <summary>
         /// importe línea factura 10.
         /// </summary>
-        public decimal InvoiceLineNetamount10 { get; set; }
+        public decimal InvoiceLineNetAmount10 { get; set; }
 
         #endregion
 

@@ -55,6 +55,7 @@
     <Compile Include="Src\Dat\Txt\BusinessHierarchySet.cs" />
     <Compile Include="Src\Dat\Txt\Converter.cs" />
     <Compile Include="Src\Dat\Txt\DefaultAmountConverter.cs" />
+    <Compile Include="Src\Dat\Txt\ExtendedDateConverter.cs" />
     <Compile Include="Src\Dat\Txt\DefaultDateConverter.cs" />
     <Compile Include="Src\Dat\Txt\DefaultTextConverter.cs" />
     <Compile Include="Src\Dat\Txt\IHierarchySet.cs" />
@@ -67,6 +68,8 @@
     <Compile Include="Src\Dat\Txt\TextParserHierarchy.cs" />
     <Compile Include="Src\Dat\Txt\TextParserMatch.cs" />
     <Compile Include="Src\Dat\Txt\TxtRegex.cs" />
+    <Compile Include="Src\Pat\PdfTagExtractionItemResult.cs" />
+    <Compile Include="Src\Pat\PdfTagExtractionResult.cs" />
     <Compile Include="Src\Pat\PdfTagPattern.cs" />
     <Compile Include="Src\Pat\PdfTagPatternFactory.cs" />
     <Compile Include="Src\Pat\PdfTagPatternStore.cs" />

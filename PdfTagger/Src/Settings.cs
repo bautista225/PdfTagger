@@ -99,7 +99,8 @@ namespace PdfTagger
                 _Current = new Settings();
 
                 _Current.PatternsPath = Path + $"Patterns{_PathSep}";
-                _Current.MaxPatternCount = 200; 
+                _Current.MaxPatternCount = 200;
+                _Current.MinRectangleCommon = 0.95f;
 
             }
 
@@ -165,6 +166,14 @@ namespace PdfTagger
         /// </summary>
         [XmlElement("MaxPatternCount")]
         public int MaxPatternCount { get; set; }
+
+        /// <summary>
+        /// Coeficiente mínimo de área
+        /// compartida, utilizado en la selección de 
+        /// rectángulos en patrones.
+        /// </summary>
+        [XmlElement("MinRectangleCommon")]
+        public float MinRectangleCommon { get; set; }
 
         #endregion
 

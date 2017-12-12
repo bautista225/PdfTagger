@@ -137,8 +137,17 @@ namespace PdfTagger.Dat.Txt
         /// <returns>Cadena con dígitos sustituidos por \d{length}.</returns>
         public static string Replace(string text)
         {
-            string result = ReplaceLetters(text);
-            return ReplaceDigits(result);
+
+            string result = ReplaceDigits(text);
+            string dummy = ((char)126).ToString();
+            result = result.Replace(@"\d", dummy);
+
+            result = ReplaceLetters(result);
+
+            result = result.Replace(dummy, @"\d");         
+
+            return result;
+
         }
 
         #endregion

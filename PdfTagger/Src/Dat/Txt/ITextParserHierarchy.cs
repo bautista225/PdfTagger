@@ -86,6 +86,15 @@ namespace PdfTagger.Dat.Txt
         /// <returns>Devuelve el regex pattern para el parser.</returns>
         string GetParserRegexPattern(int parserIndex);
 
+        /// <summary>
+        /// Devuelve el converter asociado al patrón regex
+        /// facilitado.
+        /// </summary>
+        /// <param name="pattern">Patrón regex.</param>
+        /// <returns>Primer converter asociado
+        /// al patrón de la jerarquía.</returns>
+        object GetConverter(string pattern);
+
         #endregion  
 
     }

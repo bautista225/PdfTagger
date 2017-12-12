@@ -48,23 +48,19 @@ namespace PdfTagger.Pat
     public class PdfTagPattern : IComparable
     {
 
+        #region Constructors
+
+        /// <summary>
+        /// Construye una clase de PdfTagPattern.
+        /// </summary>
+        public PdfTagPattern()
+        {
+            MatchesCount = 1;
+        }
+
+        #endregion
+
         #region Public Properties
-
-        /// <summary>
-        /// Categoría de documento a la que pertenece el pdf.
-        /// </summary>
-        public string DocCategory { get; set; }
-
-        /// <summary>
-        /// ID del documento pdf.
-        /// </summary>
-        public string DocID { get; set; }
-
-        /// <summary>
-        /// Nombre del catálogo de jerarquías
-        /// utilizado.
-        /// </summary>
-        public string HierarchySetName { get; set; }
 
         /// <summary>
         /// Nombre del item de metadatos del cual
@@ -89,7 +85,7 @@ namespace PdfTagger.Pat
         /// <summary>
         /// Coordenadas de posición.
         /// </summary>
-        public PdfTextBaseRectangle PdfRectangle{ get; set; }
+        public PdfTextBaseRectangle PdfRectangle { get; set; }
 
         /// <summary>
         /// Expresión regex del valor a buscar.
@@ -174,12 +170,22 @@ namespace PdfTagger.Pat
             if (input == null)
                 throw new ArgumentException("Parámetro de tipo incorrecto.");
 
-            return (DocCategory == input.DocCategory &&
-                    DocID == input.DocID &&
-                    MetadataItemName == input.MetadataItemName &&
+            bool equalsRectangle = false;
+
+            if (PdfRectangle == null)
+            {
+                if (input.PdfRectangle == null)
+                    equalsRectangle = true;
+            }
+            else
+            {
+                equalsRectangle = PdfRectangle.Equals(input.PdfRectangle);
+            }
+
+            return (MetadataItemName == input.MetadataItemName &&
                     PdfPageN == input.PdfPageN &&
                     IsLastPage == input.IsLastPage &&
-                    PdfRectangle.Equals(input.PdfRectangle) &&
+                    equalsRectangle &&
                     RegexPattern == input.RegexPattern &&
                     RegexPatternLowerFirst == input.RegexPatternLowerFirst &&
                     RegexPatternLowerSecond == input.RegexPatternLowerSecond &&
@@ -196,8 +202,6 @@ namespace PdfTagger.Pat
             int hash = 17;  // Un número primo
             int prime = 31; // Otro número primo.
 
-            hash = hash * prime + DocCategory.GetHashCode();
-            hash = hash * prime + DocID.GetHashCode();
             hash = hash * prime + MetadataItemName.GetHashCode();
             hash = hash * prime + PdfPageN.GetHashCode();
             hash = hash * prime + IsLastPage.GetHashCode();
@@ -209,6 +213,15 @@ namespace PdfTagger.Pat
             hash = hash * prime + (SourceTypeName??"").GetHashCode();
 
             return hash;
+        }
+
+        /// <summary>
+        /// Devuelve una cadena que representa el objeto actual.
+        /// </summary>
+        /// <returns>Devuelve una cadena que representa el objeto actual.</returns>
+        public override string ToString()
+        {
+            return $"({MatchesCount}) {MetadataItemName}";
         }
 
         #endregion

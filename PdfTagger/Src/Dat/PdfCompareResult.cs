@@ -97,6 +97,23 @@ namespace PdfTagger.Dat
         }
 
         /// <summary>
+        /// Clase que implementa la interfaz IMetadata
+        /// asociada al resultado de identificación de
+        /// patrones.
+        /// utilizado.
+        /// </summary>
+        public string MetadataName
+        {
+            get
+            {
+                if (_Metadata == null)
+                    return null;
+
+                return _Metadata.GetType().FullName;
+            }
+        }
+
+        /// <summary>
         /// Información de coincidencias encontradas en los 
         /// datos no estructurados contenidos en los rectángulos 
         /// con información  de grupos relacionados

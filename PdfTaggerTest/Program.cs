@@ -12,8 +12,8 @@ namespace PdfTaggerTest
         static void Main()
         {
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new formTest003());
+            Application.SetCompatibleTextRenderingDefault(false);      
+            Application.Run(new formInvoices());
         }
     }
 }

@@ -138,6 +138,21 @@ namespace PdfTagger.Dat.Txt
             return matches;
         }
 
+        /// <summary>
+        /// Devuelve el converter asociado al patrón regex
+        /// facilitado.
+        /// </summary>
+        /// <param name="pattern">Patrón regex.</param>
+        /// <returns>Primer converter asociado
+        /// al patrón de la jerarquía.</returns>
+        public object GetConverter(string pattern)
+        {
+            foreach (var parser in Parsers)
+                if (parser.Pattern == pattern)
+                    return parser.Converter;
+            return null;
+        }
+
         #endregion
 
     }

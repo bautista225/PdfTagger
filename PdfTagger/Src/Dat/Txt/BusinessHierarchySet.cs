@@ -67,6 +67,24 @@ namespace PdfTagger.Dat.Txt
         #region Public Methods
 
         /// <summary>
+        /// Devuelve el converter asociado al tipo y
+        /// pattern regex asociado.
+        /// </summary>
+        /// <param name="type">Tipo.</param>
+        /// <param name="pattern">Patrón.</param>
+        /// <returns>Converter asociado en la jerarquía
+        /// correspondiente.</returns>
+        public object GetConverter(Type type, string pattern)
+        {
+
+            if (!HierarchyByType.ContainsKey(type))
+                return null;        
+
+            return HierarchyByType[type].GetConverter(pattern);
+
+        }
+
+        /// <summary>
         /// Devuelve la jerarquía estandard para fechas.
         /// </summary>
         /// <returns></returns>
@@ -83,6 +101,13 @@ namespace PdfTagger.Dat.Txt
                     new TextParser<DateTime?>(@"\d{2}-\d{2}-\d{2}", new DefaultDateConverter())
                 }
             };
+
+            foreach (var months in ExtendedDateConverter.MonthNomenclatures)
+            {
+                string separator = ExtendedDateConverter.Separator;
+                string pattern = $"\\d{{2}}{separator}({months}){separator}\\d{{4}}";
+                hierarchyDate.Parsers.Add(new TextParser<DateTime?>(pattern, new ExtendedDateConverter()));
+            }
 
             return hierarchyDate;
 

@@ -59,7 +59,7 @@ namespace PdfTagger.Dat
         /// </summary>
         /// <param name="value">Valor a chequear.</param>
         /// <returns>True si cero numérico y false si no.</returns>
-        private static bool IsZeroNumeric(object value)
+        internal static bool IsZeroNumeric(object value)
         {
             if (!float.TryParse($"{value}", out float result))
                 return false;
