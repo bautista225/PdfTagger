@@ -142,6 +142,7 @@ namespace PdfTagger.Dat
                 {
                     foreach (var page in pdf.PdfUnstructuredPages)
                     {
+
                         foreach (var wordGroup in page.WordGroups)
                             foreach (var match in parserHierarchy.GetMatches(pValue, wordGroup.Text))
                                 compareResult.WordGroupsInfos.Add(new PdfCompareInfo(pdf, page, wordGroup, match, pInf));

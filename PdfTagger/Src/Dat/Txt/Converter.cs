@@ -70,7 +70,7 @@ namespace PdfTagger.Dat.Txt
 
                 return default(T);
             }
-            catch (NotSupportedException)
+            catch 
             {
                 return default(T);
             }

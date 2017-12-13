@@ -129,9 +129,11 @@ namespace PdfTagger.Dat.Txt
                     new TextParser<decimal>(@"[\d\s-]+\.\d{2}", new DefaultAmountConverter()),          // MonedaMillSpaceAnglo
                     new TextParser<decimal>(@"[\d.-]+,\d{1,2}", new DefaultAmountConverter()),          // MonedaComunVarDec
                     new TextParser<decimal>(@"[\d,-]+\.\d{1,2}", new DefaultAmountConverter()),         // MonedaAngloVarDec
-                    new TextParser<decimal>( @"\d+", new DefaultAmountConverter()),                     // MonedaSinDecSinMill
                     new TextParser<decimal>( @"[\d.]+,\d{1,2}-{0,1}", new DefaultAmountConverter()),    // MonedaComunVarDecNegFinal
-                    new TextParser<decimal>( @"[\d,]+\.\d{1,2}-{0,1}", new DefaultAmountConverter())    // MonedaAngloVarDecNegFinal
+                    new TextParser<decimal>( @"[\d,]+\.\d{1,2}-{0,1}", new DefaultAmountConverter()),   // MonedaAngloVarDecNegFinal
+                    new TextParser<decimal>( @"\d{2}(?=\s*%)", new DefaultAmountConverter()),           // ImpuestoDosDec
+                    new TextParser<decimal>( @"\d{1}(?=\s*%)", new DefaultAmountConverter()),           // ImpuestoUnDec
+                    new TextParser<decimal>( @"\d+", new DefaultAmountConverter()),                     // MonedaSinDecSinMill
                 }
             };
 

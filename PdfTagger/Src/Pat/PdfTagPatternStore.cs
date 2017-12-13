@@ -212,7 +212,10 @@ namespace PdfTagger.Pat
 
                             dynamic converter = parserHierarchy.GetConverter(pattern.RegexPattern);
 
-                            string val = Regex.Match(pdfDocRectangle.Text, pattern.RegexPattern).Value;
+                            MatchCollection matches = Regex.Matches(pdfDocRectangle.Text, pattern.RegexPattern);
+
+                            string val = (pattern.Position < matches.Count) ? 
+                                matches[pattern.Position].Value : null;
 
                             object pValue = null;
 
