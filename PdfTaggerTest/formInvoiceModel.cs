@@ -59,7 +59,13 @@ namespace PdfTaggerTest
         public void Extract()
         {
 
-            Store = PdfTagPatternFactory.GetStore(Pdf);
+            try
+            {
+                Store = PdfTagPatternFactory.GetStore(Pdf);
+            }
+            catch
+            {
+            }
 
             if (Store != null)
             {

@@ -1,13 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2010
+VisualStudioVersion = 15.0.27130.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdfTagger", "PdfTagger\PdfTagger.csproj", "{D32A1802-B555-43D4-BB04-A49F6DFECC11}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdfTaggerTest", "PdfTaggerTest\PdfTaggerTest.csproj", "{44A9496D-9B76-48AD-9381-0B29781E6E5F}"
-EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PdfTaggerTestVb", "PdfTaggerTestVb\PdfTaggerTestVb.vbproj", "{4095149A-87A9-4506-9A06-C7FDE343E58D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,14 +31,6 @@ Global
 		{44A9496D-9B76-48AD-9381-0B29781E6E5F}.Release_woDrawing|Any CPU.Build.0 = Release|Any CPU
 		{44A9496D-9B76-48AD-9381-0B29781E6E5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44A9496D-9B76-48AD-9381-0B29781E6E5F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4095149A-87A9-4506-9A06-C7FDE343E58D}.Debug_woDrawing|Any CPU.ActiveCfg = Debug|Any CPU
-		{4095149A-87A9-4506-9A06-C7FDE343E58D}.Debug_woDrawing|Any CPU.Build.0 = Debug|Any CPU
-		{4095149A-87A9-4506-9A06-C7FDE343E58D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4095149A-87A9-4506-9A06-C7FDE343E58D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4095149A-87A9-4506-9A06-C7FDE343E58D}.Release_woDrawing|Any CPU.ActiveCfg = Release|Any CPU
-		{4095149A-87A9-4506-9A06-C7FDE343E58D}.Release_woDrawing|Any CPU.Build.0 = Release|Any CPU
-		{4095149A-87A9-4506-9A06-C7FDE343E58D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4095149A-87A9-4506-9A06-C7FDE343E58D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

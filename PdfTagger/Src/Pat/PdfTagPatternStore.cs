@@ -161,11 +161,21 @@ namespace PdfTagger.Pat
                         }
                         else
                         {
+                            dynamic converter = null;
+
                             if (_Converters.ContainsKey(pInf.PropertyType))
                             {
-                                object pValue = _Converters[pInf.PropertyType].Convert(match.Value);
-                                result.AddResult(pattern.MetadataItemName, pattern.MatchesCount, pValue);
+                                converter = _Converters[pInf.PropertyType];
                             }
+                            else
+                            {
+                                Type converterGenType = typeof(Converter<>).MakeGenericType(pInf.PropertyType);
+                                converter = Activator.CreateInstance(converterGenType);                                
+                            }
+                           
+                            object pValue = converter.Convert(match.Value);
+                            result.AddResult(pattern.MetadataItemName, pattern.MatchesCount, pValue);
+
                         }
                     }
                 }

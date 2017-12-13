@@ -215,17 +215,16 @@ namespace PdfTagger.Dat.Txt
                     return null;
 
                 string patternLower = (_MatchLowerSecond == null) ? "" :
-                    _MatchLowerSecond.Value + _MatchLowerFirst.Value;
+                    TxtRegex.Escape(_MatchLowerSecond.Value) +
+                    TxtRegex.Escape(_MatchLowerFirst.Value);
 
                 patternLower = TxtRegex.ReplaceDigits(patternLower);
-                patternLower = TxtRegex.EscapeReserved(patternLower);
 
                 patternLower = $"(?<={patternLower})";
 
-                string patternUpper = _MatchUpper.Value;
+                string patternUpper = TxtRegex.Escape(_MatchUpper.Value);
 
                 patternUpper = TxtRegex.ReplaceDigits(patternUpper);
-                patternUpper = TxtRegex.EscapeReserved(patternUpper);
 
                 patternUpper = $"(?={patternUpper})";
 

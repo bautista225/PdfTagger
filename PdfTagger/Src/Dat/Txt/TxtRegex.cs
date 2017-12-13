@@ -88,6 +88,32 @@ namespace PdfTagger.Dat.Txt
         }
 
         /// <summary>
+        /// Devuelve una cadena en la que se sustituyen los grupos
+        /// de saltos de línea por su equivalente para regex pattern \n+.
+        /// </summary>
+        /// <param name="text">Texto de entrada en el que
+        /// 'escapar' los saltos de linea.</param>
+        /// <returns>Cadena con los grupo de saltos de líne
+        /// sustituidos por \n+.</returns>
+        public static string EscapeNewLines(string text)
+        {
+            return Regex.Replace(text, @"\n+", @"\n+");
+        }
+
+        /// <summary>
+        /// Escapa los caráteres especiales, espacios y
+        /// saltos de línea del texto de entrada.
+        /// </summary>
+        /// <param name="text">Texto a 'escapar'.</param>
+        /// <returns>Cadena escapada preparada para pattern regex.</returns>
+        public static string Escape(string text)
+        {
+            string ret = EscapeReserved(text);
+            ret = EscapeNewLines(ret);
+            return EscapeSpaces(ret);
+        }
+
+        /// <summary>
         /// Devuelve una cadena basada en el texto de entrada, dónde
         /// se sustituyen los grupos de dígitos por \d{length}.
         /// </summary>

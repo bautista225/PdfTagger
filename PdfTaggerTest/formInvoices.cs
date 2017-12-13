@@ -103,6 +103,9 @@ namespace PdfTaggerTest
         private void GetViewFromMetadata()
         {
 
+            if (_Model.Invoice == null)
+                return;
+
             InvoiceMetadata invoice = _Model.Invoice;
 
             NumberFormatInfo numFormatInfo = new NumberFormatInfo();
@@ -240,7 +243,7 @@ namespace PdfTaggerTest
 
             if (_Model.Invoice.IssueDate == null)
             {
-                MessageBox.Show("BuyerPartyID no válido.");
+                MessageBox.Show("IssueDate no válido.");
                 return;
             }
 

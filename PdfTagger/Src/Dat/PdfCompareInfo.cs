@@ -180,8 +180,11 @@ namespace PdfTagger.Dat
                     Ury = _PdfTextRectangle.Ury
                 };
 
-            string regexPattern = _TextMatch.Pattern ?? 
-                TxtRegex.ReplaceDigits(TxtRegex.ReplaceLetters(_TextMatch.TextValue));
+            //string regexPattern = _TextMatch.Pattern ?? 
+            //    TxtRegex.ReplaceDigits(TxtRegex.ReplaceLetters(_TextMatch.TextValue));
+
+            string regexPattern = _TextMatch.Pattern ??
+                TxtRegex.Replace(_TextMatch.TextValue);
 
             return new PdfTagPattern()
             {
