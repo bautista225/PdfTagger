@@ -210,8 +210,8 @@ namespace PdfTagger.Dat.Txt
         {
             get
             {
-                if(_MatchLowerFirst==null || 
-                    _MatchUpper == null)
+
+                if (_MatchLowerFirst == null)
                     return null;
 
                 string patternLower = (_MatchLowerSecond == null) ? "" :
@@ -222,11 +222,11 @@ namespace PdfTagger.Dat.Txt
 
                 patternLower = $"(?<={patternLower})";
 
-                string patternUpper = TxtRegex.Escape(_MatchUpper.Value);
+                string patternUpper = (_MatchUpper == null) ? "" :  
+                    TxtRegex.Escape(_MatchUpper.Value);
 
-                patternUpper = TxtRegex.ReplaceDigits(patternUpper);
-
-                patternUpper = $"(?={patternUpper})";
+                if (!string.IsNullOrEmpty(patternUpper))
+                    patternUpper = $"(?={TxtRegex.ReplaceDigits(patternUpper)})";
 
                 return $"{patternLower}{_ParserMatch.Pattern}{patternUpper}";
               
