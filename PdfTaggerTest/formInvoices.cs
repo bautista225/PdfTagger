@@ -348,5 +348,10 @@ namespace PdfTaggerTest
             wBr.Navigate(fileName);
 
         }
+
+        private void mnMain_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }
