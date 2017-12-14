@@ -1,0 +1,8 @@
+C:\Users\Txema\Desktop\Pdf\PdfTagger\PdfTagger\bin\Debug\PdfTagger.xml
+C:\Users\Txema\Desktop\Pdf\PdfTagger\PdfTagger\bin\Debug\PdfTagger.dll
+C:\Users\Txema\Desktop\Pdf\PdfTagger\PdfTagger\bin\Debug\PdfTagger.pdb
+C:\Users\Txema\Desktop\Pdf\PdfTagger\PdfTagger\bin\Debug\itextsharp.dll
+C:\Users\Txema\Desktop\Pdf\PdfTagger\PdfTagger\obj\Debug\PdfTagger.csprojResolveAssemblyReference.cache
+C:\Users\Txema\Desktop\Pdf\PdfTagger\PdfTagger\obj\Debug\PdfTagger.csproj.CoreCompileInputs.cache
+C:\Users\Txema\Desktop\Pdf\PdfTagger\PdfTagger\obj\Debug\PdfTagger.dll
+C:\Users\Txema\Desktop\Pdf\PdfTagger\PdfTagger\obj\Debug\PdfTagger.pdb

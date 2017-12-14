@@ -1,0 +1,14 @@
+C:\Users\Txema\Desktop\Pdf\PdfTagger\PdfTaggerTest\bin\Debug\PdfTaggerTest.exe.config
+C:\Users\Txema\Desktop\Pdf\PdfTagger\PdfTaggerTest\bin\Debug\PdfTaggerTest.exe
+C:\Users\Txema\Desktop\Pdf\PdfTagger\PdfTaggerTest\bin\Debug\PdfTaggerTest.pdb
+C:\Users\Txema\Desktop\Pdf\PdfTagger\PdfTaggerTest\bin\Debug\itextsharp.dll
+C:\Users\Txema\Desktop\Pdf\PdfTagger\PdfTaggerTest\bin\Debug\PdfTagger.dll
+C:\Users\Txema\Desktop\Pdf\PdfTagger\PdfTaggerTest\bin\Debug\PdfTagger.pdb
+C:\Users\Txema\Desktop\Pdf\PdfTagger\PdfTaggerTest\bin\Debug\PdfTagger.xml
+C:\Users\Txema\Desktop\Pdf\PdfTagger\PdfTaggerTest\obj\Debug\PdfTaggerTest.csprojResolveAssemblyReference.cache
+C:\Users\Txema\Desktop\Pdf\PdfTagger\PdfTaggerTest\obj\Debug\PdfTaggerTest.formInvoices.resources
+C:\Users\Txema\Desktop\Pdf\PdfTagger\PdfTaggerTest\obj\Debug\PdfTaggerTest.Properties.Resources.resources
+C:\Users\Txema\Desktop\Pdf\PdfTagger\PdfTaggerTest\obj\Debug\PdfTaggerTest.csproj.GenerateResource.Cache
+C:\Users\Txema\Desktop\Pdf\PdfTagger\PdfTaggerTest\obj\Debug\PdfTaggerTest.csproj.CoreCompileInputs.cache
+C:\Users\Txema\Desktop\Pdf\PdfTagger\PdfTaggerTest\obj\Debug\PdfTaggerTest.exe
+C:\Users\Txema\Desktop\Pdf\PdfTagger\PdfTaggerTest\obj\Debug\PdfTaggerTest.pdb

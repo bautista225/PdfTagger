@@ -1,0 +1,1931 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PdfTagger</name>
+    </assembly>
+    <members>
+        <member name="T:PdfTagger.NamespaceDoc">
+            <summary>
+            <para>PdfTagger es una herramienta para la obtención de datos
+            estructurados a partir de documentos pdf.</para> 
+            </summary>
+        </member>
+        <member name="T:PdfTagger.Dat.NamespaceDoc">
+            <summary>
+            <para>El espacio de nombres Dat contiene los
+            elementos necesarios para trabajar con los
+            metadatos estructurados y los datos no
+            estructurados que provienen de documentos pdf.</para> 
+            </summary>
+        </member>
+        <member name="T:PdfTagger.Dat.Met.NamespaceDoc">
+            <summary>
+            <para>El espacio de nombres Met contiene los
+            elementos necesarios para trabajar con los
+            metadatos estructurados y los datos no
+            estructurados que provienen de documentos pdf
+            y toda las operaciones y conversiones de
+            texto necesarias.</para> 
+            </summary>
+        </member>
+        <member name="T:PdfTagger.Dat.Met.Bus.NamespaceDoc">
+            <summary>
+            <para>El espacio de nombres Bus contiene los
+            elementos necesarios para trabajar con los
+            metadatos estructurados de negocio y los datos no
+            estructurados que provienen de documentos pdf
+            y toda las operaciones y conversiones de
+            texto necesarias.</para> 
+            </summary>
+        </member>
+        <member name="T:PdfTagger.Dat.Met.Bus.InvoiceMetadata">
+            <summary>
+            Representa una entidad de datos estructurados
+            extraídos de un pdf de factura.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.InvoiceNumber">
+            <summary>
+            Número de factura.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.InvoiceSerie">
+            <summary>
+            serie de factura.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.IssueDate">
+            <summary>
+            Fecha de emisión.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.PurchaseOrder">
+            <summary>
+            Pedido de compras.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.Delivery">
+            <summary>
+            Albarán de entrega.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.SellerPartyID">
+            <summary>
+            NIF de la parte vendedora.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.BuyerPartyID">
+            <summary>
+            NIF de la parte compradora.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.GrossAmount">
+            <summary>
+            Total factura.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.CurrencyCode">
+            <summary>
+            Código de moneda.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.TaxesOutputsBase01">
+            <summary>
+            Base de impuestos soportados 1.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.TaxesOutputsBase02">
+            <summary>
+            Base de impuestos soportados 2.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.TaxesOutputsBase03">
+            <summary>
+            Base de impuestos soportados 3.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.TaxesOutputsBase04">
+            <summary>
+            Base de impuestos soportados 4.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.TaxesOutputsRate01">
+            <summary>
+            Tipo impositivo de impuestos soportados 1.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.TaxesOutputsRate02">
+            <summary>
+            Tipo impositivo de impuestos soportados 2.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.TaxesOutputsRate03">
+            <summary>
+            Tipo impositivo de impuestos soportados 3.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.TaxesOutputsRate04">
+            <summary>
+            Tipo impositivo de impuestos soportados 4.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.TaxesOutputsAmount01">
+            <summary>
+            Cuota de impuestos soportados 1.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.TaxesOutputsAmount02">
+            <summary>
+            Cuota de impuestos soportados 2.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.TaxesOutputsAmount03">
+            <summary>
+            Cuota de impuestos soportados 3.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.TaxesOutputsAmount04">
+            <summary>
+            Cuota de impuestos soportados 4.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.TaxesWithholdingBase01">
+            <summary>
+            Base de impuestos retenidos 1.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.TaxesWithholdingRate01">
+            <summary>
+            Tipo de impuestos retenidos 1.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.TaxesWithholdingAmount01">
+            <summary>
+            Cuota de impuestos retenidos 1.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.InvoiceLineText01">
+            <summary>
+            Texto línea factura 1.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.InvoiceLineText02">
+            <summary>
+            Texto línea factura 2.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.InvoiceLineText03">
+            <summary>
+            Texto línea factura 3.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.InvoiceLineText04">
+            <summary>
+            Texto línea factura 4.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.InvoiceLineText05">
+            <summary>
+            Texto línea factura 5.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.InvoiceLineText06">
+            <summary>
+            Texto línea factura 6.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.InvoiceLineText07">
+            <summary>
+            Texto línea factura 7.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.InvoiceLineText08">
+            <summary>
+            Texto línea factura 8.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.InvoiceLineText09">
+            <summary>
+            Texto línea factura 9.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.InvoiceLineText10">
+            <summary>
+            Texto línea factura 10.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.InvoiceLineNetAmount01">
+            <summary>
+            importe línea factura 1.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.InvoiceLineNetAmount02">
+            <summary>
+            importe línea factura 2.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.InvoiceLineNetAmount03">
+            <summary>
+            importe línea factura 3.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.InvoiceLineNetAmount04">
+            <summary>
+            importe línea factura 4.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.InvoiceLineNetAmount05">
+            <summary>
+            importe línea factura 5.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.InvoiceLineNetAmount06">
+            <summary>
+            importe línea factura 6.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.InvoiceLineNetAmount07">
+            <summary>
+            importe línea factura 7.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.InvoiceLineNetAmount08">
+            <summary>
+            importe línea factura 8.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.InvoiceLineNetAmount09">
+            <summary>
+            importe línea factura 9.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Met.Bus.InvoiceMetadata.InvoiceLineNetAmount10">
+            <summary>
+            importe línea factura 10.
+            </summary>
+        </member>
+        <member name="T:PdfTagger.Dat.Txt.NamespaceDoc">
+            <summary>
+            <para>El espacio de nombres Txt contiene los
+            elementos necesarios para trabajar con los
+            metadatos estructurados y los datos no
+            estructurados que provienen de documentos pdf
+            y toda las operaciones y conversiones de
+            texto necesarias.</para> 
+            </summary>
+        </member>
+        <member name="T:PdfTagger.Dat.Txt.BusinessHierarchySet">
+            <summary>
+            Conjunto de jerarquías de analizadores de texto a aplicar según
+            el tipo de datos de que se trate.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.BusinessHierarchySet.#ctor">
+            <summary>
+            Construye un nuevo catálogo de jerarúías
+            de analizadores de textos.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.BusinessHierarchySet.GetConverter(System.Type,System.String)">
+            <summary>
+            Devuelve el converter asociado al tipo y
+            pattern regex asociado.
+            </summary>
+            <param name="type">Tipo.</param>
+            <param name="pattern">Patrón.</param>
+            <returns>Converter asociado en la jerarquía
+            correspondiente.</returns>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.BusinessHierarchySet.GetDateParser">
+            <summary>
+            Devuelve la jerarquía estandard para fechas.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.BusinessHierarchySet.GetAmountParser">
+            <summary>
+            Devuelve la jerarquía estandar para importes.
+            </summary>
+            <returns>Jerarquía estandar para importes.</returns>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.BusinessHierarchySet.GetTextParser">
+            <summary>
+            Devuelve la jerarquía estandard para textos.
+            </summary>
+            <returns>Jerarquía estandard para textos.</returns>
+        </member>
+        <member name="T:PdfTagger.Dat.Txt.Converter`1">
+            <summary>
+            Conversor de texto al tipo T.
+            </summary>
+            <typeparam name="T">Tipo T al que se
+            convierte el texto.</typeparam>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.Converter`1.Convert(System.String)">
+            <summary>
+            Valor del tipo T obtenido mediante
+            el conversor.
+            </summary>
+            <param name="text">Texto a convertir.</param>
+            <returns>Valor T representado por el texto.</returns>
+        </member>
+        <member name="T:PdfTagger.Dat.Txt.DefaultAmountConverter">
+            <summary>
+            Conversor por defecto de importes.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.DefaultAmountConverter.ToDecimal(System.String)">
+            <summary>
+            Convierte un texto en valor decimal.
+            </summary>
+            <param name="text">Texto a convertir.</param>
+            <returns>Valor decimal del texto convertido.</returns>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.DefaultAmountConverter.Convert(System.String)">
+            <summary>
+            Valor del tipo T obtenido mediante
+            el conversor.
+            </summary>
+            <param name="text">Texto a convertir.</param>
+            <returns>Valor T representado por el texto.</returns>
+        </member>
+        <member name="T:PdfTagger.Dat.Txt.ExtendedDateConverter">
+            <summary>
+            Conversor por defecto de fecha.
+            </summary>
+        </member>
+        <member name="F:PdfTagger.Dat.Txt.ExtendedDateConverter.MonthNomenclatures">
+            <summary>
+            Distintas nomenclaturas para nombrar los meses
+            del año.
+            </summary>
+        </member>
+        <member name="F:PdfTagger.Dat.Txt.ExtendedDateConverter.Separator">
+            <summary>
+            Separador ddMMyyyy.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.ExtendedDateConverter.Convert(System.String)">
+            <summary>
+            Valor del tipo DateTime? obtenido mediante
+            el conversor.
+            </summary>
+            <param name="text">Texto a convertir.</param>
+            <returns>Valor DateTime? representado por el texto.</returns>
+        </member>
+        <member name="T:PdfTagger.Dat.Txt.DefaultDateConverter">
+            <summary>
+            Conversor por defecto de fecha.
+            </summary>
+        </member>
+        <member name="T:PdfTagger.Dat.Txt.DefaultTextConverter">
+            <summary>
+            Conversor por defecto de texto.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.DefaultTextConverter.Convert(System.String)">
+            <summary>
+            Valor del tipo T obtenido mediante
+            el conversor.
+            </summary>
+            <param name="text">Texto a convertir.</param>
+            <returns>Valor T representado por el texto.</returns>
+        </member>
+        <member name="T:PdfTagger.Dat.Txt.IHierarchySet">
+            <summary>
+            Catálogo de jerarquías por tipo a aplicar en una operación
+            de comparación determinada.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.IHierarchySet.GetParserHierarchy(System.Type)">
+            <summary>
+            Devuelve la jerarquía de analisis de texto
+            aplicable aun tipo determinado en este catálogo
+            de jearaquía.
+            </summary>
+            <param name="type">Typo para el cual devolver el
+            catálogo de jerarquías.</param>
+            <returns></returns>
+        </member>
+        <member name="T:PdfTagger.Dat.Txt.HierarchySet">
+            <summary>
+            Catálogo de jerarquías por tipo a aplicar en una operación
+            de comparación determinada.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.HierarchySet.#ctor">
+            <summary>
+            Construye una nueva instancia de un catálogo
+            de jerarquías.
+            </summary>
+        </member>
+        <member name="F:PdfTagger.Dat.Txt.HierarchySet.HierarchyByType">
+            <summary>
+            Diccionario de Jararquías según el tipo
+            de datos.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.HierarchySet.GetParserHierarchy(System.Type)">
+            <summary>
+            Devuelve la jerarquía de analisis de texto
+            aplicable aun tipo determinado en este catálogo
+            de jearaquía.
+            </summary>
+            <param name="type">Typo para el cual devolver el
+            catálogo de jerarquías.</param>
+            <returns></returns>
+        </member>
+        <member name="T:PdfTagger.Dat.Txt.IConverter`1">
+            <summary>
+            Conversor de texto al tipo T.
+            </summary>
+            <typeparam name="T">Tipo T al que se
+            convierte el texto.</typeparam>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.IConverter`1.Convert(System.String)">
+            <summary>
+            Valor del tipo T obtenido mediante
+            el conversor.
+            </summary>
+            <param name="text">Texto a convertir.</param>
+            <returns>Valor T representado por el texto.</returns>
+        </member>
+        <member name="T:PdfTagger.Dat.Txt.ITextParserHierarchy">
+            <summary>
+            Jerarquía de detección y conversión de valores.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Txt.ITextParserHierarchy.ParserCount">
+            <summary>
+            Numero de de parsers asociados
+            a la jerarquía.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.ITextParserHierarchy.GetMatches(System.Object,System.String)">
+            <summary>
+            Resultados unívocos obtenidos mediante 
+            la aplicación ordenada de parsers.
+            </summary>
+            <param name="input">Valor a comparar con el 
+            valor obtenido del análisis del texto.</param>
+            <param name="text">texto a analizar.</param>
+            <returns>Conjunto de resultados que satisfacen
+            la igualdad.</returns>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.ITextParserHierarchy.SetParserRegexPattern(System.Int32,System.String)">
+            <summary>
+            Establece el regex pattern para el parser
+            seleccionado.
+            </summary>
+            <param name="parserIndex">Indice de pattern a actualizar.</param>
+            <param name="pattern">Patrón regex.</param>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.ITextParserHierarchy.GetParserRegexPattern(System.Int32)">
+            <summary>
+            Devuelve el regex pattern para el parser
+            seleccionado.
+            </summary>
+            <param name="parserIndex">Indice de pattern a actualizar.</param>
+            <returns>Devuelve el regex pattern para el parser.</returns>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.ITextParserHierarchy.GetConverter(System.String)">
+            <summary>
+            Devuelve el converter asociado al patrón regex
+            facilitado.
+            </summary>
+            <param name="pattern">Patrón regex.</param>
+            <returns>Primer converter asociado
+            al patrón de la jerarquía.</returns>
+        </member>
+        <member name="T:PdfTagger.Dat.Txt.ITextMatch">
+            <summary>
+            Resultado de una búsqueda mediante un TextParser
+            determinado.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Txt.ITextMatch.TextValue">
+            <summary>
+            Valor obtenido.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Txt.ITextMatch.TextContext">
+            <summary>
+            Valor obtenido.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Txt.ITextMatch.MatchIndex">
+            <summary>
+            Indice resultado.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Txt.ITextMatch.Pattern">
+            <summary>
+            Patrón regex utilizado.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.ITextMatch.GetRegexMatch">
+            <summary>
+            Devuelve la coincidencia obtenida
+            mediante Regex sobre la que se ha
+            creado la presente instancia.
+            </summary>
+            <returns>Coincidencia obtenida</returns>
+        </member>
+        <member name="T:PdfTagger.Dat.Txt.TextBoundMatch`1">
+            <summary>
+            Coincidencia encontrada de TextBound.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.TextBoundMatch`1.GetLower(System.Text.RegularExpressions.Match,System.String)">
+            <summary>
+            Obtiene un texto colindante por la izquierda de un
+            texto objetivo.
+            </summary>
+            <param name="match">Match con el texto objetivo utilizada
+            para obtener el texto objetivo y la posición inicial
+            del mismo (pardescartar coincidencia múltiples).</param>
+            <param name="container">texto contenedor del texto objetivo.</param>
+            <returns>Match con el texto colindante encontrado.</returns>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.TextBoundMatch`1.GetLowerFirst">
+            <summary>
+            Encuentra el primer texto colindante más próximo
+            por la izquierda.
+            </summary>
+            <returns>Texto colindante más próximo por la izquierda.</returns>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.TextBoundMatch`1.GetLowerSecond">
+            <summary>
+            Obtiene el segundo texto colindante, a la izquierda del
+            primer texto colindante.
+            </summary>
+            <returns>Segundo texto colindante por la izquierda.</returns>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.TextBoundMatch`1.GetUpper">
+            <summary>
+            Obtiene el texto colindante más próximo por la derecha.
+            </summary>
+            <returns>Texto colindante más próximo por la derecha.</returns>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.TextBoundMatch`1.#ctor(PdfTagger.Dat.Txt.ITextMatch)">
+            <summary>
+            Construye una instancia de la clase TextBoundMatch
+            a partir de una coincidencia anterior.
+            </summary>
+            <param name="parserMatch">Coincidencia anterior.</param>
+        </member>
+        <member name="P:PdfTagger.Dat.Txt.TextBoundMatch`1.Value">
+            <summary>
+            Valor obtenido.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Txt.TextBoundMatch`1.TextValue">
+            <summary>
+            Texto del que se ha obtenido el valor.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Txt.TextBoundMatch`1.TextContext">
+            <summary>
+            Contexto del que se ha obtenido el texto.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Txt.TextBoundMatch`1.MatchIndex">
+            <summary>
+            Indice resultado.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Txt.TextBoundMatch`1.Pattern">
+            <summary>
+            Patrón regex utilizado.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.TextBoundMatch`1.GetRegexMatch">
+            <summary>
+            Devuelve la coincidencia obtenida
+            mediante Regex sobre la que se ha
+            creado la presente instancia.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.TextBoundMatch`1.ToString">
+            <summary>
+            Obtiene una representación textual de
+            la instancia actual.
+            </summary>
+            <returns>Texto que representa a la instancia actual.</returns>
+        </member>
+        <member name="T:PdfTagger.Dat.Txt.TextParser`1">
+            <summary>
+            Analizador/Conversor asociado a un item 
+            de metadatos.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.TextParser`1.#ctor(System.String,PdfTagger.Dat.Txt.IConverter{`0})">
+            <summary>
+            Construye una nueva instancia de la clase
+            ItemParser.
+            </summary>
+            <param name="pattern">Patron regex a aplicar.</param>
+            <param name="converter">Conversor asociado.</param>
+        </member>
+        <member name="P:PdfTagger.Dat.Txt.TextParser`1.Pattern">
+            <summary>
+            Patrón de expresión regular asociado.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Txt.TextParser`1.Converter">
+            <summary>
+            Conversor asociado.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.TextParser`1.GetMatches(System.String)">
+            <summary>
+            Devuelve el conjunto de resultados encontrados
+            en el texto facilitado.
+            </summary>
+            <param name="text">Texto en el que buscar</param>
+            <returns>Resultado obtenidos.</returns>
+        </member>
+        <member name="T:PdfTagger.Dat.Txt.TextParserHierarchy`1">
+            <summary>
+            Jerarquía de anlizadores aplicables a un texto
+            de item determinado, ordenada de mayor a menor
+            probabilidad de ocurrencia del patrón regex.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.TextParserHierarchy`1.GetMatches(System.String)">
+            <summary>
+            Resultados unívocos obtenidos mediante 
+            la aplicación ordenada de parsers.
+            </summary>
+            <param name="text">texto a analizar.</param>
+            <returns></returns>
+        </member>
+        <member name="P:PdfTagger.Dat.Txt.TextParserHierarchy`1.Parsers">
+            <summary>
+            Jerarquía de TextParsers a aplicar.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Txt.TextParserHierarchy`1.ParserCount">
+            <summary>
+            Numero de de parsers asociados
+            a la jerarquía.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.TextParserHierarchy`1.SetParserRegexPattern(System.Int32,System.String)">
+            <summary>
+            Establece el regex pattern para el parser
+            seleccionado.
+            </summary>
+            <param name="parserIndex">Indice de pattern a actualizar.</param>
+            <param name="pattern">Patrón regex.</param>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.TextParserHierarchy`1.GetParserRegexPattern(System.Int32)">
+            <summary>
+            Devuelve el regex pattern para el parser
+            seleccionado.
+            </summary>
+            <param name="parserIndex">Indice de pattern a actualizar.</param>
+            <returns>Devuelve el regex pattern para el parser.</returns>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.TextParserHierarchy`1.GetMatches(System.Object,System.String)">
+            <summary>
+            Resultados unívocos obtenidos mediante 
+            la aplicación ordenada de parsers.
+            </summary>
+            <param name="input">Input utilizado para comparar.</param>
+            <param name="text">Texto a analizar en la comparación.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.TextParserHierarchy`1.GetConverter(System.String)">
+            <summary>
+            Devuelve el converter asociado al patrón regex
+            facilitado.
+            </summary>
+            <param name="pattern">Patrón regex.</param>
+            <returns>Primer converter asociado
+            al patrón de la jerarquía.</returns>
+        </member>
+        <member name="T:PdfTagger.Dat.Txt.TextParserMatch`1">
+            <summary>
+            Representa un resultado del conjunto de resultados 
+            obtenidos de la ejecución de un TextParser. 
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Txt.TextParserMatch`1.Value">
+            <summary>
+            Valor obtenido.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Txt.TextParserMatch`1.TextValue">
+            <summary>
+            Valor obtenido.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Txt.TextParserMatch`1.TextContext">
+            <summary>
+            Valor obtenido.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Txt.TextParserMatch`1.MatchIndex">
+            <summary>
+            Indice resultado.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Txt.TextParserMatch`1.Pattern">
+            <summary>
+            Patrón regex utilizado.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.TextParserMatch`1.#ctor(`0,System.String,System.String,System.String,System.Text.RegularExpressions.Match)">
+            <summary>
+            Construye una nueva instancia de la clase TextParserMatch.
+            </summary>
+            <param name="value">Valor convertido.</param>
+            <param name="text">Valor sin conversión.</param>
+            <param name="context">Texto total orígen
+            de la comparación. Tras ejecutar la comparación
+            sobre resulta text almacenado como TextValue en
+            la instancia de TextParserMacth.</param>
+            <param name="pattern">Patrón reges aplicado.</param>
+            <param name="match">Match del regex del que procede con
+            respecto al texto original.</param>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.TextParserMatch`1.GetRegexMatch">
+            <summary>
+            Devuelve la coincidencia obtenida
+            mediante Regex sobre la que se ha
+            creado la presente instancia.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.TextParserMatch`1.ToString">
+            <summary>
+            Devuelve una representación textual
+            de la intancia actual de TextParserMatch.
+            </summary>
+            <returns>Representación textual 
+            de la intancia actual</returns>
+        </member>
+        <member name="T:PdfTagger.Dat.Txt.TxtRegex">
+            <summary>
+            Soporte para regex.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.TxtRegex.EscapeReserved(System.String)">
+            <summary>
+            Devuelva una cadena sustituyendo los carácteres reservados 
+            de la cadena facilitada como parámetro por
+            la secuencia de escape correspondiente.
+            </summary>
+            <param name="text">Texto a 'escapar'.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.TxtRegex.EscapeSpaces(System.String)">
+            <summary>
+            Devuelve una cadena en la que se sustituyen los grupos
+            de espacios por su equivalente para regex pattern \s+.
+            </summary>
+            <param name="text">Texto de entrada en el que
+            'escapar' los espacios.</param>
+            <returns>Cadena con los grupo de espacios
+            sustituidos por \s+.</returns>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.TxtRegex.EscapeNewLines(System.String)">
+            <summary>
+            Devuelve una cadena en la que se sustituyen los grupos
+            de saltos de línea por su equivalente para regex pattern \n+.
+            </summary>
+            <param name="text">Texto de entrada en el que
+            'escapar' los saltos de linea.</param>
+            <returns>Cadena con los grupo de saltos de líne
+            sustituidos por \n+.</returns>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.TxtRegex.Escape(System.String)">
+            <summary>
+            Escapa los caráteres especiales, espacios y
+            saltos de línea del texto de entrada.
+            </summary>
+            <param name="text">Texto a 'escapar'.</param>
+            <returns>Cadena escapada preparada para pattern regex.</returns>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.TxtRegex.ReplaceDigits(System.String)">
+            <summary>
+            Devuelve una cadena basada en el texto de entrada, dónde
+            se sustituyen los grupos de dígitos por \d{length}.
+            </summary>
+            <param name="text">Texto en el que sustituir los dígitos.</param>
+            <returns>Cadena con dígitos sustituidos por \d{length}.</returns>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.TxtRegex.ReplaceLetters(System.String)">
+            <summary>
+            Devuelve una cadena basada en el texto de entrada, dónde
+            se sustituyen los grupos de caracteres A-Z o a-z por 
+            [A-Z]{length} o [a-z]{length}.
+            </summary>
+            <param name="text">Texto en el que sustituir los grupos de letras.</param>
+            <returns>Cadena con dígitos sustituidos por [A-Z]{length} o [a-z]{length}.</returns>
+        </member>
+        <member name="M:PdfTagger.Dat.Txt.TxtRegex.Replace(System.String)">
+            <summary>
+            Devuelve una cadena basada en el texto de entrada, dónde
+            se sustituyen los grupos de dígitos por \d{length} y 
+            los grupos de caracteres A-Z o a-z por 
+            [A-Z]{length} o [a-z]{length}.
+            </summary>
+            <param name="text">Texto en el que sustituir los dígitos.</param>
+            <returns>Cadena con dígitos sustituidos por \d{length}.</returns>
+        </member>
+        <member name="T:PdfTagger.Dat.Metadata">
+            <summary>
+            Representa una entidad de datos estructurados
+            extraídos de un pdf.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Metadata.DocCategory">
+            <summary>
+            Categoría a la que pertenece el documento
+            pdf de orígen de los datos.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.Metadata.DocID">
+            <summary>
+            Identificador único del documento pdf del que
+            provienen los datos.
+            </summary>
+        </member>
+        <member name="T:PdfTagger.Dat.IMetadata">
+            <summary>
+            Representa una entidad de datos estructurados
+            extraídos de un pdf.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.IMetadata.DocCategory">
+            <summary>
+            Categoría a la que pertenece el documento
+            pdf de orígen de los datos.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.IMetadata.DocID">
+            <summary>
+            Identificador único del documento pdf del que
+            provienen los datos.
+            </summary>
+        </member>
+        <member name="T:PdfTagger.Dat.PdfCompare">
+            <summary>
+            Representa una comparación entre los datos 
+            obtenidos de un pdf y un conjunto de metadatos.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Dat.PdfCompare.IsZeroNumeric(System.Object)">
+            <summary>
+            Devuelve true si el objeto es
+            numérico y cero.
+            </summary>
+            <param name="value">Valor a chequear.</param>
+            <returns>True si cero numérico y false si no.</returns>
+        </member>
+        <member name="M:PdfTagger.Dat.PdfCompare.Compare(PdfTagger.Dat.Txt.IHierarchySet,PdfTagger.Pdf.PdfUnstructuredDoc,PdfTagger.Dat.IMetadata)">
+             <summary>
+             Devuelve las coincidencias entre los datos
+             del pdf, y los metadatos facilitados.
+             <code lang="C#">
+                     // Partiendo de una entrada de datos no estructurados de pdf 
+                     PdfUnstructuredDoc pdf = new PdfUnstructuredDoc(@"C:\ProgramData\PdfTagger\Inbox\0000021101.pdf");
+             
+                     // y de un conjunto de datos estructurados
+                     InvoiceMetadata metadata = new InvoiceMetadata();
+             
+                     metadata.InvoiceNumber = "1 / 33050";
+                     metadata.BuyerPartyID = "ES - A12070330";
+                     metadata.IssueDate = new DateTime(2017, 11, 30);
+                     metadata.GrossAmount = 3646.50m;
+                     metadata.TaxesOutputsBase01 = 3013.64m;
+                     metadata.TaxesOutputsRate01 = 21m;
+                     metadata.TaxesOutputsAmount01 = 632.86m;
+             
+                     PdfCompareResult compareResult = PdfCompare.Compare(new BusinessHierarchySet(), pdf, metadata);
+             </code> 
+             <code lang="VB">
+                   ' Partiendo de una entrada de datos no estructurados de pdf 
+                    Dim pdf As PdfUnstructuredDoc = New PdfUnstructuredDoc(@"C:\ProgramData\PdfTagger\Inbox\0000021101.pdf")
+            
+                    ' y de un conjunto de datos estructurados
+                    Dim metadata As InvoiceMetadata = New InvoiceMetadata()
+            
+                    metadata.InvoiceNumber = "1 / 33050"
+                    metadata.BuyerPartyID = "ES - A12070330"
+                    metadata.IssueDate = New Date(2017, 11, 30)
+                    metadata.GrossAmount = CDec(3646.5)
+                    metadata.TaxesOutputsBase01 = CDec(3013.64)
+                    metadata.TaxesOutputsRate01 = 21
+                    metadata.TaxesOutputsAmount01 = CDec(632.86)
+            
+                    Dim compareResult As PdfCompareResult = PdfCompare.Compare(New BusinessHierarchySet(), pdf, metadata)
+             </code>  
+             </summary>
+             <param name="hierarchySet">Catalogo de jerarquías de analizadores
+             por tipo. La operación utilizara para comparar cada tipo de variable
+             el parser obtenido del catálogo. La comparación se irá ejecutando
+             por cada uno de los parsers según su orden en la jerarquía, hasta
+             que se encuentre un valor coincidente o se llegue al final
+             de la jerarquía.</param>
+             <param name="pdf">Instancia de la clase PdfUnstructuredDoc fruto
+             del análisis y obtención de los datos no estructurados de un pdf.</param>
+             <param name="metadata">Datos estructurados a comparar con los
+             datos no estructurados obtenidos del pdf.</param>
+             <returns>Instancia de la clase PdfCompareResult con
+             los resultados obtenidos de la comparación.</returns>
+        </member>
+        <member name="T:PdfTagger.Dat.PdfCompareInfo">
+            <summary>
+            Resultado positivo de una búsqueda en un pdf.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Dat.PdfCompareInfo.#ctor(PdfTagger.Pdf.PdfUnstructuredDoc,PdfTagger.Pdf.PdfUnstructuredPage,PdfTagger.Pdf.PdfTextRectangle,PdfTagger.Dat.Txt.ITextMatch,System.Reflection.PropertyInfo)">
+            <summary>
+            Construye una nueva instancia de la clase PdfCompareInfo.
+            </summary>
+            <param name="pdf">Instacia de la clase PdfUnstructuredDoc
+            que se utilizó para la comparación a la que pertenence
+            el info.</param>
+            <param name="pdfPage">Instancia de la clase PdfUnstructuredPage
+            de la colección PdfUnstructuredPages del pdf, sobre
+            la que se obtuvo el resultado contenido en el
+            info a crear.</param>
+            <param name="pdfTextRectangle">PdfTextRectangle sobre el que
+            se ha obetnido el resultado contenido en el info.</param>
+            <param name="textParserMatch">ITextParserMatch orígen del info.</param>
+            <param name="propertyInfo">PropetyInfo de la propiedad
+            de los metadatos de la cual se a comparado el valor y se
+            ha obtenido la coincidencia que ha generado el info.</param>
+        </member>
+        <member name="P:PdfTagger.Dat.PdfCompareInfo.PdfPageN">
+            <summary>
+            Número de página del pdf de la que
+            se ha obtenido la coincidencia orígen del
+            info.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.PdfCompareInfo.MetadataItemName">
+            <summary>
+            Nombre del item de metadatos del cual
+            se ha utilizado el valor para buscar la
+            coincidendia encontrada en el pdf que da
+            orígen a esta instancia de info.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.PdfCompareInfo.TextValue">
+            <summary>
+            Valor obtenido.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.PdfCompareInfo.TextContext">
+            <summary>
+            Valor obtenido.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.PdfCompareInfo.MatchIndex">
+            <summary>
+            Indice resultado.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Dat.PdfCompareInfo.GetPdfTagPattern">
+            <summary>
+            Devuelve un patrón de búsqueda a partir de la 
+            instancia de coicidencia.
+            </summary>
+            <returns>Patrón de búsqueda.</returns>
+        </member>
+        <member name="M:PdfTagger.Dat.PdfCompareInfo.ToString">
+            <summary>
+            Devuelve una representación textual
+            de la intancia actual de PdfCompareInfo.
+            </summary>
+            <returns>Representación textual 
+            de la intancia actual</returns>
+        </member>
+        <member name="T:PdfTagger.Dat.PdfCompareResult">
+            <summary>
+            Resultado de comparación de un pdf.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.PdfCompareResult.DocCategory">
+            <summary>
+            Categoría de documento a la que pertenece el pdf.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.PdfCompareResult.DocID">
+            <summary>
+            ID del documento pdf.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.PdfCompareResult.HierarchySetName">
+            <summary>
+            Nombre del catálogo de jerarquías
+            utilizado.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.PdfCompareResult.MetadataName">
+            <summary>
+            Clase que implementa la interfaz IMetadata
+            asociada al resultado de identificación de
+            patrones.
+            utilizado.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.PdfCompareResult.WordGroupsInfos">
+            <summary>
+            Información de coincidencias encontradas en los 
+            datos no estructurados contenidos en los rectángulos 
+            con información  de grupos relacionados
+            de palabras obtenidos de la página.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.PdfCompareResult.LinesInfos">
+            <summary>
+            Información de coincidencias encontradas en los 
+            rectángulos con información  del texto por
+            líneas obtenidos de la página.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Dat.PdfCompareResult.PdfTextInfos">
+            <summary>
+            Información de coincidencias encontradas en la 
+            información no estructurada total de la 
+            página de pdf en forma de texto.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Dat.PdfCompareResult.#ctor">
+            <summary>
+            Construye una nueva instancia de PdfCompareResult.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Dat.PdfCompareResult.#ctor(PdfTagger.Pdf.PdfUnstructuredDoc,PdfTagger.Dat.IMetadata,PdfTagger.Dat.Txt.IHierarchySet)">
+            <summary>
+            Construye una nueva instancia de PdfCompareResult.
+            </summary>
+            <param name="pdf">PdfUnstructuredDoc a partir del cual se ha obtenido.</param>
+            <param name="metadata">IMetadata a partir del cual se ha obtenido.</param>
+            <param name="hierarchySet">Catálogo de jerarquías por tipo.</param>
+        </member>
+        <member name="T:PdfTagger.Pat.NamespaceDoc">
+            <summary>
+            <para>El espacio de nombres Pat contiene los
+            elementos necesarios para trabajar con los
+            patrones de búsqueda aprendidos.</para> 
+            </summary>
+        </member>
+        <member name="T:PdfTagger.Pat.PdfTagExtractionItemResult">
+            <summary>
+            Almacena el resultado encontrado con
+            la ejecución de un patrón.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Pat.PdfTagExtractionItemResult.MatchesCount">
+            <summary>
+            Numéro de aciertos asociados al patrón.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Pat.PdfTagExtractionItemResult.Value">
+            <summary>
+            Valor encontrado.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Pat.PdfTagExtractionItemResult.CompareTo(System.Object)">
+            <summary>
+             Compara la instancia actual con otro objeto del mismo tipo y devuelve un entero
+             que indica si la posición de la instancia actual es anterior, posterior o igual
+             que la del otro objeto en el criterio de ordenación.
+            </summary>
+            <param name="obj"> Objeto que se va a comparar con esta instancia.</param>
+            <returns>
+             Un valor que indica el orden relativo de los objetos que se están comparando.El
+             valor devuelto tiene los siguientes significados:Valor Significado Menor que
+             cero Esta instancia es anterior a obj en el criterio de ordenación. Zero Esta
+             instancia se produce en la misma posición del criterio de ordenación que obj.
+             Mayor que cero Esta instancia sigue a obj en el criterio de ordenación.
+            </returns>
+        </member>
+        <member name="M:PdfTagger.Pat.PdfTagExtractionItemResult.GetHashCode">
+            <summary>
+            Sirve como la función hash predeterminada.
+            </summary>
+            <returns>Código hash para el objeto actual.</returns>
+        </member>
+        <member name="M:PdfTagger.Pat.PdfTagExtractionItemResult.Equals(System.Object)">
+            <summary>
+            Determina si el objeto especificado es igual al objeto actual.
+            </summary>
+            <param name="obj">Objeto que se va a comparar con el objeto actual.</param>
+            <returns>Es true si el objeto especificado es igual al objeto actual; 
+            en caso contrario, es false.</returns>
+        </member>
+        <member name="T:PdfTagger.Pat.PdfTagExtractionResult">
+            <summary>
+            Resultados de una extracción de datos utilizando
+            un PdfTagPatternStore.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Pat.PdfTagExtractionResult.Results">
+            <summary>
+            Resultados obtenidos.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Pat.PdfTagExtractionResult.Pdf">
+            <summary>
+            Datos no estructurados de entrada para el 
+            resultado.
+            </summary>
+        </member>
+        <member name="F:PdfTagger.Pat.PdfTagExtractionResult.Converters">
+            <summary>
+            Converters utilizados.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Pat.PdfTagExtractionResult.MetadataType">
+            <summary>
+            Tipo de datos de la clase de referencia que 
+            implementa IMetadata.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Pat.PdfTagExtractionResult.Metadata">
+            <summary>
+            Propuesta de metadatos.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Pat.PdfTagExtractionResult.#ctor">
+            <summary>
+            Construye una nueva instancia de 
+            la clase PdfTagExtractionResult.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Pat.PdfTagExtractionResult.AddResult(System.String,System.Int32,System.Object)">
+            <summary>
+            Añade un nuevo resultado.
+            </summary>
+            <param name="name">Nombre del item.</param>
+            <param name="matchesCount">Número de matches del patrón.</param> 
+            <param name="value">Valor de resultado encontrado.</param>
+        </member>
+        <member name="M:PdfTagger.Pat.PdfTagExtractionResult.GetMetadata">
+            <summary>
+            Devuelve un objeto de metadatos propuesto
+            con los valores de la extracción.
+            </summary>
+            <returns>Propuesta de metadatos.</returns>
+        </member>
+        <member name="T:PdfTagger.Pat.PdfTagPattern">
+            <summary>
+            Patrón
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Pat.PdfTagPattern.#ctor">
+            <summary>
+            Construye una clase de PdfTagPattern.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Pat.PdfTagPattern.MetadataItemName">
+            <summary>
+            Nombre del item de metadatos del cual
+            se ha utilizado el valor para buscar la
+            coincidendia encontrada en el pdf que da
+            orígen a esta instancia de info.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Pat.PdfTagPattern.PdfPageN">
+            <summary>
+            Número de página del pdf de la que
+            se ha obtenido la coincidencia orígen del
+            info.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Pat.PdfTagPattern.IsLastPage">
+            <summary>
+            Indica si es la última página.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Pat.PdfTagPattern.PdfRectangle">
+            <summary>
+            Coordenadas de posición.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Pat.PdfTagPattern.RegexPattern">
+            <summary>
+            Expresión regex del valor a buscar.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Pat.PdfTagPattern.RegexPatternLowerFirst">
+            <summary>
+            Expresión regex del texto 
+            colindante por la izquierda 1.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Pat.PdfTagPattern.RegexPatternLowerSecond">
+            <summary>
+            Expresión regex del texto 
+            colindante por la izquierda 2.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Pat.PdfTagPattern.RegexPatternUpper">
+            <summary>
+            <summary>
+            Expresión regex del texto 
+            colindante por la derecha.
+            </summary>
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Pat.PdfTagPattern.SourceTypeName">
+            <summary>
+            Tipo orígen del patrón: grupo de palabras,
+            lineas o texto delimitado.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Pat.PdfTagPattern.MatchesCount">
+            <summary>
+            Número de aciertos acumulados del patrón.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Pat.PdfTagPattern.CompareTo(System.Object)">
+            <summary>
+             Compara la instancia actual con otro objeto del mismo tipo y devuelve un entero
+             que indica si la posición de la instancia actual es anterior, posterior o igual
+             que la del otro objeto en el criterio de ordenación.
+            </summary>
+            <param name="obj"> Objeto que se va a comparar con esta instancia.</param>
+            <returns>
+             Un valor que indica el orden relativo de los objetos que se están comparando.El
+             valor devuelto tiene los siguientes significados:Valor Significado Menor que
+             cero Esta instancia es anterior a obj en el criterio de ordenación. Zero Esta
+             instancia se produce en la misma posición del criterio de ordenación que obj.
+             Mayor que cero Esta instancia sigue a obj en el criterio de ordenación.
+            </returns>
+        </member>
+        <member name="M:PdfTagger.Pat.PdfTagPattern.Equals(System.Object)">
+            <summary>
+            Determina si el objeto especificado es igual al objeto actual.
+            </summary>
+            <param name="obj">Objeto que se va a comparar con el objeto actual.</param>
+            <returns>Es true si el objeto especificado es igual al objeto actual; 
+            en caso contrario, es false.</returns>
+        </member>
+        <member name="M:PdfTagger.Pat.PdfTagPattern.GetHashCode">
+            <summary>
+            Sirve como la función hash predeterminada.
+            </summary>
+            <returns>Código hash para el objeto actual.</returns>
+        </member>
+        <member name="M:PdfTagger.Pat.PdfTagPattern.ToString">
+            <summary>
+            Devuelve una cadena que representa el objeto actual.
+            </summary>
+            <returns>Devuelve una cadena que representa el objeto actual.</returns>
+        </member>
+        <member name="T:PdfTagger.Pat.PdfTagPatternFactory">
+            <summary>
+            Operaciones con patrones.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Pat.PdfTagPatternFactory.GetDirectory(System.String)">
+            <summary>
+            Devuelve el directorio de almacenamiento de patrones.
+            </summary>
+            <param name="docCategory">Categoría de documento.</param>
+            <returns>Ruta del directorio de almacenamiento de patrones.</returns>
+        </member>
+        <member name="M:PdfTagger.Pat.PdfTagPatternFactory.GetFileName(System.String)">
+            <summary>
+            Devuelve un nombre de archivo para almacenar
+            los patrones de un documento determinado.
+            </summary>
+            <param name="docID">Id. del documento.</param>
+            <returns>Nombre del archivo de almacenamiento
+            de patrones.</returns>
+        </member>
+        <member name="M:PdfTagger.Pat.PdfTagPatternFactory.GetPath(PdfTagger.Dat.PdfCompareResult)">
+            <summary>
+            Devuelve el nombre de archivo incluyendo la ruta
+            donde se almacenan los patrones para un documento
+            determinado.
+            </summary>
+            <param name="compareResult">Resuiltado de comparación.</param>
+            <returns>Ruta completa al archivo.</returns>
+        </member>
+        <member name="M:PdfTagger.Pat.PdfTagPatternFactory.Create(PdfTagger.Dat.PdfCompareResult,System.String)">
+            <summary>
+            Crea un nuevo almacén de patrones.
+            </summary>
+            <param name="compareResult">Resultado de una comparación.</param>
+            <param name="path">Ruta del store.</param>
+        </member>
+        <member name="M:PdfTagger.Pat.PdfTagPatternFactory.GetStore(PdfTagger.Dat.PdfCompareResult)">
+            <summary>
+            Obtiene un almacén de patrones a partir de unos
+            resultados de comparación.
+            </summary>
+            <param name="compareResult">Resultados de comparación.</param>
+            <returns>Almacén de patrones.</returns>
+        </member>
+        <member name="M:PdfTagger.Pat.PdfTagPatternFactory.GetStore(System.String)">
+            <summary>
+            Recupera un archivo de almacén de patrones.
+            </summary>
+            <param name="path">Ruta al archivo.</param>
+            <returns>Almacén de patrones.</returns>
+        </member>
+        <member name="M:PdfTagger.Pat.PdfTagPatternFactory.Update(PdfTagger.Dat.PdfCompareResult,System.String)">
+            <summary>
+            Actualiza un almacén de patrones.
+            </summary>
+            <param name="compareResult">Resultado de una comparación.</param>
+            <param name="path">Ruta del store.</param>
+        </member>
+        <member name="M:PdfTagger.Pat.PdfTagPatternFactory.Save(PdfTagger.Dat.PdfCompareResult)">
+            <summary>
+            Guarda patrones obtenidos de una oparación de comparación
+            determinada.
+            </summary>
+            <param name="compareResult">Resultado de una comparación.</param>
+        </member>
+        <member name="M:PdfTagger.Pat.PdfTagPatternFactory.GetStore(PdfTagger.Pdf.PdfUnstructuredDoc)">
+            <summary>
+            Recupera un archivo de almacén de patrones.
+            </summary>
+            <param name="pdf">Documento.</param>
+            <returns>Almacén de patrones.</returns>
+        </member>
+        <member name="T:PdfTagger.Pat.PdfTagPatternStore">
+            <summary>
+            Almacén de patrones
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Pat.PdfTagPatternStore.#ctor">
+            <summary>
+            Construye un nuevo almacén de patrones.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Pat.PdfTagPatternStore.DocCategory">
+            <summary>
+            Categoría de documento a la que pertenece el pdf.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Pat.PdfTagPatternStore.DocID">
+            <summary>
+            ID del documento pdf.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Pat.PdfTagPatternStore.HierarchySetName">
+            <summary>
+            Nombre del catálogo de jerarquías
+            utilizado.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Pat.PdfTagPatternStore.MetadataName">
+            <summary>
+            Clase que implementa la interfaz IMetadata
+            asociada al resultado de identificación de
+            patrones.
+            utilizado.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Pat.PdfTagPatternStore.PdfPatterns">
+            <summary>
+            Colección de patrones.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Pat.PdfTagPatternStore.Extract(PdfTagger.Pdf.PdfUnstructuredDoc)">
+            <summary>
+            Ejecuta patrones los extracción de textos 
+            almacenados.
+            </summary>
+            <param name="pdf"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PdfTagger.Pat.PdfTagPatternStore.GetPdfPatterns(System.String,System.String)">
+            <summary>
+            Devuelve los patrones aprendidos para el sourceTypeName
+            y el metadataItemName proporcionados como parámetros.
+            </summary>
+            <param name="sourceTypeName">WordGroupsInfos / LinesInfos ...</param>
+            <param name="metadataItemName">Nombre de la propiedad de metadatos.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PdfTagger.Pat.PdfTagPatternStore.ExtractFromText(System.Type,PdfTagger.Pat.PdfTagExtractionResult,PdfTagger.Pdf.PdfUnstructuredPage)">
+            <summary>
+            Ejecuata la extracción basada en limites
+            textuales.
+            </summary>
+            <param name="metadataType">Tipo de la clase que implementa IMetadata.</param>
+            <param name="result">Resultado de extracción.</param>
+            <param name="page">PdfUnstructuredPage del doc. pdf.</param>
+        </member>
+        <member name="M:PdfTagger.Pat.PdfTagPatternStore.ExtractFromRectangles(System.Collections.Generic.List{PdfTagger.Pdf.PdfTextRectangle},System.Type,PdfTagger.Dat.Txt.IHierarchySet,PdfTagger.Pat.PdfTagExtractionResult,System.String)">
+            <summary>
+            Ejecuta el proceso de extracción de metadatos
+            en base a los patrones almacenados.
+            </summary>
+            <param name="pdfDocRectangles">rectángulos del pdf doc.</param>
+            <param name="metadataType">Implementa IMetadata.</param>
+            <param name="hierarchySet">Catálogo de jerarquías.</param>
+            <param name="result">Resultados.</param>
+            <param name="sourceTypeName">Nombre de la fuente.</param>
+        </member>
+        <member name="M:PdfTagger.Pat.PdfTagPatternStore.GetCommonAreaCoef(PdfTagger.Pdf.PdfTextBaseRectangle,PdfTagger.Pdf.PdfTextBaseRectangle)">
+            <summary>
+            Devuelve el coeficiente del área del rectángulo 
+            intersección con el de la mayor área de los dos
+            rectángulos de entrada.
+            </summary>
+            <returns>Coeficiente de área común. Un valor
+            de 1 significa que ambos rectángulos son iguales.</returns>
+        </member>
+        <member name="M:PdfTagger.Pat.PdfTagPatternStore.IsAlmostSameArea(PdfTagger.Pdf.PdfTextBaseRectangle,PdfTagger.Pdf.PdfTextBaseRectangle)">
+            <summary>
+            Devuelve true si los rectángulos comparten
+            un área superior a la establecidad en las 
+            opciones de configuración.
+            </summary>
+            <param name="first">Rectángulo 1.</param>
+            <param name="second">Rectángulo 2.</param>
+            <returns>True si comparten suficiente área
+            para considerarse como similares.</returns>
+        </member>
+        <member name="M:PdfTagger.Pat.PdfTagPatternStore.GetHierarchySet">
+            <summary>
+            Devuelve una nueva instancia del catálogo
+            de jerarquías asociado con el presenta almacén
+            de patrones.
+            </summary>
+            <returns>Catálogo de jerarquías.</returns>
+        </member>
+        <member name="T:PdfTagger.Pdf.NamespaceDoc">
+            <summary>
+            <para>El espacio de nombres Pdf contiene los
+            elementos necesarios para trabajar con los
+            archivos pdf de entrada.</para> 
+            </summary>
+        </member>
+        <member name="T:PdfTagger.Pdf.PdfTextChunk">
+            <summary>
+            Ampliación de la clase TextChunck de iText para almacenar
+            los puntos lower left y upper right.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Pdf.PdfTextChunk.#ctor(System.String,iTextSharp.text.pdf.parser.LocationTextExtractionStrategy.ITextChunkLocation,iTextSharp.text.pdf.parser.Vector,iTextSharp.text.pdf.parser.Vector)">
+            <summary>
+            Construye una nueva instancia de la clase PdfTextChunk.
+            </summary>
+            <param name="str">Texto contenido.</param>
+            <param name="location">Localización</param>
+            <param name="ll"></param>
+            <param name="ur"></param>
+        </member>
+        <member name="P:PdfTagger.Pdf.PdfTextChunk.Ll">
+            <summary>
+            Lower left
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Pdf.PdfTextChunk.Ur">
+            <summary>
+            Upper Right
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Pdf.PdfTextChunk.ToString">
+            <summary>
+            Representación textual de la instancia.
+            </summary>
+            <returns>Representación textual de la instancia.</returns>
+        </member>
+        <member name="T:PdfTagger.Pdf.PdfTextBaseRectangle">
+            <summary>
+            Rectangulo en una pagina de documento
+            pdf con información en forma de texto.
+            </summary>
+        </member>
+        <member name="F:PdfTagger.Pdf.PdfTextBaseRectangle.iTextRectangle">
+            <summary>
+            Rectangulo en una pagina de documento
+            pdf.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Pdf.PdfTextBaseRectangle.SetPointsFromRectangle">
+            <summary>
+            Carga las coordenadas del rectangulo de itext
+            en las coordenadas de la intancia actual de PdfTextRectangle.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Pdf.PdfTextBaseRectangle.#ctor">
+            <summary>
+            Construye una instancia de la clase PdfTextRectangle.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Pdf.PdfTextBaseRectangle.#ctor(iTextSharp.text.Rectangle)">
+            <summary>
+            Construye una nueva instancia de la clase iTextSharp.text.Rectangle
+            a partir de un rectangulo de itext.
+            </summary>
+            <param name="itextRectangle"></param>
+        </member>
+        <member name="P:PdfTagger.Pdf.PdfTextBaseRectangle.Llx">
+            <summary>
+            Lower left point x.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Pdf.PdfTextBaseRectangle.Lly">
+            <summary>
+            Lower left point y.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Pdf.PdfTextBaseRectangle.Urx">
+            <summary>
+            Upper right point x.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Pdf.PdfTextBaseRectangle.Ury">
+            <summary>
+            Upper right point y.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Pdf.PdfTextBaseRectangle.Equals(System.Object)">
+            <summary>
+            Determina si el objeto especificado es igual al objeto actual.
+            </summary>
+            <param name="obj">Objeto que se va a comparar con el objeto actual.</param>
+            <returns>Es true si el objeto especificado es igual al objeto actual; 
+            en caso contrario, es false.</returns>
+        </member>
+        <member name="M:PdfTagger.Pdf.PdfTextBaseRectangle.GetHashCode">
+            <summary>
+            Sirve como la función hash predeterminada.
+            </summary>
+            <returns>Código hash para el objeto actual.</returns>
+        </member>
+        <member name="M:PdfTagger.Pdf.PdfTextBaseRectangle.ToString">
+            <summary>
+            Representación textual de la instancia.
+            </summary>
+            <returns>Representación textual de la instancia.</returns>
+        </member>
+        <member name="M:PdfTagger.Pdf.PdfTextBaseRectangle.Intersect(iTextSharp.text.Rectangle,iTextSharp.text.Rectangle)">
+            <summary>
+            Devuelve el rectangulo instersección de dos rectangulos
+            facilitados como parámetros.
+            </summary>
+            <param name="first">Rectangulo 1.</param>
+            <param name="second">Rectangulo 2.</param>
+            <returns>Rectangulo interseccion.</returns>
+        </member>
+        <member name="M:PdfTagger.Pdf.PdfTextBaseRectangle.GetArea(iTextSharp.text.Rectangle)">
+            <summary>
+            Devuelve el área de un rectángulo.
+            </summary>
+            <param name="rectangle">Área de un rectángulo.</param>
+            <returns>Área de un rectángulo.</returns>
+        </member>
+        <member name="T:PdfTagger.Pdf.PdfTextRectangle">
+            <summary>
+            Rectangulo en una pagina de documento
+            pdf con información en forma de texto.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Pdf.PdfTextRectangle.#ctor">
+            <summary>
+            Construye una instancia de la clase PdfTextRectangle.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Pdf.PdfTextRectangle.#ctor(iTextSharp.text.Rectangle)">
+            <summary>
+            Construye una nueva instancia de la clase iTextSharp.text.Rectangle
+            a partir de un rectangulo de itext.
+            </summary>
+            <param name="itextRectangle"></param>
+        </member>
+        <member name="P:PdfTagger.Pdf.PdfTextRectangle.Text">
+            <summary>
+            Texto dentro de el rectángulo.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Pdf.PdfTextRectangle.ToString">
+            <summary>
+            Representación textual de la instancia.
+            </summary>
+            <returns>Representación textual de la instancia.</returns>
+        </member>
+        <member name="T:PdfTagger.Pdf.PdfTextRectangleTextExtractionStrategy">
+            <summary>
+            Extrategia de extracción de texto utilizada en el 
+            método estático GetTextFromPage de la clase
+            PdfTextExtractor. En esta clase que hereda de la
+            clase LocationTextExtractionStrategy, sobreescribimos
+            el método RenderText, para guardar la información 
+            espacial de la situación del texto en los rectángulos
+            de la colección PdfRectangles.
+            </summary>
+        </member>
+        <member name="F:PdfTagger.Pdf.PdfTextRectangleTextExtractionStrategy.tclStrat">
+            <summary>
+            Almaceno la implementación de extrategia de extracción
+            de texto asociada.
+            </summary>
+        </member>
+        <member name="F:PdfTagger.Pdf.PdfTextRectangleTextExtractionStrategy._PdfTextChunks">
+            <summary>
+            Almacena todos los TextChunks obtenidos con 
+            el método RenderText.
+            </summary>       
+        </member>
+        <member name="M:PdfTagger.Pdf.PdfTextRectangleTextExtractionStrategy.Merge(iTextSharp.text.Rectangle,iTextSharp.text.Rectangle)">
+            <summary>
+            Devuelve la unión de dos rectángulos.
+            </summary>
+            <param name="rec1">Rectangulo 1.</param>
+            <param name="rec2">Rectangulo 2.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PdfTagger.Pdf.PdfTextRectangleTextExtractionStrategy.IsLastChunck(PdfTagger.Pdf.PdfTextChunk)">
+            <summary>
+            Indica si el PdfTextChunck pasado como argumento
+            es el último de la matriz _PdfTextChunks.
+            </summary>
+            <param name="chunk">True si es el último de la colección.</param>
+            <returns>True si es el último de la colección, false si no.</returns>
+        </member>
+        <member name="M:PdfTagger.Pdf.PdfTextRectangleTextExtractionStrategy.StartsWithSpace(System.String)">
+            <summary>
+            Devuelve true si la cadena empieza con espacio.
+            </summary>
+            <param name="str">Cadena a analizar.</param>
+            <returns>True si empieza por espacio false si no.</returns>
+        </member>
+        <member name="M:PdfTagger.Pdf.PdfTextRectangleTextExtractionStrategy.EndsWithSpace(System.String)">
+            <summary>
+            Devuelve true si la cadena termina con espacio.
+            </summary>
+            <param name="str">Cadena a analizar.</param>
+            <returns>True si termina por espacio false si no.</returns>
+        </member>
+        <member name="M:PdfTagger.Pdf.PdfTextRectangleTextExtractionStrategy.#ctor">
+            <summary>
+            Crea un nuevo text extraction renderer.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Pdf.PdfTextRectangleTextExtractionStrategy.#ctor(iTextSharp.text.pdf.parser.LocationTextExtractionStrategy.ITextChunkLocationStrategy)">
+            <summary>
+            Crea un nuevo text extraction renderer, con una estrategia 
+            personalizada de creación de nuevos objetos TextChunkLocation 
+            basados en el input de los TextRenderInfo.
+            </summary>
+            <param name="strat">Estrategia personalizada de
+            creación de TextChunkLocation.</param>
+        </member>
+        <member name="M:PdfTagger.Pdf.PdfTextRectangleTextExtractionStrategy.RenderText(iTextSharp.text.pdf.parser.TextRenderInfo)">
+            <summary>
+            Obtiene el texto contenido en un pdf en función del parámetro facilitado.
+            </summary>
+            <param name="renderInfo">Información para la obtención del texto.</param>
+        </member>
+        <member name="M:PdfTagger.Pdf.PdfTextRectangleTextExtractionStrategy.GetWordGroups(System.Boolean)">
+            <summary>
+            Implementa la extracción de grupos de palabras
+            como texto contenido en rectangulos.
+            </summary>
+            <param name="fullLine">Indica si se quiere obtener el contenido
+            por líneas completas.</param>
+            <returns>Matriz con los rectángulos obtenidos.</returns>
+        </member>
+        <member name="T:PdfTagger.Pdf.PdfUnstructuredDoc">
+            <summary>
+            Representa la información no estructurada
+            contenida en un documento pdf.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Pdf.PdfUnstructuredDoc.GetPdfData(iTextSharp.text.pdf.PdfReader)">
+            <summary>
+            Obtiene la información no estructurada.
+            </summary>
+            <param name="pdfReader"></param>
+        </member>
+        <member name="M:PdfTagger.Pdf.PdfUnstructuredDoc.#ctor">
+            <summary>
+            Construye una nueva instancia de PdfUnstructuredDoc
+            a partir del pdf cuya ruta se facilita como parámetro.
+            <code lang="C#">
+            // Creamos un PdfUnstructuredDoc para extracción de datos
+            PdfUnstructuredDoc pdf = new PdfUnstructuredDoc(pdfPath);
+            
+            // Almacenamos los datos extraidos en un archivo xml
+            XmlParser.SaveAsXml(pdf, xmlPath);
+            </code> 
+            <code lang="VB">
+            ' Creamos un PdfUnstructuredDoc para extracción de datos
+            Dim pdf As PdfUnstructuredDoc = New PdfUnstructuredDoc("C:\test.pdf")
+            
+            ' Almacenamos los datos extraidos en un archivo xml
+            XmlParser.SaveAsXml(pdf, "C:\test.xml")
+            </code> 
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Pdf.PdfUnstructuredDoc.#ctor(System.String)">
+            <summary>
+            Construye una nueva instancia de PdfUnstructuredDoc
+            a partir del pdf cuya ruta se facilita como 
+            parámetro.
+            </summary>
+            <param name="pdfPath">Ruta a archivo pdf.</param>
+        </member>
+        <member name="M:PdfTagger.Pdf.PdfUnstructuredDoc.#ctor(System.Byte[])">
+            <summary>
+            Construye una nueva instancia de PdfUnstructuredDoc
+            a partir del pdf cyuos datos binarios se facilitan como 
+            parámetro.
+            </summary>
+            <param name="pdfFile">Datos binarios de archivo pdf.</param>
+        </member>
+        <member name="P:PdfTagger.Pdf.PdfUnstructuredDoc.DocCategory">
+            <summary>
+            Categoría de documento a la que pertenece el pdf.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Pdf.PdfUnstructuredDoc.DocID">
+            <summary>
+            ID del documento pdf.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Pdf.PdfUnstructuredDoc.PdfUnstructuredPages">
+            <summary>
+            Páginas del documento pdf con su información
+            no estructurada.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Pdf.PdfUnstructuredDoc.ToString">
+            <summary>
+            Representación textual de una instancia.
+            </summary>
+            <returns>Representacion textual del 
+            PdfUnstructuredDoc actual.</returns>
+        </member>
+        <member name="T:PdfTagger.Pdf.PdfUnstructuredPage">
+            <summary>
+            Representa una página de documento pdf
+            con la información no estructurada obtenida
+            mediante itextsharp.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Pdf.PdfUnstructuredPage.#ctor">
+            <summary>
+            Construye una nueva instancia de PdfUnstructuredPage.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Pdf.PdfUnstructuredPage.#ctor(System.Collections.Generic.List{PdfTagger.Pdf.PdfTextRectangle},System.Collections.Generic.List{PdfTagger.Pdf.PdfTextRectangle},System.String)">
+            <summary>
+            Construye una nueva instancia de PdfUnstructuredPage.
+            </summary>
+            <param name="wordGroups">Conjunto de rectangulos
+            con información no estructurada en su interior.</param>
+            <param name="lines">Colección de líneas.</param>
+            <param name="pdfText">Texto total de la página.</param>
+        </member>
+        <member name="P:PdfTagger.Pdf.PdfUnstructuredPage.WordGroups">
+            <summary>
+            Rectangulos con información  de grupos relacionados
+            de palabras obtenidos de la página.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Pdf.PdfUnstructuredPage.Lines">
+            <summary>
+            Rectangulos con información  del texto por
+            líneas obtenidos de la página.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Pdf.PdfUnstructuredPage.PdfText">
+            <summary>
+            Información no estructurada total de la 
+            página de pdf en forma de texto.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Pdf.PdfUnstructuredPage.PageHeight">
+            <summary>
+            Altura de la página.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Pdf.PdfUnstructuredPage.PageWidth">
+            <summary>
+            Anchura de la página.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Pdf.PdfUnstructuredPage.ToString">
+            <summary>
+            Representación textual de esta
+            instancia de PdfUnstructuredPage.
+            </summary>
+            <returns>Representación textual de la instancia.</returns>
+        </member>
+        <member name="T:PdfTagger.Xml.NamespaceDoc">
+            <summary>
+            <para>El espacio de nombres Pdf contiene los
+            elementos necesarios para trabajar con la
+            serialización xml.</para> 
+            </summary>
+        </member>
+        <member name="T:PdfTagger.Xml.XmlParser">
+            <summary>
+            Encargado de la serialización y deserialización
+            de archivos xml.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Xml.XmlParser.SaveAsXml(System.Object,System.String)">
+            <summary>
+            Serializa el objeto como xml y lo guarda
+            en la ruta indicada.
+            </summary>
+            <param name="instance">Instancia de objeto a serializar.</param>
+            <param name="path">Ruta al archivo xml a crear.</param>
+        </member>
+        <member name="M:PdfTagger.Xml.XmlParser.FromXml``1(System.String)">
+            <summary>
+            Obtiene una instancia de objeto a partir de un
+            archivo xml.
+            </summary>
+            <param name="path">Ruta al archivo.</param>
+            <returns>Instancia de tipo T.</returns>
+        </member>
+        <member name="T:PdfTagger.Settings">
+            <summary>
+            Contiene la configuración del sistema. Se almacena
+            en ProgramData\PdfTagger en el archivo settings.xml.
+            </summary>
+        </member>
+        <member name="F:PdfTagger.Settings._PathSep">
+            <summary>
+            Parth separator win="\" and linux ="/".
+            </summary>
+        </member>
+        <member name="F:PdfTagger.Settings._Current">
+            <summary>
+            Configuración actual.
+            </summary>
+        </member>
+        <member name="F:PdfTagger.Settings.Path">
+            <summary>
+            Ruta al directorio de configuración.
+            </summary>
+        </member>
+        <member name="F:PdfTagger.Settings.FileName">
+            <summary>
+            Nombre del fichero de configuración.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Settings.Get">
+            <summary>
+            Inicia estaticos.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PdfTagger.Settings.CheckDirectories">
+            <summary>
+            Aseguro existencia de directorios de trabajo.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Settings.#cctor">
+            <summary>
+            Constructor estático de la clase Settings.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Settings.Current">
+            <summary>
+            Configuración en curso.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Settings.PatternsPath">
+            <summary>
+            Ruta al directorio donde se encuentran
+            los patrones de búsqueda.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Settings.MaxPatternCount">
+            <summary>
+            Número de patrones a almacenar como
+            máximo.
+            </summary>
+        </member>
+        <member name="P:PdfTagger.Settings.MinRectangleCommon">
+            <summary>
+            Coeficiente mínimo de área
+            compartida, utilizado en la selección de 
+            rectángulos en patrones.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Settings.Save">
+            <summary>
+            Guarda la configuración en curso actual.
+            </summary>
+        </member>
+        <member name="M:PdfTagger.Settings.SetFileName(System.String)">
+            <summary>
+            Esteblece el archivo de configuración con el cual trabajar.
+            </summary>
+            <param name="fileName">Nombre del archivo de configuración a utilizar.</param>
+        </member>
+    </members>
+</doc>
