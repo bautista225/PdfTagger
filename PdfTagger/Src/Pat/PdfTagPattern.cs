@@ -90,27 +90,15 @@ namespace PdfTagger.Pat
         /// <summary>
         /// Expresión regex del valor a buscar.
         /// </summary>
-        public string RegexPattern { get; set; }
-
-        /// <summary>
-        /// Expresión regex del texto 
-        /// colindante por la izquierda 1.
-        /// </summary>
-        public string RegexPatternLowerFirst { get; set; }
-
-        /// <summary>
-        /// Expresión regex del texto 
-        /// colindante por la izquierda 2.
-        /// </summary>
-        public string RegexPatternLowerSecond { get; set; }
+        public string RegexPattern { get; set; }     
 
         /// <summary>
         /// <summary>
-        /// Expresión regex del texto 
-        /// colindante por la derecha.
+        /// Posición de la coincidendia en caso de
+        /// varias.
         /// </summary>
         /// </summary>
-        public string RegexPatternUpper { get; set; }
+        public int Position { get; set; }
 
         /// <summary>
         /// Tipo orígen del patrón: grupo de palabras,
@@ -187,9 +175,7 @@ namespace PdfTagger.Pat
                     IsLastPage == input.IsLastPage &&
                     equalsRectangle &&
                     RegexPattern == input.RegexPattern &&
-                    RegexPatternLowerFirst == input.RegexPatternLowerFirst &&
-                    RegexPatternLowerSecond == input.RegexPatternLowerSecond &&
-                    RegexPatternUpper == input.RegexPatternUpper &&
+                    Position == input.Position &&
                     SourceTypeName == input.SourceTypeName);
         }
 
@@ -207,9 +193,7 @@ namespace PdfTagger.Pat
             hash = hash * prime + IsLastPage.GetHashCode();
             hash = hash * prime + ((PdfRectangle==null) ? 0 : PdfRectangle.GetHashCode());
             hash = hash * prime + (RegexPattern??"").GetHashCode();
-            hash = hash * prime + (RegexPatternLowerFirst??"").GetHashCode();
-            hash = hash * prime + (RegexPatternLowerSecond??"").GetHashCode();
-            hash = hash * prime + (RegexPatternUpper??"").GetHashCode();
+            hash = hash * prime + Position .GetHashCode();
             hash = hash * prime + (SourceTypeName??"").GetHashCode();
 
             return hash;

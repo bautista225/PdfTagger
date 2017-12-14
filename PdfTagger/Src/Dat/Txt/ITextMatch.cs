@@ -68,11 +68,17 @@ namespace PdfTagger.Dat.Txt
         /// </summary>
         int MatchIndex { get; }
 
-
         /// <summary>
         /// Patrón regex utilizado.
         /// </summary>
         string Pattern { get; }
+
+        /// <summary>
+        /// En caso de varias coincidencias en un mismo
+        /// contexto con el patrón, devuelve la posición
+        /// de la que coincide.
+        /// </summary>
+        int Position { get; }
 
         #endregion
 

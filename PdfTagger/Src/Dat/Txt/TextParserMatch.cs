@@ -86,6 +86,13 @@ namespace PdfTagger.Dat.Txt
         }
 
         /// <summary>
+        /// En caso de varias coincidencias en un mismo
+        /// contexto con el patrón, devuelve la posición
+        /// de la que coincide.
+        /// </summary>
+        public int Position { get; private set; }
+
+        /// <summary>
         /// Patrón regex utilizado.
         /// </summary>
         public string Pattern { get; private set; }
@@ -103,15 +110,19 @@ namespace PdfTagger.Dat.Txt
         /// de la comparación. Tras ejecutar la comparación
         /// sobre resulta text almacenado como TextValue en
         /// la instancia de TextParserMacth.</param>
+        /// <param name="position">Posición de la coincidencia
+        /// en caso de varias.</param>
         /// <param name="pattern">Patrón reges aplicado.</param>
         /// <param name="match">Match del regex del que procede con
         /// respecto al texto original.</param>
-        internal TextParserMatch(T value, string text, string context,
+        internal TextParserMatch(T value, string text, 
+            string context, int position,
             string pattern = null, Match match = null)
         {
             Value = value;
             TextValue = text;
             TextContext = context;
+            Position = position;
             Pattern = pattern;
             _TextMatch = match;
         }

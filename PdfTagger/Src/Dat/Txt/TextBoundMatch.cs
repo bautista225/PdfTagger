@@ -234,6 +234,13 @@ namespace PdfTagger.Dat.Txt
             }
         }
 
+        /// <summary>
+        /// En caso de varias coincidencias en un mismo
+        /// contexto con el patrón, devuelve la posición
+        /// de la que coincide.
+        /// </summary>
+        public int Position { get; private set; }
+
         #endregion
 
         #region Public Methods

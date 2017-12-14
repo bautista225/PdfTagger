@@ -320,6 +320,12 @@ namespace PdfTaggerTest
         private void ctxMnTxViewPatterns_Click(object sender, EventArgs e)
         {
 
+            if(_Model.Store==null)
+            {
+                MessageBox.Show("Almacén de patrones no seleccionado.");
+                return;
+            }
+
             ToolStripMenuItem mnItem = (sender as ToolStripMenuItem);
             ContextMenuStrip ctx = (ContextMenuStrip)mnItem.GetCurrentParent();
             TextBox txb = (TextBox)ctx.SourceControl;

@@ -91,12 +91,14 @@ namespace PdfTagger.Dat.Txt
         {
             List<TextParserMatch<T>> matches = new List<TextParserMatch<T>>();
 
+            int position = 0;
+
             if (Pattern == null)
-                matches.Add(new TextParserMatch<T>(Converter.Convert(text), text, text));
+                matches.Add(new TextParserMatch<T>(Converter.Convert(text), text, text, 0));
             else
                 foreach (Match match in Regex.Matches(text, Pattern))
                     matches.Add(new TextParserMatch<T>(Converter.Convert(match.Value), 
-                        match.Value, text, Pattern, match));
+                        match.Value, text, position++, Pattern, match));
 
             return matches;
 
