@@ -118,11 +118,16 @@ namespace PdfTagger.Dat.Txt
         /// se sustituyen los grupos de dígitos por \d{length}.
         /// </summary>
         /// <param name="text">Texto en el que sustituir los dígitos.</param>
+        /// <param name="useLength">Indica si se debe tener
+        /// en cuenta la longitud de los número o no.</param>
         /// <returns>Cadena con dígitos sustituidos por \d{length}.</returns>
-        public static string ReplaceDigits(string text)
+        public static string ReplaceDigits(string text, bool useLength = true)
         {
 
-            string result = text;
+            if (!useLength)
+                return Regex.Replace(text, @"\d+", @"\d+");
+
+            string result = text;           
 
             foreach (Match numeros in Regex.Matches(result, @"\d+"))
                 result = result.Replace(numeros.Value, @"\d{" + numeros.Length + @"}");

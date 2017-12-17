@@ -154,7 +154,8 @@ namespace PdfTagger.Pat
                 originalCount - newPdfPatterns.Count;
 
             if (available < 0)
-                for (int i = originalCount - 1; i > (originalCount + available); i--)
+                for (int i = originalCount - 1; 
+                    (i > (originalCount + available)) && i >= 0; i--)
                     originalStore.PdfPatterns.RemoveAt(i);
 
             originalStore.PdfPatterns.AddRange(newPdfPatterns);

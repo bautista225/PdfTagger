@@ -44,15 +44,34 @@ namespace PdfTagger.Dat.Txt
     /// <summary>
     /// Coincidencia encontrada de TextBound.
     /// </summary>
-    public class TextBoundMatch<T> : ITextMatch
+    public class TextBoundMatch<T> : ITextMatch, ITextBoundMatch
     {
 
         #region Private Members Variables
 
+        /// <summary>
+        /// Segunda palabra por abajo.
+        /// </summary>
         Match _MatchLowerSecond;
+
+        /// <summary>
+        /// Primera palabra por abajo.
+        /// </summary>
         Match _MatchLowerFirst;
+
+        /// <summary>
+        /// Coincidencia central.
+        /// </summary>
         Match _MatchToken;
+
+        /// <summary>
+        /// Límite superior.
+        /// </summary>
         Match _MatchUpper;
+
+        /// <summary>
+        /// TextMach orígen.
+        /// </summary>
         ITextMatch _ParserMatch;
 
         #endregion
@@ -162,6 +181,7 @@ namespace PdfTagger.Dat.Txt
             _MatchLowerFirst = GetLowerFirst();
             _MatchLowerSecond = GetLowerSecond();
             _MatchUpper = GetUpper();
+            UseLengthOnPatternDigitReplacement = true;
         }
 
         #endregion
@@ -218,7 +238,8 @@ namespace PdfTagger.Dat.Txt
                     TxtRegex.Escape(_MatchLowerSecond.Value) +
                     TxtRegex.Escape(_MatchLowerFirst.Value);
 
-                patternLower = TxtRegex.ReplaceDigits(patternLower);
+                patternLower = TxtRegex.ReplaceDigits(patternLower, 
+                    UseLengthOnPatternDigitReplacement);
 
                 patternLower = $"(?<={patternLower})";
 
@@ -226,7 +247,11 @@ namespace PdfTagger.Dat.Txt
                     TxtRegex.Escape(_MatchUpper.Value);
 
                 if (!string.IsNullOrEmpty(patternUpper))
-                    patternUpper = $"(?={TxtRegex.ReplaceDigits(patternUpper)})";
+                {
+                    patternUpper = TxtRegex.ReplaceDigits(patternUpper,
+                        UseLengthOnPatternDigitReplacement);
+                    patternUpper = $"(?={patternUpper})";
+                }
 
                 return $"{patternLower}{_ParserMatch.Pattern}{patternUpper}";
               
@@ -240,6 +265,13 @@ namespace PdfTagger.Dat.Txt
         /// de la que coincide.
         /// </summary>
         public int Position { get; private set; }
+
+        /// <summary>
+        /// Indica si de debe utilizar la longitud o no
+        /// en la rutina de reemplazo de dígitos para confección
+        /// del patrón regex.
+        /// </summary>
+        public bool UseLengthOnPatternDigitReplacement { get; set; }
 
         #endregion
 

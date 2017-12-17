@@ -1,5 +1,6 @@
 ﻿using iTextSharp.text;
 using PdfTagger.Dat.Met.Bus;
+using PdfTagger.Pat;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -349,9 +350,60 @@ namespace PdfTaggerTest
 
         }
 
-        private void mnMain_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void txGrossAmount_Enter(object sender, EventArgs e)
         {
 
+            string metaDataItemName = "GrossAmount";
+
+            _Model.LoadWordGroupFromStore(metaDataItemName, "WordGroupsInfos");
+            _Model.LoadWordGroupFromStore(metaDataItemName, "PdfTextInfos");
+
+            FillGrid(grdWordGroups, _Model.WordGroupsFiltered);
+            FillGrid(grdPdfText, _Model.PdfTextInfosFiltered);
+
+            tbWordGroups.Text = $"WordGroups {metaDataItemName}({_Model.WordGroupsFiltered.Count})";
+            tbPdfText.Text = $"PdfText {metaDataItemName}({_Model.PdfTextInfosFiltered.Count})";
+
+            Refresh();
+
         }
+
+        private void FillGrid(DataGridView grd, List<PdfTagPattern> patterns)
+        {
+            grd.Rows.Clear();
+
+            foreach (var patt in patterns)
+            {
+                int index = grd.Rows.Add(patt.MetadataItemName,
+                    patt.PdfPageN, patt.PdfRectangle, patt.MatchesCount,
+                    patt.RegexPattern, patt);
+
+                object value;
+
+                if (IsInResults(patt, out value))
+                {
+                    grd.Rows[index].DefaultCellStyle.BackColor = Color.Green;
+                    grd.Rows[index].Cells[6].Value = value;
+                }
+            }
+        }
+
+        private bool IsInResults(PdfTagPattern patt, out object value)
+        {
+            foreach (var pattResult in _Model.ExtractionResult.Results[patt.MetadataItemName])
+            {
+                if (pattResult.Pattern.Equals(patt))
+                {
+                    value = pattResult.Value;
+                    return true;
+                }
+            }
+
+            value = null;
+
+            return false;
+
+        }
+      
     }
 }

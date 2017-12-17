@@ -157,7 +157,7 @@ namespace PdfTagger.Pat
 
                         if (pInf.PropertyType == typeof(string))
                         {
-                            result.AddResult(pattern.MetadataItemName, pattern.MatchesCount, match.Value);
+                            result.AddResult(pattern, match.Value);
                         }
                         else
                         {
@@ -174,7 +174,7 @@ namespace PdfTagger.Pat
                             }
                            
                             object pValue = converter.Convert(match.Value);
-                            result.AddResult(pattern.MetadataItemName, pattern.MatchesCount, pValue);
+                            result.AddResult(pattern, pValue);
 
                         }
                     }
@@ -224,7 +224,7 @@ namespace PdfTagger.Pat
 
                             if (pValue != null && !PdfCompare.IsZeroNumeric(pValue))
                             {
-                                result.AddResult(pattern.MetadataItemName, pattern.MatchesCount, pValue);
+                                result.AddResult(pattern, pValue);
                                 if (!_Converters.ContainsKey(pInf.PropertyType))
                                     _Converters.Add(pInf.PropertyType, converter);
                             }

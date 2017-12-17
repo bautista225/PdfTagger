@@ -88,25 +88,47 @@ namespace PdfTagger.Pat
             Results = new Dictionary<string, List<PdfTagExtractionItemResult>>();
         }
 
+        ///// <summary>
+        ///// Añade un nuevo resultado.
+        ///// </summary>
+        ///// <param name="name">Nombre del item.</param>
+        ///// <param name="matchesCount">Número de matches del patrón.</param> 
+        ///// <param name="value">Valor de resultado encontrado.</param>
+        //public void AddResult(string name, int matchesCount, object value)
+        //{
+        //    if (!Results.ContainsKey(name))
+        //        Results.Add(name, new List<PdfTagExtractionItemResult>());
+
+        //    PdfTagExtractionItemResult itemResult = new PdfTagExtractionItemResult()
+        //    {
+        //        MatchesCount = matchesCount,
+        //        Value = value
+        //    };
+
+        //    if (Results[name].IndexOf(itemResult) == -1)
+        //        Results[name].Add(itemResult);
+
+        //}
+
         /// <summary>
         /// Añade un nuevo resultado.
         /// </summary>
-        /// <param name="name">Nombre del item.</param>
-        /// <param name="matchesCount">Número de matches del patrón.</param> 
+        /// <param name="pattern">PdfTagPattern que obtiene el resultado.</param>
         /// <param name="value">Valor de resultado encontrado.</param>
-        public void AddResult(string name, int matchesCount, object value)
+        public void AddResult(PdfTagPattern pattern, object value)
         {
-            if (!Results.ContainsKey(name))
-                Results.Add(name, new List<PdfTagExtractionItemResult>());
+
+            if (!Results.ContainsKey(pattern.MetadataItemName))
+                Results.Add(pattern.MetadataItemName, new List<PdfTagExtractionItemResult>());
 
             PdfTagExtractionItemResult itemResult = new PdfTagExtractionItemResult()
             {
-                MatchesCount = matchesCount,
+                Pattern = pattern,
                 Value = value
             };
 
-            if (Results[name].IndexOf(itemResult) == -1)
-                Results[name].Add(itemResult);
+            if (Results[pattern.MetadataItemName].IndexOf(itemResult) == -1)
+                Results[pattern.MetadataItemName].Add(itemResult);
 
         }
 
