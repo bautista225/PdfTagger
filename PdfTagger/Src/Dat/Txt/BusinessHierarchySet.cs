@@ -38,6 +38,7 @@
  */
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace PdfTagger.Dat.Txt
 {
@@ -64,25 +65,7 @@ namespace PdfTagger.Dat.Txt
 
         #endregion
 
-        #region Public Methods
-
-        /// <summary>
-        /// Devuelve el converter asociado al tipo y
-        /// pattern regex asociado.
-        /// </summary>
-        /// <param name="type">Tipo.</param>
-        /// <param name="pattern">Patrón.</param>
-        /// <returns>Converter asociado en la jerarquía
-        /// correspondiente.</returns>
-        public object GetConverter(Type type, string pattern)
-        {
-
-            if (!HierarchyByType.ContainsKey(type))
-                return null;        
-
-            return HierarchyByType[type].GetConverter(pattern);
-
-        }
+        #region Private Methods
 
         /// <summary>
         /// Devuelve la jerarquía estandard para fechas.
@@ -148,7 +131,7 @@ namespace PdfTagger.Dat.Txt
         /// Devuelve la jerarquía estandard para textos.
         /// </summary>
         /// <returns>Jerarquía estandard para textos.</returns>
-        private static TextParserHierarchy<string> GetTextParser()
+        protected static TextParserHierarchy<string> GetTextParser()
         {
             TextParserHierarchy<string> hierarchyAmount = new TextParserHierarchy<string>()
             {

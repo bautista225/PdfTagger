@@ -222,7 +222,29 @@ namespace PdfTaggerTest
 
                 Invoke(new Action(()=> {
                     GetViewFromMetadata();
+                    LoadPatternStore();
                 }));                
+            }
+        }
+
+        private void LoadPatternStore()
+        {
+
+            grdPatternStore.Rows.Clear();
+
+            if (_Model.Store == null)
+                return;
+
+            tbPatternStore.Text = $"PatternStore({ _Model.Store.PdfPatterns.Count})";
+
+            _Model.Store.PdfPatterns.Sort();
+
+            foreach (var patt in _Model.Store.PdfPatterns)
+            {
+                int index = grdPatternStore.Rows.Add(patt.MetadataItemName,
+                  patt.PdfPageN, patt.PdfRectangle, patt.MatchesCount,
+                  patt.RegexPattern, patt, "", patt.IsLastPage, 
+                  patt.SourceTypeName, patt.Position);
             }
         }
 
@@ -306,7 +328,7 @@ namespace PdfTaggerTest
 
         private TextBox GetNextText(TextBox txb)
         {
-            foreach (var ctrl in sPnV.Panel1.Controls)
+            foreach (var ctrl in tbInvoice.Controls)
             {
                 TextBox nxt = ctrl as TextBox;
 
@@ -350,10 +372,12 @@ namespace PdfTaggerTest
 
         }
 
-        private void txGrossAmount_Enter(object sender, EventArgs e)
+        private void LoadResultPatterns(object sender, EventArgs e)
         {
 
-            string metaDataItemName = "GrossAmount";
+            TextBox txb = (sender as TextBox);
+
+            string metaDataItemName = txb.Name.Substring(2, txb.Name.Length-2);
 
             _Model.LoadWordGroupFromStore(metaDataItemName, "WordGroupsInfos");
             _Model.LoadWordGroupFromStore(metaDataItemName, "PdfTextInfos");
@@ -361,8 +385,11 @@ namespace PdfTaggerTest
             FillGrid(grdWordGroups, _Model.WordGroupsFiltered);
             FillGrid(grdPdfText, _Model.PdfTextInfosFiltered);
 
-            tbWordGroups.Text = $"WordGroups {metaDataItemName}({_Model.WordGroupsFiltered.Count})";
-            tbPdfText.Text = $"PdfText {metaDataItemName}({_Model.PdfTextInfosFiltered.Count})";
+            if(_Model.WordGroupsFiltered!=null)
+                tbWordGroups.Text = $"WordGroups {metaDataItemName}({_Model.WordGroupsFiltered.Count})";
+
+            if (_Model.PdfTextInfosFiltered != null)
+                tbPdfText.Text = $"PdfText {metaDataItemName}({_Model.PdfTextInfosFiltered.Count})";
 
             Refresh();
 
@@ -372,15 +399,17 @@ namespace PdfTaggerTest
         {
             grd.Rows.Clear();
 
+            if (patterns == null)
+                return;
+
             foreach (var patt in patterns)
             {
                 int index = grd.Rows.Add(patt.MetadataItemName,
                     patt.PdfPageN, patt.PdfRectangle, patt.MatchesCount,
                     patt.RegexPattern, patt);
 
-                object value;
 
-                if (IsInResults(patt, out value))
+                if (IsInResults(patt, out object value))
                 {
                     grd.Rows[index].DefaultCellStyle.BackColor = Color.Green;
                     grd.Rows[index].Cells[6].Value = value;
@@ -390,16 +419,23 @@ namespace PdfTaggerTest
 
         private bool IsInResults(PdfTagPattern patt, out object value)
         {
-            foreach (var pattResult in _Model.ExtractionResult.Results[patt.MetadataItemName])
-            {
-                if (pattResult.Pattern.Equals(patt))
-                {
-                    value = pattResult.Value;
-                    return true;
-                }
-            }
 
             value = null;
+
+            if (_Model.ExtractionResult == null)
+                return false;
+
+            if (_Model.ExtractionResult.Results.ContainsKey(patt.MetadataItemName))
+            {
+                foreach (var pattResult in _Model.ExtractionResult.Results[patt.MetadataItemName])
+                {
+                    if (pattResult.Pattern.Equals(patt))
+                    {
+                        value = pattResult.Value;
+                        return true;
+                    }
+                }
+            }
 
             return false;
 

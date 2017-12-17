@@ -132,7 +132,7 @@ namespace PdfTagger.Dat
                 object pValue = pInf.GetValue(metadata);
 
                 // Obtengo la jerarquía de analizadores
-                ITextParserHierarchy parserHierarchy = hierarchySet.GetParserHierarchy(pInf.PropertyType);
+                ITextParserHierarchy parserHierarchy = hierarchySet.GetParserHierarchy(pInf);
 
                 if (pInf.PropertyType == typeof(string)) 
                     parserHierarchy.SetParserRegexPattern(0, TxtRegex.Replace($"{pValue}"));

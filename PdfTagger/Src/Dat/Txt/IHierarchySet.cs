@@ -38,6 +38,7 @@
  */
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace PdfTagger.Dat.Txt
 {
@@ -56,10 +57,10 @@ namespace PdfTagger.Dat.Txt
         /// aplicable aun tipo determinado en este catálogo
         /// de jearaquía.
         /// </summary>
-        /// <param name="type">Typo para el cual devolver el
+        /// <param name="pInf">PropertyInfo para el cual devolver el
         /// catálogo de jerarquías.</param>
         /// <returns></returns>
-        ITextParserHierarchy GetParserHierarchy(Type type);
+        ITextParserHierarchy GetParserHierarchy(PropertyInfo pInf);
 
         #endregion
 

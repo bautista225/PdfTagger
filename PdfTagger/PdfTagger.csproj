@@ -52,6 +52,7 @@
     <Compile Include="Src\Dat\PdfCompare.cs" />
     <Compile Include="Src\Dat\PdfCompareInfo.cs" />
     <Compile Include="Src\Dat\PdfCompareResult.cs" />
+    <Compile Include="Src\Dat\Txt\BusinessInvoiceHierarchySet.cs" />
     <Compile Include="Src\Dat\Txt\BusinessHierarchySet.cs" />
     <Compile Include="Src\Dat\Txt\Converter.cs" />
     <Compile Include="Src\Dat\Txt\DefaultAmountConverter.cs" />

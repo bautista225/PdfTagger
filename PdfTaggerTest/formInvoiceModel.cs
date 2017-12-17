@@ -73,7 +73,7 @@ namespace PdfTaggerTest
             if (string.IsNullOrEmpty(Pdf.DocID))
                 throw new InvalidOperationException("Es necesario un valor Pdf.DocID.");
 
-            PdfCompareResult compareResult = PdfCompare.Compare(new BusinessHierarchySet(), Pdf, Invoice);
+            PdfCompareResult compareResult = PdfCompare.Compare(new BusinessInvoiceHierarchySet(), Pdf, Invoice);
             PdfTagPatternFactory.Save(compareResult);
         }
 

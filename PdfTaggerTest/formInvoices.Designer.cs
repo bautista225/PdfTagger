@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.mnMain = new System.Windows.Forms.MenuStrip();
             this.mnMainOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.mnMainAnalyze = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,6 +42,14 @@
             this.sPnV = new System.Windows.Forms.SplitContainer();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tbInvoice = new System.Windows.Forms.TabPage();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.txDelivery = new System.Windows.Forms.TextBox();
             this.ctxMnTx = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ctxMnTxViewPatterns = new System.Windows.Forms.ToolStripMenuItem();
@@ -106,11 +115,6 @@
             this.txTaxesOutputsAmount03 = new System.Windows.Forms.TextBox();
             this.tbWordGroups = new System.Windows.Forms.TabPage();
             this.grdWordGroups = new System.Windows.Forms.DataGridView();
-            this.tbPdfText = new System.Windows.Forms.TabPage();
-            this.grdPdfText = new System.Windows.Forms.DataGridView();
-            this.wBr = new System.Windows.Forms.WebBrowser();
-            this.stMain = new System.Windows.Forms.StatusStrip();
-            this.dlgOpen = new System.Windows.Forms.OpenFileDialog();
             this.MetadataItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Page = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Rectangle = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -118,6 +122,8 @@
             this.RegexPattern = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WordGroupPatt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WordGroupResult = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tbPdfText = new System.Windows.Forms.TabPage();
+            this.grdPdfText = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -125,6 +131,21 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PdfTextPatt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PdfTextResult = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tbPatternStore = new System.Windows.Forms.TabPage();
+            this.grdPatternStore = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsLastPage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SourceTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Position = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.wBr = new System.Windows.Forms.WebBrowser();
+            this.stMain = new System.Windows.Forms.StatusStrip();
+            this.dlgOpen = new System.Windows.Forms.OpenFileDialog();
             this.mnMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sPnH)).BeginInit();
             this.sPnH.Panel1.SuspendLayout();
@@ -141,6 +162,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdWordGroups)).BeginInit();
             this.tbPdfText.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdPdfText)).BeginInit();
+            this.tbPatternStore.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdPatternStore)).BeginInit();
             this.SuspendLayout();
             // 
             // mnMain
@@ -237,6 +260,7 @@
             this.tabControl1.Controls.Add(this.tbInvoice);
             this.tabControl1.Controls.Add(this.tbWordGroups);
             this.tabControl1.Controls.Add(this.tbPdfText);
+            this.tabControl1.Controls.Add(this.tbPatternStore);
             this.tabControl1.Location = new System.Drawing.Point(11, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -245,6 +269,14 @@
             // 
             // tbInvoice
             // 
+            this.tbInvoice.Controls.Add(this.label7);
+            this.tbInvoice.Controls.Add(this.label8);
+            this.tbInvoice.Controls.Add(this.label6);
+            this.tbInvoice.Controls.Add(this.label5);
+            this.tbInvoice.Controls.Add(this.label4);
+            this.tbInvoice.Controls.Add(this.label3);
+            this.tbInvoice.Controls.Add(this.label2);
+            this.tbInvoice.Controls.Add(this.label1);
             this.tbInvoice.Controls.Add(this.txDelivery);
             this.tbInvoice.Controls.Add(this.txInvoiceLineNetAmount10);
             this.tbInvoice.Controls.Add(this.txInvoiceLineNetAmount09);
@@ -314,6 +346,78 @@
             this.tbInvoice.Text = "Invoice";
             this.tbInvoice.UseVisualStyleBackColor = true;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(414, 192);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(24, 13);
+            this.label7.TabIndex = 61;
+            this.label7.Text = " 3%";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(414, 172);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(24, 13);
+            this.label8.TabIndex = 60;
+            this.label8.Text = " 7%";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(376, 232);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(24, 13);
+            this.label6.TabIndex = 59;
+            this.label6.Text = " 0%";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(376, 212);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(24, 13);
+            this.label5.TabIndex = 58;
+            this.label5.Text = " 4%";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(376, 192);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(27, 13);
+            this.label4.TabIndex = 57;
+            this.label4.Text = "10%";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(376, 172);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(27, 13);
+            this.label3.TabIndex = 56;
+            this.label3.Text = "21%";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(411, 155);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(28, 13);
+            this.label2.TabIndex = 55;
+            this.label2.Text = "IGIC";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(376, 155);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(24, 13);
+            this.label1.TabIndex = 54;
+            this.label1.Text = "IVA";
+            // 
             // txDelivery
             // 
             this.txDelivery.ContextMenuStrip = this.ctxMnTx;
@@ -321,6 +425,7 @@
             this.txDelivery.Name = "txDelivery";
             this.txDelivery.Size = new System.Drawing.Size(100, 20);
             this.txDelivery.TabIndex = 5;
+            this.txDelivery.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txDelivery.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // ctxMnTx
@@ -346,6 +451,7 @@
             this.txInvoiceLineNetAmount10.Size = new System.Drawing.Size(100, 20);
             this.txInvoiceLineNetAmount10.TabIndex = 43;
             this.txInvoiceLineNetAmount10.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txInvoiceLineNetAmount10.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txInvoiceLineNetAmount10.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // txInvoiceLineNetAmount09
@@ -356,6 +462,7 @@
             this.txInvoiceLineNetAmount09.Size = new System.Drawing.Size(100, 20);
             this.txInvoiceLineNetAmount09.TabIndex = 41;
             this.txInvoiceLineNetAmount09.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txInvoiceLineNetAmount09.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txInvoiceLineNetAmount09.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // txInvoiceNumber
@@ -365,6 +472,7 @@
             this.txInvoiceNumber.Name = "txInvoiceNumber";
             this.txInvoiceNumber.Size = new System.Drawing.Size(100, 20);
             this.txInvoiceNumber.TabIndex = 2;
+            this.txInvoiceNumber.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txInvoiceNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // txInvoiceLineNetAmount08
@@ -375,6 +483,7 @@
             this.txInvoiceLineNetAmount08.Size = new System.Drawing.Size(100, 20);
             this.txInvoiceLineNetAmount08.TabIndex = 39;
             this.txInvoiceLineNetAmount08.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txInvoiceLineNetAmount08.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txInvoiceLineNetAmount08.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // txInvoiceSerie
@@ -384,6 +493,7 @@
             this.txInvoiceSerie.Name = "txInvoiceSerie";
             this.txInvoiceSerie.Size = new System.Drawing.Size(100, 20);
             this.txInvoiceSerie.TabIndex = 1;
+            this.txInvoiceSerie.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txInvoiceSerie.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // txInvoiceLineNetAmount07
@@ -394,6 +504,7 @@
             this.txInvoiceLineNetAmount07.Size = new System.Drawing.Size(100, 20);
             this.txInvoiceLineNetAmount07.TabIndex = 37;
             this.txInvoiceLineNetAmount07.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txInvoiceLineNetAmount07.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txInvoiceLineNetAmount07.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // txIssueDate
@@ -403,6 +514,7 @@
             this.txIssueDate.Name = "txIssueDate";
             this.txIssueDate.Size = new System.Drawing.Size(100, 20);
             this.txIssueDate.TabIndex = 3;
+            this.txIssueDate.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txIssueDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // txInvoiceLineNetAmount06
@@ -413,6 +525,7 @@
             this.txInvoiceLineNetAmount06.Size = new System.Drawing.Size(100, 20);
             this.txInvoiceLineNetAmount06.TabIndex = 35;
             this.txInvoiceLineNetAmount06.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txInvoiceLineNetAmount06.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txInvoiceLineNetAmount06.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // txPurchaseOrder
@@ -422,6 +535,7 @@
             this.txPurchaseOrder.Name = "txPurchaseOrder";
             this.txPurchaseOrder.Size = new System.Drawing.Size(100, 20);
             this.txPurchaseOrder.TabIndex = 4;
+            this.txPurchaseOrder.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txPurchaseOrder.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // txInvoiceLineNetAmount05
@@ -432,6 +546,7 @@
             this.txInvoiceLineNetAmount05.Size = new System.Drawing.Size(100, 20);
             this.txInvoiceLineNetAmount05.TabIndex = 33;
             this.txInvoiceLineNetAmount05.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txInvoiceLineNetAmount05.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txInvoiceLineNetAmount05.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // txSellerPartyID
@@ -452,6 +567,7 @@
             this.txInvoiceLineNetAmount04.Size = new System.Drawing.Size(100, 20);
             this.txInvoiceLineNetAmount04.TabIndex = 31;
             this.txInvoiceLineNetAmount04.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txInvoiceLineNetAmount04.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txInvoiceLineNetAmount04.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // txBuyerPartyID
@@ -461,6 +577,7 @@
             this.txBuyerPartyID.Name = "txBuyerPartyID";
             this.txBuyerPartyID.Size = new System.Drawing.Size(100, 20);
             this.txBuyerPartyID.TabIndex = 6;
+            this.txBuyerPartyID.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txBuyerPartyID.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // lbInvoiceLineNetAmount
@@ -480,7 +597,7 @@
             this.txGrossAmount.Size = new System.Drawing.Size(100, 20);
             this.txGrossAmount.TabIndex = 7;
             this.txGrossAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txGrossAmount.Enter += new System.EventHandler(this.txGrossAmount_Enter);
+            this.txGrossAmount.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txGrossAmount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // txInvoiceLineNetAmount03
@@ -491,6 +608,7 @@
             this.txInvoiceLineNetAmount03.Size = new System.Drawing.Size(100, 20);
             this.txInvoiceLineNetAmount03.TabIndex = 29;
             this.txInvoiceLineNetAmount03.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txInvoiceLineNetAmount03.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txInvoiceLineNetAmount03.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // txCurrencyCode
@@ -501,6 +619,7 @@
             this.txCurrencyCode.Size = new System.Drawing.Size(39, 20);
             this.txCurrencyCode.TabIndex = 8;
             this.txCurrencyCode.Text = "EUR";
+            this.txCurrencyCode.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txCurrencyCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // txInvoiceLineNetAmount02
@@ -511,6 +630,7 @@
             this.txInvoiceLineNetAmount02.Size = new System.Drawing.Size(100, 20);
             this.txInvoiceLineNetAmount02.TabIndex = 27;
             this.txInvoiceLineNetAmount02.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txInvoiceLineNetAmount02.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txInvoiceLineNetAmount02.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // lbInvoiceNumber
@@ -530,6 +650,7 @@
             this.txInvoiceLineNetAmount01.Size = new System.Drawing.Size(100, 20);
             this.txInvoiceLineNetAmount01.TabIndex = 25;
             this.txInvoiceLineNetAmount01.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txInvoiceLineNetAmount01.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txInvoiceLineNetAmount01.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // lbInvoiceSerie
@@ -548,6 +669,7 @@
             this.txInvoiceLineText10.Name = "txInvoiceLineText10";
             this.txInvoiceLineText10.Size = new System.Drawing.Size(216, 20);
             this.txInvoiceLineText10.TabIndex = 42;
+            this.txInvoiceLineText10.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txInvoiceLineText10.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // lbIssueDate
@@ -566,6 +688,7 @@
             this.txInvoiceLineText09.Name = "txInvoiceLineText09";
             this.txInvoiceLineText09.Size = new System.Drawing.Size(216, 20);
             this.txInvoiceLineText09.TabIndex = 40;
+            this.txInvoiceLineText09.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txInvoiceLineText09.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // lbPurchaseOrder
@@ -584,6 +707,7 @@
             this.txInvoiceLineText08.Name = "txInvoiceLineText08";
             this.txInvoiceLineText08.Size = new System.Drawing.Size(216, 20);
             this.txInvoiceLineText08.TabIndex = 38;
+            this.txInvoiceLineText08.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txInvoiceLineText08.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // lbDelivery
@@ -602,6 +726,7 @@
             this.txInvoiceLineText07.Name = "txInvoiceLineText07";
             this.txInvoiceLineText07.Size = new System.Drawing.Size(216, 20);
             this.txInvoiceLineText07.TabIndex = 36;
+            this.txInvoiceLineText07.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txInvoiceLineText07.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // lbSellerPartyID
@@ -620,6 +745,7 @@
             this.txInvoiceLineText06.Name = "txInvoiceLineText06";
             this.txInvoiceLineText06.Size = new System.Drawing.Size(216, 20);
             this.txInvoiceLineText06.TabIndex = 34;
+            this.txInvoiceLineText06.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txInvoiceLineText06.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // lbBuyerPartyID
@@ -638,6 +764,7 @@
             this.txInvoiceLineText05.Name = "txInvoiceLineText05";
             this.txInvoiceLineText05.Size = new System.Drawing.Size(216, 20);
             this.txInvoiceLineText05.TabIndex = 32;
+            this.txInvoiceLineText05.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txInvoiceLineText05.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // lbGrossAmount
@@ -656,6 +783,7 @@
             this.txInvoiceLineText04.Name = "txInvoiceLineText04";
             this.txInvoiceLineText04.Size = new System.Drawing.Size(216, 20);
             this.txInvoiceLineText04.TabIndex = 30;
+            this.txInvoiceLineText04.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txInvoiceLineText04.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // lbCurrencyCode
@@ -674,6 +802,7 @@
             this.txInvoiceLineText03.Name = "txInvoiceLineText03";
             this.txInvoiceLineText03.Size = new System.Drawing.Size(216, 20);
             this.txInvoiceLineText03.TabIndex = 28;
+            this.txInvoiceLineText03.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txInvoiceLineText03.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // txTaxesWithholdingAmount01
@@ -684,6 +813,7 @@
             this.txTaxesWithholdingAmount01.Size = new System.Drawing.Size(100, 20);
             this.txTaxesWithholdingAmount01.TabIndex = 23;
             this.txTaxesWithholdingAmount01.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txTaxesWithholdingAmount01.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txTaxesWithholdingAmount01.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // txInvoiceLineText02
@@ -693,6 +823,7 @@
             this.txInvoiceLineText02.Name = "txInvoiceLineText02";
             this.txInvoiceLineText02.Size = new System.Drawing.Size(216, 20);
             this.txInvoiceLineText02.TabIndex = 26;
+            this.txInvoiceLineText02.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txInvoiceLineText02.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // txTaxesOutputsBase01
@@ -703,6 +834,7 @@
             this.txTaxesOutputsBase01.Size = new System.Drawing.Size(100, 20);
             this.txTaxesOutputsBase01.TabIndex = 9;
             this.txTaxesOutputsBase01.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txTaxesOutputsBase01.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txTaxesOutputsBase01.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // lbInvoiceLineText
@@ -722,6 +854,7 @@
             this.txTaxesOutputsBase02.Size = new System.Drawing.Size(100, 20);
             this.txTaxesOutputsBase02.TabIndex = 12;
             this.txTaxesOutputsBase02.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txTaxesOutputsBase02.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txTaxesOutputsBase02.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // txInvoiceLineText01
@@ -731,6 +864,7 @@
             this.txInvoiceLineText01.Name = "txInvoiceLineText01";
             this.txInvoiceLineText01.Size = new System.Drawing.Size(216, 20);
             this.txInvoiceLineText01.TabIndex = 24;
+            this.txInvoiceLineText01.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txInvoiceLineText01.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // txTaxesOutputsBase03
@@ -741,6 +875,7 @@
             this.txTaxesOutputsBase03.Size = new System.Drawing.Size(100, 20);
             this.txTaxesOutputsBase03.TabIndex = 15;
             this.txTaxesOutputsBase03.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txTaxesOutputsBase03.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txTaxesOutputsBase03.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // lbTaxesOutputsBase
@@ -769,6 +904,7 @@
             this.txTaxesOutputsBase04.Size = new System.Drawing.Size(100, 20);
             this.txTaxesOutputsBase04.TabIndex = 18;
             this.txTaxesOutputsBase04.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txTaxesOutputsBase04.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txTaxesOutputsBase04.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // txTaxesOutputsRate01
@@ -779,6 +915,7 @@
             this.txTaxesOutputsRate01.Size = new System.Drawing.Size(100, 20);
             this.txTaxesOutputsRate01.TabIndex = 10;
             this.txTaxesOutputsRate01.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txTaxesOutputsRate01.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txTaxesOutputsRate01.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // lbTaxesWithholdingRate01
@@ -798,6 +935,7 @@
             this.txTaxesOutputsRate02.Size = new System.Drawing.Size(100, 20);
             this.txTaxesOutputsRate02.TabIndex = 13;
             this.txTaxesOutputsRate02.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txTaxesOutputsRate02.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txTaxesOutputsRate02.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // txTaxesWithholdingRate01
@@ -808,6 +946,7 @@
             this.txTaxesWithholdingRate01.Size = new System.Drawing.Size(100, 20);
             this.txTaxesWithholdingRate01.TabIndex = 22;
             this.txTaxesWithholdingRate01.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txTaxesWithholdingRate01.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txTaxesWithholdingRate01.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // txTaxesOutputsRate03
@@ -818,6 +957,7 @@
             this.txTaxesOutputsRate03.Size = new System.Drawing.Size(100, 20);
             this.txTaxesOutputsRate03.TabIndex = 16;
             this.txTaxesOutputsRate03.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txTaxesOutputsRate03.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txTaxesOutputsRate03.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // lbTaxesWithholdingBase01
@@ -846,6 +986,7 @@
             this.txTaxesWithholdingBase01.Size = new System.Drawing.Size(100, 20);
             this.txTaxesWithholdingBase01.TabIndex = 21;
             this.txTaxesWithholdingBase01.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txTaxesWithholdingBase01.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txTaxesWithholdingBase01.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // txTaxesOutputsRate04
@@ -856,6 +997,7 @@
             this.txTaxesOutputsRate04.Size = new System.Drawing.Size(100, 20);
             this.txTaxesOutputsRate04.TabIndex = 19;
             this.txTaxesOutputsRate04.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txTaxesOutputsRate04.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txTaxesOutputsRate04.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // txTaxesOutputsAmount04
@@ -866,6 +1008,7 @@
             this.txTaxesOutputsAmount04.Size = new System.Drawing.Size(100, 20);
             this.txTaxesOutputsAmount04.TabIndex = 20;
             this.txTaxesOutputsAmount04.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txTaxesOutputsAmount04.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txTaxesOutputsAmount04.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // txTaxesOutputsAmount01
@@ -876,6 +1019,7 @@
             this.txTaxesOutputsAmount01.Size = new System.Drawing.Size(100, 20);
             this.txTaxesOutputsAmount01.TabIndex = 11;
             this.txTaxesOutputsAmount01.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txTaxesOutputsAmount01.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txTaxesOutputsAmount01.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // lbTaxesOutputsAmount
@@ -895,6 +1039,7 @@
             this.txTaxesOutputsAmount02.Size = new System.Drawing.Size(100, 20);
             this.txTaxesOutputsAmount02.TabIndex = 14;
             this.txTaxesOutputsAmount02.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txTaxesOutputsAmount02.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txTaxesOutputsAmount02.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // txTaxesOutputsAmount03
@@ -905,6 +1050,7 @@
             this.txTaxesOutputsAmount03.Size = new System.Drawing.Size(100, 20);
             this.txTaxesOutputsAmount03.TabIndex = 17;
             this.txTaxesOutputsAmount03.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txTaxesOutputsAmount03.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txTaxesOutputsAmount03.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             // 
             // tbWordGroups
@@ -947,6 +1093,45 @@
             this.grdWordGroups.Size = new System.Drawing.Size(532, 507);
             this.grdWordGroups.TabIndex = 0;
             // 
+            // MetadataItemName
+            // 
+            this.MetadataItemName.HeaderText = "MetadataItemName";
+            this.MetadataItemName.Name = "MetadataItemName";
+            // 
+            // Page
+            // 
+            this.Page.HeaderText = "Page";
+            this.Page.Name = "Page";
+            this.Page.Width = 50;
+            // 
+            // Rectangle
+            // 
+            this.Rectangle.HeaderText = "Rectangle";
+            this.Rectangle.Name = "Rectangle";
+            // 
+            // Matches
+            // 
+            this.Matches.HeaderText = "Matches";
+            this.Matches.Name = "Matches";
+            this.Matches.Width = 50;
+            // 
+            // RegexPattern
+            // 
+            this.RegexPattern.HeaderText = "RegexPattern";
+            this.RegexPattern.Name = "RegexPattern";
+            this.RegexPattern.Width = 200;
+            // 
+            // WordGroupPatt
+            // 
+            this.WordGroupPatt.HeaderText = "WordGroupPatt";
+            this.WordGroupPatt.Name = "WordGroupPatt";
+            this.WordGroupPatt.Visible = false;
+            // 
+            // WordGroupResult
+            // 
+            this.WordGroupResult.HeaderText = "WordGroupResult";
+            this.WordGroupResult.Name = "WordGroupResult";
+            // 
             // tbPdfText
             // 
             this.tbPdfText.Controls.Add(this.grdPdfText);
@@ -986,67 +1171,6 @@
             this.grdPdfText.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdPdfText.Size = new System.Drawing.Size(532, 507);
             this.grdPdfText.TabIndex = 0;
-            // 
-            // wBr
-            // 
-            this.wBr.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.wBr.Location = new System.Drawing.Point(0, 0);
-            this.wBr.MinimumSize = new System.Drawing.Size(20, 20);
-            this.wBr.Name = "wBr";
-            this.wBr.Size = new System.Drawing.Size(624, 599);
-            this.wBr.TabIndex = 0;
-            // 
-            // stMain
-            // 
-            this.stMain.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.stMain.Location = new System.Drawing.Point(0, 73);
-            this.stMain.Name = "stMain";
-            this.stMain.Size = new System.Drawing.Size(1215, 22);
-            this.stMain.TabIndex = 0;
-            this.stMain.Text = "statusStrip1";
-            // 
-            // dlgOpen
-            // 
-            this.dlgOpen.Filter = "Archivos pdf|*pdf";
-            // 
-            // MetadataItemName
-            // 
-            this.MetadataItemName.HeaderText = "MetadataItemName";
-            this.MetadataItemName.Name = "MetadataItemName";
-            // 
-            // Page
-            // 
-            this.Page.HeaderText = "Page";
-            this.Page.Name = "Page";
-            this.Page.Width = 50;
-            // 
-            // Rectangle
-            // 
-            this.Rectangle.HeaderText = "Rectangle";
-            this.Rectangle.Name = "Rectangle";
-            // 
-            // Matches
-            // 
-            this.Matches.HeaderText = "Matches";
-            this.Matches.Name = "Matches";
-            this.Matches.Width = 50;
-            // 
-            // RegexPattern
-            // 
-            this.RegexPattern.HeaderText = "RegexPattern";
-            this.RegexPattern.Name = "RegexPattern";
-            this.RegexPattern.Width = 200;
-            // 
-            // WordGroupPatt
-            // 
-            this.WordGroupPatt.HeaderText = "WordGroupPatt";
-            this.WordGroupPatt.Name = "WordGroupPatt";
-            this.WordGroupPatt.Visible = false;
-            // 
-            // WordGroupResult
-            // 
-            this.WordGroupResult.HeaderText = "WordGroupResult";
-            this.WordGroupResult.Name = "WordGroupResult";
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -1088,6 +1212,125 @@
             this.PdfTextResult.HeaderText = "PdfTextResult";
             this.PdfTextResult.Name = "PdfTextResult";
             // 
+            // tbPatternStore
+            // 
+            this.tbPatternStore.Controls.Add(this.grdPatternStore);
+            this.tbPatternStore.Location = new System.Drawing.Point(4, 22);
+            this.tbPatternStore.Name = "tbPatternStore";
+            this.tbPatternStore.Padding = new System.Windows.Forms.Padding(3);
+            this.tbPatternStore.Size = new System.Drawing.Size(552, 549);
+            this.tbPatternStore.TabIndex = 3;
+            this.tbPatternStore.Text = "PatternStore";
+            this.tbPatternStore.UseVisualStyleBackColor = true;
+            // 
+            // grdPatternStore
+            // 
+            this.grdPatternStore.AllowUserToAddRows = false;
+            this.grdPatternStore.AllowUserToDeleteRows = false;
+            this.grdPatternStore.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdPatternStore.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn10,
+            this.dataGridViewTextBoxColumn11,
+            this.dataGridViewTextBoxColumn12,
+            this.IsLastPage,
+            this.SourceTypeName,
+            this.Position});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdPatternStore.DefaultCellStyle = dataGridViewCellStyle3;
+            this.grdPatternStore.Location = new System.Drawing.Point(9, 19);
+            this.grdPatternStore.Name = "grdPatternStore";
+            this.grdPatternStore.RowHeadersVisible = false;
+            this.grdPatternStore.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grdPatternStore.Size = new System.Drawing.Size(532, 507);
+            this.grdPatternStore.TabIndex = 0;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "MetadataItemName";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "Page";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.HeaderText = "Rectangle";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.HeaderText = "Matches";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.HeaderText = "RegexPattern";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.Width = 320;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.HeaderText = "PdfTextPatt";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.HeaderText = "PdfTextResult";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            this.dataGridViewTextBoxColumn12.Visible = false;
+            // 
+            // IsLastPage
+            // 
+            this.IsLastPage.HeaderText = "IsLastPage";
+            this.IsLastPage.Name = "IsLastPage";
+            // 
+            // SourceTypeName
+            // 
+            this.SourceTypeName.HeaderText = "SourceTypeName";
+            this.SourceTypeName.Name = "SourceTypeName";
+            // 
+            // Position
+            // 
+            this.Position.HeaderText = "Position";
+            this.Position.Name = "Position";
+            // 
+            // wBr
+            // 
+            this.wBr.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wBr.Location = new System.Drawing.Point(0, 0);
+            this.wBr.MinimumSize = new System.Drawing.Size(20, 20);
+            this.wBr.Name = "wBr";
+            this.wBr.Size = new System.Drawing.Size(624, 599);
+            this.wBr.TabIndex = 0;
+            // 
+            // stMain
+            // 
+            this.stMain.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.stMain.Location = new System.Drawing.Point(0, 73);
+            this.stMain.Name = "stMain";
+            this.stMain.Size = new System.Drawing.Size(1215, 22);
+            this.stMain.TabIndex = 0;
+            this.stMain.Text = "statusStrip1";
+            // 
+            // dlgOpen
+            // 
+            this.dlgOpen.Filter = "Archivos pdf|*pdf";
+            // 
             // formInvoices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1121,6 +1364,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdWordGroups)).EndInit();
             this.tbPdfText.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdPdfText)).EndInit();
+            this.tbPatternStore.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grdPatternStore)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1222,5 +1467,25 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn PdfTextPatt;
         private System.Windows.Forms.DataGridViewTextBoxColumn PdfTextResult;
+        private System.Windows.Forms.TabPage tbPatternStore;
+        private System.Windows.Forms.DataGridView grdPatternStore;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IsLastPage;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SourceTypeName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Position;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -56,6 +56,12 @@ namespace PdfTagger.Pat
         public string HierarchySetName { get; set; }
 
         /// <summary>
+        /// Número total de comparaciones realizadas
+        /// con este store.
+        /// </summary>
+        public int CompareCount { get; set; }
+
+        /// <summary>
         /// Clase que implementa la interfaz IMetadata
         /// asociada al resultado de identificación de
         /// patrones.
@@ -205,7 +211,7 @@ namespace PdfTagger.Pat
                         {
                             string textInput = pdfDocRectangle.Text;
                             PropertyInfo pInf = metadataType.GetProperty(pattern.MetadataItemName);
-                            ITextParserHierarchy parserHierarchy = hierarchySet.GetParserHierarchy(pInf.PropertyType);
+                            ITextParserHierarchy parserHierarchy = hierarchySet.GetParserHierarchy(pInf);
 
                             if (pInf.PropertyType == typeof(string))
                                 parserHierarchy.SetParserRegexPattern(0, pattern.RegexPattern);
