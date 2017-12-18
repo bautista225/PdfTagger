@@ -38,6 +38,7 @@
  */
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace PdfTagger.Dat.Txt
 {
@@ -58,6 +59,7 @@ namespace PdfTagger.Dat.Txt
         public HierarchySet()
         {
             HierarchyByType = new Dictionary<Type, ITextParserHierarchy>();
+            HierarchyByPropertyName = new Dictionary<string, ITextParserHierarchy>();
         }
 
         #endregion
@@ -70,25 +72,35 @@ namespace PdfTagger.Dat.Txt
         /// </summary>
         protected Dictionary<Type, ITextParserHierarchy> HierarchyByType;
 
+        /// <summary>
+        /// Diccionario de Jararquías según el nombre de la propiedad.
+        /// de datos.
+        /// </summary>
+        protected Dictionary<string, ITextParserHierarchy> HierarchyByPropertyName;
+
         #endregion    
 
-        #region Public Properties
+        #region Public Methods
 
         /// <summary>
         /// Devuelve la jerarquía de analisis de texto
         /// aplicable aun tipo determinado en este catálogo
         /// de jearaquía.
         /// </summary>
-        /// <param name="type">Typo para el cual devolver el
+        /// <param name="pInf">PropertyInfo para el cual devolver el
         /// catálogo de jerarquías.</param>
         /// <returns></returns>
-        public ITextParserHierarchy GetParserHierarchy(Type type)
+        public ITextParserHierarchy GetParserHierarchy(PropertyInfo pInf)
         {
-            if (!HierarchyByType.ContainsKey(type))
+
+            if(HierarchyByPropertyName.ContainsKey(pInf.Name))
+                return HierarchyByPropertyName[pInf.Name];
+
+            if (!HierarchyByType.ContainsKey(pInf.PropertyType))
                 return null;
 
-            return HierarchyByType[type];
-        }
+            return HierarchyByType[pInf.PropertyType];
+        }   
 
         #endregion
 

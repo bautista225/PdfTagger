@@ -56,6 +56,12 @@ namespace PdfTagger.Pat
         public string HierarchySetName { get; set; }
 
         /// <summary>
+        /// Número total de comparaciones realizadas
+        /// con este store.
+        /// </summary>
+        public int CompareCount { get; set; }
+
+        /// <summary>
         /// Clase que implementa la interfaz IMetadata
         /// asociada al resultado de identificación de
         /// patrones.
@@ -157,7 +163,7 @@ namespace PdfTagger.Pat
 
                         if (pInf.PropertyType == typeof(string))
                         {
-                            result.AddResult(pattern.MetadataItemName, pattern.MatchesCount, match.Value);
+                            result.AddResult(pattern, match.Value);
                         }
                         else
                         {
@@ -174,7 +180,7 @@ namespace PdfTagger.Pat
                             }
                            
                             object pValue = converter.Convert(match.Value);
-                            result.AddResult(pattern.MetadataItemName, pattern.MatchesCount, pValue);
+                            result.AddResult(pattern, pValue);
 
                         }
                     }
@@ -205,7 +211,7 @@ namespace PdfTagger.Pat
                         {
                             string textInput = pdfDocRectangle.Text;
                             PropertyInfo pInf = metadataType.GetProperty(pattern.MetadataItemName);
-                            ITextParserHierarchy parserHierarchy = hierarchySet.GetParserHierarchy(pInf.PropertyType);
+                            ITextParserHierarchy parserHierarchy = hierarchySet.GetParserHierarchy(pInf);
 
                             if (pInf.PropertyType == typeof(string))
                                 parserHierarchy.SetParserRegexPattern(0, pattern.RegexPattern);
@@ -224,7 +230,7 @@ namespace PdfTagger.Pat
 
                             if (pValue != null && !PdfCompare.IsZeroNumeric(pValue))
                             {
-                                result.AddResult(pattern.MetadataItemName, pattern.MatchesCount, pValue);
+                                result.AddResult(pattern, pValue);
                                 if (!_Converters.ContainsKey(pInf.PropertyType))
                                     _Converters.Add(pInf.PropertyType, converter);
                             }

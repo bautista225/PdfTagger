@@ -4,6 +4,7 @@ using PdfTagger.Dat.Txt;
 using PdfTagger.Pat;
 using PdfTagger.Pdf;
 using System;
+using System.Collections.Generic;
 
 namespace PdfTaggerTest
 {
@@ -24,6 +25,10 @@ namespace PdfTaggerTest
 
         public PdfTagExtractionResult ExtractionResult { get; private set; }
 
+        public List<PdfTagPattern> WordGroupsFiltered { get; private set; }
+
+        public List<PdfTagPattern> PdfTextInfosFiltered { get; private set; }
+
         /// <summary>
         /// Carga un documento pdf.
         /// </summary>
@@ -36,6 +41,30 @@ namespace PdfTaggerTest
         }
 
         /// <summary>
+        /// Carga del alamcén en su caso los grupos de palabras.
+        /// </summary>
+        /// <param name="name">Nombre del MetaDataItem a recuperar.</param>
+        /// <param name="source">Nombre del Pattern source a recuperar.</param>
+        public void LoadWordGroupFromStore(string name, string source)
+        {
+            if (Store == null)
+                return;
+
+            List<PdfTagPattern> target = null;
+
+            if (source== "WordGroupsInfos")
+                target = WordGroupsFiltered = new List<PdfTagPattern>();
+            else if (source == "PdfTextInfos")
+                target = PdfTextInfosFiltered = new List<PdfTagPattern>();
+
+            foreach (var patt in Store.PdfPatterns)
+                if (patt.SourceTypeName == source 
+                    && patt.MetadataItemName == name)
+                    target.Add(patt);
+
+        }
+
+        /// <summary>
         /// Ejecuta el aprendizaje de patrones sobre unos
         /// metadatos de factura y datos leídos de pdf previos.
         /// </summary>
@@ -44,7 +73,7 @@ namespace PdfTaggerTest
             if (string.IsNullOrEmpty(Pdf.DocID))
                 throw new InvalidOperationException("Es necesario un valor Pdf.DocID.");
 
-            PdfCompareResult compareResult = PdfCompare.Compare(new BusinessHierarchySet(), Pdf, Invoice);
+            PdfCompareResult compareResult = PdfCompare.Compare(new BusinessInvoiceHierarchySet(), Pdf, Invoice);
             PdfTagPatternFactory.Save(compareResult);
         }
 

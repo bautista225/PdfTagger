@@ -51,12 +51,23 @@ namespace PdfTagger.Pat
         /// <summary>
         /// Numéro de aciertos asociados al patrón.
         /// </summary>
-        public int MatchesCount { get; set; }
+        public int MatchesCount
+        {
+            get
+            {
+                return Pattern.MatchesCount;
+            }
+        }
 
         /// <summary>
         /// Valor encontrado.
         /// </summary>
         public object Value { get; set; }
+
+        /// <summary>
+        /// Patrón que ha encontrado el valor.
+        /// </summary>
+        public PdfTagPattern Pattern { get; set; }
 
         /// <summary>
         ///  Compara la instancia actual con otro objeto del mismo tipo y devuelve un entero
@@ -99,6 +110,7 @@ namespace PdfTagger.Pat
 
             hash = hash * prime + MatchesCount.GetHashCode();
             hash = hash * prime + ((Value==null) ? 0 : Value.GetHashCode());
+            hash = hash * prime + Pattern.GetHashCode();
 
             return hash;
         }
@@ -128,8 +140,20 @@ namespace PdfTagger.Pat
                 equalsValue = Value.Equals(input.Value);
             }
 
+            bool equalsPattern = false;
+
+            if (Pattern == null)
+            {
+                if (input.Pattern == null)
+                    equalsPattern = true;
+            }
+            else
+            {
+                equalsPattern = Pattern.Equals(input.Pattern);
+            }
+
             return (MatchesCount == input.MatchesCount &&
-                   equalsValue);
+                   equalsValue && equalsPattern);
         }
 
     }

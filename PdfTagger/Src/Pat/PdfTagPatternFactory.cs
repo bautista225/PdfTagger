@@ -65,7 +65,7 @@ namespace PdfTagger.Pat
         private static void Create(PdfCompareResult compareResult, string path)
         {
 
-            PdfTagPatternStore store = GetStore(compareResult);
+            PdfTagPatternStore store = GetStore(compareResult);            
             XmlParser.SaveAsXml(store, path);
 
         }
@@ -83,28 +83,35 @@ namespace PdfTagger.Pat
                 DocCategory = compareResult.DocCategory,
                 DocID = compareResult.DocID,
                 HierarchySetName = compareResult.HierarchySetName,
-                MetadataName = compareResult.MetadataName
+                MetadataName = compareResult.MetadataName,
+                CompareCount = 1
             };
 
             foreach (var info in compareResult.WordGroupsInfos)
             {
                 PdfTagPattern pattern = info.GetPdfTagPattern();
                 pattern.SourceTypeName = "WordGroupsInfos";
-                store.PdfPatterns.Add(pattern);
+
+                if (store.PdfPatterns.IndexOf(pattern) ==-1)
+                    store.PdfPatterns.Add(pattern);
             }
 
             foreach (var info in compareResult.LinesInfos)
             {
                 PdfTagPattern pattern = info.GetPdfTagPattern();
                 pattern.SourceTypeName = "LinesInfos";
-                store.PdfPatterns.Add(pattern);
+
+                if (store.PdfPatterns.IndexOf(pattern) == -1)
+                    store.PdfPatterns.Add(pattern);
             }
 
             foreach (var info in compareResult.PdfTextInfos)
             {
                 PdfTagPattern pattern = info.GetPdfTagPattern();
                 pattern.SourceTypeName = "PdfTextInfos";
-                store.PdfPatterns.Add(pattern);
+
+                if (store.PdfPatterns.IndexOf(pattern) == -1)
+                    store.PdfPatterns.Add(pattern);
             }
 
             return store;
@@ -154,10 +161,12 @@ namespace PdfTagger.Pat
                 originalCount - newPdfPatterns.Count;
 
             if (available < 0)
-                for (int i = originalCount - 1; i > (originalCount + available); i--)
+                for (int i = originalCount - 1; 
+                    (i >= (originalCount + available)) && i >= 0; i--)
                     originalStore.PdfPatterns.RemoveAt(i);
 
             originalStore.PdfPatterns.AddRange(newPdfPatterns);
+            originalStore.CompareCount++;
 
             originalStore.PdfPatterns.Sort();
             XmlParser.SaveAsXml(originalStore, path);

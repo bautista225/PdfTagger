@@ -36,33 +36,21 @@
     For more information, please contact Irene Solutions SL. at this
     address: info@irenesolutions.com
  */
-using System;
-using System.Collections.Generic;
-using System.Reflection;
-
 namespace PdfTagger.Dat.Txt
 {
 
     /// <summary>
-    /// Catálogo de jerarquías por tipo a aplicar en una operación
-    /// de comparación determinada.
+    /// Match de limites contextuales.
     /// </summary>
-    public interface IHierarchySet
+    public interface ITextBoundMatch
     {
 
-        #region Public Properties
-
         /// <summary>
-        /// Devuelve la jerarquía de analisis de texto
-        /// aplicable aun tipo determinado en este catálogo
-        /// de jearaquía.
+        /// Indica si de debe utilizar la longitud o no
+        /// en la rutina de reemplazo de dígitos para confección
+        /// del patrón regex.
         /// </summary>
-        /// <param name="pInf">PropertyInfo para el cual devolver el
-        /// catálogo de jerarquías.</param>
-        /// <returns></returns>
-        ITextParserHierarchy GetParserHierarchy(PropertyInfo pInf);
-
-        #endregion
+        bool UseLengthOnPatternDigitReplacement { get; set; }
 
     }
 }

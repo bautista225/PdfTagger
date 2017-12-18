@@ -52,6 +52,7 @@
     <Compile Include="Src\Dat\PdfCompare.cs" />
     <Compile Include="Src\Dat\PdfCompareInfo.cs" />
     <Compile Include="Src\Dat\PdfCompareResult.cs" />
+    <Compile Include="Src\Dat\Txt\BusinessInvoiceHierarchySet.cs" />
     <Compile Include="Src\Dat\Txt\BusinessHierarchySet.cs" />
     <Compile Include="Src\Dat\Txt\Converter.cs" />
     <Compile Include="Src\Dat\Txt\DefaultAmountConverter.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="Src\Dat\Txt\IHierarchySet.cs" />
     <Compile Include="Src\Dat\Txt\HierarchySet.cs" />
     <Compile Include="Src\Dat\Txt\IConverter.cs" />
+    <Compile Include="Src\Dat\Txt\ITextBoundMatch.cs" />
     <Compile Include="Src\Dat\Txt\ITextParserHierarchy.cs" />
     <Compile Include="Src\Dat\Txt\ITextMatch.cs" />
     <Compile Include="Src\Dat\Txt\TextBoundMatch.cs" />
