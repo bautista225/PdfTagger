@@ -38,8 +38,10 @@
  */
 using iTextSharp.text;
 using iTextSharp.text.pdf.parser;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.util;
 
 namespace PdfTagger.Pdf
 {
@@ -162,12 +164,11 @@ namespace PdfTagger.Pdf
             if (renderInfo.GetRise() != 0)
             { 
                 // remove the rise from the baseline - we do this because the text from a
-                //super /subscript render operations should probably be considered as part
-                //of the baseline of the text the super/sub is relative to 
+                // super /subscript render operations should probably be considered as part
+                // of the baseline of the text the super/sub is relative to 
                 Matrix riseOffsetTransform = new Matrix(0, -renderInfo.GetRise());
                 segment = segment.TransformBy(riseOffsetTransform);
             }
-
 
             var ll = renderInfo.GetDescentLine().GetStartPoint(); // lower left
             var ur = renderInfo.GetAscentLine().GetEndPoint(); // upper right

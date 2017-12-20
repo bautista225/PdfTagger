@@ -55,7 +55,7 @@ namespace PdfTagger.Pdf
         /// <summary>
         /// Obtiene la información no estructurada.
         /// </summary>
-        /// <param name="pdfReader"></param>
+        /// <param name="pdfReader">PdfReader del que obtener la información.</param>
         private void GetPdfData(PdfReader pdfReader)
         {
             for (int page = 1; page <= pdfReader.NumberOfPages; page++)

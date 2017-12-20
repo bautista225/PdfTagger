@@ -203,7 +203,7 @@ namespace PdfTagger.Dat
         public override string ToString()
         {
             return $"({PdfPageN}-{_TextMatch.MatchIndex})" + 
-                $" {_PropertyInfo.Name}: [{_TextMatch}]";
+                $" {((_PropertyInfo==null) ? "" :_PropertyInfo.Name)}: [{_TextMatch}]";
         }
 
         #endregion

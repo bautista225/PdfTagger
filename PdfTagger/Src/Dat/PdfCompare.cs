@@ -40,6 +40,7 @@ using PdfTagger.Dat.Txt;
 using PdfTagger.Pdf;
 using System;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace PdfTagger.Dat
 {
@@ -66,6 +67,31 @@ namespace PdfTagger.Dat
 
             return result == 0;
 
+        }
+
+        /// <summary>
+        /// Devuelve true si la expresión regular sólo
+        /// devuelve resultados válidos.
+        /// </summary>
+        /// <param name="textBound">TextBound</param>
+        /// <param name="page">Página.</param>
+        /// <param name="value">Valor.</param>
+        /// <param name="converter">Converter.</param>
+        /// <returns></returns>
+        private static bool IsAllMatchesOK(ITextMatch textBound, 
+            PdfUnstructuredPage page, object value, dynamic converter)
+        {
+            // Debo evaluar tanto los aciertos como los errores, por ejemplo un
+            // regex [\d\.\,]+(?=\s*€) devolverá aciertos en importes, pero también
+            // muchos falsos positivos. Sólo queremos generar las regex que sean
+            // significativas (es decir, que sólo devuelvan resultados buenos)
+
+            MatchCollection matches = Regex.Matches(page.PdfText, textBound.Pattern);
+            foreach (Match match in Regex.Matches(page.PdfText, textBound.Pattern))
+                if (!converter.Convert(match.Value).Equals(value))
+                    return false;
+
+            return true;
         }
 
         #endregion
@@ -159,19 +185,23 @@ namespace PdfTagger.Dat
 
                             Type txtBoundMatchGenType = typeof(TextBoundMatch<>).MakeGenericType(pInf.PropertyType);
                             ITextMatch txtBoundMatch = (ITextMatch)Activator.CreateInstance(txtBoundMatchGenType, match);
+                            ITextMatch txtBoundMatchSoft = (ITextMatch)Activator.CreateInstance(txtBoundMatchGenType, match);
+                            (txtBoundMatchSoft as ITextBoundMatch).UseLengthOnPatternDigitReplacement = false;
 
-                           
                             if (txtBoundMatch.Pattern != null)
                             {
-                                // Límites contextuales
-                                compareResult.PdfTextInfos.Add(
-                                    new PdfCompareInfo(pdf, page, null, txtBoundMatch, pInf));
 
-                                (txtBoundMatch as ITextBoundMatch).UseLengthOnPatternDigitReplacement = false;
+                                dynamic converter = parserHierarchy.GetConverter(match.Pattern);
+
+                                // Límites contextuales
+                                if (IsAllMatchesOK(txtBoundMatch, page, pValue, converter))
+                                    compareResult.PdfTextInfos.Add(
+                                        new PdfCompareInfo(pdf, page, null, txtBoundMatch, pInf));                               
 
                                 // Límites contextuales menos estrictos
-                                compareResult.PdfTextInfos.Add(
-                                    new PdfCompareInfo(pdf, page, null, txtBoundMatch, pInf));
+                                if (IsAllMatchesOK(txtBoundMatchSoft, page, pValue, converter))
+                                    compareResult.PdfTextInfos.Add(
+                                    new PdfCompareInfo(pdf, page, null, txtBoundMatchSoft, pInf));
 
                             }
 

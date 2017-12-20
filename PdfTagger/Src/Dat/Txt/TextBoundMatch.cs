@@ -295,10 +295,10 @@ namespace PdfTagger.Dat.Txt
         /// <returns>Texto que representa a la instancia actual.</returns>
         public override string ToString()
         {
-            return $"({_MatchLowerSecond.Value})"+
-                $"({_MatchLowerFirst.Value})"+
-                $"{_MatchToken.Value}"+
-                $"({_MatchUpper.Value})";
+            return $"({((_MatchLowerSecond==null) ? "" :_MatchLowerSecond.Value)})"+
+                $"({((_MatchLowerFirst==null) ? "" : _MatchLowerFirst.Value)})"+
+                $"{((_MatchToken==null) ? "" : _MatchToken.Value)}"+
+                $"({((_MatchUpper==null) ? "" :_MatchUpper.Value)})";
         }
 
         #endregion

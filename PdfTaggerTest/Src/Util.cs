@@ -63,6 +63,62 @@ namespace PdfTaggerTest
         }
 
         /// <summary>
+        /// Dibuja los rectángulos configurados en un pdf invertidos x=y,
+        /// y=x, x=width-x ... Rutina utilizada en casos extraños como el de
+        /// Moinsa.
+        /// </summary>
+        /// <param name="pathTarget">Pdf destino.</param>
+        /// <param name="baseColor">Color de los rectangulos.</param>
+        public static void PrintInvertRectangles(string pathSource, string pathTarget,
+            PdfUnstructuredDoc pdf, BaseColor baseColor, bool lines = false)
+        {
+            try
+            {
+                PdfReader pdfReader = new PdfReader(pathSource);
+
+                PdfStamper pdfStamper = new PdfStamper(pdfReader,
+                      new FileStream(pathTarget, FileMode.OpenOrCreate));
+
+
+                int p = 0;
+
+                foreach (var page in pdf.PdfUnstructuredPages)
+                {
+                    p++;
+                    PdfContentByte cb = pdfStamper.GetOverContent(p);
+
+                    List<PdfTextRectangle> rectangles = (lines) ? page.Lines : page.WordGroups;
+
+                    foreach (var reg in rectangles)
+                    {
+                        cb.SetColorStroke(baseColor);
+
+                        Rectangle pageSize = pdfReader.GetPageSize(p);
+
+                        iTextSharp.text.Rectangle rect = new iTextSharp.text.Rectangle(
+                            (pageSize.Height - reg.Lly), reg.Llx, (pageSize.Height - reg.Ury),  reg.Urx);
+
+                        cb.Rectangle(rect.Left, rect.Bottom,
+                            rect.Width, rect.Height);
+                        cb.Stroke();
+                    }
+
+                }
+                pdfStamper.Close();
+
+            }
+            catch (IOException ex)
+            {
+                throw ex;
+            }
+            catch (DocumentException ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        /// <summary>
         /// Dibuja los rectángulos configurados en un pdf.
         /// </summary>
         /// <param name="pathTarget">Pdf destino.</param>
