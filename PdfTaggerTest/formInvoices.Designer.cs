@@ -40,7 +40,7 @@
             this.tbMain = new System.Windows.Forms.ToolStrip();
             this.sPnH = new System.Windows.Forms.SplitContainer();
             this.sPnV = new System.Windows.Forms.SplitContainer();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tbCtlr = new System.Windows.Forms.TabControl();
             this.tbInvoice = new System.Windows.Forms.TabPage();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -143,6 +143,14 @@
             this.IsLastPage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SourceTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Position = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tbDataWordGroups = new System.Windows.Forms.TabPage();
+            this.grdDataWords = new System.Windows.Forms.DataGridView();
+            this.wgPage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.wgValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tbDataLines = new System.Windows.Forms.TabPage();
+            this.grdDataLines = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.wBr = new System.Windows.Forms.WebBrowser();
             this.stMain = new System.Windows.Forms.StatusStrip();
             this.dlgOpen = new System.Windows.Forms.OpenFileDialog();
@@ -155,7 +163,7 @@
             this.sPnV.Panel1.SuspendLayout();
             this.sPnV.Panel2.SuspendLayout();
             this.sPnV.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.tbCtlr.SuspendLayout();
             this.tbInvoice.SuspendLayout();
             this.ctxMnTx.SuspendLayout();
             this.tbWordGroups.SuspendLayout();
@@ -164,6 +172,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdPdfText)).BeginInit();
             this.tbPatternStore.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdPatternStore)).BeginInit();
+            this.tbDataWordGroups.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdDataWords)).BeginInit();
+            this.tbDataLines.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdDataLines)).BeginInit();
             this.SuspendLayout();
             // 
             // mnMain
@@ -245,7 +257,7 @@
             // 
             // sPnV.Panel1
             // 
-            this.sPnV.Panel1.Controls.Add(this.tabControl1);
+            this.sPnV.Panel1.Controls.Add(this.tbCtlr);
             // 
             // sPnV.Panel2
             // 
@@ -255,17 +267,19 @@
             this.sPnV.SplitterDistance = 585;
             this.sPnV.TabIndex = 0;
             // 
-            // tabControl1
+            // tbCtlr
             // 
-            this.tabControl1.Controls.Add(this.tbInvoice);
-            this.tabControl1.Controls.Add(this.tbWordGroups);
-            this.tabControl1.Controls.Add(this.tbPdfText);
-            this.tabControl1.Controls.Add(this.tbPatternStore);
-            this.tabControl1.Location = new System.Drawing.Point(11, 12);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(560, 575);
-            this.tabControl1.TabIndex = 54;
+            this.tbCtlr.Controls.Add(this.tbInvoice);
+            this.tbCtlr.Controls.Add(this.tbWordGroups);
+            this.tbCtlr.Controls.Add(this.tbPdfText);
+            this.tbCtlr.Controls.Add(this.tbPatternStore);
+            this.tbCtlr.Controls.Add(this.tbDataWordGroups);
+            this.tbCtlr.Controls.Add(this.tbDataLines);
+            this.tbCtlr.Location = new System.Drawing.Point(11, 12);
+            this.tbCtlr.Name = "tbCtlr";
+            this.tbCtlr.SelectedIndex = 0;
+            this.tbCtlr.Size = new System.Drawing.Size(560, 575);
+            this.tbCtlr.TabIndex = 54;
             // 
             // tbInvoice
             // 
@@ -474,6 +488,7 @@
             this.txInvoiceNumber.TabIndex = 2;
             this.txInvoiceNumber.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txInvoiceNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
+            this.txInvoiceNumber.Validated += new System.EventHandler(this.text_Validated);
             // 
             // txInvoiceLineNetAmount08
             // 
@@ -579,6 +594,7 @@
             this.txBuyerPartyID.TabIndex = 6;
             this.txBuyerPartyID.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txBuyerPartyID.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
+            this.txBuyerPartyID.Validated += new System.EventHandler(this.text_Validated);
             // 
             // lbInvoiceLineNetAmount
             // 
@@ -1309,6 +1325,78 @@
             this.Position.HeaderText = "Position";
             this.Position.Name = "Position";
             // 
+            // tbDataWordGroups
+            // 
+            this.tbDataWordGroups.Controls.Add(this.grdDataWords);
+            this.tbDataWordGroups.Location = new System.Drawing.Point(4, 22);
+            this.tbDataWordGroups.Name = "tbDataWordGroups";
+            this.tbDataWordGroups.Padding = new System.Windows.Forms.Padding(3);
+            this.tbDataWordGroups.Size = new System.Drawing.Size(552, 549);
+            this.tbDataWordGroups.TabIndex = 4;
+            this.tbDataWordGroups.Text = "Datos en grupos de palabras";
+            this.tbDataWordGroups.UseVisualStyleBackColor = true;
+            // 
+            // grdDataWords
+            // 
+            this.grdDataWords.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdDataWords.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.wgPage,
+            this.wgValue});
+            this.grdDataWords.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grdDataWords.Location = new System.Drawing.Point(3, 3);
+            this.grdDataWords.Name = "grdDataWords";
+            this.grdDataWords.RowHeadersVisible = false;
+            this.grdDataWords.Size = new System.Drawing.Size(546, 543);
+            this.grdDataWords.TabIndex = 0;
+            // 
+            // wgPage
+            // 
+            this.wgPage.HeaderText = "Page";
+            this.wgPage.Name = "wgPage";
+            this.wgPage.Width = 70;
+            // 
+            // wgValue
+            // 
+            this.wgValue.HeaderText = "Value";
+            this.wgValue.Name = "wgValue";
+            this.wgValue.Width = 350;
+            // 
+            // tbDataLines
+            // 
+            this.tbDataLines.Controls.Add(this.grdDataLines);
+            this.tbDataLines.Location = new System.Drawing.Point(4, 22);
+            this.tbDataLines.Name = "tbDataLines";
+            this.tbDataLines.Padding = new System.Windows.Forms.Padding(3);
+            this.tbDataLines.Size = new System.Drawing.Size(552, 549);
+            this.tbDataLines.TabIndex = 5;
+            this.tbDataLines.Text = "Datos en líneas";
+            this.tbDataLines.UseVisualStyleBackColor = true;
+            // 
+            // grdDataLines
+            // 
+            this.grdDataLines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdDataLines.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn13,
+            this.dataGridViewTextBoxColumn14});
+            this.grdDataLines.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grdDataLines.Location = new System.Drawing.Point(3, 3);
+            this.grdDataLines.Name = "grdDataLines";
+            this.grdDataLines.RowHeadersVisible = false;
+            this.grdDataLines.Size = new System.Drawing.Size(546, 543);
+            this.grdDataLines.TabIndex = 1;
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.HeaderText = "Page";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            this.dataGridViewTextBoxColumn13.Width = 70;
+            // 
+            // dataGridViewTextBoxColumn14
+            // 
+            this.dataGridViewTextBoxColumn14.HeaderText = "Value";
+            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
+            this.dataGridViewTextBoxColumn14.Width = 400;
+            // 
             // wBr
             // 
             this.wBr.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1356,7 +1444,7 @@
             this.sPnV.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.sPnV)).EndInit();
             this.sPnV.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
+            this.tbCtlr.ResumeLayout(false);
             this.tbInvoice.ResumeLayout(false);
             this.tbInvoice.PerformLayout();
             this.ctxMnTx.ResumeLayout(false);
@@ -1366,6 +1454,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdPdfText)).EndInit();
             this.tbPatternStore.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdPatternStore)).EndInit();
+            this.tbDataWordGroups.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grdDataWords)).EndInit();
+            this.tbDataLines.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grdDataLines)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1447,7 +1539,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnMainViewLines;
         private System.Windows.Forms.ContextMenuStrip ctxMnTx;
         private System.Windows.Forms.ToolStripMenuItem ctxMnTxViewPatterns;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tbCtlr;
         private System.Windows.Forms.TabPage tbInvoice;
         private System.Windows.Forms.TabPage tbWordGroups;
         private System.Windows.Forms.DataGridView grdWordGroups;
@@ -1487,5 +1579,13 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TabPage tbDataWordGroups;
+        private System.Windows.Forms.DataGridView grdDataWords;
+        private System.Windows.Forms.TabPage tbDataLines;
+        private System.Windows.Forms.DataGridView grdDataLines;
+        private System.Windows.Forms.DataGridViewTextBoxColumn wgPage;
+        private System.Windows.Forms.DataGridViewTextBoxColumn wgValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
     }
 }

@@ -84,6 +84,8 @@ namespace PdfTagger.Dat.Txt
                     new TextParser<DateTime?>(@"\d{2}-\d{2}-\d{2}", new DefaultDateConverter()),
                     new TextParser<DateTime?>(@"\d{2}\s{1}-\s{1}\d{2}\s{1}-\s{1}\d{4}", new DefaultDateConverter()),
                     new TextParser<DateTime?>(@"\d{2}\s{1}-\s{1}\d{2}\s{1}-\s{1}\d{2}", new DefaultDateConverter()),
+                    new TextParser<DateTime?>(@"\d{2}\s{1}\/\s{1}\d{2}\s{1}\/\s{1}\d{4}", new DefaultDateConverter()),
+                    new TextParser<DateTime?>(@"\d{2}\s{1}\/\s{1}\d{2}\s{1}\/\s{1}\d{2}", new DefaultDateConverter()),
                 }
             };
 
@@ -91,6 +93,9 @@ namespace PdfTagger.Dat.Txt
             {
                 string separator = ExtendedDateConverter.Separator;
                 string pattern = $"\\d{{2}}{separator}({months}){separator}\\d{{4}}";
+                hierarchyDate.Parsers.Add(new TextParser<DateTime?>(pattern, new ExtendedDateConverter()));
+
+                pattern = $"\\d{{2}}{separator}({months}){separator}\\d{{1}}\\.\\d{{3}}";
                 hierarchyDate.Parsers.Add(new TextParser<DateTime?>(pattern, new ExtendedDateConverter()));
             }
 

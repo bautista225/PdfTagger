@@ -66,8 +66,8 @@ namespace PdfTagger.Dat.Txt
 
             foreach (var parser in Parsers)
                 foreach (var match in parser.GetMatches(text))
-                    if (!matches.ContainsKey(match.MatchIndex))
-                        matches.Add(match.MatchIndex, match);
+                    if (!matches.ContainsKey(match.GetMatchHashCode()))
+                        matches.Add(match.GetMatchHashCode(), match);
 
             return matches.Values.ToList<TextParserMatch<T>>();
 

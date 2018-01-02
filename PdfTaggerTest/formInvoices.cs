@@ -32,6 +32,8 @@ namespace PdfTaggerTest
         private void mnMainOpen_Click(object sender, EventArgs e)
         {
             Open();
+            FillDataWordGroups();
+            FillDataLines();
         }
 
         /// <summary>
@@ -46,6 +48,26 @@ namespace PdfTaggerTest
                 _Model.LoadPdfInvoiceDoc(dlgOpen.FileName);
                 ShowInBrowser(_Model.PdfPath);
             }
+        }
+
+        private void FillDataWordGroups()
+        {
+
+            grdDataWords.Rows.Clear();
+
+            foreach (var page in _Model.Pdf.PdfUnstructuredPages)
+                foreach (var word in page.WordGroups)
+                    grdDataWords.Rows.Add(_Model.Pdf.PdfUnstructuredPages.IndexOf(page)+1, word.Text);
+        }
+
+        private void FillDataLines()
+        {
+
+            grdDataLines.Rows.Clear();
+
+            foreach (var page in _Model.Pdf.PdfUnstructuredPages)
+                foreach (var line in page.Lines)
+                    grdDataLines.Rows.Add(_Model.Pdf.PdfUnstructuredPages.IndexOf(page)+1, line.Text);
         }
 
         /// <summary>
@@ -441,6 +463,33 @@ namespace PdfTaggerTest
             return false;
 
         }
-   
+
+        private bool ExistsInPdf(object sender, EventArgs e)
+        {
+
+            TextBox txb = (TextBox)sender;
+
+            foreach (var page in _Model.Pdf.PdfUnstructuredPages)
+                foreach (var line in page.Lines)
+                    if (line.Text.IndexOf(txb.Text) != -1)
+                        return true;
+            return false;
+
+        }
+
+        private void text_Validated(object sender, EventArgs e)
+        {
+
+            TextBox txb = (TextBox)sender;
+
+            if (string.IsNullOrEmpty(txb.Text))
+                return;
+
+            if (!ExistsInPdf(sender, e))
+                txb.BackColor = Color.Red;
+            else
+                txb.BackColor = Color.White;
+
+        }
     }
 }

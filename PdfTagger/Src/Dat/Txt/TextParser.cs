@@ -104,6 +104,15 @@ namespace PdfTagger.Dat.Txt
 
         }
 
+        /// <summary>
+        /// Representación textual de la instancia.
+        /// </summary>
+        /// <returns>Representación textual de la instancia.</returns>
+        public override string ToString()
+        {
+            return $"{Pattern}, {Converter}";
+        }
+
         #endregion
 
     }

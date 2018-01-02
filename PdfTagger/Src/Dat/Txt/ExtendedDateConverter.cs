@@ -56,12 +56,16 @@ namespace PdfTagger.Dat.Txt
         /// </summary>
         public static string[] MonthNomenclatures = { "ene|feb|mar|abr|may|jun|jul|ago|sep|oct|nov|dic",
                                                 "ENE|FEB|MAR|ABR|MAY|JUN|JUL|AGO|SEP|OCT|NOV|DIC",
-                                                " Enero| Febrero| Marzo| Abril| Mayo| Junio| Julio| Agosto| Septiembre| Octubre| Noviembre| Diciembre"};
+                                                " Enero| Febrero| Marzo| Abril| Mayo| Junio| Julio| Agosto| Septiembre| Octubre| Noviembre| Diciembre",
+                                                "enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre",
+                                                "ENERO|FEBRERO|MARZO|ABRIL|MAYO|JUNIO|JULIO|AGOSTO|SEPTIEMBRE|OCTUBRE|NOVIEMBRE|DICIEMBRE",
+                                                "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"
+        };
 
         /// <summary>
         /// Separador ddMMyyyy.
         /// </summary>
-        public static string Separator = @"(-|\s|\/|\.|\sde\s|\sDE\s)";
+        public static string Separator = @"(\sde\s|\sDE\s|\s|-|\/|\.)";
 
         #endregion
 
@@ -89,6 +93,7 @@ namespace PdfTagger.Dat.Txt
                     if (match.Success)
                     {
                         string date = Regex.Replace(text, pattern, $"/{m}/".PadLeft(2, '0'));
+                        date = Regex.Replace(date, @"[^\d^\/]", "");
                         return System.Convert.ToDateTime(date);
                     }                    
 

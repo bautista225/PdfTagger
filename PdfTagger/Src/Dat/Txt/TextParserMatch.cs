@@ -143,6 +143,21 @@ namespace PdfTagger.Dat.Txt
         }
 
         /// <summary>
+        /// Sirve como la función hash predeterminada.
+        /// </summary>
+        /// <returns>Código hash para el objeto actual.</returns>
+        public int GetMatchHashCode()
+        {
+            int hash = 17;  // Un número primo
+            int prime = 31; // Otro número primo.
+
+            hash = hash * prime + MatchIndex.GetHashCode();
+            hash = hash * prime + TextValue.GetHashCode();
+
+            return hash;
+        }
+
+        /// <summary>
         /// Devuelve una representación textual
         /// de la intancia actual de TextParserMatch.
         /// </summary>
