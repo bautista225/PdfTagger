@@ -99,7 +99,7 @@ namespace PdfTagger
                 _Current = new Settings();
 
                 _Current.PatternsPath = Path + $"Patterns{_PathSep}";
-                _Current.MaxPatternCount = 300;
+                _Current.MaxPatternCount = 400;
                 _Current.MinRectangleCommon = 0.95f;
 
             }

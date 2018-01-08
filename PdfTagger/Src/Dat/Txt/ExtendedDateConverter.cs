@@ -94,7 +94,11 @@ namespace PdfTagger.Dat.Txt
                     {
                         string date = Regex.Replace(text, pattern, $"/{m}/".PadLeft(2, '0'));
                         date = Regex.Replace(date, @"[^\d^\/]", "");
-                        return System.Convert.ToDateTime(date);
+
+                        if (DateTime.TryParse(date, out DateTime result))
+                            return result;
+                        else
+                            return null;
                     }                    
 
                 }
