@@ -51,7 +51,7 @@ namespace PdfTagger.Pat
         /// </summary>
         /// <param name="compareResult">Resuiltado de comparación.</param>
         /// <returns>Ruta completa al archivo.</returns>
-        private static string GetPath(PdfCompareResult compareResult)
+        public static string GetPath(PdfCompareResult compareResult)
         {
            return $"{GetDirectory(compareResult.DocCategory)}"+
                 $"{GetFileName(compareResult.DocID)}";

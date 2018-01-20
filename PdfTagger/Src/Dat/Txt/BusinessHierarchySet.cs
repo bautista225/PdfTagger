@@ -92,10 +92,10 @@ namespace PdfTagger.Dat.Txt
             foreach (var months in ExtendedDateConverter.MonthNomenclatures)
             {
                 string separator = ExtendedDateConverter.Separator;
-                string pattern = $"\\d{{2}}{separator}({months}){separator}\\d{{4}}";
+                string pattern = $"\\d{{1,2}}{separator}({months}){separator}\\d{{4}}";
                 hierarchyDate.Parsers.Add(new TextParser<DateTime?>(pattern, new ExtendedDateConverter()));
 
-                pattern = $"\\d{{2}}{separator}({months}){separator}\\d{{1}}\\.\\d{{3}}";
+                pattern = $"\\d{{1,2}}{separator}({months}){separator}\\d{{1}}\\.\\d{{3}}";
                 hierarchyDate.Parsers.Add(new TextParser<DateTime?>(pattern, new ExtendedDateConverter()));
             }
 
