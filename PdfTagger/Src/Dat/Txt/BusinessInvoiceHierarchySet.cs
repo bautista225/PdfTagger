@@ -80,10 +80,10 @@ namespace PdfTagger.Dat.Txt
             TextParserHierarchy<decimal> hierarchyAmount = new TextParserHierarchy<decimal>()
             {
                 Parsers = new List<TextParser<decimal>>() {
-                    new TextParser<decimal>( @"\d{1,2},\d{2}(?=\s*%)", new DefaultAmountConverter()),              // ImpuestoDosDec
-                    new TextParser<decimal>( @"\d{1,2},\d{1}(?=\s*%)", new DefaultAmountConverter()),              // ImpuestoUnDec
-                    new TextParser<decimal>( @"\d{1,2}\.\d{2}(?=\s*%)", new DefaultAmountConverter()),             // ImpuestoDosDecAnglo
-                    new TextParser<decimal>( @"\d{1,2}\.\d{1}(?=\s*%)", new DefaultAmountConverter()),             // ImpuestoUnDecAnglo
+                    new TextParser<decimal>( @"\d{1,2},\d{2}(?=\s*%)", new DefaultAmountConverter()),               // ImpuestoDosDec
+                    new TextParser<decimal>( @"\d{1,2},\d{1}(?=\s*%)", new DefaultAmountConverter()),               // ImpuestoUnDec
+                    new TextParser<decimal>( @"\d{1,2}\.\d{2}(?=\s*%)", new DefaultAmountConverter()),              // ImpuestoDosDecAnglo
+                    new TextParser<decimal>( @"\d{1,2}\.\d{1}(?=\s*%)", new DefaultAmountConverter()),              // ImpuestoUnDecAnglo
                     new TextParser<decimal>( @"\d{1,2}(?=\s*%)", new DefaultAmountConverter()),                     // ImpuestoDosNum
                     new TextParser<decimal>( @"[\d.-]+,\d{2}", new DefaultAmountConverter()),                       // MonedaComun
                     new TextParser<decimal>( @"[\d,-]+\.\d{2}", new DefaultAmountConverter()),                      // MonedaAnglo

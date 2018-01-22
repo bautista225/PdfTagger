@@ -97,6 +97,10 @@ namespace PdfTagger.Dat.Txt
 
                 pattern = $"\\d{{1,2}}{separator}({months}){separator}\\d{{1}}\\.\\d{{3}}";
                 hierarchyDate.Parsers.Add(new TextParser<DateTime?>(pattern, new ExtendedDateConverter()));
+
+                pattern = $"\\d{{1,2}}{separator}({months}){separator}\\d{{2}}";
+                hierarchyDate.Parsers.Add(new TextParser<DateTime?>(pattern, new ExtendedDateConverter()));
+
             }
 
             return hierarchyDate;
