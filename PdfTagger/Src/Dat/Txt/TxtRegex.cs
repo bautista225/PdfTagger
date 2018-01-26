@@ -36,6 +36,7 @@
     For more information, please contact Irene Solutions SL. at this
     address: info@irenesolutions.com
  */
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace PdfTagger.Dat.Txt
@@ -124,13 +125,29 @@ namespace PdfTagger.Dat.Txt
         public static string ReplaceDigits(string text, bool useLength = true)
         {
 
-            if (!useLength)
-                return Regex.Replace(text, @"\d+", @"\d+");
+            string result = text;
 
-            string result = text;           
+            List<Match> matches = new List<Match>();
 
-            foreach (Match numeros in Regex.Matches(result, @"\d+"))
-                result = result.Replace(numeros.Value, @"\d{" + numeros.Length + @"}");
+            foreach (Match match in Regex.Matches(result, @"\d+"))
+                matches.Add(match);
+
+            for (int m = matches.Count - 1; m > -1; m--)
+            {
+                Match numero = matches[m];
+
+                string patt = "";
+
+                if (!useLength)
+                    patt = @"\d+";
+                else
+                    patt = @"\d{" + numero.Length + @"}";
+
+                string firstToken = result.Substring(0, numero.Index);
+                string lastToken = result.Substring(numero.Index + numero.Length, result.Length - (numero.Index + numero.Length));
+                result = $"{firstToken}{patt}{lastToken}";
+            }
+
 
             return result;
 
