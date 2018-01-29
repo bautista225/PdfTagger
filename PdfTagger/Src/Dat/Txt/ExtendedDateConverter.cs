@@ -55,6 +55,7 @@ namespace PdfTagger.Dat.Txt
         /// del año.
         /// </summary>
         public static string[] MonthNomenclatures = { "ene|feb|mar|abr|may|jun|jul|ago|sep|oct|nov|dic",
+                                                "Ene|Feb|Mar|Abr|May|Jun|Jul|Ago|Sep|Oct|Nov|Dic",
                                                 "ENE|FEB|MAR|ABR|MAY|JUN|JUL|AGO|SEP|OCT|NOV|DIC",
                                                 " Enero| Febrero| Marzo| Abril| Mayo| Junio| Julio| Agosto| Septiembre| Octubre| Noviembre| Diciembre",
                                                 "enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre",
