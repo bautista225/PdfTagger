@@ -56,10 +56,13 @@ namespace PdfTagger.Dat.Txt
         /// </summary>
         public static string[] MonthNomenclatures = { "ene|feb|mar|abr|may|jun|jul|ago|sep|oct|nov|dic",
                                                 "Ene|Feb|Mar|Abr|May|Jun|Jul|Ago|Sep|Oct|Nov|Dic",
+                                                "Gen|Feb|Mar|Abr|Mai|Jun|Jul|Ago|Sep|Oct|Nov|Dec",
                                                 "ENE|FEB|MAR|ABR|MAY|JUN|JUL|AGO|SEP|OCT|NOV|DIC",
                                                 " Enero| Febrero| Marzo| Abril| Mayo| Junio| Julio| Agosto| Septiembre| Octubre| Noviembre| Diciembre",
+                                                "Enero|Febrero|Marzo|Abril|Mayo|Junio|Julio|Agosto|Septiembre|Octubre|Noviembre|Diciembre",
                                                 "enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre",
                                                 "ENERO|FEBRERO|MARZO|ABRIL|MAYO|JUNIO|JULIO|AGOSTO|SEPTIEMBRE|OCTUBRE|NOVIEMBRE|DICIEMBRE",
+                                                "Gener|Febrer|Març|Abril|Maig|Juny|Juliol|Agost|Septembre|Octubre|Novembre|Desembre",
                                                 "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"
         };
 
