@@ -65,6 +65,8 @@ namespace PdfTagger.Dat.Txt
                                                 "Gener|Febrer|Març|Abril|Maig|Juny|Juliol|Agost|Septembre|Octubre|Novembre|Desembre",
                                                 "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec",
                                                 "January|February|March|April|May|June|July|August|September|October|November|December",
+                                                "janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre",
+                                                "Janvier|Février|Mars|Avril|Mai|Juin|Juillet|Août|Septembre|Octobre|Novembre|Décembre",
         };
 
         /// <summary>
