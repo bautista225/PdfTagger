@@ -63,7 +63,7 @@ namespace PdfTagger.Dat.Txt
                 if (text.EndsWith("-"))
                     text = "-" + text.Substring(0, text.Length - 1);
 
-                char[] possibleValues = new char[] { '.', ',', ' ' };
+                char[] possibleValues = new char[] { '.', ',', ' ', (char)160 };
                 char thousandsSeparator = '\0';
                 char decimalSeparator = '\0';
 
