@@ -50,7 +50,7 @@ namespace PdfTagger.Dat.Txt
         #region Public Properties
 
         /// <summary>
-        /// Numero de de parsers asociados
+        /// Numero de parsers asociados
         /// a la jerarquía.
         /// </summary>
         int ParserCount { get; }

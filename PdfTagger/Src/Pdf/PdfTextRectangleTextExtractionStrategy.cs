@@ -184,7 +184,7 @@ namespace PdfTagger.Pdf
         /// <param name="fullLine">Indica si se quiere obtener el contenido
         /// por líneas completas.</param>
         /// <returns>Matriz con los rectángulos obtenidos.</returns>
-        public List<PdfTextRectangle> GetWordGroups(bool fullLine=false)
+        public List<PdfTextRectangle> GetWordGroups(bool fullLine = false)
         { 
 
             List<PdfTextRectangle> rectangles = new List<PdfTextRectangle>();

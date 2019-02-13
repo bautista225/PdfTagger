@@ -86,6 +86,22 @@ namespace PdfTagger.Pdf
 
         /// <summary>
         /// Construye una nueva instancia de PdfUnstructuredDoc
+        /// sin datos.
+        /// <code lang="C#">
+        /// // Creamos un PdfUnstructuredDoc para extracción de datos
+        /// PdfUnstructuredDoc pdf = new PdfUnstructuredDoc();
+        /// </code> 
+        /// <code lang="VB">
+        /// ' Creamos un PdfUnstructuredDoc para extracción de datos
+        /// Dim pdf As PdfUnstructuredDoc = New PdfUnstructuredDoc()
+        /// </code> 
+        /// </summary>
+        public PdfUnstructuredDoc()
+        {
+        }
+
+        /// <summary>
+        /// Construye una nueva instancia de PdfUnstructuredDoc
         /// a partir del pdf cuya ruta se facilita como parámetro.
         /// <code lang="C#">
         /// // Creamos un PdfUnstructuredDoc para extracción de datos
@@ -102,16 +118,6 @@ namespace PdfTagger.Pdf
         /// XmlParser.SaveAsXml(pdf, "C:\test.xml")
         /// </code> 
         /// </summary>
-        public PdfUnstructuredDoc()
-        {
-        }
-
-        /// <summary>
-        /// Construye una nueva instancia de PdfUnstructuredDoc
-        /// a partir del pdf cuya ruta se facilita como 
-        /// parámetro.
-        /// </summary>
-        /// <param name="pdfPath">Ruta a archivo pdf.</param>
         public PdfUnstructuredDoc(string pdfPath)
         {
 
@@ -124,10 +130,22 @@ namespace PdfTagger.Pdf
 
         /// <summary>
         /// Construye una nueva instancia de PdfUnstructuredDoc
-        /// a partir del pdf cyuos datos binarios se facilitan como 
-        /// parámetro.
+        /// a partir de los bytes del pdf facilitados como parámetro.
+        /// <code lang="C#">
+        /// // Creamos un PdfUnstructuredDoc para extracción de datos
+        /// PdfUnstructuredDoc pdf = new PdfUnstructuredDoc(pdfFile);
+        /// 
+        /// // Almacenamos los datos extraidos en un archivo xml
+        /// XmlParser.SaveAsXml(pdf, xmlPath);
+        /// </code> 
+        /// <code lang="VB">
+        /// ' Creamos un PdfUnstructuredDoc para extracción de datos
+        /// Dim pdf As PdfUnstructuredDoc = New PdfUnstructuredDoc(pdfFile)
+        /// 
+        /// ' Almacenamos los datos extraidos en un archivo xml
+        /// XmlParser.SaveAsXml(pdf, "C:\test.xml")
+        /// </code> 
         /// </summary>
-        /// <param name="pdfFile">Datos binarios de archivo pdf.</param>
         public PdfUnstructuredDoc(byte[] pdfFile)
         {
 
