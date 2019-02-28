@@ -90,12 +90,13 @@ namespace PdfTagger.Pat
         /// <summary>
         /// Expresión regex del valor a buscar.
         /// </summary>
-        public string RegexPattern { get; set; }     
+        public string RegexPattern { get; set; }
 
         /// <summary>
         /// <summary>
-        /// Posición de la coincidendia en caso de
-        /// varias.
+        /// En caso de varias coincidencias en un mismo
+        /// contexto con el patrón, devuelve la posición
+        /// de la que coincide.
         /// </summary>
         /// </summary>
         public int Position { get; set; }
@@ -110,6 +111,11 @@ namespace PdfTagger.Pat
         /// Número de aciertos acumulados del patrón.
         /// </summary>
         public int MatchesCount { get; set; }
+
+        /// <summary>
+        /// Tipo de fuente del valor a buscar.
+        /// </summary>
+        public string FontType { get; set; }
 
         #endregion
 
@@ -158,17 +164,28 @@ namespace PdfTagger.Pat
             if (input == null)
                 throw new ArgumentException("Parámetro de tipo incorrecto.");
 
+            bool equalsFont = false;
             bool equalsRectangle = false;
 
-            if (PdfRectangle == null)
+            if (FontType != null && input.FontType != null) // Comprobamos si la fuente y la coordenada de las x coinciden
             {
-                if (input.PdfRectangle == null)
-                    equalsRectangle = true;
+                equalsFont = FontType.Equals(input.FontType);
+                //equalsRectangle = PdfRectangle.Llx.Equals(input.PdfRectangle.Llx);
             }
             else
             {
+                equalsFont = true;
+            }
+
+            if (PdfRectangle != null && input.PdfRectangle != null) // Comprobamos si el rectángulo coincide
+            {
                 equalsRectangle = PdfRectangle.Equals(input.PdfRectangle);
             }
+            else
+            {
+                equalsRectangle = true;
+            }
+
 
             return (MetadataItemName == input.MetadataItemName &&
                     PdfPageN == input.PdfPageN &&
@@ -176,7 +193,8 @@ namespace PdfTagger.Pat
                     equalsRectangle &&
                     RegexPattern == input.RegexPattern &&
                     Position == input.Position &&
-                    SourceTypeName == input.SourceTypeName);
+                    SourceTypeName == input.SourceTypeName)&&
+                    equalsFont;
         }
 
         /// <summary>
@@ -195,6 +213,7 @@ namespace PdfTagger.Pat
             hash = hash * prime + (RegexPattern??"").GetHashCode();
             hash = hash * prime + Position .GetHashCode();
             hash = hash * prime + (SourceTypeName??"").GetHashCode();
+            hash = hash * prime + ((FontType == null) ? 0 : FontType.GetHashCode());
 
             return hash;
         }

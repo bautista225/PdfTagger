@@ -154,6 +154,7 @@
             this.wBr = new System.Windows.Forms.WebBrowser();
             this.stMain = new System.Windows.Forms.StatusStrip();
             this.dlgOpen = new System.Windows.Forms.OpenFileDialog();
+            this.FontType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mnMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sPnH)).BeginInit();
             this.sPnH.Panel1.SuspendLayout();
@@ -188,51 +189,53 @@
             this.mnMainViewLines});
             this.mnMain.Location = new System.Drawing.Point(0, 0);
             this.mnMain.Name = "mnMain";
-            this.mnMain.Size = new System.Drawing.Size(1215, 24);
+            this.mnMain.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
+            this.mnMain.Size = new System.Drawing.Size(1620, 28);
             this.mnMain.TabIndex = 0;
             this.mnMain.Text = "menuStrip1";
             // 
             // mnMainOpen
             // 
             this.mnMainOpen.Name = "mnMainOpen";
-            this.mnMainOpen.Size = new System.Drawing.Size(66, 20);
+            this.mnMainOpen.Size = new System.Drawing.Size(81, 24);
             this.mnMainOpen.Text = "Abrir pdf";
             this.mnMainOpen.Click += new System.EventHandler(this.mnMainOpen_Click);
             // 
             // mnMainAnalyze
             // 
             this.mnMainAnalyze.Name = "mnMainAnalyze";
-            this.mnMainAnalyze.Size = new System.Drawing.Size(61, 20);
+            this.mnMainAnalyze.Size = new System.Drawing.Size(75, 24);
             this.mnMainAnalyze.Text = "Analizar";
             this.mnMainAnalyze.Click += new System.EventHandler(this.mnMainAnalyze_Click);
             // 
             // mnMainViewWordGroups
             // 
             this.mnMainViewWordGroups.Name = "mnMainViewWordGroups";
-            this.mnMainViewWordGroups.Size = new System.Drawing.Size(105, 20);
+            this.mnMainViewWordGroups.Size = new System.Drawing.Size(130, 24);
             this.mnMainViewWordGroups.Text = "Ver WrodGroups";
             this.mnMainViewWordGroups.Click += new System.EventHandler(this.mnMainViewWordGroups_Click);
             // 
             // mnMainViewLines
             // 
             this.mnMainViewLines.Name = "mnMainViewLines";
-            this.mnMainViewLines.Size = new System.Drawing.Size(65, 20);
+            this.mnMainViewLines.Size = new System.Drawing.Size(79, 24);
             this.mnMainViewLines.Text = "Ver Lines";
             this.mnMainViewLines.Click += new System.EventHandler(this.mnMainViewLines_Click);
             // 
             // tbMain
             // 
             this.tbMain.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.tbMain.Location = new System.Drawing.Point(0, 24);
+            this.tbMain.Location = new System.Drawing.Point(0, 28);
             this.tbMain.Name = "tbMain";
-            this.tbMain.Size = new System.Drawing.Size(1215, 25);
+            this.tbMain.Size = new System.Drawing.Size(1620, 25);
             this.tbMain.TabIndex = 1;
             this.tbMain.Text = "toolStrip1";
             // 
             // sPnH
             // 
             this.sPnH.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sPnH.Location = new System.Drawing.Point(0, 49);
+            this.sPnH.Location = new System.Drawing.Point(0, 53);
+            this.sPnH.Margin = new System.Windows.Forms.Padding(4);
             this.sPnH.Name = "sPnH";
             this.sPnH.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -244,8 +247,9 @@
             // 
             this.sPnH.Panel2.BackColor = System.Drawing.SystemColors.Control;
             this.sPnH.Panel2.Controls.Add(this.stMain);
-            this.sPnH.Size = new System.Drawing.Size(1215, 700);
-            this.sPnH.SplitterDistance = 601;
+            this.sPnH.Size = new System.Drawing.Size(1620, 869);
+            this.sPnH.SplitterDistance = 746;
+            this.sPnH.SplitterWidth = 5;
             this.sPnH.TabIndex = 2;
             // 
             // sPnV
@@ -253,6 +257,7 @@
             this.sPnV.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sPnV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sPnV.Location = new System.Drawing.Point(0, 0);
+            this.sPnV.Margin = new System.Windows.Forms.Padding(4);
             this.sPnV.Name = "sPnV";
             // 
             // sPnV.Panel1
@@ -263,8 +268,9 @@
             // 
             this.sPnV.Panel2.BackColor = System.Drawing.SystemColors.Control;
             this.sPnV.Panel2.Controls.Add(this.wBr);
-            this.sPnV.Size = new System.Drawing.Size(1215, 601);
-            this.sPnV.SplitterDistance = 585;
+            this.sPnV.Size = new System.Drawing.Size(1620, 746);
+            this.sPnV.SplitterDistance = 779;
+            this.sPnV.SplitterWidth = 5;
             this.sPnV.TabIndex = 0;
             // 
             // tbCtlr
@@ -275,10 +281,11 @@
             this.tbCtlr.Controls.Add(this.tbPatternStore);
             this.tbCtlr.Controls.Add(this.tbDataWordGroups);
             this.tbCtlr.Controls.Add(this.tbDataLines);
-            this.tbCtlr.Location = new System.Drawing.Point(11, 12);
+            this.tbCtlr.Location = new System.Drawing.Point(15, 15);
+            this.tbCtlr.Margin = new System.Windows.Forms.Padding(4);
             this.tbCtlr.Name = "tbCtlr";
             this.tbCtlr.SelectedIndex = 0;
-            this.tbCtlr.Size = new System.Drawing.Size(560, 575);
+            this.tbCtlr.Size = new System.Drawing.Size(747, 708);
             this.tbCtlr.TabIndex = 54;
             // 
             // tbInvoice
@@ -352,10 +359,11 @@
             this.tbInvoice.Controls.Add(this.lbTaxesOutputsAmount);
             this.tbInvoice.Controls.Add(this.txTaxesOutputsAmount02);
             this.tbInvoice.Controls.Add(this.txTaxesOutputsAmount03);
-            this.tbInvoice.Location = new System.Drawing.Point(4, 22);
+            this.tbInvoice.Location = new System.Drawing.Point(4, 25);
+            this.tbInvoice.Margin = new System.Windows.Forms.Padding(4);
             this.tbInvoice.Name = "tbInvoice";
-            this.tbInvoice.Padding = new System.Windows.Forms.Padding(3);
-            this.tbInvoice.Size = new System.Drawing.Size(552, 549);
+            this.tbInvoice.Padding = new System.Windows.Forms.Padding(4);
+            this.tbInvoice.Size = new System.Drawing.Size(739, 679);
             this.tbInvoice.TabIndex = 0;
             this.tbInvoice.Text = "Invoice";
             this.tbInvoice.UseVisualStyleBackColor = true;
@@ -363,81 +371,90 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(414, 192);
+            this.label7.Location = new System.Drawing.Point(552, 236);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(24, 13);
+            this.label7.Size = new System.Drawing.Size(32, 17);
             this.label7.TabIndex = 61;
             this.label7.Text = " 3%";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(414, 172);
+            this.label8.Location = new System.Drawing.Point(552, 212);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(24, 13);
+            this.label8.Size = new System.Drawing.Size(32, 17);
             this.label8.TabIndex = 60;
             this.label8.Text = " 7%";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(376, 232);
+            this.label6.Location = new System.Drawing.Point(501, 286);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(24, 13);
+            this.label6.Size = new System.Drawing.Size(32, 17);
             this.label6.TabIndex = 59;
             this.label6.Text = " 0%";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(376, 212);
+            this.label5.Location = new System.Drawing.Point(501, 261);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(24, 13);
+            this.label5.Size = new System.Drawing.Size(32, 17);
             this.label5.TabIndex = 58;
             this.label5.Text = " 4%";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(376, 192);
+            this.label4.Location = new System.Drawing.Point(501, 236);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(27, 13);
+            this.label4.Size = new System.Drawing.Size(36, 17);
             this.label4.TabIndex = 57;
             this.label4.Text = "10%";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(376, 172);
+            this.label3.Location = new System.Drawing.Point(501, 212);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(27, 13);
+            this.label3.Size = new System.Drawing.Size(36, 17);
             this.label3.TabIndex = 56;
             this.label3.Text = "21%";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(411, 155);
+            this.label2.Location = new System.Drawing.Point(548, 191);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(28, 13);
+            this.label2.Size = new System.Drawing.Size(34, 17);
             this.label2.TabIndex = 55;
             this.label2.Text = "IGIC";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(376, 155);
+            this.label1.Location = new System.Drawing.Point(501, 191);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(24, 13);
+            this.label1.Size = new System.Drawing.Size(29, 17);
             this.label1.TabIndex = 54;
             this.label1.Text = "IVA";
             // 
             // txDelivery
             // 
             this.txDelivery.ContextMenuStrip = this.ctxMnTx;
-            this.txDelivery.Location = new System.Drawing.Point(282, 68);
+            this.txDelivery.Location = new System.Drawing.Point(376, 84);
+            this.txDelivery.Margin = new System.Windows.Forms.Padding(4);
             this.txDelivery.Name = "txDelivery";
-            this.txDelivery.Size = new System.Drawing.Size(100, 20);
+            this.txDelivery.Size = new System.Drawing.Size(132, 22);
             this.txDelivery.TabIndex = 5;
             this.txDelivery.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txDelivery.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
@@ -448,21 +465,22 @@
             this.ctxMnTx.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ctxMnTxViewPatterns});
             this.ctxMnTx.Name = "ctxMnTx";
-            this.ctxMnTx.Size = new System.Drawing.Size(140, 26);
+            this.ctxMnTx.Size = new System.Drawing.Size(162, 28);
             // 
             // ctxMnTxViewPatterns
             // 
             this.ctxMnTxViewPatterns.Name = "ctxMnTxViewPatterns";
-            this.ctxMnTxViewPatterns.Size = new System.Drawing.Size(139, 22);
+            this.ctxMnTxViewPatterns.Size = new System.Drawing.Size(161, 24);
             this.ctxMnTxViewPatterns.Text = "Ver patrones";
             this.ctxMnTxViewPatterns.Click += new System.EventHandler(this.ctxMnTxViewPatterns_Click);
             // 
             // txInvoiceLineNetAmount10
             // 
             this.txInvoiceLineNetAmount10.ContextMenuStrip = this.ctxMnTx;
-            this.txInvoiceLineNetAmount10.Location = new System.Drawing.Point(269, 500);
+            this.txInvoiceLineNetAmount10.Location = new System.Drawing.Point(359, 615);
+            this.txInvoiceLineNetAmount10.Margin = new System.Windows.Forms.Padding(4);
             this.txInvoiceLineNetAmount10.Name = "txInvoiceLineNetAmount10";
-            this.txInvoiceLineNetAmount10.Size = new System.Drawing.Size(100, 20);
+            this.txInvoiceLineNetAmount10.Size = new System.Drawing.Size(132, 22);
             this.txInvoiceLineNetAmount10.TabIndex = 43;
             this.txInvoiceLineNetAmount10.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txInvoiceLineNetAmount10.Enter += new System.EventHandler(this.LoadResultPatterns);
@@ -471,9 +489,10 @@
             // txInvoiceLineNetAmount09
             // 
             this.txInvoiceLineNetAmount09.ContextMenuStrip = this.ctxMnTx;
-            this.txInvoiceLineNetAmount09.Location = new System.Drawing.Point(269, 480);
+            this.txInvoiceLineNetAmount09.Location = new System.Drawing.Point(359, 591);
+            this.txInvoiceLineNetAmount09.Margin = new System.Windows.Forms.Padding(4);
             this.txInvoiceLineNetAmount09.Name = "txInvoiceLineNetAmount09";
-            this.txInvoiceLineNetAmount09.Size = new System.Drawing.Size(100, 20);
+            this.txInvoiceLineNetAmount09.Size = new System.Drawing.Size(132, 22);
             this.txInvoiceLineNetAmount09.TabIndex = 41;
             this.txInvoiceLineNetAmount09.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txInvoiceLineNetAmount09.Enter += new System.EventHandler(this.LoadResultPatterns);
@@ -482,9 +501,10 @@
             // txInvoiceNumber
             // 
             this.txInvoiceNumber.ContextMenuStrip = this.ctxMnTx;
-            this.txInvoiceNumber.Location = new System.Drawing.Point(99, 42);
+            this.txInvoiceNumber.Location = new System.Drawing.Point(132, 52);
+            this.txInvoiceNumber.Margin = new System.Windows.Forms.Padding(4);
             this.txInvoiceNumber.Name = "txInvoiceNumber";
-            this.txInvoiceNumber.Size = new System.Drawing.Size(100, 20);
+            this.txInvoiceNumber.Size = new System.Drawing.Size(132, 22);
             this.txInvoiceNumber.TabIndex = 2;
             this.txInvoiceNumber.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txInvoiceNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
@@ -493,9 +513,10 @@
             // txInvoiceLineNetAmount08
             // 
             this.txInvoiceLineNetAmount08.ContextMenuStrip = this.ctxMnTx;
-            this.txInvoiceLineNetAmount08.Location = new System.Drawing.Point(269, 460);
+            this.txInvoiceLineNetAmount08.Location = new System.Drawing.Point(359, 566);
+            this.txInvoiceLineNetAmount08.Margin = new System.Windows.Forms.Padding(4);
             this.txInvoiceLineNetAmount08.Name = "txInvoiceLineNetAmount08";
-            this.txInvoiceLineNetAmount08.Size = new System.Drawing.Size(100, 20);
+            this.txInvoiceLineNetAmount08.Size = new System.Drawing.Size(132, 22);
             this.txInvoiceLineNetAmount08.TabIndex = 39;
             this.txInvoiceLineNetAmount08.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txInvoiceLineNetAmount08.Enter += new System.EventHandler(this.LoadResultPatterns);
@@ -504,9 +525,10 @@
             // txInvoiceSerie
             // 
             this.txInvoiceSerie.ContextMenuStrip = this.ctxMnTx;
-            this.txInvoiceSerie.Location = new System.Drawing.Point(282, 16);
+            this.txInvoiceSerie.Location = new System.Drawing.Point(376, 20);
+            this.txInvoiceSerie.Margin = new System.Windows.Forms.Padding(4);
             this.txInvoiceSerie.Name = "txInvoiceSerie";
-            this.txInvoiceSerie.Size = new System.Drawing.Size(100, 20);
+            this.txInvoiceSerie.Size = new System.Drawing.Size(132, 22);
             this.txInvoiceSerie.TabIndex = 1;
             this.txInvoiceSerie.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txInvoiceSerie.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
@@ -514,9 +536,10 @@
             // txInvoiceLineNetAmount07
             // 
             this.txInvoiceLineNetAmount07.ContextMenuStrip = this.ctxMnTx;
-            this.txInvoiceLineNetAmount07.Location = new System.Drawing.Point(269, 440);
+            this.txInvoiceLineNetAmount07.Location = new System.Drawing.Point(359, 542);
+            this.txInvoiceLineNetAmount07.Margin = new System.Windows.Forms.Padding(4);
             this.txInvoiceLineNetAmount07.Name = "txInvoiceLineNetAmount07";
-            this.txInvoiceLineNetAmount07.Size = new System.Drawing.Size(100, 20);
+            this.txInvoiceLineNetAmount07.Size = new System.Drawing.Size(132, 22);
             this.txInvoiceLineNetAmount07.TabIndex = 37;
             this.txInvoiceLineNetAmount07.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txInvoiceLineNetAmount07.Enter += new System.EventHandler(this.LoadResultPatterns);
@@ -525,9 +548,10 @@
             // txIssueDate
             // 
             this.txIssueDate.ContextMenuStrip = this.ctxMnTx;
-            this.txIssueDate.Location = new System.Drawing.Point(282, 42);
+            this.txIssueDate.Location = new System.Drawing.Point(376, 52);
+            this.txIssueDate.Margin = new System.Windows.Forms.Padding(4);
             this.txIssueDate.Name = "txIssueDate";
-            this.txIssueDate.Size = new System.Drawing.Size(100, 20);
+            this.txIssueDate.Size = new System.Drawing.Size(132, 22);
             this.txIssueDate.TabIndex = 3;
             this.txIssueDate.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txIssueDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
@@ -535,9 +559,10 @@
             // txInvoiceLineNetAmount06
             // 
             this.txInvoiceLineNetAmount06.ContextMenuStrip = this.ctxMnTx;
-            this.txInvoiceLineNetAmount06.Location = new System.Drawing.Point(269, 420);
+            this.txInvoiceLineNetAmount06.Location = new System.Drawing.Point(359, 517);
+            this.txInvoiceLineNetAmount06.Margin = new System.Windows.Forms.Padding(4);
             this.txInvoiceLineNetAmount06.Name = "txInvoiceLineNetAmount06";
-            this.txInvoiceLineNetAmount06.Size = new System.Drawing.Size(100, 20);
+            this.txInvoiceLineNetAmount06.Size = new System.Drawing.Size(132, 22);
             this.txInvoiceLineNetAmount06.TabIndex = 35;
             this.txInvoiceLineNetAmount06.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txInvoiceLineNetAmount06.Enter += new System.EventHandler(this.LoadResultPatterns);
@@ -546,9 +571,10 @@
             // txPurchaseOrder
             // 
             this.txPurchaseOrder.ContextMenuStrip = this.ctxMnTx;
-            this.txPurchaseOrder.Location = new System.Drawing.Point(99, 68);
+            this.txPurchaseOrder.Location = new System.Drawing.Point(132, 84);
+            this.txPurchaseOrder.Margin = new System.Windows.Forms.Padding(4);
             this.txPurchaseOrder.Name = "txPurchaseOrder";
-            this.txPurchaseOrder.Size = new System.Drawing.Size(100, 20);
+            this.txPurchaseOrder.Size = new System.Drawing.Size(132, 22);
             this.txPurchaseOrder.TabIndex = 4;
             this.txPurchaseOrder.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txPurchaseOrder.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
@@ -556,9 +582,10 @@
             // txInvoiceLineNetAmount05
             // 
             this.txInvoiceLineNetAmount05.ContextMenuStrip = this.ctxMnTx;
-            this.txInvoiceLineNetAmount05.Location = new System.Drawing.Point(269, 400);
+            this.txInvoiceLineNetAmount05.Location = new System.Drawing.Point(359, 492);
+            this.txInvoiceLineNetAmount05.Margin = new System.Windows.Forms.Padding(4);
             this.txInvoiceLineNetAmount05.Name = "txInvoiceLineNetAmount05";
-            this.txInvoiceLineNetAmount05.Size = new System.Drawing.Size(100, 20);
+            this.txInvoiceLineNetAmount05.Size = new System.Drawing.Size(132, 22);
             this.txInvoiceLineNetAmount05.TabIndex = 33;
             this.txInvoiceLineNetAmount05.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txInvoiceLineNetAmount05.Enter += new System.EventHandler(this.LoadResultPatterns);
@@ -567,9 +594,10 @@
             // txSellerPartyID
             // 
             this.txSellerPartyID.ContextMenuStrip = this.ctxMnTx;
-            this.txSellerPartyID.Location = new System.Drawing.Point(99, 16);
+            this.txSellerPartyID.Location = new System.Drawing.Point(132, 20);
+            this.txSellerPartyID.Margin = new System.Windows.Forms.Padding(4);
             this.txSellerPartyID.Name = "txSellerPartyID";
-            this.txSellerPartyID.Size = new System.Drawing.Size(100, 20);
+            this.txSellerPartyID.Size = new System.Drawing.Size(132, 22);
             this.txSellerPartyID.TabIndex = 0;
             this.txSellerPartyID.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             this.txSellerPartyID.Validated += new System.EventHandler(this.txSellerPartyID_Validated);
@@ -577,9 +605,10 @@
             // txInvoiceLineNetAmount04
             // 
             this.txInvoiceLineNetAmount04.ContextMenuStrip = this.ctxMnTx;
-            this.txInvoiceLineNetAmount04.Location = new System.Drawing.Point(269, 380);
+            this.txInvoiceLineNetAmount04.Location = new System.Drawing.Point(359, 468);
+            this.txInvoiceLineNetAmount04.Margin = new System.Windows.Forms.Padding(4);
             this.txInvoiceLineNetAmount04.Name = "txInvoiceLineNetAmount04";
-            this.txInvoiceLineNetAmount04.Size = new System.Drawing.Size(100, 20);
+            this.txInvoiceLineNetAmount04.Size = new System.Drawing.Size(132, 22);
             this.txInvoiceLineNetAmount04.TabIndex = 31;
             this.txInvoiceLineNetAmount04.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txInvoiceLineNetAmount04.Enter += new System.EventHandler(this.LoadResultPatterns);
@@ -588,9 +617,10 @@
             // txBuyerPartyID
             // 
             this.txBuyerPartyID.ContextMenuStrip = this.ctxMnTx;
-            this.txBuyerPartyID.Location = new System.Drawing.Point(99, 94);
+            this.txBuyerPartyID.Location = new System.Drawing.Point(132, 116);
+            this.txBuyerPartyID.Margin = new System.Windows.Forms.Padding(4);
             this.txBuyerPartyID.Name = "txBuyerPartyID";
-            this.txBuyerPartyID.Size = new System.Drawing.Size(100, 20);
+            this.txBuyerPartyID.Size = new System.Drawing.Size(132, 22);
             this.txBuyerPartyID.TabIndex = 6;
             this.txBuyerPartyID.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txBuyerPartyID.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
@@ -599,18 +629,20 @@
             // lbInvoiceLineNetAmount
             // 
             this.lbInvoiceLineNetAmount.AutoSize = true;
-            this.lbInvoiceLineNetAmount.Location = new System.Drawing.Point(265, 304);
+            this.lbInvoiceLineNetAmount.Location = new System.Drawing.Point(353, 374);
+            this.lbInvoiceLineNetAmount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbInvoiceLineNetAmount.Name = "lbInvoiceLineNetAmount";
-            this.lbInvoiceLineNetAmount.Size = new System.Drawing.Size(115, 13);
+            this.lbInvoiceLineNetAmount.Size = new System.Drawing.Size(149, 17);
             this.lbInvoiceLineNetAmount.TabIndex = 53;
             this.lbInvoiceLineNetAmount.Text = "InvoiceLineNetAmount";
             // 
             // txGrossAmount
             // 
             this.txGrossAmount.ContextMenuStrip = this.ctxMnTx;
-            this.txGrossAmount.Location = new System.Drawing.Point(282, 94);
+            this.txGrossAmount.Location = new System.Drawing.Point(376, 116);
+            this.txGrossAmount.Margin = new System.Windows.Forms.Padding(4);
             this.txGrossAmount.Name = "txGrossAmount";
-            this.txGrossAmount.Size = new System.Drawing.Size(100, 20);
+            this.txGrossAmount.Size = new System.Drawing.Size(132, 22);
             this.txGrossAmount.TabIndex = 7;
             this.txGrossAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txGrossAmount.Enter += new System.EventHandler(this.LoadResultPatterns);
@@ -619,9 +651,10 @@
             // txInvoiceLineNetAmount03
             // 
             this.txInvoiceLineNetAmount03.ContextMenuStrip = this.ctxMnTx;
-            this.txInvoiceLineNetAmount03.Location = new System.Drawing.Point(269, 360);
+            this.txInvoiceLineNetAmount03.Location = new System.Drawing.Point(359, 443);
+            this.txInvoiceLineNetAmount03.Margin = new System.Windows.Forms.Padding(4);
             this.txInvoiceLineNetAmount03.Name = "txInvoiceLineNetAmount03";
-            this.txInvoiceLineNetAmount03.Size = new System.Drawing.Size(100, 20);
+            this.txInvoiceLineNetAmount03.Size = new System.Drawing.Size(132, 22);
             this.txInvoiceLineNetAmount03.TabIndex = 29;
             this.txInvoiceLineNetAmount03.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txInvoiceLineNetAmount03.Enter += new System.EventHandler(this.LoadResultPatterns);
@@ -630,9 +663,10 @@
             // txCurrencyCode
             // 
             this.txCurrencyCode.ContextMenuStrip = this.ctxMnTx;
-            this.txCurrencyCode.Location = new System.Drawing.Point(99, 120);
+            this.txCurrencyCode.Location = new System.Drawing.Point(132, 148);
+            this.txCurrencyCode.Margin = new System.Windows.Forms.Padding(4);
             this.txCurrencyCode.Name = "txCurrencyCode";
-            this.txCurrencyCode.Size = new System.Drawing.Size(39, 20);
+            this.txCurrencyCode.Size = new System.Drawing.Size(51, 22);
             this.txCurrencyCode.TabIndex = 8;
             this.txCurrencyCode.Text = "EUR";
             this.txCurrencyCode.Enter += new System.EventHandler(this.LoadResultPatterns);
@@ -641,9 +675,10 @@
             // txInvoiceLineNetAmount02
             // 
             this.txInvoiceLineNetAmount02.ContextMenuStrip = this.ctxMnTx;
-            this.txInvoiceLineNetAmount02.Location = new System.Drawing.Point(269, 340);
+            this.txInvoiceLineNetAmount02.Location = new System.Drawing.Point(359, 418);
+            this.txInvoiceLineNetAmount02.Margin = new System.Windows.Forms.Padding(4);
             this.txInvoiceLineNetAmount02.Name = "txInvoiceLineNetAmount02";
-            this.txInvoiceLineNetAmount02.Size = new System.Drawing.Size(100, 20);
+            this.txInvoiceLineNetAmount02.Size = new System.Drawing.Size(132, 22);
             this.txInvoiceLineNetAmount02.TabIndex = 27;
             this.txInvoiceLineNetAmount02.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txInvoiceLineNetAmount02.Enter += new System.EventHandler(this.LoadResultPatterns);
@@ -652,18 +687,20 @@
             // lbInvoiceNumber
             // 
             this.lbInvoiceNumber.AutoSize = true;
-            this.lbInvoiceNumber.Location = new System.Drawing.Point(14, 45);
+            this.lbInvoiceNumber.Location = new System.Drawing.Point(19, 55);
+            this.lbInvoiceNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbInvoiceNumber.Name = "lbInvoiceNumber";
-            this.lbInvoiceNumber.Size = new System.Drawing.Size(79, 13);
+            this.lbInvoiceNumber.Size = new System.Drawing.Size(102, 17);
             this.lbInvoiceNumber.TabIndex = 12;
             this.lbInvoiceNumber.Text = "InvoiceNumber";
             // 
             // txInvoiceLineNetAmount01
             // 
             this.txInvoiceLineNetAmount01.ContextMenuStrip = this.ctxMnTx;
-            this.txInvoiceLineNetAmount01.Location = new System.Drawing.Point(269, 320);
+            this.txInvoiceLineNetAmount01.Location = new System.Drawing.Point(359, 394);
+            this.txInvoiceLineNetAmount01.Margin = new System.Windows.Forms.Padding(4);
             this.txInvoiceLineNetAmount01.Name = "txInvoiceLineNetAmount01";
-            this.txInvoiceLineNetAmount01.Size = new System.Drawing.Size(100, 20);
+            this.txInvoiceLineNetAmount01.Size = new System.Drawing.Size(132, 22);
             this.txInvoiceLineNetAmount01.TabIndex = 25;
             this.txInvoiceLineNetAmount01.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txInvoiceLineNetAmount01.Enter += new System.EventHandler(this.LoadResultPatterns);
@@ -672,18 +709,20 @@
             // lbInvoiceSerie
             // 
             this.lbInvoiceSerie.AutoSize = true;
-            this.lbInvoiceSerie.Location = new System.Drawing.Point(210, 19);
+            this.lbInvoiceSerie.Location = new System.Drawing.Point(280, 23);
+            this.lbInvoiceSerie.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbInvoiceSerie.Name = "lbInvoiceSerie";
-            this.lbInvoiceSerie.Size = new System.Drawing.Size(66, 13);
+            this.lbInvoiceSerie.Size = new System.Drawing.Size(85, 17);
             this.lbInvoiceSerie.TabIndex = 13;
             this.lbInvoiceSerie.Text = "InvoiceSerie";
             // 
             // txInvoiceLineText10
             // 
             this.txInvoiceLineText10.ContextMenuStrip = this.ctxMnTx;
-            this.txInvoiceLineText10.Location = new System.Drawing.Point(40, 500);
+            this.txInvoiceLineText10.Location = new System.Drawing.Point(53, 615);
+            this.txInvoiceLineText10.Margin = new System.Windows.Forms.Padding(4);
             this.txInvoiceLineText10.Name = "txInvoiceLineText10";
-            this.txInvoiceLineText10.Size = new System.Drawing.Size(216, 20);
+            this.txInvoiceLineText10.Size = new System.Drawing.Size(287, 22);
             this.txInvoiceLineText10.TabIndex = 42;
             this.txInvoiceLineText10.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txInvoiceLineText10.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
@@ -691,18 +730,20 @@
             // lbIssueDate
             // 
             this.lbIssueDate.AutoSize = true;
-            this.lbIssueDate.Location = new System.Drawing.Point(221, 45);
+            this.lbIssueDate.Location = new System.Drawing.Point(295, 55);
+            this.lbIssueDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbIssueDate.Name = "lbIssueDate";
-            this.lbIssueDate.Size = new System.Drawing.Size(55, 13);
+            this.lbIssueDate.Size = new System.Drawing.Size(71, 17);
             this.lbIssueDate.TabIndex = 14;
             this.lbIssueDate.Text = "IssueDate";
             // 
             // txInvoiceLineText09
             // 
             this.txInvoiceLineText09.ContextMenuStrip = this.ctxMnTx;
-            this.txInvoiceLineText09.Location = new System.Drawing.Point(40, 480);
+            this.txInvoiceLineText09.Location = new System.Drawing.Point(53, 591);
+            this.txInvoiceLineText09.Margin = new System.Windows.Forms.Padding(4);
             this.txInvoiceLineText09.Name = "txInvoiceLineText09";
-            this.txInvoiceLineText09.Size = new System.Drawing.Size(216, 20);
+            this.txInvoiceLineText09.Size = new System.Drawing.Size(287, 22);
             this.txInvoiceLineText09.TabIndex = 40;
             this.txInvoiceLineText09.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txInvoiceLineText09.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
@@ -710,18 +751,20 @@
             // lbPurchaseOrder
             // 
             this.lbPurchaseOrder.AutoSize = true;
-            this.lbPurchaseOrder.Location = new System.Drawing.Point(15, 71);
+            this.lbPurchaseOrder.Location = new System.Drawing.Point(20, 87);
+            this.lbPurchaseOrder.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbPurchaseOrder.Name = "lbPurchaseOrder";
-            this.lbPurchaseOrder.Size = new System.Drawing.Size(78, 13);
+            this.lbPurchaseOrder.Size = new System.Drawing.Size(105, 17);
             this.lbPurchaseOrder.TabIndex = 15;
             this.lbPurchaseOrder.Text = "PurchaseOrder";
             // 
             // txInvoiceLineText08
             // 
             this.txInvoiceLineText08.ContextMenuStrip = this.ctxMnTx;
-            this.txInvoiceLineText08.Location = new System.Drawing.Point(40, 460);
+            this.txInvoiceLineText08.Location = new System.Drawing.Point(53, 566);
+            this.txInvoiceLineText08.Margin = new System.Windows.Forms.Padding(4);
             this.txInvoiceLineText08.Name = "txInvoiceLineText08";
-            this.txInvoiceLineText08.Size = new System.Drawing.Size(216, 20);
+            this.txInvoiceLineText08.Size = new System.Drawing.Size(287, 22);
             this.txInvoiceLineText08.TabIndex = 38;
             this.txInvoiceLineText08.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txInvoiceLineText08.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
@@ -729,18 +772,20 @@
             // lbDelivery
             // 
             this.lbDelivery.AutoSize = true;
-            this.lbDelivery.Location = new System.Drawing.Point(231, 71);
+            this.lbDelivery.Location = new System.Drawing.Point(308, 87);
+            this.lbDelivery.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbDelivery.Name = "lbDelivery";
-            this.lbDelivery.Size = new System.Drawing.Size(45, 13);
+            this.lbDelivery.Size = new System.Drawing.Size(59, 17);
             this.lbDelivery.TabIndex = 16;
             this.lbDelivery.Text = "Delivery";
             // 
             // txInvoiceLineText07
             // 
             this.txInvoiceLineText07.ContextMenuStrip = this.ctxMnTx;
-            this.txInvoiceLineText07.Location = new System.Drawing.Point(40, 440);
+            this.txInvoiceLineText07.Location = new System.Drawing.Point(53, 542);
+            this.txInvoiceLineText07.Margin = new System.Windows.Forms.Padding(4);
             this.txInvoiceLineText07.Name = "txInvoiceLineText07";
-            this.txInvoiceLineText07.Size = new System.Drawing.Size(216, 20);
+            this.txInvoiceLineText07.Size = new System.Drawing.Size(287, 22);
             this.txInvoiceLineText07.TabIndex = 36;
             this.txInvoiceLineText07.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txInvoiceLineText07.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
@@ -748,18 +793,20 @@
             // lbSellerPartyID
             // 
             this.lbSellerPartyID.AutoSize = true;
-            this.lbSellerPartyID.Location = new System.Drawing.Point(25, 19);
+            this.lbSellerPartyID.Location = new System.Drawing.Point(33, 23);
+            this.lbSellerPartyID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbSellerPartyID.Name = "lbSellerPartyID";
-            this.lbSellerPartyID.Size = new System.Drawing.Size(68, 13);
+            this.lbSellerPartyID.Size = new System.Drawing.Size(90, 17);
             this.lbSellerPartyID.TabIndex = 17;
             this.lbSellerPartyID.Text = "SellerPartyID";
             // 
             // txInvoiceLineText06
             // 
             this.txInvoiceLineText06.ContextMenuStrip = this.ctxMnTx;
-            this.txInvoiceLineText06.Location = new System.Drawing.Point(40, 420);
+            this.txInvoiceLineText06.Location = new System.Drawing.Point(53, 517);
+            this.txInvoiceLineText06.Margin = new System.Windows.Forms.Padding(4);
             this.txInvoiceLineText06.Name = "txInvoiceLineText06";
-            this.txInvoiceLineText06.Size = new System.Drawing.Size(216, 20);
+            this.txInvoiceLineText06.Size = new System.Drawing.Size(287, 22);
             this.txInvoiceLineText06.TabIndex = 34;
             this.txInvoiceLineText06.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txInvoiceLineText06.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
@@ -767,18 +814,20 @@
             // lbBuyerPartyID
             // 
             this.lbBuyerPartyID.AutoSize = true;
-            this.lbBuyerPartyID.Location = new System.Drawing.Point(24, 95);
+            this.lbBuyerPartyID.Location = new System.Drawing.Point(32, 117);
+            this.lbBuyerPartyID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbBuyerPartyID.Name = "lbBuyerPartyID";
-            this.lbBuyerPartyID.Size = new System.Drawing.Size(69, 13);
+            this.lbBuyerPartyID.Size = new System.Drawing.Size(91, 17);
             this.lbBuyerPartyID.TabIndex = 18;
             this.lbBuyerPartyID.Text = "BuyerPartyID";
             // 
             // txInvoiceLineText05
             // 
             this.txInvoiceLineText05.ContextMenuStrip = this.ctxMnTx;
-            this.txInvoiceLineText05.Location = new System.Drawing.Point(40, 400);
+            this.txInvoiceLineText05.Location = new System.Drawing.Point(53, 492);
+            this.txInvoiceLineText05.Margin = new System.Windows.Forms.Padding(4);
             this.txInvoiceLineText05.Name = "txInvoiceLineText05";
-            this.txInvoiceLineText05.Size = new System.Drawing.Size(216, 20);
+            this.txInvoiceLineText05.Size = new System.Drawing.Size(287, 22);
             this.txInvoiceLineText05.TabIndex = 32;
             this.txInvoiceLineText05.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txInvoiceLineText05.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
@@ -786,18 +835,20 @@
             // lbGrossAmount
             // 
             this.lbGrossAmount.AutoSize = true;
-            this.lbGrossAmount.Location = new System.Drawing.Point(206, 95);
+            this.lbGrossAmount.Location = new System.Drawing.Point(275, 117);
+            this.lbGrossAmount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbGrossAmount.Name = "lbGrossAmount";
-            this.lbGrossAmount.Size = new System.Drawing.Size(70, 13);
+            this.lbGrossAmount.Size = new System.Drawing.Size(94, 17);
             this.lbGrossAmount.TabIndex = 19;
             this.lbGrossAmount.Text = "GrossAmount";
             // 
             // txInvoiceLineText04
             // 
             this.txInvoiceLineText04.ContextMenuStrip = this.ctxMnTx;
-            this.txInvoiceLineText04.Location = new System.Drawing.Point(40, 380);
+            this.txInvoiceLineText04.Location = new System.Drawing.Point(53, 468);
+            this.txInvoiceLineText04.Margin = new System.Windows.Forms.Padding(4);
             this.txInvoiceLineText04.Name = "txInvoiceLineText04";
-            this.txInvoiceLineText04.Size = new System.Drawing.Size(216, 20);
+            this.txInvoiceLineText04.Size = new System.Drawing.Size(287, 22);
             this.txInvoiceLineText04.TabIndex = 30;
             this.txInvoiceLineText04.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txInvoiceLineText04.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
@@ -805,18 +856,20 @@
             // lbCurrencyCode
             // 
             this.lbCurrencyCode.AutoSize = true;
-            this.lbCurrencyCode.Location = new System.Drawing.Point(19, 123);
+            this.lbCurrencyCode.Location = new System.Drawing.Point(25, 151);
+            this.lbCurrencyCode.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbCurrencyCode.Name = "lbCurrencyCode";
-            this.lbCurrencyCode.Size = new System.Drawing.Size(74, 13);
+            this.lbCurrencyCode.Size = new System.Drawing.Size(98, 17);
             this.lbCurrencyCode.TabIndex = 20;
             this.lbCurrencyCode.Text = "CurrencyCode";
             // 
             // txInvoiceLineText03
             // 
             this.txInvoiceLineText03.ContextMenuStrip = this.ctxMnTx;
-            this.txInvoiceLineText03.Location = new System.Drawing.Point(40, 360);
+            this.txInvoiceLineText03.Location = new System.Drawing.Point(53, 443);
+            this.txInvoiceLineText03.Margin = new System.Windows.Forms.Padding(4);
             this.txInvoiceLineText03.Name = "txInvoiceLineText03";
-            this.txInvoiceLineText03.Size = new System.Drawing.Size(216, 20);
+            this.txInvoiceLineText03.Size = new System.Drawing.Size(287, 22);
             this.txInvoiceLineText03.TabIndex = 28;
             this.txInvoiceLineText03.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txInvoiceLineText03.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
@@ -824,9 +877,10 @@
             // txTaxesWithholdingAmount01
             // 
             this.txTaxesWithholdingAmount01.ContextMenuStrip = this.ctxMnTx;
-            this.txTaxesWithholdingAmount01.Location = new System.Drawing.Point(263, 270);
+            this.txTaxesWithholdingAmount01.Location = new System.Drawing.Point(351, 332);
+            this.txTaxesWithholdingAmount01.Margin = new System.Windows.Forms.Padding(4);
             this.txTaxesWithholdingAmount01.Name = "txTaxesWithholdingAmount01";
-            this.txTaxesWithholdingAmount01.Size = new System.Drawing.Size(100, 20);
+            this.txTaxesWithholdingAmount01.Size = new System.Drawing.Size(132, 22);
             this.txTaxesWithholdingAmount01.TabIndex = 23;
             this.txTaxesWithholdingAmount01.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txTaxesWithholdingAmount01.Enter += new System.EventHandler(this.LoadResultPatterns);
@@ -835,9 +889,10 @@
             // txInvoiceLineText02
             // 
             this.txInvoiceLineText02.ContextMenuStrip = this.ctxMnTx;
-            this.txInvoiceLineText02.Location = new System.Drawing.Point(40, 340);
+            this.txInvoiceLineText02.Location = new System.Drawing.Point(53, 418);
+            this.txInvoiceLineText02.Margin = new System.Windows.Forms.Padding(4);
             this.txInvoiceLineText02.Name = "txInvoiceLineText02";
-            this.txInvoiceLineText02.Size = new System.Drawing.Size(216, 20);
+            this.txInvoiceLineText02.Size = new System.Drawing.Size(287, 22);
             this.txInvoiceLineText02.TabIndex = 26;
             this.txInvoiceLineText02.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txInvoiceLineText02.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
@@ -845,9 +900,10 @@
             // txTaxesOutputsBase01
             // 
             this.txTaxesOutputsBase01.ContextMenuStrip = this.ctxMnTx;
-            this.txTaxesOutputsBase01.Location = new System.Drawing.Point(37, 169);
+            this.txTaxesOutputsBase01.Location = new System.Drawing.Point(49, 208);
+            this.txTaxesOutputsBase01.Margin = new System.Windows.Forms.Padding(4);
             this.txTaxesOutputsBase01.Name = "txTaxesOutputsBase01";
-            this.txTaxesOutputsBase01.Size = new System.Drawing.Size(100, 20);
+            this.txTaxesOutputsBase01.Size = new System.Drawing.Size(132, 22);
             this.txTaxesOutputsBase01.TabIndex = 9;
             this.txTaxesOutputsBase01.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txTaxesOutputsBase01.Enter += new System.EventHandler(this.LoadResultPatterns);
@@ -856,18 +912,20 @@
             // lbInvoiceLineText
             // 
             this.lbInvoiceLineText.AutoSize = true;
-            this.lbInvoiceLineText.Location = new System.Drawing.Point(37, 301);
+            this.lbInvoiceLineText.Location = new System.Drawing.Point(49, 370);
+            this.lbInvoiceLineText.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbInvoiceLineText.Name = "lbInvoiceLineText";
-            this.lbInvoiceLineText.Size = new System.Drawing.Size(83, 13);
+            this.lbInvoiceLineText.Size = new System.Drawing.Size(106, 17);
             this.lbInvoiceLineText.TabIndex = 40;
             this.lbInvoiceLineText.Text = "InvoiceLineText";
             // 
             // txTaxesOutputsBase02
             // 
             this.txTaxesOutputsBase02.ContextMenuStrip = this.ctxMnTx;
-            this.txTaxesOutputsBase02.Location = new System.Drawing.Point(37, 189);
+            this.txTaxesOutputsBase02.Location = new System.Drawing.Point(49, 233);
+            this.txTaxesOutputsBase02.Margin = new System.Windows.Forms.Padding(4);
             this.txTaxesOutputsBase02.Name = "txTaxesOutputsBase02";
-            this.txTaxesOutputsBase02.Size = new System.Drawing.Size(100, 20);
+            this.txTaxesOutputsBase02.Size = new System.Drawing.Size(132, 22);
             this.txTaxesOutputsBase02.TabIndex = 12;
             this.txTaxesOutputsBase02.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txTaxesOutputsBase02.Enter += new System.EventHandler(this.LoadResultPatterns);
@@ -876,9 +934,10 @@
             // txInvoiceLineText01
             // 
             this.txInvoiceLineText01.ContextMenuStrip = this.ctxMnTx;
-            this.txInvoiceLineText01.Location = new System.Drawing.Point(40, 320);
+            this.txInvoiceLineText01.Location = new System.Drawing.Point(53, 394);
+            this.txInvoiceLineText01.Margin = new System.Windows.Forms.Padding(4);
             this.txInvoiceLineText01.Name = "txInvoiceLineText01";
-            this.txInvoiceLineText01.Size = new System.Drawing.Size(216, 20);
+            this.txInvoiceLineText01.Size = new System.Drawing.Size(287, 22);
             this.txInvoiceLineText01.TabIndex = 24;
             this.txInvoiceLineText01.Enter += new System.EventHandler(this.LoadResultPatterns);
             this.txInvoiceLineText01.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
@@ -886,9 +945,10 @@
             // txTaxesOutputsBase03
             // 
             this.txTaxesOutputsBase03.ContextMenuStrip = this.ctxMnTx;
-            this.txTaxesOutputsBase03.Location = new System.Drawing.Point(37, 209);
+            this.txTaxesOutputsBase03.Location = new System.Drawing.Point(49, 257);
+            this.txTaxesOutputsBase03.Margin = new System.Windows.Forms.Padding(4);
             this.txTaxesOutputsBase03.Name = "txTaxesOutputsBase03";
-            this.txTaxesOutputsBase03.Size = new System.Drawing.Size(100, 20);
+            this.txTaxesOutputsBase03.Size = new System.Drawing.Size(132, 22);
             this.txTaxesOutputsBase03.TabIndex = 15;
             this.txTaxesOutputsBase03.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txTaxesOutputsBase03.Enter += new System.EventHandler(this.LoadResultPatterns);
@@ -897,27 +957,30 @@
             // lbTaxesOutputsBase
             // 
             this.lbTaxesOutputsBase.AutoSize = true;
-            this.lbTaxesOutputsBase.Location = new System.Drawing.Point(34, 153);
+            this.lbTaxesOutputsBase.Location = new System.Drawing.Point(45, 188);
+            this.lbTaxesOutputsBase.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbTaxesOutputsBase.Name = "lbTaxesOutputsBase";
-            this.lbTaxesOutputsBase.Size = new System.Drawing.Size(97, 13);
+            this.lbTaxesOutputsBase.Size = new System.Drawing.Size(128, 17);
             this.lbTaxesOutputsBase.TabIndex = 21;
             this.lbTaxesOutputsBase.Text = "TaxesOutputsBase";
             // 
             // lbTaxesWithholdingAmount01
             // 
             this.lbTaxesWithholdingAmount01.AutoSize = true;
-            this.lbTaxesWithholdingAmount01.Location = new System.Drawing.Point(260, 254);
+            this.lbTaxesWithholdingAmount01.Location = new System.Drawing.Point(347, 313);
+            this.lbTaxesWithholdingAmount01.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbTaxesWithholdingAmount01.Name = "lbTaxesWithholdingAmount01";
-            this.lbTaxesWithholdingAmount01.Size = new System.Drawing.Size(140, 13);
+            this.lbTaxesWithholdingAmount01.Size = new System.Drawing.Size(184, 17);
             this.lbTaxesWithholdingAmount01.TabIndex = 38;
             this.lbTaxesWithholdingAmount01.Text = "TaxesWithholdingAmount01";
             // 
             // txTaxesOutputsBase04
             // 
             this.txTaxesOutputsBase04.ContextMenuStrip = this.ctxMnTx;
-            this.txTaxesOutputsBase04.Location = new System.Drawing.Point(37, 229);
+            this.txTaxesOutputsBase04.Location = new System.Drawing.Point(49, 282);
+            this.txTaxesOutputsBase04.Margin = new System.Windows.Forms.Padding(4);
             this.txTaxesOutputsBase04.Name = "txTaxesOutputsBase04";
-            this.txTaxesOutputsBase04.Size = new System.Drawing.Size(100, 20);
+            this.txTaxesOutputsBase04.Size = new System.Drawing.Size(132, 22);
             this.txTaxesOutputsBase04.TabIndex = 18;
             this.txTaxesOutputsBase04.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txTaxesOutputsBase04.Enter += new System.EventHandler(this.LoadResultPatterns);
@@ -926,9 +989,10 @@
             // txTaxesOutputsRate01
             // 
             this.txTaxesOutputsRate01.ContextMenuStrip = this.ctxMnTx;
-            this.txTaxesOutputsRate01.Location = new System.Drawing.Point(153, 169);
+            this.txTaxesOutputsRate01.Location = new System.Drawing.Point(204, 208);
+            this.txTaxesOutputsRate01.Margin = new System.Windows.Forms.Padding(4);
             this.txTaxesOutputsRate01.Name = "txTaxesOutputsRate01";
-            this.txTaxesOutputsRate01.Size = new System.Drawing.Size(100, 20);
+            this.txTaxesOutputsRate01.Size = new System.Drawing.Size(132, 22);
             this.txTaxesOutputsRate01.TabIndex = 10;
             this.txTaxesOutputsRate01.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txTaxesOutputsRate01.Enter += new System.EventHandler(this.LoadResultPatterns);
@@ -937,18 +1001,20 @@
             // lbTaxesWithholdingRate01
             // 
             this.lbTaxesWithholdingRate01.AutoSize = true;
-            this.lbTaxesWithholdingRate01.Location = new System.Drawing.Point(150, 254);
+            this.lbTaxesWithholdingRate01.Location = new System.Drawing.Point(200, 313);
+            this.lbTaxesWithholdingRate01.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbTaxesWithholdingRate01.Name = "lbTaxesWithholdingRate01";
-            this.lbTaxesWithholdingRate01.Size = new System.Drawing.Size(127, 13);
+            this.lbTaxesWithholdingRate01.Size = new System.Drawing.Size(166, 17);
             this.lbTaxesWithholdingRate01.TabIndex = 36;
             this.lbTaxesWithholdingRate01.Text = "TaxesWithholdingRate01";
             // 
             // txTaxesOutputsRate02
             // 
             this.txTaxesOutputsRate02.ContextMenuStrip = this.ctxMnTx;
-            this.txTaxesOutputsRate02.Location = new System.Drawing.Point(153, 189);
+            this.txTaxesOutputsRate02.Location = new System.Drawing.Point(204, 233);
+            this.txTaxesOutputsRate02.Margin = new System.Windows.Forms.Padding(4);
             this.txTaxesOutputsRate02.Name = "txTaxesOutputsRate02";
-            this.txTaxesOutputsRate02.Size = new System.Drawing.Size(100, 20);
+            this.txTaxesOutputsRate02.Size = new System.Drawing.Size(132, 22);
             this.txTaxesOutputsRate02.TabIndex = 13;
             this.txTaxesOutputsRate02.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txTaxesOutputsRate02.Enter += new System.EventHandler(this.LoadResultPatterns);
@@ -957,9 +1023,10 @@
             // txTaxesWithholdingRate01
             // 
             this.txTaxesWithholdingRate01.ContextMenuStrip = this.ctxMnTx;
-            this.txTaxesWithholdingRate01.Location = new System.Drawing.Point(153, 270);
+            this.txTaxesWithholdingRate01.Location = new System.Drawing.Point(204, 332);
+            this.txTaxesWithholdingRate01.Margin = new System.Windows.Forms.Padding(4);
             this.txTaxesWithholdingRate01.Name = "txTaxesWithholdingRate01";
-            this.txTaxesWithholdingRate01.Size = new System.Drawing.Size(100, 20);
+            this.txTaxesWithholdingRate01.Size = new System.Drawing.Size(132, 22);
             this.txTaxesWithholdingRate01.TabIndex = 22;
             this.txTaxesWithholdingRate01.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txTaxesWithholdingRate01.Enter += new System.EventHandler(this.LoadResultPatterns);
@@ -968,9 +1035,10 @@
             // txTaxesOutputsRate03
             // 
             this.txTaxesOutputsRate03.ContextMenuStrip = this.ctxMnTx;
-            this.txTaxesOutputsRate03.Location = new System.Drawing.Point(153, 209);
+            this.txTaxesOutputsRate03.Location = new System.Drawing.Point(204, 257);
+            this.txTaxesOutputsRate03.Margin = new System.Windows.Forms.Padding(4);
             this.txTaxesOutputsRate03.Name = "txTaxesOutputsRate03";
-            this.txTaxesOutputsRate03.Size = new System.Drawing.Size(100, 20);
+            this.txTaxesOutputsRate03.Size = new System.Drawing.Size(132, 22);
             this.txTaxesOutputsRate03.TabIndex = 16;
             this.txTaxesOutputsRate03.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txTaxesOutputsRate03.Enter += new System.EventHandler(this.LoadResultPatterns);
@@ -979,27 +1047,30 @@
             // lbTaxesWithholdingBase01
             // 
             this.lbTaxesWithholdingBase01.AutoSize = true;
-            this.lbTaxesWithholdingBase01.Location = new System.Drawing.Point(34, 254);
+            this.lbTaxesWithholdingBase01.Location = new System.Drawing.Point(45, 313);
+            this.lbTaxesWithholdingBase01.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbTaxesWithholdingBase01.Name = "lbTaxesWithholdingBase01";
-            this.lbTaxesWithholdingBase01.Size = new System.Drawing.Size(128, 13);
+            this.lbTaxesWithholdingBase01.Size = new System.Drawing.Size(168, 17);
             this.lbTaxesWithholdingBase01.TabIndex = 34;
             this.lbTaxesWithholdingBase01.Text = "TaxesWithholdingBase01";
             // 
             // lbTaxesOutputsRate
             // 
             this.lbTaxesOutputsRate.AutoSize = true;
-            this.lbTaxesOutputsRate.Location = new System.Drawing.Point(150, 153);
+            this.lbTaxesOutputsRate.Location = new System.Drawing.Point(200, 188);
+            this.lbTaxesOutputsRate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbTaxesOutputsRate.Name = "lbTaxesOutputsRate";
-            this.lbTaxesOutputsRate.Size = new System.Drawing.Size(96, 13);
+            this.lbTaxesOutputsRate.Size = new System.Drawing.Size(126, 17);
             this.lbTaxesOutputsRate.TabIndex = 26;
             this.lbTaxesOutputsRate.Text = "TaxesOutputsRate";
             // 
             // txTaxesWithholdingBase01
             // 
             this.txTaxesWithholdingBase01.ContextMenuStrip = this.ctxMnTx;
-            this.txTaxesWithholdingBase01.Location = new System.Drawing.Point(37, 270);
+            this.txTaxesWithholdingBase01.Location = new System.Drawing.Point(49, 332);
+            this.txTaxesWithholdingBase01.Margin = new System.Windows.Forms.Padding(4);
             this.txTaxesWithholdingBase01.Name = "txTaxesWithholdingBase01";
-            this.txTaxesWithholdingBase01.Size = new System.Drawing.Size(100, 20);
+            this.txTaxesWithholdingBase01.Size = new System.Drawing.Size(132, 22);
             this.txTaxesWithholdingBase01.TabIndex = 21;
             this.txTaxesWithholdingBase01.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txTaxesWithholdingBase01.Enter += new System.EventHandler(this.LoadResultPatterns);
@@ -1008,9 +1079,10 @@
             // txTaxesOutputsRate04
             // 
             this.txTaxesOutputsRate04.ContextMenuStrip = this.ctxMnTx;
-            this.txTaxesOutputsRate04.Location = new System.Drawing.Point(153, 229);
+            this.txTaxesOutputsRate04.Location = new System.Drawing.Point(204, 282);
+            this.txTaxesOutputsRate04.Margin = new System.Windows.Forms.Padding(4);
             this.txTaxesOutputsRate04.Name = "txTaxesOutputsRate04";
-            this.txTaxesOutputsRate04.Size = new System.Drawing.Size(100, 20);
+            this.txTaxesOutputsRate04.Size = new System.Drawing.Size(132, 22);
             this.txTaxesOutputsRate04.TabIndex = 19;
             this.txTaxesOutputsRate04.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txTaxesOutputsRate04.Enter += new System.EventHandler(this.LoadResultPatterns);
@@ -1019,9 +1091,10 @@
             // txTaxesOutputsAmount04
             // 
             this.txTaxesOutputsAmount04.ContextMenuStrip = this.ctxMnTx;
-            this.txTaxesOutputsAmount04.Location = new System.Drawing.Point(263, 229);
+            this.txTaxesOutputsAmount04.Location = new System.Drawing.Point(351, 282);
+            this.txTaxesOutputsAmount04.Margin = new System.Windows.Forms.Padding(4);
             this.txTaxesOutputsAmount04.Name = "txTaxesOutputsAmount04";
-            this.txTaxesOutputsAmount04.Size = new System.Drawing.Size(100, 20);
+            this.txTaxesOutputsAmount04.Size = new System.Drawing.Size(132, 22);
             this.txTaxesOutputsAmount04.TabIndex = 20;
             this.txTaxesOutputsAmount04.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txTaxesOutputsAmount04.Enter += new System.EventHandler(this.LoadResultPatterns);
@@ -1030,9 +1103,10 @@
             // txTaxesOutputsAmount01
             // 
             this.txTaxesOutputsAmount01.ContextMenuStrip = this.ctxMnTx;
-            this.txTaxesOutputsAmount01.Location = new System.Drawing.Point(263, 169);
+            this.txTaxesOutputsAmount01.Location = new System.Drawing.Point(351, 208);
+            this.txTaxesOutputsAmount01.Margin = new System.Windows.Forms.Padding(4);
             this.txTaxesOutputsAmount01.Name = "txTaxesOutputsAmount01";
-            this.txTaxesOutputsAmount01.Size = new System.Drawing.Size(100, 20);
+            this.txTaxesOutputsAmount01.Size = new System.Drawing.Size(132, 22);
             this.txTaxesOutputsAmount01.TabIndex = 11;
             this.txTaxesOutputsAmount01.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txTaxesOutputsAmount01.Enter += new System.EventHandler(this.LoadResultPatterns);
@@ -1041,18 +1115,20 @@
             // lbTaxesOutputsAmount
             // 
             this.lbTaxesOutputsAmount.AutoSize = true;
-            this.lbTaxesOutputsAmount.Location = new System.Drawing.Point(260, 153);
+            this.lbTaxesOutputsAmount.Location = new System.Drawing.Point(347, 188);
+            this.lbTaxesOutputsAmount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbTaxesOutputsAmount.Name = "lbTaxesOutputsAmount";
-            this.lbTaxesOutputsAmount.Size = new System.Drawing.Size(109, 13);
+            this.lbTaxesOutputsAmount.Size = new System.Drawing.Size(144, 17);
             this.lbTaxesOutputsAmount.TabIndex = 31;
             this.lbTaxesOutputsAmount.Text = "TaxesOutputsAmount";
             // 
             // txTaxesOutputsAmount02
             // 
             this.txTaxesOutputsAmount02.ContextMenuStrip = this.ctxMnTx;
-            this.txTaxesOutputsAmount02.Location = new System.Drawing.Point(263, 189);
+            this.txTaxesOutputsAmount02.Location = new System.Drawing.Point(351, 233);
+            this.txTaxesOutputsAmount02.Margin = new System.Windows.Forms.Padding(4);
             this.txTaxesOutputsAmount02.Name = "txTaxesOutputsAmount02";
-            this.txTaxesOutputsAmount02.Size = new System.Drawing.Size(100, 20);
+            this.txTaxesOutputsAmount02.Size = new System.Drawing.Size(132, 22);
             this.txTaxesOutputsAmount02.TabIndex = 14;
             this.txTaxesOutputsAmount02.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txTaxesOutputsAmount02.Enter += new System.EventHandler(this.LoadResultPatterns);
@@ -1061,9 +1137,10 @@
             // txTaxesOutputsAmount03
             // 
             this.txTaxesOutputsAmount03.ContextMenuStrip = this.ctxMnTx;
-            this.txTaxesOutputsAmount03.Location = new System.Drawing.Point(263, 209);
+            this.txTaxesOutputsAmount03.Location = new System.Drawing.Point(351, 257);
+            this.txTaxesOutputsAmount03.Margin = new System.Windows.Forms.Padding(4);
             this.txTaxesOutputsAmount03.Name = "txTaxesOutputsAmount03";
-            this.txTaxesOutputsAmount03.Size = new System.Drawing.Size(100, 20);
+            this.txTaxesOutputsAmount03.Size = new System.Drawing.Size(132, 22);
             this.txTaxesOutputsAmount03.TabIndex = 17;
             this.txTaxesOutputsAmount03.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txTaxesOutputsAmount03.Enter += new System.EventHandler(this.LoadResultPatterns);
@@ -1072,10 +1149,11 @@
             // tbWordGroups
             // 
             this.tbWordGroups.Controls.Add(this.grdWordGroups);
-            this.tbWordGroups.Location = new System.Drawing.Point(4, 22);
+            this.tbWordGroups.Location = new System.Drawing.Point(4, 25);
+            this.tbWordGroups.Margin = new System.Windows.Forms.Padding(4);
             this.tbWordGroups.Name = "tbWordGroups";
-            this.tbWordGroups.Padding = new System.Windows.Forms.Padding(3);
-            this.tbWordGroups.Size = new System.Drawing.Size(552, 549);
+            this.tbWordGroups.Padding = new System.Windows.Forms.Padding(4);
+            this.tbWordGroups.Size = new System.Drawing.Size(739, 679);
             this.tbWordGroups.TabIndex = 1;
             this.tbWordGroups.Text = "WordGroups";
             this.tbWordGroups.UseVisualStyleBackColor = true;
@@ -1101,12 +1179,13 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.grdWordGroups.DefaultCellStyle = dataGridViewCellStyle1;
-            this.grdWordGroups.Location = new System.Drawing.Point(9, 19);
+            this.grdWordGroups.Location = new System.Drawing.Point(12, 23);
+            this.grdWordGroups.Margin = new System.Windows.Forms.Padding(4);
             this.grdWordGroups.MultiSelect = false;
             this.grdWordGroups.Name = "grdWordGroups";
             this.grdWordGroups.RowHeadersVisible = false;
             this.grdWordGroups.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdWordGroups.Size = new System.Drawing.Size(532, 507);
+            this.grdWordGroups.Size = new System.Drawing.Size(709, 624);
             this.grdWordGroups.TabIndex = 0;
             // 
             // MetadataItemName
@@ -1151,10 +1230,11 @@
             // tbPdfText
             // 
             this.tbPdfText.Controls.Add(this.grdPdfText);
-            this.tbPdfText.Location = new System.Drawing.Point(4, 22);
+            this.tbPdfText.Location = new System.Drawing.Point(4, 25);
+            this.tbPdfText.Margin = new System.Windows.Forms.Padding(4);
             this.tbPdfText.Name = "tbPdfText";
-            this.tbPdfText.Padding = new System.Windows.Forms.Padding(3);
-            this.tbPdfText.Size = new System.Drawing.Size(552, 549);
+            this.tbPdfText.Padding = new System.Windows.Forms.Padding(4);
+            this.tbPdfText.Size = new System.Drawing.Size(739, 679);
             this.tbPdfText.TabIndex = 2;
             this.tbPdfText.Text = "PdfText";
             this.tbPdfText.UseVisualStyleBackColor = true;
@@ -1180,12 +1260,13 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.grdPdfText.DefaultCellStyle = dataGridViewCellStyle2;
-            this.grdPdfText.Location = new System.Drawing.Point(9, 19);
+            this.grdPdfText.Location = new System.Drawing.Point(12, 23);
+            this.grdPdfText.Margin = new System.Windows.Forms.Padding(4);
             this.grdPdfText.MultiSelect = false;
             this.grdPdfText.Name = "grdPdfText";
             this.grdPdfText.RowHeadersVisible = false;
             this.grdPdfText.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdPdfText.Size = new System.Drawing.Size(532, 507);
+            this.grdPdfText.Size = new System.Drawing.Size(709, 624);
             this.grdPdfText.TabIndex = 0;
             // 
             // dataGridViewTextBoxColumn1
@@ -1231,10 +1312,11 @@
             // tbPatternStore
             // 
             this.tbPatternStore.Controls.Add(this.grdPatternStore);
-            this.tbPatternStore.Location = new System.Drawing.Point(4, 22);
+            this.tbPatternStore.Location = new System.Drawing.Point(4, 25);
+            this.tbPatternStore.Margin = new System.Windows.Forms.Padding(4);
             this.tbPatternStore.Name = "tbPatternStore";
-            this.tbPatternStore.Padding = new System.Windows.Forms.Padding(3);
-            this.tbPatternStore.Size = new System.Drawing.Size(552, 549);
+            this.tbPatternStore.Padding = new System.Windows.Forms.Padding(4);
+            this.tbPatternStore.Size = new System.Drawing.Size(739, 679);
             this.tbPatternStore.TabIndex = 3;
             this.tbPatternStore.Text = "PatternStore";
             this.tbPatternStore.UseVisualStyleBackColor = true;
@@ -1254,7 +1336,8 @@
             this.dataGridViewTextBoxColumn12,
             this.IsLastPage,
             this.SourceTypeName,
-            this.Position});
+            this.Position,
+            this.FontType});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1263,11 +1346,12 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.grdPatternStore.DefaultCellStyle = dataGridViewCellStyle3;
-            this.grdPatternStore.Location = new System.Drawing.Point(9, 19);
+            this.grdPatternStore.Location = new System.Drawing.Point(12, 23);
+            this.grdPatternStore.Margin = new System.Windows.Forms.Padding(4);
             this.grdPatternStore.Name = "grdPatternStore";
             this.grdPatternStore.RowHeadersVisible = false;
             this.grdPatternStore.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdPatternStore.Size = new System.Drawing.Size(532, 507);
+            this.grdPatternStore.Size = new System.Drawing.Size(709, 624);
             this.grdPatternStore.TabIndex = 0;
             // 
             // dataGridViewTextBoxColumn6
@@ -1328,10 +1412,11 @@
             // tbDataWordGroups
             // 
             this.tbDataWordGroups.Controls.Add(this.grdDataWords);
-            this.tbDataWordGroups.Location = new System.Drawing.Point(4, 22);
+            this.tbDataWordGroups.Location = new System.Drawing.Point(4, 25);
+            this.tbDataWordGroups.Margin = new System.Windows.Forms.Padding(4);
             this.tbDataWordGroups.Name = "tbDataWordGroups";
-            this.tbDataWordGroups.Padding = new System.Windows.Forms.Padding(3);
-            this.tbDataWordGroups.Size = new System.Drawing.Size(552, 549);
+            this.tbDataWordGroups.Padding = new System.Windows.Forms.Padding(4);
+            this.tbDataWordGroups.Size = new System.Drawing.Size(739, 679);
             this.tbDataWordGroups.TabIndex = 4;
             this.tbDataWordGroups.Text = "Datos en grupos de palabras";
             this.tbDataWordGroups.UseVisualStyleBackColor = true;
@@ -1343,10 +1428,11 @@
             this.wgPage,
             this.wgValue});
             this.grdDataWords.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grdDataWords.Location = new System.Drawing.Point(3, 3);
+            this.grdDataWords.Location = new System.Drawing.Point(4, 4);
+            this.grdDataWords.Margin = new System.Windows.Forms.Padding(4);
             this.grdDataWords.Name = "grdDataWords";
             this.grdDataWords.RowHeadersVisible = false;
-            this.grdDataWords.Size = new System.Drawing.Size(546, 543);
+            this.grdDataWords.Size = new System.Drawing.Size(731, 671);
             this.grdDataWords.TabIndex = 0;
             // 
             // wgPage
@@ -1364,10 +1450,11 @@
             // tbDataLines
             // 
             this.tbDataLines.Controls.Add(this.grdDataLines);
-            this.tbDataLines.Location = new System.Drawing.Point(4, 22);
+            this.tbDataLines.Location = new System.Drawing.Point(4, 25);
+            this.tbDataLines.Margin = new System.Windows.Forms.Padding(4);
             this.tbDataLines.Name = "tbDataLines";
-            this.tbDataLines.Padding = new System.Windows.Forms.Padding(3);
-            this.tbDataLines.Size = new System.Drawing.Size(552, 549);
+            this.tbDataLines.Padding = new System.Windows.Forms.Padding(4);
+            this.tbDataLines.Size = new System.Drawing.Size(739, 679);
             this.tbDataLines.TabIndex = 5;
             this.tbDataLines.Text = "Datos en líneas";
             this.tbDataLines.UseVisualStyleBackColor = true;
@@ -1379,10 +1466,11 @@
             this.dataGridViewTextBoxColumn13,
             this.dataGridViewTextBoxColumn14});
             this.grdDataLines.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grdDataLines.Location = new System.Drawing.Point(3, 3);
+            this.grdDataLines.Location = new System.Drawing.Point(4, 4);
+            this.grdDataLines.Margin = new System.Windows.Forms.Padding(4);
             this.grdDataLines.Name = "grdDataLines";
             this.grdDataLines.RowHeadersVisible = false;
-            this.grdDataLines.Size = new System.Drawing.Size(546, 543);
+            this.grdDataLines.Size = new System.Drawing.Size(731, 671);
             this.grdDataLines.TabIndex = 1;
             // 
             // dataGridViewTextBoxColumn13
@@ -1401,17 +1489,19 @@
             // 
             this.wBr.Dock = System.Windows.Forms.DockStyle.Fill;
             this.wBr.Location = new System.Drawing.Point(0, 0);
-            this.wBr.MinimumSize = new System.Drawing.Size(20, 20);
+            this.wBr.Margin = new System.Windows.Forms.Padding(4);
+            this.wBr.MinimumSize = new System.Drawing.Size(27, 25);
             this.wBr.Name = "wBr";
-            this.wBr.Size = new System.Drawing.Size(624, 599);
+            this.wBr.Size = new System.Drawing.Size(834, 744);
             this.wBr.TabIndex = 0;
             // 
             // stMain
             // 
             this.stMain.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.stMain.Location = new System.Drawing.Point(0, 73);
+            this.stMain.Location = new System.Drawing.Point(0, 96);
             this.stMain.Name = "stMain";
-            this.stMain.Size = new System.Drawing.Size(1215, 22);
+            this.stMain.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
+            this.stMain.Size = new System.Drawing.Size(1620, 22);
             this.stMain.TabIndex = 0;
             this.stMain.Text = "statusStrip1";
             // 
@@ -1419,15 +1509,21 @@
             // 
             this.dlgOpen.Filter = "Archivos pdf|*pdf";
             // 
+            // FontType
+            // 
+            this.FontType.HeaderText = "FontType";
+            this.FontType.Name = "FontType";
+            // 
             // formInvoices
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1215, 749);
+            this.ClientSize = new System.Drawing.Size(1620, 922);
             this.Controls.Add(this.sPnH);
             this.Controls.Add(this.tbMain);
             this.Controls.Add(this.mnMain);
             this.MainMenuStrip = this.mnMain;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "formInvoices";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FACTURAS ";
@@ -1587,5 +1683,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn wgValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FontType;
     }
 }

@@ -61,21 +61,29 @@ namespace PdfTagger.Pdf
         /// <summary>
         /// Construye una nueva instancia de PdfUnstructuredPage.
         /// </summary>
+        /// <param name="fontGroups">Conjunto de texto con la misma tipografía</param>
         /// <param name="wordGroups">Conjunto de rectangulos
         /// con información no estructurada en su interior.</param>
         /// <param name="lines">Colección de líneas.</param>
         /// <param name="pdfText">Texto total de la página.</param>
-        public PdfUnstructuredPage(List<PdfTextRectangle> wordGroups, 
+        public PdfUnstructuredPage(List<PdfFontTextRectangle> fontGroups, List<PdfTextRectangle> wordGroups, 
             List<PdfTextRectangle> lines, string pdfText)
         {
             WordGroups = wordGroups;
             Lines = lines;
             PdfText = pdfText;
+            FontGroups = fontGroups;
         }
 
         #endregion
 
         #region Public Properties
+
+        /// <summary>
+        /// Rectángulos con información de grupos de palabras
+        /// obtenidos por su tipo de fuente de la página.
+        /// </summary>
+        public List<PdfFontTextRectangle> FontGroups { get; set; }
 
         /// <summary>
         /// Rectangulos con información  de grupos relacionados

@@ -168,16 +168,22 @@ namespace PdfTagger.Dat
                 {
                     foreach (var page in pdf.PdfUnstructuredPages)
                     {
+
+                        // Punto X, tipo Fuente de WordGroups (FontGroups)
+                        foreach (var fontGroup in page.FontGroups)
+                            foreach (var match in parserHierarchy.GetMatches(pValue, fontGroup.Text))
+                                compareResult.FontGroupsInfos.Add(new PdfCompareInfo(pdf, page, null, match, pInf, fontGroup.TextFont));
                         
+
                         // Grupos de palabras
                         foreach (var wordGroup in page.WordGroups)
                             foreach (var match in parserHierarchy.GetMatches(pValue, wordGroup.Text))
-                                compareResult.WordGroupsInfos.Add(new PdfCompareInfo(pdf, page, wordGroup, match, pInf));
+                                compareResult.WordGroupsInfos.Add(new PdfCompareInfo(pdf, page, wordGroup, match, pInf, null));
                         
                         // Grupos de líneas
                         foreach (var line in page.Lines)
                             foreach (var match in parserHierarchy.GetMatches(pValue, line.Text))
-                                compareResult.LinesInfos.Add(new PdfCompareInfo(pdf, page, line, match, pInf));
+                                compareResult.LinesInfos.Add(new PdfCompareInfo(pdf, page, line, match, pInf, null));
 
                         
                         foreach (var match in parserHierarchy.GetMatches(pValue, page.PdfText))
@@ -196,12 +202,12 @@ namespace PdfTagger.Dat
                                 // Límites contextuales
                                 if (IsAllMatchesOK(txtBoundMatch, page, pValue, converter))
                                     compareResult.PdfTextInfos.Add(
-                                        new PdfCompareInfo(pdf, page, null, txtBoundMatch, pInf));                               
+                                        new PdfCompareInfo(pdf, page, null, txtBoundMatch, pInf, null));                               
 
                                 // Límites contextuales menos estrictos
                                 if (IsAllMatchesOK(txtBoundMatchSoft, page, pValue, converter))
                                     compareResult.PdfTextInfos.Add(
-                                    new PdfCompareInfo(pdf, page, null, txtBoundMatchSoft, pInf));
+                                    new PdfCompareInfo(pdf, page, null, txtBoundMatchSoft, pInf, null));
 
                             }
 

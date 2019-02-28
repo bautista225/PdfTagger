@@ -87,6 +87,15 @@ namespace PdfTagger.Pat
                 CompareCount = 1
             };
 
+            foreach (var info in compareResult.FontGroupsInfos)
+            {
+                PdfTagPattern pattern = info.GetPdfTagPattern();
+                pattern.SourceTypeName = "FontGroupsInfos";
+
+                if (store.PdfPatterns.IndexOf(pattern) == -1)
+                    store.PdfPatterns.Add(pattern);
+            }
+
             foreach (var info in compareResult.WordGroupsInfos)
             {
                 PdfTagPattern pattern = info.GetPdfTagPattern();

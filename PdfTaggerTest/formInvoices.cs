@@ -267,7 +267,7 @@ namespace PdfTaggerTest
                 int index = grdPatternStore.Rows.Add(patt.MetadataItemName,
                   patt.PdfPageN, patt.PdfRectangle, patt.MatchesCount,
                   patt.RegexPattern, patt, "", patt.IsLastPage, 
-                  patt.SourceTypeName, patt.Position);
+                  patt.SourceTypeName, patt.Position, patt.FontType);
             }
         }
 
@@ -491,5 +491,7 @@ namespace PdfTaggerTest
                 txb.BackColor = Color.White;
 
         }
+
+        
     }
 }

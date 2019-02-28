@@ -114,6 +114,14 @@ namespace PdfTagger.Dat
         }
 
         /// <summary>
+        /// Información de coincidencias encontradas en los
+        /// datos no estructurados contenidos en los rectángulos
+        /// con información de grupos relacionados
+        /// de palabras por tener el mismo tipo de fuente de la página.
+        /// </summary>
+        public List<PdfCompareInfo> FontGroupsInfos { get; set; }
+
+        /// <summary>
         /// Información de coincidencias encontradas en los 
         /// datos no estructurados contenidos en los rectángulos 
         /// con información  de grupos relacionados
@@ -147,6 +155,7 @@ namespace PdfTagger.Dat
             WordGroupsInfos = new List<PdfCompareInfo>();
             LinesInfos = new List<PdfCompareInfo>();
             PdfTextInfos = new List<PdfCompareInfo>();
+            FontGroupsInfos = new List<PdfCompareInfo>();
         }
 
         /// <summary>

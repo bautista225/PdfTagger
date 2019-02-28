@@ -58,6 +58,7 @@ namespace PdfTagger.Dat
         PdfTextRectangle _PdfTextRectangle;
         ITextMatch _TextMatch;
         PropertyInfo _PropertyInfo;
+        string _FontType;
 
         #endregion
 
@@ -79,17 +80,20 @@ namespace PdfTagger.Dat
         /// <param name="propertyInfo">PropetyInfo de la propiedad
         /// de los metadatos de la cual se a comparado el valor y se
         /// ha obtenido la coincidencia que ha generado el info.</param>
+        /// <param name="fontType">Tipo de fuente de los metadatos de la Info</param>
         public PdfCompareInfo(PdfUnstructuredDoc pdf,
             PdfUnstructuredPage pdfPage,            
             PdfTextRectangle pdfTextRectangle,
             ITextMatch textParserMatch,
-            PropertyInfo propertyInfo)
+            PropertyInfo propertyInfo,
+            string fontType)
         {
             _Pdf = pdf;
             _PdfPage = pdfPage;            
             _PdfTextRectangle = pdfTextRectangle;
             _TextMatch = textParserMatch;
             _PropertyInfo = propertyInfo;
+            _FontType = fontType;
         }
 
         #endregion
@@ -169,7 +173,13 @@ namespace PdfTagger.Dat
         public PdfTagPattern GetPdfTagPattern()
         {
 
+            string font = null;
+
+            if (_FontType != null)
+                font = _FontType;
+
             PdfTextBaseRectangle rectangle = null;
+            
 
             if (_PdfTextRectangle != null)
                 rectangle = new PdfTextBaseRectangle()
@@ -190,7 +200,8 @@ namespace PdfTagger.Dat
                 IsLastPage = (PdfPageN == _Pdf.PdfUnstructuredPages.Count),
                 PdfPageN = PdfPageN,
                 PdfRectangle = rectangle,
-                MetadataItemName = MetadataItemName
+                MetadataItemName = MetadataItemName,
+                FontType = font
             };
         }
 

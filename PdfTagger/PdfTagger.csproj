@@ -76,6 +76,7 @@
     <Compile Include="Src\Pat\PdfTagPattern.cs" />
     <Compile Include="Src\Pat\PdfTagPatternFactory.cs" />
     <Compile Include="Src\Pat\PdfTagPatternStore.cs" />
+    <Compile Include="Src\Pdf\PdfFontTextRectangle.cs" />
     <Compile Include="Src\Pdf\PdfTextChunk.cs" />
     <Compile Include="Src\Pdf\PdfTextBaseRectangle.cs" />
     <Compile Include="Src\Pdf\PdfTextRectangle.cs" />

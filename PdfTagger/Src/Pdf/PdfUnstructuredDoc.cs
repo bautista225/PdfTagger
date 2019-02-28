@@ -69,7 +69,7 @@ namespace PdfTagger.Pdf
 
                 var rectSize = pdfReader.GetPageSize(page);
 
-                PdfUnstructuredPages.Add(new PdfUnstructuredPage(rectangleStrategy.GetWordGroups(),
+                PdfUnstructuredPages.Add(new PdfUnstructuredPage(rectangleStrategy.GetWordGroupsByFont(), rectangleStrategy.GetWordGroups(),
                     rectangleStrategy.GetWordGroups(true), pdfText)
                 {
                     PageHeight = rectSize.Height,
