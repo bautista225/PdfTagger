@@ -267,7 +267,7 @@ namespace PdfTaggerTest
                 int index = grdPatternStore.Rows.Add(patt.MetadataItemName,
                   patt.PdfPageN, patt.PdfRectangle, patt.MatchesCount,
                   patt.RegexPattern, patt, "", patt.IsLastPage, 
-                  patt.SourceTypeName, patt.Position, patt.FontType);
+                  patt.SourceTypeName, patt.Position, patt.FontType, patt.FontSize, patt.ColorFill, patt.ColorStroke);
             }
         }
 
@@ -404,9 +404,13 @@ namespace PdfTaggerTest
 
             _Model.LoadWordGroupFromStore(metaDataItemName, "WordGroupsInfos");
             _Model.LoadWordGroupFromStore(metaDataItemName, "PdfTextInfos");
+            _Model.LoadTextStringFromStore(metaDataItemName);
+            //_Model.LoadWordGroupFromStore(metaDataItemName, "FontGroupsInfos");
 
-            FillGrid(grdWordGroups, _Model.WordGroupsFiltered);
-            FillGrid(grdPdfText, _Model.PdfTextInfosFiltered);
+            FillGrid(grdWordGroups, _Model.WordGroupsFiltered, "WordGroupsInfos");
+            FillGrid(grdPdfText, _Model.PdfTextInfosFiltered, "PdfTextInfos");
+            FillGrid(grdTextStrings, _Model.TextStringInfosFiltered, "TextStringInfos");
+            //FillGrid(grdFontGroups, _Model.FontGroupsInfosFiltered);
 
             if(_Model.WordGroupsFiltered!=null)
                 tbWordGroups.Text = $"WordGroups {metaDataItemName}({_Model.WordGroupsFiltered.Count})";
@@ -414,30 +418,50 @@ namespace PdfTaggerTest
             if (_Model.PdfTextInfosFiltered != null)
                 tbPdfText.Text = $"PdfText {metaDataItemName}({_Model.PdfTextInfosFiltered.Count})";
 
+            if (_Model.TextStringInfosFiltered != null)
+                tbTextStrings.Text = $"TextStrings {metaDataItemName}({_Model.TextStringInfosFiltered.Count})";
+
+            //if (_Model.FontGroupsInfosFiltered != null)
+                //tbFontGroups.Text = $"FontGroups {metaDataItemName}({_Model.FontGroupsInfosFiltered}";
+
             Refresh();
 
         }
 
-        private void FillGrid(DataGridView grd, List<PdfTagPattern> patterns)
+        private void FillGrid(DataGridView grd, List<PdfTagPattern> patterns, string sourceTypeName)
         {
             grd.Rows.Clear();
 
             if (patterns == null)
                 return;
-
-            foreach (var patt in patterns)
-            {
-                int index = grd.Rows.Add(patt.MetadataItemName,
-                    patt.PdfPageN, patt.PdfRectangle, patt.MatchesCount,
-                    patt.RegexPattern, patt);
-
-
-                if (IsInResults(patt, out object value))
+            if (sourceTypeName != "TextStringInfos")
+                foreach (var patt in patterns)
                 {
-                    grd.Rows[index].DefaultCellStyle.BackColor = Color.Green;
-                    grd.Rows[index].Cells[6].Value = value;
+                    int index = grd.Rows.Add(patt.MetadataItemName,
+                        patt.PdfPageN, patt.PdfRectangle, patt.MatchesCount,
+                        patt.RegexPattern, patt);
+
+
+                    if (IsInResults(patt, out object value))
+                    {
+                        grd.Rows[index].DefaultCellStyle.BackColor = Color.Green;
+                        grd.Rows[index].Cells[6].Value = value;
+                    }
                 }
-            }
+            else
+                foreach (var patt in patterns)
+                {
+                    int index = grd.Rows.Add(patt.MetadataItemName,
+                        patt.PdfPageN, patt.MatchesCount,
+                        patt.RegexPattern, patt.FontType, patt.FontSize, patt.ColorFill, patt.ColorStroke);
+
+
+                    if (IsInResults(patt, out object value))
+                    {
+                        grd.Rows[index].DefaultCellStyle.BackColor = Color.Green;
+                        grd.Rows[index].Cells[8].Value = value;
+                    }
+                }
         }
 
         private bool IsInResults(PdfTagPattern patt, out object value)
@@ -491,7 +515,6 @@ namespace PdfTaggerTest
                 txb.BackColor = Color.White;
 
         }
-
         
     }
 }

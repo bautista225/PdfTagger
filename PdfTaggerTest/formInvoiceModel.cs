@@ -25,9 +25,13 @@ namespace PdfTaggerTest
 
         public PdfTagExtractionResult ExtractionResult { get; private set; }
 
+        public List<PdfTagPattern> TextStringInfosFiltered { get; private set; }
+
         public List<PdfTagPattern> WordGroupsFiltered { get; private set; }
 
         public List<PdfTagPattern> PdfTextInfosFiltered { get; private set; }
+
+        public List<PdfTagPattern> FontGroupsInfosFiltered { get; private set; }
 
         /// <summary>
         /// Carga un documento pdf.
@@ -52,16 +56,34 @@ namespace PdfTaggerTest
 
             List<PdfTagPattern> target = null;
 
-            if (source== "WordGroupsInfos")
+            if (source == "WordGroupsInfos")
                 target = WordGroupsFiltered = new List<PdfTagPattern>();
             else if (source == "PdfTextInfos")
                 target = PdfTextInfosFiltered = new List<PdfTagPattern>();
+            else if (source == "FontGroupsInfos")
+                target = FontGroupsInfosFiltered = new List<PdfTagPattern>();
 
             foreach (var patt in Store.PdfPatterns)
                 if (patt.SourceTypeName == source 
                     && patt.MetadataItemName == name)
                     target.Add(patt);
 
+        }
+
+        public void LoadTextStringFromStore(string name, string source = "TextStringInfos")
+        {
+            if (Store == null)
+                return;
+
+            List<PdfTagPattern> target = null;
+
+            if (source == "TextStringInfos")
+                target = TextStringInfosFiltered = new List<PdfTagPattern>();
+
+            foreach (var patt in Store.PdfPatterns)
+                if (patt.SourceTypeName == source &&
+                    patt.MetadataItemName == name)
+                    target.Add(patt);
         }
 
         /// <summary>

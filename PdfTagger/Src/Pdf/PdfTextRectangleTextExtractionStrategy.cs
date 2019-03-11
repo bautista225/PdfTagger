@@ -72,11 +72,6 @@ namespace PdfTagger.Pdf
         /// </summary>       
         private List<PdfTextChunk> _PdfTextChunks = new List<PdfTextChunk>();
 
-        /// <summary>
-        /// Almacena la fuente del texto que se está mirando
-        /// </summary>
-        //private string TextFont;
-
         #endregion
 
         #region Private Methods
@@ -107,17 +102,7 @@ namespace PdfTagger.Pdf
         {
             return _PdfTextChunks.IndexOf(chunk) == (_PdfTextChunks.Count - 1);
         }
-
-        /// <summary>
-        /// Indica si el PdfTextChunk pasado como argumento
-        /// tiene la misma fuente que el PdfTextChunk anterior.
-        /// </summary>
-        /// <param name="chunk">True si tienen la misma fuente.</param>
-        /// <returns>True si tienen la misma fuente.</returns>
-        private bool IsSameFont(PdfTextChunk chunk)
-        {
-            return chunk.Font == _PdfTextChunks[_PdfTextChunks.IndexOf(chunk) - 1].Font;
-        }
+        
 
         /// <summary>
         /// Devuelve true si la cadena empieza con espacio.
@@ -188,104 +173,9 @@ namespace PdfTagger.Pdf
 
             var ll = renderInfo.GetDescentLine().GetStartPoint(); // lower left
             var ur = renderInfo.GetAscentLine().GetEndPoint(); // upper right
-            string fuente = renderInfo.GetFont().PostscriptFontName; //text font
             string text = renderInfo.GetText(); //mirando
-            iTextSharp.text.pdf.DocumentFont font = renderInfo.GetFont();
 
-            _PdfTextChunks.Add(new PdfTextChunk(renderInfo.GetText(), tclStrat.CreateLocation(renderInfo, segment), ll, ur, fuente));
-
-        }
-
-        /// <summary>
-        /// Implementa la extracción de grupos de palabras
-        /// como texto con la misma fuente.
-        /// </summary>
-        /// <returns>Matriz con los grupos de palabras obtenidos</returns>
-        public List<PdfFontTextRectangle> GetWordGroupsByFont()
-        {
-            List<PdfFontTextRectangle> fontRectangles = new List<PdfFontTextRectangle>();
-
-            _PdfTextChunks.Sort();
-
-            StringBuilder sb = new StringBuilder();
-            string font = "";
-            Rectangle rec = null;
-            Rectangle lastRec = null;
-            PdfTextChunk lastChunk = null;
-
-            foreach (PdfTextChunk chunk in _PdfTextChunks)
-            {
-                if (lastChunk == null) // Primer chunk de la lista
-                {
-                    sb.Append(chunk.Text);
-                    font = chunk.Font;
-
-                    rec = new Rectangle(chunk.Ll[Vector.I1], chunk.Ll[Vector.I2],
-                        chunk.Ur[Vector.I1], chunk.Ur[Vector.I2]);
-                }
-                else
-                {
-
-                    bool isLastChunk = IsLastChunck(chunk); // Comprobamos si es el último chunk de la lista _PdfTextChunks
-                    bool isSameFont = IsSameFont(chunk); // Comprobamos si el chunk sobre el que estamos iterando contiene la misma fuente que el chunk anterior
-
-                    if (!isSameFont || IsChunkAtWordBoundary(chunk, lastChunk) ||
-                        !chunk.SameLine(lastChunk) ||
-                        isLastChunk)
-                    {
-
-                        if (isLastChunk) // Guardo la última palabra de la lista _PdfTextChunks
-                        {
-                            rec = Merge(rec, new Rectangle(chunk.Ll[Vector.I1], chunk.Ll[Vector.I2],
-                            chunk.Ur[Vector.I1], chunk.Ur[Vector.I2]));
-                            sb.Append(chunk.Text);
-                            //font = chunk.Font;
-
-                            fontRectangles.Add(new PdfFontTextRectangle(rec)
-                            {
-                                Text = sb.ToString().Trim(),
-                                TextFont = font.ToString()
-                                
-                            });
-
-                        }
-                        else
-                        {
-                            fontRectangles.Add(new PdfFontTextRectangle(rec) // Guardo el último rectángulo en un PdfFontTextRectangle con el texto ya visto y su fuente
-                            {
-                                Text = sb.ToString().Trim(),
-                                TextFont = font.ToString()
-                            });
-
-                            // reset sb + rec + font de manera que creo el nuevo wordgroup
-                            rec = new Rectangle(chunk.Ll[Vector.I1], chunk.Ll[Vector.I2],
-                                chunk.Ur[Vector.I1], chunk.Ur[Vector.I2]);
-                            sb = new StringBuilder();
-                            font = chunk.Font;
-                        }
-                    }
-                    else
-                    {
-                        // Estamos con la misma tipografía, por lo que la juntamos
-                        rec = Merge(rec, new Rectangle(chunk.Ll[Vector.I1], chunk.Ll[Vector.I2],
-                            chunk.Ur[Vector.I1], chunk.Ur[Vector.I2]));
-                    }
-
-                    // Incluimos un espacio para el texto en caso necesario (¿Interesa ponerlo para la extracción por fuente?)
-                    if (IsChunkAtWordBoundary(chunk, lastChunk) &&
-                        !StartsWithSpace(chunk.Text) &&
-                        !EndsWithSpace(lastChunk.Text))
-                        sb.Append(' ');
-
-                    sb.Append(chunk.Text);
-
-                }
-
-                lastChunk = chunk;
-                //lastRec = rec;
-            }
-
-            return fontRectangles;
+            _PdfTextChunks.Add(new PdfTextChunk(renderInfo.GetText(), tclStrat.CreateLocation(renderInfo, segment), ll, ur));
 
         }
 

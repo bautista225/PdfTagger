@@ -37,6 +37,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -76,6 +77,8 @@
     <Compile Include="Src\Pat\PdfTagPattern.cs" />
     <Compile Include="Src\Pat\PdfTagPatternFactory.cs" />
     <Compile Include="Src\Pat\PdfTagPatternStore.cs" />
+    <Compile Include="Src\Pdf\PdfClownTextExtractor.cs" />
+    <Compile Include="Src\Pdf\PdfClownTextString.cs" />
     <Compile Include="Src\Pdf\PdfFontTextRectangle.cs" />
     <Compile Include="Src\Pdf\PdfTextChunk.cs" />
     <Compile Include="Src\Pdf\PdfTextBaseRectangle.cs" />
@@ -88,6 +91,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Doc\Help\PdfTagger.chm" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Downloads\clown-code-r224-branches-0.1.2-Fix\clown-code-r224-branches-0.1.2-Fix\dotNET\pdfclown.lib\pdfclown.lib.csproj">
+      <Project>{DBED0809-EE4C-45B0-92FA-E4789ECC2AEC}</Project>
+      <Name>pdfclown.lib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

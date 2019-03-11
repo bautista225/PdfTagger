@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.mnMain = new System.Windows.Forms.MenuStrip();
             this.mnMainOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.mnMainAnalyze = new System.Windows.Forms.ToolStripMenuItem();
@@ -143,6 +143,10 @@
             this.IsLastPage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SourceTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Position = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FontType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FontSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColorFill = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColorStroke = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbDataWordGroups = new System.Windows.Forms.TabPage();
             this.grdDataWords = new System.Windows.Forms.DataGridView();
             this.wgPage = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -151,10 +155,20 @@
             this.grdDataLines = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tbTextStrings = new System.Windows.Forms.TabPage();
+            this.grdTextStrings = new System.Windows.Forms.DataGridView();
             this.wBr = new System.Windows.Forms.WebBrowser();
             this.stMain = new System.Windows.Forms.StatusStrip();
             this.dlgOpen = new System.Windows.Forms.OpenFileDialog();
-            this.FontType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mnMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sPnH)).BeginInit();
             this.sPnH.Panel1.SuspendLayout();
@@ -177,6 +191,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdDataWords)).BeginInit();
             this.tbDataLines.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDataLines)).BeginInit();
+            this.tbTextStrings.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdTextStrings)).BeginInit();
             this.SuspendLayout();
             // 
             // mnMain
@@ -281,6 +297,7 @@
             this.tbCtlr.Controls.Add(this.tbPatternStore);
             this.tbCtlr.Controls.Add(this.tbDataWordGroups);
             this.tbCtlr.Controls.Add(this.tbDataLines);
+            this.tbCtlr.Controls.Add(this.tbTextStrings);
             this.tbCtlr.Location = new System.Drawing.Point(15, 15);
             this.tbCtlr.Margin = new System.Windows.Forms.Padding(4);
             this.tbCtlr.Name = "tbCtlr";
@@ -1171,14 +1188,14 @@
             this.RegexPattern,
             this.WordGroupPatt,
             this.WordGroupResult});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdWordGroups.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdWordGroups.DefaultCellStyle = dataGridViewCellStyle4;
             this.grdWordGroups.Location = new System.Drawing.Point(12, 23);
             this.grdWordGroups.Margin = new System.Windows.Forms.Padding(4);
             this.grdWordGroups.MultiSelect = false;
@@ -1252,14 +1269,14 @@
             this.dataGridViewTextBoxColumn5,
             this.PdfTextPatt,
             this.PdfTextResult});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdPdfText.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdPdfText.DefaultCellStyle = dataGridViewCellStyle5;
             this.grdPdfText.Location = new System.Drawing.Point(12, 23);
             this.grdPdfText.Margin = new System.Windows.Forms.Padding(4);
             this.grdPdfText.MultiSelect = false;
@@ -1337,15 +1354,18 @@
             this.IsLastPage,
             this.SourceTypeName,
             this.Position,
-            this.FontType});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdPatternStore.DefaultCellStyle = dataGridViewCellStyle3;
+            this.FontType,
+            this.FontSize,
+            this.ColorFill,
+            this.ColorStroke});
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdPatternStore.DefaultCellStyle = dataGridViewCellStyle6;
             this.grdPatternStore.Location = new System.Drawing.Point(12, 23);
             this.grdPatternStore.Margin = new System.Windows.Forms.Padding(4);
             this.grdPatternStore.Name = "grdPatternStore";
@@ -1408,6 +1428,26 @@
             // 
             this.Position.HeaderText = "Position";
             this.Position.Name = "Position";
+            // 
+            // FontType
+            // 
+            this.FontType.HeaderText = "FontType";
+            this.FontType.Name = "FontType";
+            // 
+            // FontSize
+            // 
+            this.FontSize.HeaderText = "FontSize";
+            this.FontSize.Name = "FontSize";
+            // 
+            // ColorFill
+            // 
+            this.ColorFill.HeaderText = "ColorFill";
+            this.ColorFill.Name = "ColorFill";
+            // 
+            // ColorStroke
+            // 
+            this.ColorStroke.HeaderText = "ColorStroke";
+            this.ColorStroke.Name = "ColorStroke";
             // 
             // tbDataWordGroups
             // 
@@ -1485,6 +1525,37 @@
             this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
             this.dataGridViewTextBoxColumn14.Width = 400;
             // 
+            // tbTextStrings
+            // 
+            this.tbTextStrings.Controls.Add(this.grdTextStrings);
+            this.tbTextStrings.Location = new System.Drawing.Point(4, 25);
+            this.tbTextStrings.Name = "tbTextStrings";
+            this.tbTextStrings.Padding = new System.Windows.Forms.Padding(3);
+            this.tbTextStrings.Size = new System.Drawing.Size(739, 679);
+            this.tbTextStrings.TabIndex = 6;
+            this.tbTextStrings.Text = "TextStrings";
+            this.tbTextStrings.UseVisualStyleBackColor = true;
+            // 
+            // grdTextStrings
+            // 
+            this.grdTextStrings.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdTextStrings.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6,
+            this.Column7,
+            this.Column8,
+            this.Column9});
+            this.grdTextStrings.Location = new System.Drawing.Point(12, 23);
+            this.grdTextStrings.Margin = new System.Windows.Forms.Padding(4);
+            this.grdTextStrings.Name = "grdTextStrings";
+            this.grdTextStrings.RowTemplate.Height = 24;
+            this.grdTextStrings.Size = new System.Drawing.Size(709, 624);
+            this.grdTextStrings.TabIndex = 0;
+            // 
             // wBr
             // 
             this.wBr.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1509,10 +1580,50 @@
             // 
             this.dlgOpen.Filter = "Archivos pdf|*pdf";
             // 
-            // FontType
+            // Column1
             // 
-            this.FontType.HeaderText = "FontType";
-            this.FontType.Name = "FontType";
+            this.Column1.HeaderText = "MetadataItemName";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Page";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Matches";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "RegexPattern";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "FontType";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "FontSize";
+            this.Column6.Name = "Column6";
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "ColorFill";
+            this.Column7.Name = "Column7";
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "ColorStroke";
+            this.Column8.Name = "Column8";
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "Text";
+            this.Column9.Name = "Column9";
             // 
             // formInvoices
             // 
@@ -1554,6 +1665,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdDataWords)).EndInit();
             this.tbDataLines.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdDataLines)).EndInit();
+            this.tbTextStrings.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grdTextStrings)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1684,5 +1797,19 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
         private System.Windows.Forms.DataGridViewTextBoxColumn FontType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FontSize;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColorFill;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColorStroke;
+        private System.Windows.Forms.TabPage tbTextStrings;
+        private System.Windows.Forms.DataGridView grdTextStrings;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
     }
 }

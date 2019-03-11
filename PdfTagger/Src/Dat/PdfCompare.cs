@@ -168,13 +168,6 @@ namespace PdfTagger.Dat
                 {
                     foreach (var page in pdf.PdfUnstructuredPages)
                     {
-
-                        // Punto X, tipo Fuente de WordGroups (FontGroups)
-                        foreach (var fontGroup in page.FontGroups)
-                            foreach (var match in parserHierarchy.GetMatches(pValue, fontGroup.Text))
-                                compareResult.FontGroupsInfos.Add(new PdfCompareInfo(pdf, page, null, match, pInf, fontGroup.TextFont));
-                        
-
                         // Grupos de palabras
                         foreach (var wordGroup in page.WordGroups)
                             foreach (var match in parserHierarchy.GetMatches(pValue, wordGroup.Text))
@@ -185,7 +178,11 @@ namespace PdfTagger.Dat
                             foreach (var match in parserHierarchy.GetMatches(pValue, line.Text))
                                 compareResult.LinesInfos.Add(new PdfCompareInfo(pdf, page, line, match, pInf, null));
 
-                        
+                        //Grupos de texto con porpiedades como el color de la fuente
+                        foreach (var textString in page.TextStringGroups)
+                            foreach (var match in parserHierarchy.GetMatches(pValue, textString.Text))
+                                compareResult.TextStringInfos.Add(new PdfCompareInfo(pdf, page, null, match, pInf, textString));
+
                         foreach (var match in parserHierarchy.GetMatches(pValue, page.PdfText))
                         {
 

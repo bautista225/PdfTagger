@@ -37,6 +37,7 @@
     address: info@irenesolutions.com
  */
 using System;
+using System.Collections.Generic;
 
 namespace PdfTagger.Pat
 {
@@ -47,6 +48,15 @@ namespace PdfTagger.Pat
     /// </summary>
     public class PdfTagExtractionItemResult : IComparable
     {
+        /// <summary>
+        /// Diccionario sobre el que se representa el orden para clasificar las comparaciones por tipo de Info.
+        /// </summary>
+        static Dictionary<string, int> SourceTypeNameOrder = new Dictionary<string, int>() {
+            {"TextStringInfos", 1},
+            {"PdfTextInfos", 2},
+            {"LinesInfos", 3},
+            {"WordGroupsInfos", 4},
+        };
 
         /// <summary>
         /// Numéro de aciertos asociados al patrón.
@@ -92,10 +102,22 @@ namespace PdfTagger.Pat
             if (input == null)
                 throw new ArgumentException("Parámetro de tipo incorrecto.");
 
-            if (MatchesCount > input.MatchesCount)
+            if (MatchesCount > input.MatchesCount) { 
                 return -1;
-            else
+            }
+            else if (MatchesCount < input.MatchesCount)
+            { 
                 return 1;
+            }
+            else
+            {   // Ordenamos los patrones según su tipo con tal de evitar falsos positivos
+                if (SourceTypeNameOrder[Pattern.SourceTypeName] > SourceTypeNameOrder[input.Pattern.SourceTypeName])
+                    return -1;
+                else if (SourceTypeNameOrder[Pattern.SourceTypeName] < SourceTypeNameOrder[input.Pattern.SourceTypeName])
+                    return 1;
+                else
+                    return 0;
+            }
 
         }
 
@@ -154,6 +176,15 @@ namespace PdfTagger.Pat
 
             return (MatchesCount == input.MatchesCount &&
                    equalsValue && equalsPattern);
+        }
+
+        /// <summary>
+        /// Representación textual de la instancia.
+        /// </summary>
+        /// <returns>UNa representación texttual de la instancia.</returns>
+        public override string ToString()
+        {
+            return $"{Pattern.MetadataItemName}, {MatchesCount}";
         }
 
     }

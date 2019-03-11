@@ -36,6 +36,8 @@
     For more information, please contact Irene Solutions SL. at this
     address: info@irenesolutions.com
  */
+using org.pdfclown.documents.contents.colorSpaces;
+using org.pdfclown.documents.contents.fonts;
 using PdfTagger.Pdf;
 using System;
 
@@ -117,6 +119,22 @@ namespace PdfTagger.Pat
         /// </summary>
         public string FontType { get; set; }
 
+        /// <summary>
+        /// Color de la fuente del texto.
+        /// </summary>
+        public string ColorFill { get; set; }
+
+        /// <summary>
+        /// Color de la fuente del texto.
+        /// </summary>
+        public string ColorStroke { get; set; }
+        
+        /// <summary>
+        /// Tamaño de la fuente del texto
+        /// </summary>
+        public double? FontSize { get; set; }
+        
+
         #endregion
 
         #region Public Methods
@@ -164,20 +182,23 @@ namespace PdfTagger.Pat
             if (input == null)
                 throw new ArgumentException("Parámetro de tipo incorrecto.");
 
-            bool equalsFont = false;
+            bool equalsTextString = false;
             bool equalsRectangle = false;
 
-            if (FontType != null && input.FontType != null) // Comprobamos si la fuente y la coordenada de las x coinciden
+            if (FontSize != null && input.FontSize != null) // Comprobamos si las propiedades de los textString coinciden
             {
-                equalsFont = FontType.Equals(input.FontType);
-                //equalsRectangle = PdfRectangle.Llx.Equals(input.PdfRectangle.Llx);
+                if (ColorFill.Equals(input.ColorFill) &&
+                    ColorStroke.Equals(input.ColorStroke) &&
+                    FontSize.Equals(input.FontSize) &&
+                    FontType.Equals(input.FontType))
+                    equalsTextString = true;
             }
             else
             {
-                equalsFont = true;
+                equalsTextString = true;
             }
 
-            if (PdfRectangle != null && input.PdfRectangle != null) // Comprobamos si el rectángulo coincide
+            if (PdfRectangle != null && input.PdfRectangle != null) // Comprobamos si el rectángulo coincide   && FontType==null
             {
                 equalsRectangle = PdfRectangle.Equals(input.PdfRectangle);
             }
@@ -194,7 +215,7 @@ namespace PdfTagger.Pat
                     RegexPattern == input.RegexPattern &&
                     Position == input.Position &&
                     SourceTypeName == input.SourceTypeName)&&
-                    equalsFont;
+                    equalsTextString;
         }
 
         /// <summary>
@@ -213,7 +234,12 @@ namespace PdfTagger.Pat
             hash = hash * prime + (RegexPattern??"").GetHashCode();
             hash = hash * prime + Position .GetHashCode();
             hash = hash * prime + (SourceTypeName??"").GetHashCode();
+
+            hash = hash * prime + ((ColorFill == null) ? 0 : ColorFill.GetHashCode());
+            hash = hash * prime + ((ColorStroke == null) ? 0 : ColorStroke.GetHashCode());
+            hash = hash * prime + ((FontSize == null) ? 0 : FontSize.GetHashCode());
             hash = hash * prime + ((FontType == null) ? 0 : FontType.GetHashCode());
+
 
             return hash;
         }

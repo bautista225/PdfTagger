@@ -58,7 +58,7 @@ namespace PdfTagger.Dat
         PdfTextRectangle _PdfTextRectangle;
         ITextMatch _TextMatch;
         PropertyInfo _PropertyInfo;
-        string _FontType;
+        PdfClownTextString _PdfClownTextString;
 
         #endregion
 
@@ -80,20 +80,21 @@ namespace PdfTagger.Dat
         /// <param name="propertyInfo">PropetyInfo de la propiedad
         /// de los metadatos de la cual se a comparado el valor y se
         /// ha obtenido la coincidencia que ha generado el info.</param>
-        /// <param name="fontType">Tipo de fuente de los metadatos de la Info</param>
+        /// <param name="textString">PdfClownTextString sobre el que
+        /// se ha obtenido el resultado contenido en el info</param>
         public PdfCompareInfo(PdfUnstructuredDoc pdf,
             PdfUnstructuredPage pdfPage,            
             PdfTextRectangle pdfTextRectangle,
             ITextMatch textParserMatch,
             PropertyInfo propertyInfo,
-            string fontType)
+            PdfClownTextString textString)
         {
             _Pdf = pdf;
             _PdfPage = pdfPage;            
             _PdfTextRectangle = pdfTextRectangle;
             _TextMatch = textParserMatch;
             _PropertyInfo = propertyInfo;
-            _FontType = fontType;
+            _PdfClownTextString = textString;
         }
 
         #endregion
@@ -172,24 +173,32 @@ namespace PdfTagger.Dat
         /// <returns>Patrón de búsqueda.</returns>
         public PdfTagPattern GetPdfTagPattern()
         {
-
-            string font = null;
-
-            if (_FontType != null)
-                font = _FontType;
-
             PdfTextBaseRectangle rectangle = null;
+
+            string colorStroke = null;
+            string colorFill = null;
+            string fontType = null;
+            double? fontSize = null;
+
+            if (_PdfClownTextString == null)
+            {
+                if (_PdfTextRectangle != null)
+                    rectangle = new PdfTextBaseRectangle()
+                    {
+                        Llx = _PdfTextRectangle.Llx,
+                        Lly = _PdfTextRectangle.Lly,
+                        Urx = _PdfTextRectangle.Urx,
+                        Ury = _PdfTextRectangle.Ury
+                    };
+            }
+            else
+            {
+                colorStroke = _PdfClownTextString.ColorStroke.BaseDataObject.ToString();
+                colorFill = _PdfClownTextString.ColorFill.BaseDataObject.ToString();
+                fontSize = _PdfClownTextString.FontSize;
+                fontType = _PdfClownTextString.FontType.Name;
+            }
             
-
-            if (_PdfTextRectangle != null)
-                rectangle = new PdfTextBaseRectangle()
-                {
-                    Llx = _PdfTextRectangle.Llx,
-                    Lly = _PdfTextRectangle.Lly,
-                    Urx = _PdfTextRectangle.Urx,
-                    Ury = _PdfTextRectangle.Ury
-                };
-
             string regexPattern = _TextMatch.Pattern ??
                     TxtRegex.Replace(_TextMatch.TextValue);
 
@@ -201,7 +210,11 @@ namespace PdfTagger.Dat
                 PdfPageN = PdfPageN,
                 PdfRectangle = rectangle,
                 MetadataItemName = MetadataItemName,
-                FontType = font
+                ColorFill = colorFill,
+                ColorStroke = colorStroke,
+                FontSize = fontSize,
+                FontType = fontType
+            
             };
         }
 

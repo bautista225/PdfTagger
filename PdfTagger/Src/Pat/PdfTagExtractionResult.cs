@@ -51,6 +51,7 @@ namespace PdfTagger.Pat
     /// </summary>
     public class PdfTagExtractionResult
     {
+        #region Public Properties
 
         /// <summary>
         /// Resultados obtenidos.
@@ -88,6 +89,9 @@ namespace PdfTagger.Pat
             Results = new Dictionary<string, List<PdfTagExtractionItemResult>>();
         }
 
+        #endregion
+
+        #region Public methods
         ///// <summary>
         ///// Añade un nuevo resultado.
         ///// </summary>
@@ -153,5 +157,7 @@ namespace PdfTagger.Pat
             return Metadata;
 
         }
+
+        #endregion
     }
 }

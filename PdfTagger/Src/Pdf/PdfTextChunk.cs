@@ -64,25 +64,7 @@ namespace PdfTagger.Pdf
         {
             Ll = ll;
             Ur = ur;
-            Font = null;
         }
-
-        /// <summary>
-        /// Construye una nueva instancia de la clase PdfTextChunk incluyendo la fuente.
-        /// </summary>
-        /// <param name="str"></param>
-        /// <param name="location"></param>
-        /// <param name="ll"></param>
-        /// <param name="ur"></param>
-        /// <param name="font"></param>
-        public PdfTextChunk(String str, LocationTextExtractionStrategy.ITextChunkLocation location,
-            Vector ll, Vector ur, string font) : base(str, location)
-        {
-            Ll = ll;
-            Ur = ur;
-            Font = font;
-        }
-
 
         #endregion
 
@@ -97,11 +79,7 @@ namespace PdfTagger.Pdf
         /// Upper Right
         /// </summary>
         public Vector Ur { get; private set; }
-
-        /// <summary>
-        /// Text font
-        /// </summary>
-        public string Font { get; private set; }
+        
         #endregion
 
         #region Public Methods
@@ -113,12 +91,10 @@ namespace PdfTagger.Pdf
         public override string ToString()
         {
             return $"{Ll[Vector.I1]}, {Ll[Vector.I2]}, " +
-                $"{Ur[Vector.I1]}, {Ur[Vector.I2]}: {Text}" +
-                "Tipo fuente: "+
-                $"{Font.ToString()}";
+                $"{Ur[Vector.I1]}, {Ur[Vector.I2]}: {Text}" ;
         }
 
         #endregion
-
+        
     }
 }

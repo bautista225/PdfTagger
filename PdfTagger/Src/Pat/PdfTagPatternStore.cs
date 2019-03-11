@@ -99,7 +99,6 @@ namespace PdfTagger.Pat
 
             foreach (var page in pdf.PdfUnstructuredPages)
             {
-
                 ExtractFromRectangles(page.WordGroups,
                     result.MetadataType, hierarchySet, result);
 
@@ -108,6 +107,8 @@ namespace PdfTagger.Pat
 
                 ExtractFromText(result.MetadataType, result, page);
 
+                ExtractFromTextStrings(page.TextStringGroups,
+                    result.MetadataType, hierarchySet, result);
             }
 
             result.Converters = _Converters;
@@ -182,6 +183,66 @@ namespace PdfTagger.Pat
                             object pValue = converter.Convert(match.Value);
                             result.AddResult(pattern, pValue);
 
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Ejecuta el proceso de extracción de metadatos
+        /// a partir de los patrones almacenados.
+        /// En este caso los metadatos deben coincidir en 4 propiedades:
+        /// FontType, FontSize, ColorFill, ColorStroke.
+        /// En caso de acierto, se compara la RegEx.
+        /// </summary>
+        /// <param name="pdfDocTextStrings">Los textStrings obtenidos con el texto y las 4 propiedades.</param>
+        /// <param name="metadataType">Implementa IMetadata. Sirve para averiguar el tipo de dato. Ejemplos: int, string, etc.</param>
+        /// <param name="hierarchySet">Catálogo de jerarquías.</param>
+        /// <param name="result">Guarda los resultados obtenidos con este método de extracción.</param>
+        private void ExtractFromTextStrings(List<PdfClownTextString> pdfDocTextStrings,
+            Type metadataType, IHierarchySet hierarchySet, PdfTagExtractionResult result)
+        {
+            foreach (var textString in pdfDocTextStrings)
+            {
+                foreach(var pattern in PdfPatterns)
+                {
+                    if (pattern.SourceTypeName == "TextStringInfos")
+                    {
+                        if (textString.ColorFill.BaseDataObject.ToString().Equals(pattern.ColorFill) && 
+                            textString.ColorStroke.BaseDataObject.ToString().Equals(pattern.ColorStroke) &&
+                            textString.FontSize.Equals(pattern.FontSize) &&
+                            textString.FontType.Name.Equals(pattern.FontType))
+                        {
+                            // Cumple los 4 parámetros del textString
+                            // por lo que debemos comprobar el contenido 
+                            // (convirtiendo el dato primero a un tipo comparable)
+
+                            string textInput = textString.Text;
+                            PropertyInfo pInf = metadataType.GetProperty(pattern.MetadataItemName);
+                            ITextParserHierarchy parserHierarchy = hierarchySet.GetParserHierarchy(pInf);
+
+                            if (pInf.PropertyType == typeof(string))
+                                parserHierarchy.SetParserRegexPattern(0, pattern.RegexPattern);
+
+                            dynamic converter = parserHierarchy.GetConverter(pattern.RegexPattern);
+
+                            MatchCollection matches = Regex.Matches(textString.Text, pattern.RegexPattern);
+
+                            string val = (pattern.Position < matches.Count) ?
+                                matches[pattern.Position].Value : null;
+
+                            object pValue = null;
+
+                            if (val != null && converter != null)
+                                pValue = converter.Convert(val);
+
+                            if (pValue != null && !PdfCompare.IsZeroNumeric(pValue))
+                            {
+                                result.AddResult(pattern, pValue);
+                                if (!_Converters.ContainsKey(pInf.PropertyType))
+                                    _Converters.Add(pInf.PropertyType, converter);
+                            }
                         }
                     }
                 }

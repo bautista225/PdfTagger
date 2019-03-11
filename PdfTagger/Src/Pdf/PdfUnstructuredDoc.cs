@@ -38,6 +38,9 @@
  */
 using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.parser;
+using org.pdfclown.documents;
+using org.pdfclown.files;
+using org.pdfclown.tools;
 using System.Collections.Generic;
 
 namespace PdfTagger.Pdf
@@ -49,6 +52,15 @@ namespace PdfTagger.Pdf
     /// </summary>
     public class PdfUnstructuredDoc
     {
+        #region Private Properties
+
+        /// <summary>
+        /// Almacena todos los textStrings recogidos en el método TextInfoExtraction
+        /// </summary>
+        private List<PdfClownTextString> _PdfClownTextStrings = new List<PdfClownTextString>();
+
+        private List<List<PdfClownTextString>> _PdfClownPages = new List<List<PdfClownTextString>>();
+        #endregion
 
         #region Private Methods
 
@@ -69,8 +81,8 @@ namespace PdfTagger.Pdf
 
                 var rectSize = pdfReader.GetPageSize(page);
 
-                PdfUnstructuredPages.Add(new PdfUnstructuredPage(rectangleStrategy.GetWordGroupsByFont(), rectangleStrategy.GetWordGroups(),
-                    rectangleStrategy.GetWordGroups(true), pdfText)
+                PdfUnstructuredPages.Add(new PdfUnstructuredPage(rectangleStrategy.GetWordGroups(),
+                    rectangleStrategy.GetWordGroups(true), pdfText, _PdfClownPages[page-1])
                 {
                     PageHeight = rectSize.Height,
                     PageWidth = rectSize.Width
@@ -78,6 +90,32 @@ namespace PdfTagger.Pdf
 
             }
             pdfReader.Close();
+        }
+
+        /// <summary>
+        /// Obtiene el texto con sus propiedades
+        /// (font, font size, text color, text rendering mode, text bounding box, etc.).
+        /// </summary>
+        /// <param name="pdfPath">Ruta del fichero PDF de donde se extrae el texto</param>
+        private void GetPdfDataByPdfClown(string pdfPath)
+        {
+            using (File file = new File(pdfPath))
+            {
+                // Extrayendo el documento del fichero pdfPath
+                Document document = file.Document;
+
+                PdfClownTextExtractor extractor = new PdfClownTextExtractor();
+
+                foreach (Page page in document.Pages)
+                {
+                    extractor.TextInfoExtraction(page);
+
+                    //Ahora sacamos lo extraido y ponerlo en PdfUnstructuredPages.
+
+                    //_PdfClownTextStrings = extractor.GetTextStrings();
+                    _PdfClownPages.Add(extractor.GetTextStrings());
+                }
+            }
         }
 
         #endregion
@@ -123,8 +161,11 @@ namespace PdfTagger.Pdf
 
             PdfUnstructuredPages = new List<PdfUnstructuredPage>();
 
+            GetPdfDataByPdfClown(pdfPath);
+
             using (PdfReader pdfReader = new PdfReader(pdfPath))
                 GetPdfData(pdfReader);
+            
 
         }
 

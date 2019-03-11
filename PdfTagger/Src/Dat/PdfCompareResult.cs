@@ -49,7 +49,7 @@ namespace PdfTagger.Dat
     public class PdfCompareResult
     {
 
-        #region Private Mambers Variables
+        #region Private Members Variables
 
         PdfUnstructuredDoc _Pdf;
         IMetadata _Metadata;
@@ -115,11 +115,10 @@ namespace PdfTagger.Dat
 
         /// <summary>
         /// Información de coincidencias encontradas en los
-        /// datos no estructurados contenidos en los rectángulos
-        /// con información de grupos relacionados
-        /// de palabras por tener el mismo tipo de fuente de la página.
+        /// datos no estructurados contenidos en los TextStrings
+        /// con texto con una propiedad concreta como el tipo de fuente o el color
         /// </summary>
-        public List<PdfCompareInfo> FontGroupsInfos { get; set; }
+        public List<PdfCompareInfo> TextStringInfos { get; set; }
 
         /// <summary>
         /// Información de coincidencias encontradas en los 
@@ -155,7 +154,7 @@ namespace PdfTagger.Dat
             WordGroupsInfos = new List<PdfCompareInfo>();
             LinesInfos = new List<PdfCompareInfo>();
             PdfTextInfos = new List<PdfCompareInfo>();
-            FontGroupsInfos = new List<PdfCompareInfo>();
+            TextStringInfos = new List<PdfCompareInfo>();
         }
 
         /// <summary>
