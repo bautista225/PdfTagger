@@ -31,8 +31,6 @@ namespace PdfTaggerTest
 
         public List<PdfTagPattern> PdfTextInfosFiltered { get; private set; }
 
-        public List<PdfTagPattern> FontGroupsInfosFiltered { get; private set; }
-
         /// <summary>
         /// Carga un documento pdf.
         /// </summary>
@@ -60,8 +58,6 @@ namespace PdfTaggerTest
                 target = WordGroupsFiltered = new List<PdfTagPattern>();
             else if (source == "PdfTextInfos")
                 target = PdfTextInfosFiltered = new List<PdfTagPattern>();
-            else if (source == "FontGroupsInfos")
-                target = FontGroupsInfosFiltered = new List<PdfTagPattern>();
 
             foreach (var patt in Store.PdfPatterns)
                 if (patt.SourceTypeName == source 

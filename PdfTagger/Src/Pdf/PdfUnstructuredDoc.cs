@@ -55,11 +55,10 @@ namespace PdfTagger.Pdf
         #region Private Properties
 
         /// <summary>
-        /// Almacena todos los textStrings recogidos en el método TextInfoExtraction
+        /// Almacena todos los textStrings recogidos en el método TextInfoExtraction, por páginas.
         /// </summary>
-        private List<PdfClownTextString> _PdfClownTextStrings = new List<PdfClownTextString>();
-
         private List<List<PdfClownTextString>> _PdfClownPages = new List<List<PdfClownTextString>>();
+
         #endregion
 
         #region Private Methods
@@ -111,8 +110,6 @@ namespace PdfTagger.Pdf
                     extractor.TextInfoExtraction(page);
 
                     //Ahora sacamos lo extraido y ponerlo en PdfUnstructuredPages.
-
-                    //_PdfClownTextStrings = extractor.GetTextStrings();
                     _PdfClownPages.Add(extractor.GetTextStrings());
                 }
             }

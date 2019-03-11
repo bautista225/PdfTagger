@@ -8,10 +8,27 @@ using System.Threading.Tasks;
 
 namespace PdfTagger.Pdf
 {
+    /// <summary>
+    /// Texto contenido en una página
+    /// de un documento PDF en el que se arrastran las propiedades como:
+    /// -ColorFill
+    /// -ColorStroke
+    /// -FontType
+    /// -FontSize
+    /// </summary>
     public class PdfClownTextString
     {
         #region Constructors
-        
+
+        /// <summary>
+        /// Construye una instancia de la clase PdfClownTextString 
+        /// a partir de un texto extraido con el PdfClownTextExtractor junto a sus propiedades.
+        /// </summary>
+        /// <param name="text">Texto extraido con el PdfClownTextExtractor</param>
+        /// <param name="colorFill">Color del texto</param>
+        /// <param name="colorStroke">Color del texto</param>
+        /// <param name="fontType">Tipo de fuente del texto</param>
+        /// <param name="fontSize">Tamaño de fuente del texto</param>
         public PdfClownTextString(string text, Color colorFill, Color colorStroke, Font fontType, double fontSize)
         {
             Text = text;
@@ -20,19 +37,34 @@ namespace PdfTagger.Pdf
             FontType = fontType;
             FontSize = fontSize;
         }
-        
+
         #endregion
 
         #region Public Properties
 
+        /// <summary>
+        /// Texto extraido con el PdfClownTextExtractor
+        /// </summary>
         public string Text { get; set; }
 
+        /// <summary>
+        /// Color del texto
+        /// </summary>
         public Color ColorFill { get; set; }
 
+        /// <summary>
+        /// Color del texto
+        /// </summary>
         public Color ColorStroke { get; set; }
 
+        /// <summary>
+        /// Tipo de fuente del texto
+        /// </summary>
         public Font FontType { get; set; }
-        
+
+        /// <summary>
+        /// Tamaño de fuente del texto
+        /// </summary>
         public double? FontSize { get; set; }
 
         #endregion

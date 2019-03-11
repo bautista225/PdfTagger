@@ -405,12 +405,10 @@ namespace PdfTaggerTest
             _Model.LoadWordGroupFromStore(metaDataItemName, "WordGroupsInfos");
             _Model.LoadWordGroupFromStore(metaDataItemName, "PdfTextInfos");
             _Model.LoadTextStringFromStore(metaDataItemName);
-            //_Model.LoadWordGroupFromStore(metaDataItemName, "FontGroupsInfos");
 
             FillGrid(grdWordGroups, _Model.WordGroupsFiltered, "WordGroupsInfos");
             FillGrid(grdPdfText, _Model.PdfTextInfosFiltered, "PdfTextInfos");
             FillGrid(grdTextStrings, _Model.TextStringInfosFiltered, "TextStringInfos");
-            //FillGrid(grdFontGroups, _Model.FontGroupsInfosFiltered);
 
             if(_Model.WordGroupsFiltered!=null)
                 tbWordGroups.Text = $"WordGroups {metaDataItemName}({_Model.WordGroupsFiltered.Count})";
@@ -420,9 +418,6 @@ namespace PdfTaggerTest
 
             if (_Model.TextStringInfosFiltered != null)
                 tbTextStrings.Text = $"TextStrings {metaDataItemName}({_Model.TextStringInfosFiltered.Count})";
-
-            //if (_Model.FontGroupsInfosFiltered != null)
-                //tbFontGroups.Text = $"FontGroups {metaDataItemName}({_Model.FontGroupsInfosFiltered}";
 
             Refresh();
 

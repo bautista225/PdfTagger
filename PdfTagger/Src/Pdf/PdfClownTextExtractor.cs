@@ -10,7 +10,15 @@ using System.Threading.Tasks;
 
 namespace PdfTagger.Pdf
 {
-
+    /// <summary>
+    /// Extrategia de extracción de texto utilizada para obtener de un texto dado sobre un PDF, 
+    /// haciendo uso de la biblioteca PdfClown, 
+    /// las propiedades:
+    /// -FontType
+    /// -FontSize
+    /// -ColorFill
+    /// -ColorStroke
+    /// </summary>
     public class PdfClownTextExtractor
     {
         #region Private Properties
