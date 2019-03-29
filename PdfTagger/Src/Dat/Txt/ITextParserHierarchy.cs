@@ -36,6 +36,7 @@
     For more information, please contact Irene Solutions SL. at this
     address: info@irenesolutions.com
  */
+using System;
 using System.Collections.Generic;
 
 namespace PdfTagger.Dat.Txt
@@ -94,6 +95,15 @@ namespace PdfTagger.Dat.Txt
         /// <returns>Primer converter asociado
         /// al patrón de la jerarquía.</returns>
         object GetConverter(string pattern);
+
+        /// <summary>
+        /// Devuelve el converter asociado al patrón regex
+        /// facilitado.
+        /// </summary>
+        /// <param name="type">Tipo.</param>
+        /// <returns>Primer converter asociado
+        /// al tipo.</returns>
+        object GetConverter(Type type);
 
         #endregion  
 

@@ -105,7 +105,7 @@ namespace PdfTagger.Pat
                 ExtractFromRectangles(page.Lines,
                     result.MetadataType, hierarchySet, result, "LinesInfos");
 
-                ExtractFromText(result.MetadataType, result, page);
+                ExtractFromText(result.MetadataType, result, page, hierarchySet);
 
                 ExtractFromTextStrings(page.TextStringGroups,
                     result.MetadataType, hierarchySet, result);
@@ -151,8 +151,9 @@ namespace PdfTagger.Pat
         /// <param name="metadataType">Tipo de la clase que implementa IMetadata.</param>
         /// <param name="result">Resultado de extracción.</param>
         /// <param name="page">PdfUnstructuredPage del doc. pdf.</param>
-        private void ExtractFromText(Type metadataType, 
-            PdfTagExtractionResult result, PdfUnstructuredPage page)
+        private void ExtractFromText(Type metadataType,
+            PdfTagExtractionResult result, PdfUnstructuredPage page,
+            IHierarchySet hierarchySet)
         {
             foreach (var pattern in PdfPatterns)
             {
@@ -176,10 +177,14 @@ namespace PdfTagger.Pat
                             }
                             else
                             {
-                                Type converterGenType = typeof(Converter<>).MakeGenericType(pInf.PropertyType);
-                                converter = Activator.CreateInstance(converterGenType);                                
+                                ITextParserHierarchy parserHierarchy = hierarchySet.GetParserHierarchy(pInf);
+                                converter = parserHierarchy.GetConverter(pInf.PropertyType);
+                                if (converter == null)
+                                {
+                                    Type converterGenType = typeof(Converter<>).MakeGenericType(pInf.PropertyType);
+                                    converter = Activator.CreateInstance(converterGenType);
+                                }
                             }
-                           
                             object pValue = converter.Convert(match.Value);
                             result.AddResult(pattern, pValue);
 
@@ -207,11 +212,11 @@ namespace PdfTagger.Pat
             {
                 foreach(var pattern in PdfPatterns)
                 {
-                    if (pattern.SourceTypeName == "TextStringInfos")
+                        if (pattern.SourceTypeName == "TextStringInfos")
                     {
                         if (textString.ColorFill.BaseDataObject.ToString().Equals(pattern.ColorFill) && 
                             textString.ColorStroke.BaseDataObject.ToString().Equals(pattern.ColorStroke) &&
-                            textString.FontSize.Equals(pattern.FontSize) &&
+                            textString.FontSize.ToString().Equals(pattern.FontSize) &&
                             textString.FontType.Name.Equals(pattern.FontType))
                         {
                             // Cumple los 4 parámetros del textString
@@ -328,7 +333,7 @@ namespace PdfTagger.Pat
             float maxArea = (firstRectArea > secondRectArea) ? firstRectArea : secondRectArea;
             float intersectRectArea = PdfTextBaseRectangle.GetArea(intersectRect);
 
-            return intersectRectArea / maxArea;           
+            return intersectRectArea / firstRectArea;
 
         }
 

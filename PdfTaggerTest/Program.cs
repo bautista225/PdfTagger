@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
 
 namespace PdfTaggerTest
@@ -12,7 +14,7 @@ namespace PdfTaggerTest
         static void Main()
         {
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);      
+            Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new formInvoices());
         }
     }

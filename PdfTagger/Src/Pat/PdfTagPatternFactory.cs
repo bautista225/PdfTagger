@@ -104,6 +104,8 @@ namespace PdfTagger.Pat
                 if (store.PdfPatterns.IndexOf(pattern) == -1)
                     store.PdfPatterns.Add(pattern);
             }
+            
+            List<PdfTagPattern> usedPatterns = new List<PdfTagPattern>();
 
             foreach (var info in compareResult.TextStringInfos)
             {
@@ -112,6 +114,17 @@ namespace PdfTagger.Pat
 
                 if (store.PdfPatterns.IndexOf(pattern) == -1)
                     store.PdfPatterns.Add(pattern);
+                else
+                {   // Intentamos quitar los falsos positivos.
+                    if (!usedPatterns.Contains(pattern))
+                        usedPatterns.Add(pattern);
+                }
+            }
+
+            // Rutina de eliminación de patrones que tengan más de una aparición. (Quita los falsos positivos).
+            foreach (PdfTagPattern usedPattern in usedPatterns)
+            {
+                store.PdfPatterns.Remove(usedPattern);
             }
 
             foreach (var info in compareResult.PdfTextInfos)

@@ -1,4 +1,5 @@
 ﻿using iTextSharp.text;
+using iTextSharp.text.pdf;
 using PdfTagger.Dat.Met.Bus;
 using PdfTagger.Pat;
 using PdfTagger.Xml;
@@ -26,7 +27,7 @@ namespace PdfTaggerTest
         public formInvoices()
         {
             InitializeComponent();
-            _Model = new formInvoiceModel();            
+            _Model = new formInvoiceModel();
         }
 
         private void mnMainOpen_Click(object sender, EventArgs e)
@@ -50,6 +51,17 @@ namespace PdfTaggerTest
             }
         }
 
+        /// <summary>
+        /// Recorre y ejecuta, para cada pdf, el aprendizaje.
+        /// </summary>
+        /// <param name="path"></param>
+        public void RecorrerRuta(string path)
+        {
+            ClearView();
+            _Model.LoadPdfInvoiceDoc(path);
+            ExecuteLearning();
+        }
+
         private void FillDataWordGroups()
         {
 
@@ -57,7 +69,7 @@ namespace PdfTaggerTest
 
             foreach (var page in _Model.Pdf.PdfUnstructuredPages)
                 foreach (var word in page.WordGroups)
-                    grdDataWords.Rows.Add(_Model.Pdf.PdfUnstructuredPages.IndexOf(page)+1, word.Text);
+                    grdDataWords.Rows.Add(_Model.Pdf.PdfUnstructuredPages.IndexOf(page) + 1, word.Text);
         }
 
         private void FillDataLines()
@@ -67,7 +79,7 @@ namespace PdfTaggerTest
 
             foreach (var page in _Model.Pdf.PdfUnstructuredPages)
                 foreach (var line in page.Lines)
-                    grdDataLines.Rows.Add(_Model.Pdf.PdfUnstructuredPages.IndexOf(page)+1, line.Text);
+                    grdDataLines.Rows.Add(_Model.Pdf.PdfUnstructuredPages.IndexOf(page) + 1, line.Text);
         }
 
         /// <summary>
@@ -78,7 +90,7 @@ namespace PdfTaggerTest
         {
             if (string.IsNullOrEmpty(pdfPath))
             {
-                wBr.Visible = false;         
+                wBr.Visible = false;
             }
             else
             {
@@ -89,11 +101,12 @@ namespace PdfTaggerTest
 
         private InvoiceMetadata GetMetadataFromView()
         {
+            ExtraerDatosCSV();
 
             InvoiceMetadata invoice = new InvoiceMetadata();
 
             NumberFormatInfo numFormatInfo = new NumberFormatInfo();
-            numFormatInfo.NumberDecimalSeparator = ".";
+            numFormatInfo.NumberDecimalSeparator = ",";
 
 
             foreach (PropertyInfo pInf in invoice.GetType().GetProperties())
@@ -118,10 +131,50 @@ namespace PdfTaggerTest
                         pInf.SetValue(invoice, pValue);
                     }
                 }
-                
+
             }
 
             return invoice;
+        }
+
+        /// <summary>
+        /// Extraer los datos del CSV en vez de la vista.
+        /// </summary>
+        /// <param name="path"></param>
+        public Boolean ExtraerDatosCSV(bool allInfo = true)
+        {
+            var txt = File.ReadAllText(@"C:\Users\Juan Bautista\Documents\Util\FicherosPdfTaggerModif\jFras.csv");
+
+            var lines = txt.Split('\n');
+
+            string[] data;
+
+            foreach (var line in lines)
+            {
+                var textGroup = line.Split(';');
+                var filePath = _Model.PdfPath.Split('\\');
+                string[] file = filePath[filePath.Length - 1].Split('.');
+                int filename = int.Parse(file[0]);
+
+                if (textGroup[0].Equals(filename.ToString()))
+                {
+                    data = textGroup;
+                    txSellerPartyID.Text = data[7];
+                    _Model.Pdf.DocID = txSellerPartyID.Text;
+                    if (allInfo)
+                    {
+                        txBuyerPartyID.Text = data[5];
+                        txInvoiceNumber.Text = data[10];
+                        txIssueDate.Text = data[9];
+                        txGrossAmount.Text = data[12];
+                        txCurrencyCode.Text = data[13];
+                    }
+
+                    return true;
+
+                }
+            }
+            return false;
         }
 
         private void GetViewFromMetadata()
@@ -157,8 +210,8 @@ namespace PdfTaggerTest
                         else
                             txb.Text = $"{pValue}";
                     }
-                      
-                    
+
+
                 }
 
             }
@@ -173,9 +226,9 @@ namespace PdfTaggerTest
                 Control[] ctlrs = Controls.Find($"tx{pInf.Name}", true);
 
                 if (ctlrs.Length != 0)
-                    ((TextBox)ctlrs[0]).Text="";
+                    ((TextBox)ctlrs[0]).Text = "";
             }
-           
+
         }
 
         private object Convert(Type type, string text)
@@ -188,7 +241,7 @@ namespace PdfTaggerTest
                 if (converter != null)
                     return converter.ConvertFromString(text);
 
-                return Activator.CreateInstance(type); 
+                return Activator.CreateInstance(type);
             }
             catch (NotSupportedException)
             {
@@ -199,13 +252,13 @@ namespace PdfTaggerTest
         private void LoadPreView(bool lines = false)
         {
 
-            if(string.IsNullOrEmpty(_Model.PdfPath))
+            if (string.IsNullOrEmpty(_Model.PdfPath))
             {
                 MessageBox.Show("Debe abrir un pdf.");
                 return;
             }
 
-            if (_Model.Pdf==null)
+            if (_Model.Pdf == null)
             {
                 MessageBox.Show("Debe abrir un pdf.");
                 return;
@@ -217,7 +270,7 @@ namespace PdfTaggerTest
             fileName += $"{Path.GetFileNameWithoutExtension(_Model.PdfPath)}{fileSufix}";
             fileName += $"{Path.GetExtension(_Model.PdfPath)}";
 
-            BaseColor color = (lines) ? BaseColor.BLUE : BaseColor.RED; 
+            BaseColor color = (lines) ? BaseColor.BLUE : BaseColor.RED;
 
             Util.PrintRectangles(_Model.PdfPath, fileName, _Model.Pdf, color, lines);
 
@@ -226,7 +279,7 @@ namespace PdfTaggerTest
 
         private void formInvoices_Shown(object sender, EventArgs e)
         {
-            sPnH.SplitterDistance = Height - mnMain.Height - 
+            sPnH.SplitterDistance = Height - mnMain.Height -
                 tbMain.Height - stMain.Height - 90;
         }
 
@@ -243,10 +296,11 @@ namespace PdfTaggerTest
                 _Model.Pdf.DocID = txSellerPartyID.Text;
                 _Model.Extract();
 
-                Invoke(new Action(()=> {
+                Invoke(new Action(() =>
+                {
                     GetViewFromMetadata();
                     LoadPatternStore();
-                }));                
+                }));
             }
         }
 
@@ -266,16 +320,16 @@ namespace PdfTaggerTest
             {
                 int index = grdPatternStore.Rows.Add(patt.MetadataItemName,
                   patt.PdfPageN, patt.PdfRectangle, patt.MatchesCount,
-                  patt.RegexPattern, patt, "", patt.IsLastPage, 
+                  patt.RegexPattern, patt, "", patt.IsLastPage,
                   patt.SourceTypeName, patt.Position, patt.FontType, patt.FontSize, patt.ColorFill, patt.ColorStroke);
             }
         }
 
         private void ExecuteLearning()
-        {            
+        {
             _Model.Invoice = GetMetadataFromView();
 
-            if (string.IsNullOrEmpty(_Model.Invoice.InvoiceNumber))
+            /*if (string.IsNullOrEmpty(_Model.Invoice.InvoiceNumber))
             {
                 MessageBox.Show("InvoiceNumber no válido.");
                 return;
@@ -297,9 +351,9 @@ namespace PdfTaggerTest
             {
                 MessageBox.Show("GrossAmount no válido.");
                 return;
-            }
+            }*/
 
-            decimal cuadre = _Model.Invoice.GrossAmount - _Model.Invoice.TaxesOutputsBase01 -
+            /*decimal cuadre = _Model.Invoice.GrossAmount - _Model.Invoice.TaxesOutputsBase01 -
                 _Model.Invoice.TaxesOutputsBase02 - _Model.Invoice.TaxesOutputsBase03 -
                 _Model.Invoice.TaxesOutputsBase04 - _Model.Invoice.TaxesOutputsAmount01 -
                 _Model.Invoice.TaxesOutputsAmount02 - _Model.Invoice.TaxesOutputsAmount03 -
@@ -309,7 +363,7 @@ namespace PdfTaggerTest
             {
                 MessageBox.Show("Cuadre importes no válido.");
                 return;
-            }
+            }*/
 
             _Model.ExecutePatternsLearning();
         }
@@ -366,7 +420,7 @@ namespace PdfTaggerTest
         private void ctxMnTxViewPatterns_Click(object sender, EventArgs e)
         {
 
-            if(_Model.Store==null)
+            if (_Model.Store == null)
             {
                 MessageBox.Show("Almacén de patrones no seleccionado.");
                 return;
@@ -387,7 +441,7 @@ namespace PdfTaggerTest
             string fileName = $"{Path.GetDirectoryName(_Model.PdfPath)}{Path.DirectorySeparatorChar}";
             fileName += $"{Path.GetFileNameWithoutExtension(_Model.PdfPath)}{fileSufix}";
             fileName += $"{Path.GetExtension(_Model.PdfPath)}";
-            
+
 
             Util.PrintRectangles(_Model.PdfPath, fileName, patterns);
 
@@ -400,7 +454,7 @@ namespace PdfTaggerTest
 
             TextBox txb = (sender as TextBox);
 
-            string metaDataItemName = txb.Name.Substring(2, txb.Name.Length-2);
+            string metaDataItemName = txb.Name.Substring(2, txb.Name.Length - 2);
 
             _Model.LoadWordGroupFromStore(metaDataItemName, "WordGroupsInfos");
             _Model.LoadWordGroupFromStore(metaDataItemName, "PdfTextInfos");
@@ -410,7 +464,7 @@ namespace PdfTaggerTest
             FillGrid(grdPdfText, _Model.PdfTextInfosFiltered, "PdfTextInfos");
             FillGrid(grdTextStrings, _Model.TextStringInfosFiltered, "TextStringInfos");
 
-            if(_Model.WordGroupsFiltered!=null)
+            if (_Model.WordGroupsFiltered != null)
                 tbWordGroups.Text = $"WordGroups {metaDataItemName}({_Model.WordGroupsFiltered.Count})";
 
             if (_Model.PdfTextInfosFiltered != null)
@@ -429,21 +483,7 @@ namespace PdfTaggerTest
 
             if (patterns == null)
                 return;
-            if (sourceTypeName != "TextStringInfos")
-                foreach (var patt in patterns)
-                {
-                    int index = grd.Rows.Add(patt.MetadataItemName,
-                        patt.PdfPageN, patt.PdfRectangle, patt.MatchesCount,
-                        patt.RegexPattern, patt);
-
-
-                    if (IsInResults(patt, out object value))
-                    {
-                        grd.Rows[index].DefaultCellStyle.BackColor = Color.Green;
-                        grd.Rows[index].Cells[6].Value = value;
-                    }
-                }
-            else
+            if (sourceTypeName.Equals("TextStringInfos"))
                 foreach (var patt in patterns)
                 {
                     int index = grd.Rows.Add(patt.MetadataItemName,
@@ -455,6 +495,20 @@ namespace PdfTaggerTest
                     {
                         grd.Rows[index].DefaultCellStyle.BackColor = Color.Green;
                         grd.Rows[index].Cells[8].Value = value;
+                    }
+                }
+            else
+                foreach (var patt in patterns)
+                {
+                    int index = grd.Rows.Add(patt.MetadataItemName,
+                        patt.PdfPageN, patt.PdfRectangle, patt.MatchesCount,
+                        patt.RegexPattern, patt);
+
+
+                    if (IsInResults(patt, out object value))
+                    {
+                        grd.Rows[index].DefaultCellStyle.BackColor = Color.Green;
+                        grd.Rows[index].Cells[6].Value = value;
                     }
                 }
         }
@@ -510,6 +564,246 @@ namespace PdfTaggerTest
                 txb.BackColor = Color.White;
 
         }
+
+        private void analizarFicherosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DirectoryInfo directory = new DirectoryInfo(@"C:\Users\Juan Bautista\Documents\Util\FicherosPdfTaggerModif\FACTURAS EJEMPLO\");//Assuming Test is your Folder
+            FileInfo[] Files = directory.GetFiles("*.pdf"); //Getting Text files
+
+            int contador = 0;
+            foreach (FileInfo file in Files)
+            {
+                var isInTxt = false;
+                var txt = File.ReadAllText(@"C:\Users\Juan Bautista\Documents\Util\FicherosPdfTaggerModif\datosFacturas.csv");
+
+                var lines = txt.Split('\n');
+
+                foreach (var line in lines)
+                {
+                    try
+                    {
+                        var textGroup = line.Split(';');
+                        //var filePath = _Model.PdfPath.Split('\\');
+                        string[] fileAux = file.Name.Split('.');
+                        int filename = int.Parse(fileAux[0]);
+
+
+
+                        if (textGroup[0].Equals(filename.ToString()))
+                        {
+                            isInTxt = true;
+                            contador++;
+                            Console.WriteLine("Mirando el fichero número: " + contador + " de " + Files.Length + " con nombre : " + file.Name + " a la hora: " + DateTime.Now.ToString("h:mm:ss"));
+
+                            // Compruebo si el fichero pdf tiene muchas páginas.
+                            try
+                            {
+                                PdfReader reader = new PdfReader(file.FullName);
+                                if (reader.NumberOfPages > 10)
+                                {
+                                    reader.Close();
+                                    Console.WriteLine("Es un fichero con muchas páginas");
+                                    Console.WriteLine("Fichero ya visitado a la hora: " + DateTime.Now.ToString("h:mm:ss") + "\n\n\n");
+                                    //File.Move(file.FullName, @"C:\Users\Juan Bautista\Documents\FACTURAS EJEMPLO\FACTURAS EJEMPLO DE MUCHAS PÁGINAS\" + file.Name);
+
+                                }
+                                else
+                                {
+                                    reader.Close();
+                                    try
+                                    {
+                                        RecorrerRuta(file.FullName);
+                                        Console.WriteLine("Fichero ya visitado a la hora: " + DateTime.Now.ToString("h:mm:ss") + "\n\n\n");
+                                        File.Move(file.FullName, @"C:\Users\Juan Bautista\Documents\Util\FicherosPdfTaggerModif\FACTURAS VISITADAS\" + file.Name);
+                                    }
+                                    catch
+                                    {
+                                        Console.WriteLine("El fichero ha dado una excepción TIPO 1\n\n\n");
+                                        File.Move(file.FullName, @"C:\Users\Juan Bautista\Documents\FACTURAS EJEMPLO\FACTURAS EJEMPLO EXCEPCION 2\" + file.Name);
+                                    }
+                                }
+                            }
+                            catch
+                            {
+                                Console.WriteLine("El fichero ha dado una excepción TIPO 2\n\n\n");
+                                File.Move(file.FullName, @"C:\Users\Juan Bautista\Documents\FACTURAS EJEMPLO\FACTURAS EJEMPLO EXCEPCION 2\" + file.Name);
+
+                            }
+                            break;
+                        }
+                    }
+                    catch
+                    {
+
+                    }
+                }
+                if (!isInTxt)
+                    File.Move(file.FullName, @"C:\Users\Juan Bautista\Documents\FACTURAS EJEMPLO\FACTURAS EJEMPLO NOT_IN_EXCEL\" + file.Name);
+
+                Console.WriteLine("Empieza GC");
+                System.GC.Collect();
+                System.GC.WaitForPendingFinalizers();
+                Console.WriteLine("Finaliza GC\n\n\n");
+            }
+        }
+
+        private void analizarListaFicherosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DirectoryInfo directory = new DirectoryInfo(@"C:\Users\Juan Bautista\Documents\Util\FicherosPdfTaggerModif\FACTURAS EJEMPLO\");//Assuming Test is your Folder
+            FileInfo[] Files = directory.GetFiles("*.pdf"); //Getting Text files
+
+            int contador = 0;
+            int contadorFiles = 0;
+            foreach (FileInfo file in Files)
+            {
+                var txt = File.ReadAllText(@"C:\Users\Juan Bautista\Documents\Util\FicherosPdfTaggerModif\ficherosConcretos.txt");
+
+                var lines = txt.Split('\n');
+                contadorFiles++;
+                Console.WriteLine("Fichero núm: " + contadorFiles + " de " + Files.Length);
+                foreach (var line in lines)
+                {
+                    string[] fileAux = file.Name.Split('.');
+                    int filename = int.Parse(fileAux[0]);
+                    string[] lineAux = line.Split('\r');
+
+                    //Console.WriteLine(line);
+                    if (lineAux[0].Equals(filename.ToString()))
+                    {
+                        contador++;
+                        Console.WriteLine("Mirando el fichero número: " + contador + " de " + Files.Length + " con nombre : " + file.Name + " a la hora: " + DateTime.Now.ToString("h:mm:ss"));
+                        RecorrerRuta(file.FullName);
+                        File.Move(file.FullName, @"C:\Users\Juan Bautista\Documents\Util\FicherosPdfTaggerModif\FACTURAS VISITADAS\" + file.Name);
+                        Console.WriteLine("Fichero ya visitado a la hora: " + DateTime.Now.ToString("h:mm:ss") + "\n\n\n");
+                    }
+                }
+                Console.WriteLine("Empieza GC");
+                System.GC.Collect();
+                System.GC.WaitForPendingFinalizers();
+                Console.WriteLine("Finaliza GC\n\n\n");
+            }
+            Console.WriteLine("He termiando");
+        }
+
         
+        /// <summary>
+        /// Llamadas a métodos para obtener el CSV
+        /// </summary>
+        /// <param name="path">Ruta del PDF donde se extrae la información.</param>
+        private void ExtraerPdfACsv(string path)
+        {
+            ClearView();
+            _Model.LoadPdfInvoiceDoc(path);
+
+            ExtraerDatosCSV(false);
+
+            Console.WriteLine("Realizando el Extract()");
+            _Model.Extract();
+
+            GetCsvFromMetadata();
+        }
+
+        /// <summary>
+        /// Extrae la información del PDF y la almacena en un CSV.
+        /// </summary>
+        private void GetCsvFromMetadata()
+        {
+
+            if (_Model.Invoice == null)
+                return;
+
+            InvoiceMetadata invoice = _Model.Invoice;
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            NumberFormatInfo numFormatInfo = new NumberFormatInfo();
+            numFormatInfo.NumberDecimalSeparator = ",";
+            string issueDate = null;
+            string grossAmount = null;
+
+            foreach (PropertyInfo pInf in invoice.GetType().GetProperties())
+            {
+                if (pInf.Name == "InvoiceNumber" ||
+                    pInf.Name == "SellerPartyID" ||
+                    pInf.Name == "BuyerPartyID" ||
+                    pInf.Name == "CurrencyCode")
+                {
+                    object pValue = pInf.GetValue(invoice);
+                    var text = $"{pValue}";
+                    data.Add(pInf.Name, text);
+                }
+                else if (pInf.Name == "IssueDate")
+                {
+                    if (pInf.GetValue(invoice) != null)
+                        issueDate = ((DateTime)pInf.GetValue(invoice)).ToString("dd/MM/yyyy");
+                }
+                else if (pInf.Name == "GrossAmount")
+                {
+                    if (System.Convert.ToDecimal(pInf.GetValue(invoice)) != 0)
+                        grossAmount = ((decimal)pInf.GetValue(invoice)).ToString(numFormatInfo);
+                }
+            }
+
+            string[] file = _Model.PdfPath.Split('\\');
+            string nameFile = file[file.Length - 1];
+
+            string line = string.Format("{0};{1};{2};{3};{4};{5};{6}\n",
+            data["SellerPartyID"], data["BuyerPartyID"], data["InvoiceNumber"],
+            issueDate, grossAmount, data["CurrencyCode"], nameFile);
+
+            string path = @"C:\Users\Juan Bautista\Documents\Util\FicherosPdfTaggerModif\OUTPUT\datosPdfTaggerModif.csv";
+
+            Console.WriteLine("Escribiendo en fichero");
+            File.AppendAllText(path, line);
+        }
+
+        private void extraerDatosFicherosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DirectoryInfo directory = new DirectoryInfo(@"C:\Users\Juan Bautista\Documents\Util\FicherosPdfTaggerModif\FACTURAS EJEMPLO\");//Assuming Test is your Folder
+            FileInfo[] Files = directory.GetFiles("*.pdf"); //Getting Text files
+
+            int contador = 0;
+            foreach (FileInfo file in Files)
+            {
+                var txt = File.ReadAllText(@"C:\Users\Juan Bautista\Documents\Util\FicherosPdfTaggerModif\datosFacturas.csv");
+
+                var lines = txt.Split('\n');
+
+                foreach (var line in lines)
+                {
+                    try
+                    {
+                        var textGroup = line.Split(';');
+                        string[] fileAux = file.Name.Split('.');
+                        int filename = int.Parse(fileAux[0]);
+
+                        if (textGroup[0].Equals(filename.ToString()))
+                        {
+                            contador++;
+                            Console.WriteLine("Mirando el fichero número: " + contador + " de " + Files.Length + " con nombre : " + file.Name + " a la hora: " + DateTime.Now.ToString("h:mm:ss"));
+
+                            try
+                            {
+                            ExtraerPdfACsv(file.FullName);
+
+                            Console.WriteLine("Fichero ya visitado a la hora: " + DateTime.Now.ToString("h:mm:ss") + "\n\n\n");
+                            File.Move(file.FullName, @"C:\Users\Juan Bautista\Documents\Util\FicherosPdfTaggerModif\FACTURAS VISITADAS\" + file.Name);
+                            }
+                            catch
+                            {
+                                Console.WriteLine("El fichero ha dado una excepción\n\n\n");
+                                File.Move(file.FullName, @"C:\Users\Juan Bautista\Documents\Util\FicherosPdfTaggerModif\FACTURAS EXCEPCIÓN\" + file.Name);
+                            }
+
+                            break;
+                        }
+                    }
+                    catch { break; }
+                }
+                Console.WriteLine("Empieza GC");
+                System.GC.Collect();
+                System.GC.WaitForPendingFinalizers();
+                Console.WriteLine("Finaliza GC\n\n\n");
+
+            }
+        }
     }
 }

@@ -132,7 +132,7 @@ namespace PdfTagger.Pat
         /// <summary>
         /// Tamaño de la fuente del texto
         /// </summary>
-        public double? FontSize { get; set; }
+        public string FontSize { get; set; }
         
 
         #endregion
@@ -185,13 +185,17 @@ namespace PdfTagger.Pat
             bool equalsTextString = false;
             bool equalsRectangle = false;
 
-            if (FontSize != null && input.FontSize != null) // Comprobamos si las propiedades de los textString coinciden
+            if (input.SourceTypeName.Equals("TextStringInfos")) // Comprobamos si las propiedades de los textString coinciden
             {
-                if (ColorFill.Equals(input.ColorFill) &&
-                    ColorStroke.Equals(input.ColorStroke) &&
-                    FontSize.Equals(input.FontSize) &&
-                    FontType.Equals(input.FontType))
-                    equalsTextString = true;
+                if(FontSize != null && input.FontSize != null &&
+                    ColorFill != null && input.ColorFill != null &&
+                    ColorStroke != null && input.ColorStroke != null &&
+                    FontType != null && input.FontType != null)
+                    if (ColorFill.Equals(input.ColorFill) &&
+                        ColorStroke.Equals(input.ColorStroke) &&
+                        FontSize.Equals(input.FontSize) &&
+                        FontType.Equals(input.FontType))
+                            equalsTextString = true;
             }
             else
             {

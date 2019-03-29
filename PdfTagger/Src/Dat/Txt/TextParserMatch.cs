@@ -90,7 +90,7 @@ namespace PdfTagger.Dat.Txt
         /// contexto con el patrón, devuelve la posición
         /// de la que coincide.
         /// </summary>
-        public int Position { get; private set; }
+        public int Position { get; set; }
 
         /// <summary>
         /// Patrón regex utilizado.

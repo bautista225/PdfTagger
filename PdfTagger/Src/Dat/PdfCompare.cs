@@ -39,6 +39,7 @@
 using PdfTagger.Dat.Txt;
 using PdfTagger.Pdf;
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Text.RegularExpressions;
 
@@ -178,10 +179,17 @@ namespace PdfTagger.Dat
                             foreach (var match in parserHierarchy.GetMatches(pValue, line.Text))
                                 compareResult.LinesInfos.Add(new PdfCompareInfo(pdf, page, line, match, pInf, null));
 
-                        //Grupos de texto con porpiedades como el color de la fuente
+                        // Grupos de texto con porpiedades como el color de la fuente
                         foreach (var textString in page.TextStringGroups)
                             foreach (var match in parserHierarchy.GetMatches(pValue, textString.Text))
                                 compareResult.TextStringInfos.Add(new PdfCompareInfo(pdf, page, null, match, pInf, textString));
+
+                        /*//Rutina de comprobación de número de matches con el mismo patrón
+                        Dictionary<string, List<int>> usedPatterns = new Dictionary<string, List<int>>();
+                        List<PdfCompareInfo> textStringInfos = compareResult.TextStringInfos;
+
+                        foreach (var textStringResult in compareResult.TextStringInfos)*/
+
 
                         foreach (var match in parserHierarchy.GetMatches(pValue, page.PdfText))
                         {

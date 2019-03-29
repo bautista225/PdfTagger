@@ -40,6 +40,7 @@
 using PdfTagger.Dat.Txt;
 using PdfTagger.Pat;
 using PdfTagger.Pdf;
+using System;
 using System.Reflection;
 
 namespace PdfTagger.Dat
@@ -178,7 +179,7 @@ namespace PdfTagger.Dat
             string colorStroke = null;
             string colorFill = null;
             string fontType = null;
-            double? fontSize = null;
+            string fontSize = null;
 
             if (_PdfClownTextString == null)
             {
@@ -193,10 +194,17 @@ namespace PdfTagger.Dat
             }
             else
             {
-                colorStroke = _PdfClownTextString.ColorStroke.BaseDataObject.ToString();
-                colorFill = _PdfClownTextString.ColorFill.BaseDataObject.ToString();
-                fontSize = _PdfClownTextString.FontSize;
-                fontType = _PdfClownTextString.FontType.Name;
+                try
+                {
+                    colorStroke = _PdfClownTextString.ColorStroke.BaseDataObject.ToString();
+                    colorFill = _PdfClownTextString.ColorFill.BaseDataObject.ToString();
+                    fontSize = _PdfClownTextString.FontSize.ToString();
+                    fontType = _PdfClownTextString.FontType.Name;
+                }
+                catch
+                {
+
+                }
             }
             
             string regexPattern = _TextMatch.Pattern ??
@@ -214,7 +222,6 @@ namespace PdfTagger.Dat
                 ColorStroke = colorStroke,
                 FontSize = fontSize,
                 FontType = fontType
-            
             };
         }
 

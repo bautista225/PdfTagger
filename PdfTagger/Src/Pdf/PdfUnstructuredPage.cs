@@ -67,12 +67,11 @@ namespace PdfTagger.Pdf
         /// <param name="pdfText">Texto total de la página.</param>
         /// <param name="textStringGroups">Conjunto de grupos de texto con propiedades como la fuente o el color</param>
         public PdfUnstructuredPage(List<PdfTextRectangle> wordGroups, 
-            List<PdfTextRectangle> lines, string pdfText, List<PdfClownTextString> textStringGroups)
+            List<PdfTextRectangle> lines, string pdfText)
         {
             WordGroups = wordGroups;
             Lines = lines;
             PdfText = pdfText;
-            TextStringGroups = textStringGroups;
         }
 
         #endregion

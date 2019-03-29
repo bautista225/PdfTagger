@@ -41,7 +41,7 @@ namespace PdfTagger.Pdf
         /// Extraccción del texto de la página pasada por parámetro
         /// con sus respectivas propiedades
         /// (font, font size, text color, text rendering mode, text bounding box, etc.).
-        /// Este escaneo se realiza por niveles, ya que las página están representadas 
+        /// Este escaneo se realiza por niveles, ya que las páginas están representadas 
         /// por una secuencia de Content Objects, posiblemente anidados en múltiples niveles.
         /// </summary>
         /// <param name="level">Nivel que estamos iterando</param>
@@ -76,7 +76,11 @@ namespace PdfTagger.Pdf
                     {
                         Extract(((XObject)content).GetScanner(level));
                     }
-                    catch { }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.StackTrace);
+                        Console.WriteLine("Soy la excepción de XObject");
+                    }
                 }
                 else if (content is ContainerObject)
                 {
@@ -85,7 +89,11 @@ namespace PdfTagger.Pdf
                     {
                         Extract(level.ChildLevel);
                     }
-                    catch { }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.StackTrace);
+                        Console.WriteLine("Soy la excepción de ContainerObject");
+                    }
                 }
                 
             }

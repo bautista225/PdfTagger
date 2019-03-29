@@ -149,10 +149,44 @@ namespace PdfTagger.Pat
             foreach (var resulList in Results)
                 resulList.Value.Sort();
 
+            Dictionary<string, bool> metadatas = new Dictionary<string, bool>();
+
             foreach (PropertyInfo pInf in MetadataType.GetProperties())
+            {
+                metadatas.Add(pInf.Name, false);
+
                 if (Results.ContainsKey(pInf.Name))
                     if (Results[pInf.Name].Count > 0)
-                        pInf.SetValue(Metadata, Results[pInf.Name][0].Value);
+                    {
+                        for (int i = 0; i < Results[pInf.Name].Count; i++)
+                        {
+                            if (Results[pInf.Name][i].Pattern.SourceTypeName != "TextStringInfos")
+                            {
+                                pInf.SetValue(Metadata, Results[pInf.Name][i].Value);
+                                metadatas[pInf.Name] = true;
+                                break;
+                            }
+                        }
+                    }
+            }
+
+            // Rellenamos los pInf vacíos con los posibles valores de textStrings.
+            foreach (PropertyInfo pInf in MetadataType.GetProperties())
+                if (Results.ContainsKey(pInf.Name))
+                    if (!metadatas[pInf.Name]) // Devuelve false si no se ha rellenado en el bucle anterior.
+                    {
+                        if (Results[pInf.Name].Count > 0)
+                        {
+                            for (int i = 0; i < Results[pInf.Name].Count; i++)
+                            {
+                                if (Results[pInf.Name][i].Pattern.SourceTypeName == "TextStringInfos")
+                                {
+                                    pInf.SetValue(Metadata, Results[pInf.Name][i].Value);
+                                    break;
+                                }
+                            }
+                        }
+                    }
 
             return Metadata;
 

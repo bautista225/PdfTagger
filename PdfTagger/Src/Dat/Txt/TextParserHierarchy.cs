@@ -37,6 +37,7 @@
     For more information, please contact Irene Solutions SL. at this
     address: info@irenesolutions.com
  */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -131,11 +132,32 @@ namespace PdfTagger.Dat.Txt
         {
             List<ITextMatch> matches = new List<ITextMatch>();
 
+            //var totalMatches = GetMatches(text);
+
             foreach (var match in GetMatches(text))
-                if(match.Value.Equals(input))
+            {
+                if (match.Value.Equals(input))
+                {
                     matches.Add(match);
+                }
+            }
+
+            /*
+            if (matches.Count != 0)
+            {
+                float cociente = (float)matches.Count / (float)totalMatches.Count;
+
+                // Comprobamos si nos interesa el conjunto de matches con tal de evitar falsos positivos
+                if (cociente < 0.2)
+                    return matches = new List<ITextMatch>();
+                else
+                    return matches;
+            }
+            else
+                return matches;*/
 
             return matches;
+            
         }
 
         /// <summary>
@@ -153,6 +175,25 @@ namespace PdfTagger.Dat.Txt
             return null;
         }
 
+        /// <summary>
+        /// Devuelve el primer converter asociado al tipo
+        /// facilitado.
+        /// </summary>
+        /// <param name="type">Tipo.</param>
+        /// <returns>Primer converter asociado
+        /// al tipo facilitado.</returns>
+        public object GetConverter(Type type)
+        {
+            foreach (var parser in Parsers)
+            {
+                var parserType = parser.GetType().GetGenericArguments()?[0];
+                if (parserType == type)
+
+                    return parser.Converter;
+            }
+            return null;
+        }
+        
         #endregion
 
     }

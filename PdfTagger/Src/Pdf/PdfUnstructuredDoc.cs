@@ -59,6 +59,8 @@ namespace PdfTagger.Pdf
         /// </summary>
         private List<List<PdfClownTextString>> _PdfClownPages = new List<List<PdfClownTextString>>();
 
+        private bool _GetPdfPagesPdfClown = true;
+
         #endregion
 
         #region Private Methods
@@ -71,7 +73,7 @@ namespace PdfTagger.Pdf
         {
             for (int page = 1; page <= pdfReader.NumberOfPages; page++)
             {
-
+                
                 PdfTextRectangleTextExtractionStrategy rectangleStrategy =
                     new PdfTextRectangleTextExtractionStrategy();
 
@@ -80,12 +82,27 @@ namespace PdfTagger.Pdf
 
                 var rectSize = pdfReader.GetPageSize(page);
 
-                PdfUnstructuredPages.Add(new PdfUnstructuredPage(rectangleStrategy.GetWordGroups(),
-                    rectangleStrategy.GetWordGroups(true), pdfText, _PdfClownPages[page-1])
+                if (_GetPdfPagesPdfClown)
                 {
-                    PageHeight = rectSize.Height,
-                    PageWidth = rectSize.Width
-                });
+                    PdfUnstructuredPages.Add(new PdfUnstructuredPage(rectangleStrategy.GetWordGroups(),
+                    rectangleStrategy.GetWordGroups(true), pdfText)
+                    {
+                        PageHeight = rectSize.Height,
+                        PageWidth = rectSize.Width,
+                        TextStringGroups = _PdfClownPages[page - 1]
+                    });
+                }
+                else
+                {
+                    PdfUnstructuredPages.Add(new PdfUnstructuredPage(rectangleStrategy.GetWordGroups(),
+                    rectangleStrategy.GetWordGroups(true), pdfText)
+                    {
+                        PageHeight = rectSize.Height,
+                        PageWidth = rectSize.Width,
+                        TextStringGroups = _PdfClownPages[0]
+                    });
+                }
+                
 
             }
             pdfReader.Close();
@@ -98,20 +115,29 @@ namespace PdfTagger.Pdf
         /// <param name="pdfPath">Ruta del fichero PDF de donde se extrae el texto</param>
         private void GetPdfDataByPdfClown(string pdfPath)
         {
-            using (File file = new File(pdfPath))
+            try
             {
-                // Extrayendo el documento del fichero pdfPath
-                Document document = file.Document;
-
-                PdfClownTextExtractor extractor = new PdfClownTextExtractor();
-
-                foreach (Page page in document.Pages)
+                using (File file = new File(pdfPath))
                 {
-                    extractor.TextInfoExtraction(page);
+                    // Extrayendo el documento del fichero pdfPath
+                    Document document = file.Document;
 
-                    //Ahora sacamos lo extraido y ponerlo en PdfUnstructuredPages.
-                    _PdfClownPages.Add(extractor.GetTextStrings());
+                    PdfClownTextExtractor extractor = new PdfClownTextExtractor();
+
+                    foreach (Page page in document.Pages)
+                    {
+                        extractor.TextInfoExtraction(page);
+
+                        //Ahora sacamos lo extraido y ponerlo en PdfUnstructuredPages.
+                        _PdfClownPages.Add(extractor.GetTextStrings());
+                    }
+                    //document.Delete();
                 }
+            }
+            catch
+            {
+                _GetPdfPagesPdfClown = false;
+                _PdfClownPages.Add(new List<PdfClownTextString>());
             }
         }
 

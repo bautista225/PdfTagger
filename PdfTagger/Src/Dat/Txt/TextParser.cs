@@ -77,7 +77,7 @@ namespace PdfTagger.Dat.Txt
         /// </summary>
         public IConverter<T> Converter { get; private set; }
 
-        #endregion       
+        #endregion
 
         #region Public Methods
 
@@ -95,6 +95,7 @@ namespace PdfTagger.Dat.Txt
 
             if (Pattern == null)
                 matches.Add(new TextParserMatch<T>(Converter.Convert(text), text, text, 0));
+
             else
                 foreach (Match match in Regex.Matches(text, Pattern))
                     matches.Add(new TextParserMatch<T>(Converter.Convert(match.Value), 
