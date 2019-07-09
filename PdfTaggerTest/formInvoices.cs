@@ -321,7 +321,7 @@ namespace PdfTaggerTest
                 int index = grdPatternStore.Rows.Add(patt.MetadataItemName,
                   patt.PdfPageN, patt.PdfRectangle, patt.MatchesCount,
                   patt.RegexPattern, patt, "", patt.IsLastPage,
-                  patt.SourceTypeName, patt.Position, patt.FontType, patt.FontSize, patt.ColorFill, patt.ColorStroke);
+                  patt.SourceTypeName, patt.Position, patt.FontType, patt.FontSize, patt.ColorFill, patt.ColorStroke, patt.TsType, patt.TsCoordinate);
             }
         }
 
@@ -488,13 +488,13 @@ namespace PdfTaggerTest
                 {
                     int index = grd.Rows.Add(patt.MetadataItemName,
                         patt.PdfPageN, patt.MatchesCount,
-                        patt.RegexPattern, patt.FontType, patt.FontSize, patt.ColorFill, patt.ColorStroke);
+                        patt.RegexPattern, patt.FontType, patt.FontSize, patt.ColorFill, patt.ColorStroke, patt.TsType, patt.TsCoordinate);
 
 
                     if (IsInResults(patt, out object value))
                     {
                         grd.Rows[index].DefaultCellStyle.BackColor = Color.Green;
-                        grd.Rows[index].Cells[8].Value = value;
+                        grd.Rows[index].Cells[10].Value = value;
                     }
                 }
             else
@@ -782,10 +782,10 @@ namespace PdfTaggerTest
 
                             try
                             {
-                            ExtraerPdfACsv(file.FullName);
+                                ExtraerPdfACsv(file.FullName);
 
-                            Console.WriteLine("Fichero ya visitado a la hora: " + DateTime.Now.ToString("h:mm:ss") + "\n\n\n");
-                            File.Move(file.FullName, @"C:\Users\Juan Bautista\Documents\Util\FicherosPdfTaggerModif\FACTURAS VISITADAS\" + file.Name);
+                                Console.WriteLine("Fichero ya visitado a la hora: " + DateTime.Now.ToString("h:mm:ss") + "\n\n\n");
+                                File.Move(file.FullName, @"C:\Users\Juan Bautista\Documents\Util\FicherosPdfTaggerModif\FACTURAS VISITADAS\" + file.Name);
                             }
                             catch
                             {

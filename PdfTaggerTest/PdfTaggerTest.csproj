@@ -32,10 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dependencies\itextsharp.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -88,6 +84,10 @@
     <ProjectReference Include="..\..\..\..\Downloads\clown-code-r224-branches-0.1.2-Fix\clown-code-r224-branches-0.1.2-Fix\dotNET\pdfclown.lib\pdfclown.lib.csproj">
       <Project>{dbed0809-ee4c-45b0-92fa-e4789ecc2aec}</Project>
       <Name>pdfclown.lib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\itextsharp\src\core\itextsharp.csproj">
+      <Project>{84c4fdd9-3ed7-453b-b9da-b3ed52cb071c}</Project>
+      <Name>itextsharp</Name>
     </ProjectReference>
     <ProjectReference Include="..\PdfTagger\PdfTagger.csproj">
       <Project>{d32a1802-b555-43d4-bb04-a49f6dfecc11}</Project>

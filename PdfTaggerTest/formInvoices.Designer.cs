@@ -39,6 +39,7 @@
             this.mnMainViewLines = new System.Windows.Forms.ToolStripMenuItem();
             this.analizarFicherosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.analizarListaFicherosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.extraerDatosFicherosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tbMain = new System.Windows.Forms.ToolStrip();
             this.sPnH = new System.Windows.Forms.SplitContainer();
             this.sPnV = new System.Windows.Forms.SplitContainer();
@@ -159,6 +160,9 @@
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbTextStrings = new System.Windows.Forms.TabPage();
             this.grdTextStrings = new System.Windows.Forms.DataGridView();
+            this.wBr = new System.Windows.Forms.WebBrowser();
+            this.stMain = new System.Windows.Forms.StatusStrip();
+            this.dlgOpen = new System.Windows.Forms.OpenFileDialog();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -167,11 +171,9 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TsType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TsCoordinate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.wBr = new System.Windows.Forms.WebBrowser();
-            this.stMain = new System.Windows.Forms.StatusStrip();
-            this.dlgOpen = new System.Windows.Forms.OpenFileDialog();
-            this.extraerDatosFicherosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sPnH)).BeginInit();
             this.sPnH.Panel1.SuspendLayout();
@@ -257,6 +259,13 @@
             this.analizarListaFicherosToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
             this.analizarListaFicherosToolStripMenuItem.Text = "Analizar lista ficheros";
             this.analizarListaFicherosToolStripMenuItem.Click += new System.EventHandler(this.analizarListaFicherosToolStripMenuItem_Click);
+            // 
+            // extraerDatosFicherosToolStripMenuItem
+            // 
+            this.extraerDatosFicherosToolStripMenuItem.Name = "extraerDatosFicherosToolStripMenuItem";
+            this.extraerDatosFicherosToolStripMenuItem.Size = new System.Drawing.Size(164, 24);
+            this.extraerDatosFicherosToolStripMenuItem.Text = "Extraer datos ficheros";
+            this.extraerDatosFicherosToolStripMenuItem.Click += new System.EventHandler(this.extraerDatosFicherosToolStripMenuItem_Click);
             // 
             // tbMain
             // 
@@ -1568,6 +1577,8 @@
             this.Column6,
             this.Column7,
             this.Column8,
+            this.TsType,
+            this.TsCoordinate,
             this.Column9});
             this.grdTextStrings.Location = new System.Drawing.Point(12, 23);
             this.grdTextStrings.Margin = new System.Windows.Forms.Padding(4);
@@ -1575,6 +1586,30 @@
             this.grdTextStrings.RowTemplate.Height = 24;
             this.grdTextStrings.Size = new System.Drawing.Size(709, 624);
             this.grdTextStrings.TabIndex = 0;
+            // 
+            // wBr
+            // 
+            this.wBr.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wBr.Location = new System.Drawing.Point(0, 0);
+            this.wBr.Margin = new System.Windows.Forms.Padding(4);
+            this.wBr.MinimumSize = new System.Drawing.Size(27, 25);
+            this.wBr.Name = "wBr";
+            this.wBr.Size = new System.Drawing.Size(834, 744);
+            this.wBr.TabIndex = 0;
+            // 
+            // stMain
+            // 
+            this.stMain.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.stMain.Location = new System.Drawing.Point(0, 96);
+            this.stMain.Name = "stMain";
+            this.stMain.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
+            this.stMain.Size = new System.Drawing.Size(1620, 22);
+            this.stMain.TabIndex = 0;
+            this.stMain.Text = "statusStrip1";
+            // 
+            // dlgOpen
+            // 
+            this.dlgOpen.Filter = "Archivos pdf|*pdf";
             // 
             // Column1
             // 
@@ -1616,41 +1651,20 @@
             this.Column8.HeaderText = "ColorStroke";
             this.Column8.Name = "Column8";
             // 
+            // TsType
+            // 
+            this.TsType.HeaderText = "TsType";
+            this.TsType.Name = "TsType";
+            // 
+            // TsCoordinate
+            // 
+            this.TsCoordinate.HeaderText = "TsCoordinate";
+            this.TsCoordinate.Name = "TsCoordinate";
+            // 
             // Column9
             // 
             this.Column9.HeaderText = "Text";
             this.Column9.Name = "Column9";
-            // 
-            // wBr
-            // 
-            this.wBr.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.wBr.Location = new System.Drawing.Point(0, 0);
-            this.wBr.Margin = new System.Windows.Forms.Padding(4);
-            this.wBr.MinimumSize = new System.Drawing.Size(27, 25);
-            this.wBr.Name = "wBr";
-            this.wBr.Size = new System.Drawing.Size(834, 744);
-            this.wBr.TabIndex = 0;
-            // 
-            // stMain
-            // 
-            this.stMain.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.stMain.Location = new System.Drawing.Point(0, 96);
-            this.stMain.Name = "stMain";
-            this.stMain.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.stMain.Size = new System.Drawing.Size(1620, 22);
-            this.stMain.TabIndex = 0;
-            this.stMain.Text = "statusStrip1";
-            // 
-            // dlgOpen
-            // 
-            this.dlgOpen.Filter = "Archivos pdf|*pdf";
-            // 
-            // extraerDatosFicherosToolStripMenuItem
-            // 
-            this.extraerDatosFicherosToolStripMenuItem.Name = "extraerDatosFicherosToolStripMenuItem";
-            this.extraerDatosFicherosToolStripMenuItem.Size = new System.Drawing.Size(164, 24);
-            this.extraerDatosFicherosToolStripMenuItem.Text = "Extraer datos ficheros";
-            this.extraerDatosFicherosToolStripMenuItem.Click += new System.EventHandler(this.extraerDatosFicherosToolStripMenuItem_Click);
             // 
             // formInvoices
             // 
@@ -1829,6 +1843,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColorStroke;
         private System.Windows.Forms.TabPage tbTextStrings;
         private System.Windows.Forms.DataGridView grdTextStrings;
+        private System.Windows.Forms.ToolStripMenuItem analizarFicherosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem analizarListaFicherosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem extraerDatosFicherosToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -1837,9 +1854,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TsType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TsCoordinate;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.ToolStripMenuItem analizarFicherosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem analizarListaFicherosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem extraerDatosFicherosToolStripMenuItem;
     }
 }

@@ -62,11 +62,14 @@ namespace PdfTagger.Pdf
                     foreach (ContentScanner.TextStringWrapper textString in text.TextStrings)
                     {
                         _PdfTextStrings.Add(new PdfClownTextString(
-                            textString.Text, 
-                            textString.Style.FillColor, 
+                            textString.Text,
+                            textString.Style.FillColor,
                             textString.Style.StrokeColor,
                             textString.Style.Font,
-                            textString.Style.FontSize));
+                            textString.Style.FontSize)
+                        {
+                            Rectangle = textString.Box
+                        });
                     }
                 }
                 else if (content is XObject)

@@ -182,13 +182,29 @@ namespace PdfTagger.Dat
                         // Grupos de texto con porpiedades como el color de la fuente
                         foreach (var textString in page.TextStringGroups)
                             foreach (var match in parserHierarchy.GetMatches(pValue, textString.Text))
-                                compareResult.TextStringInfos.Add(new PdfCompareInfo(pdf, page, null, match, pInf, textString));
+                            {
+                                PdfClownTextString tsNA = new PdfClownTextString(textString.Text, textString.ColorFill, textString.ColorStroke, textString.FontType, textString.FontSize)
+                                {
+                                    Rectangle = textString.Rectangle,
+                                    Type = "NA"
+                                };
 
-                        /*//Rutina de comprobación de número de matches con el mismo patrón
-                        Dictionary<string, List<int>> usedPatterns = new Dictionary<string, List<int>>();
-                        List<PdfCompareInfo> textStringInfos = compareResult.TextStringInfos;
+                                PdfClownTextString tsX = new PdfClownTextString(textString.Text, textString.ColorFill, textString.ColorStroke, textString.FontType, textString.FontSize)
+                                {
+                                    Type = "X",
+                                    Rectangle = textString.Rectangle
+                                };
 
-                        foreach (var textStringResult in compareResult.TextStringInfos)*/
+                                PdfClownTextString tsY = new PdfClownTextString(textString.Text, textString.ColorFill, textString.ColorStroke, textString.FontType, textString.FontSize)
+                                {
+                                    Type = "Y",
+                                    Rectangle = textString.Rectangle
+                                };
+
+                                compareResult.TextStringInfos.Add(new PdfCompareInfo(pdf, page, null, match, pInf, tsNA));
+                                compareResult.TextStringInfos.Add(new PdfCompareInfo(pdf, page, null, match, pInf, tsX));
+                                compareResult.TextStringInfos.Add(new PdfCompareInfo(pdf, page, null, match, pInf, tsY));
+                            }
 
 
                         foreach (var match in parserHierarchy.GetMatches(pValue, page.PdfText))

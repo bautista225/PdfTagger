@@ -41,6 +41,7 @@ using PdfTagger.Dat.Txt;
 using PdfTagger.Pat;
 using PdfTagger.Pdf;
 using System;
+using System.Drawing;
 using System.Reflection;
 
 namespace PdfTagger.Dat
@@ -180,6 +181,8 @@ namespace PdfTagger.Dat
             string colorFill = null;
             string fontType = null;
             string fontSize = null;
+            string type = null;
+            string coordinate = null;
 
             if (_PdfClownTextString == null)
             {
@@ -200,6 +203,15 @@ namespace PdfTagger.Dat
                     colorFill = _PdfClownTextString.ColorFill.BaseDataObject.ToString();
                     fontSize = _PdfClownTextString.FontSize.ToString();
                     fontType = _PdfClownTextString.FontType.Name;
+                    type = _PdfClownTextString.Type;
+                    if (_PdfClownTextString.Rectangle != null)
+                    {
+                        RectangleF? rect = _PdfClownTextString.Rectangle;
+                        if (type.Equals("X"))
+                            coordinate = _PdfClownTextString.Rectangle.Value.X.ToString();
+                        else if (type.Equals("Y"))
+                            coordinate = _PdfClownTextString.Rectangle.Value.Y.ToString();
+                    }
                 }
                 catch
                 {
@@ -221,7 +233,9 @@ namespace PdfTagger.Dat
                 ColorFill = colorFill,
                 ColorStroke = colorStroke,
                 FontSize = fontSize,
-                FontType = fontType
+                FontType = fontType,
+                TsType = type,
+                TsCoordinate = coordinate
             };
         }
 

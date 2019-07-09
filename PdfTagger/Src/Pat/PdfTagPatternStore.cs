@@ -210,43 +210,49 @@ namespace PdfTagger.Pat
         {
             foreach (var textString in pdfDocTextStrings)
             {
-                foreach(var pattern in PdfPatterns)
+                foreach (var pattern in PdfPatterns)
                 {
                         if (pattern.SourceTypeName == "TextStringInfos")
                     {
                         if (textString.ColorFill.BaseDataObject.ToString().Equals(pattern.ColorFill) && 
                             textString.ColorStroke.BaseDataObject.ToString().Equals(pattern.ColorStroke) &&
                             textString.FontSize.ToString().Equals(pattern.FontSize) &&
-                            textString.FontType.Name.Equals(pattern.FontType))
+                            textString.FontType.Name.Equals(pattern.FontType) &&
+                            textString.Type.Equals(pattern.TsType))
                         {
-                            // Cumple los 4 parámetros del textString
-                            // por lo que debemos comprobar el contenido 
-                            // (convirtiendo el dato primero a un tipo comparable)
-
-                            string textInput = textString.Text;
-                            PropertyInfo pInf = metadataType.GetProperty(pattern.MetadataItemName);
-                            ITextParserHierarchy parserHierarchy = hierarchySet.GetParserHierarchy(pInf);
-
-                            if (pInf.PropertyType == typeof(string))
-                                parserHierarchy.SetParserRegexPattern(0, pattern.RegexPattern);
-
-                            dynamic converter = parserHierarchy.GetConverter(pattern.RegexPattern);
-
-                            MatchCollection matches = Regex.Matches(textString.Text, pattern.RegexPattern);
-
-                            string val = (pattern.Position < matches.Count) ?
-                                matches[pattern.Position].Value : null;
-
-                            object pValue = null;
-
-                            if (val != null && converter != null)
-                                pValue = converter.Convert(val);
-
-                            if (pValue != null && !PdfCompare.IsZeroNumeric(pValue))
+                            if (pattern.TsType.Equals("NA") ||
+                                (pattern.TsType.Equals("X") && textString.Rectangle != null && pattern.TsCoordinate.Equals(textString.Rectangle.Value.X.ToString())) ||
+                                (pattern.TsType.Equals("Y") && textString.Rectangle != null && pattern.TsCoordinate.Equals(textString.Rectangle.Value.Y.ToString())))
                             {
-                                result.AddResult(pattern, pValue);
-                                if (!_Converters.ContainsKey(pInf.PropertyType))
-                                    _Converters.Add(pInf.PropertyType, converter);
+                                // Cumple los 4 parámetros del textString
+                                // por lo que debemos comprobar el contenido 
+                                // (convirtiendo el dato primero a un tipo comparable)
+
+                                string textInput = textString.Text;
+                                PropertyInfo pInf = metadataType.GetProperty(pattern.MetadataItemName);
+                                ITextParserHierarchy parserHierarchy = hierarchySet.GetParserHierarchy(pInf);
+
+                                if (pInf.PropertyType == typeof(string))
+                                    parserHierarchy.SetParserRegexPattern(0, pattern.RegexPattern);
+
+                                dynamic converter = parserHierarchy.GetConverter(pattern.RegexPattern);
+
+                                MatchCollection matches = Regex.Matches(textString.Text, pattern.RegexPattern);
+
+                                string val = (pattern.Position < matches.Count) ?
+                                    matches[pattern.Position].Value : null;
+
+                                object pValue = null;
+
+                                if (val != null && converter != null)
+                                    pValue = converter.Convert(val);
+
+                                if (pValue != null && !PdfCompare.IsZeroNumeric(pValue))
+                                {
+                                    result.AddResult(pattern, pValue);
+                                    if (!_Converters.ContainsKey(pInf.PropertyType))
+                                        _Converters.Add(pInf.PropertyType, converter);
+                                }
                             }
                         }
                     }

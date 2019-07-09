@@ -134,7 +134,15 @@ namespace PdfTagger.Pat
         /// </summary>
         public string FontSize { get; set; }
         
+        /// <summary>
+        /// Tipo de textString
+        /// </summary>
+        public string TsType { get; set; }
 
+        /// <summary>
+        /// Coordenada del textString
+        /// </summary>
+        public string TsCoordinate { get; set; }
         #endregion
 
         #region Public Methods
@@ -187,15 +195,25 @@ namespace PdfTagger.Pat
 
             if (input.SourceTypeName.Equals("TextStringInfos")) // Comprobamos si las propiedades de los textString coinciden
             {
-                if(FontSize != null && input.FontSize != null &&
+                if (FontSize != null && input.FontSize != null &&
                     ColorFill != null && input.ColorFill != null &&
                     ColorStroke != null && input.ColorStroke != null &&
-                    FontType != null && input.FontType != null)
+                    FontType != null && input.FontType != null &&
+                    TsType != null && input.TsType != null)
+                {
                     if (ColorFill.Equals(input.ColorFill) &&
-                        ColorStroke.Equals(input.ColorStroke) &&
-                        FontSize.Equals(input.FontSize) &&
-                        FontType.Equals(input.FontType))
+                       ColorStroke.Equals(input.ColorStroke) &&
+                       FontSize.Equals(input.FontSize) &&
+                       FontType.Equals(input.FontType) &&
+                       TsType.Equals(input.TsType))
+                    {
+                        if ((TsType.Equals("X") || TsType.Equals("Y")) &&
+                          TsCoordinate.Equals(input.TsCoordinate))
                             equalsTextString = true;
+                        else if (TsType.Equals("NA"))
+                            equalsTextString = true;
+                    }
+                }
             }
             else
             {

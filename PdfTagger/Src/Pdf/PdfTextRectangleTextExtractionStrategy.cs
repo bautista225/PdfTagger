@@ -174,6 +174,13 @@ namespace PdfTagger.Pdf
             var ll = renderInfo.GetDescentLine().GetStartPoint(); // lower left
             var ur = renderInfo.GetAscentLine().GetEndPoint(); // upper right
             string text = renderInfo.GetText(); //mirando
+            var fillColor = renderInfo.GetFillColor()?.ToString();
+            var strokeColor = renderInfo.GetStrokeColor()?.ToString();
+            Vector curBaseline = renderInfo.GetBaseline().GetStartPoint();
+            Vector topRight = renderInfo.GetAscentLine().GetEndPoint();
+            iTextSharp.text.Rectangle rect = new iTextSharp.text.Rectangle(curBaseline[Vector.I1], curBaseline[Vector.I2], topRight[Vector.I1], topRight[Vector.I2]);
+            var curFontSize = Math.Round(rect.Height);
+            var fontType4 = renderInfo.GetFont()?.PostscriptFontName;
 
             _PdfTextChunks.Add(new PdfTextChunk(renderInfo.GetText(), tclStrat.CreateLocation(renderInfo, segment), ll, ur));
 
